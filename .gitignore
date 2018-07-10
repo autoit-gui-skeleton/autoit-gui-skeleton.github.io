@@ -1,0 +1,22 @@
+# Idea files
+.idea
+
+# Mac files
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+_docs/*.manifest
+_docs/*.spec
+
+# Jekyll dev or build files
+_docs/_site/*
+_docs/_development_tool/*
+_docs/.sass-cache/*
+_docs/*.css.map
+_docs/*.scssc
+
+# Theme Gem files
+_docs/Gemfile.lock
+_docs/*.gem
+_docs/.gems
+_docs/jekyll-theme-type-on-strap.gemspec
