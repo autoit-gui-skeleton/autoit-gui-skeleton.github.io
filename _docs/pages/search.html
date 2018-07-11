@@ -1,0 +1,33 @@
+---
+layout: page
+title: Search
+title_fr: Recherche
+permalink: /search/
+feature-img: "assets/img/pexels/search-map.jpeg"
+hide: true
+---
+
+
+<!-- Html Elements for Search -->
+<input type="text" id="search-input" placeholder="{% t global.enter_keywords %}" class="search-bar">
+<br/>
+<br/>
+<ul id="results-container"></ul>
+
+<section>
+    <!-- Script pointing to jekyll-search.js -->
+    <script src="{{ site.url }}/{{ site.baseurl_root }}/assets/js/vendor/simple-jekyll-search.min.js"></script>
+
+    <script type="text/javascript">
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '{{ site.baseurl }}/assets/data/search.json',
+            searchResultTemplate: '<div class="search-title"><a href="{url}"><h3> {title}</h3></a><div class="meta">{date} <div class="right"><i class="fa fa-tag"></i> {tags}</div></div></div><hr> ',
+            noResultsText: '{% t global.no_result_found %}',
+            limit: 10,
+            fuzzy: false,
+            exclude: []
+        })
+    </script>
+</section>

@@ -1,0 +1,15 @@
+global:
+  english: English
+  french: French
+  presentation: AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.
+  get_started: Get started
+  view_on_github: View on GitHub
+  view_this_site_in: Traduire en français
+  about: About
+  read: Read
+  enter_keywords: Enter keywords...
+  no_result_found: No results found.
+  javascript_required_disqus: Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+langs:
+  en: English
+  fr: French
