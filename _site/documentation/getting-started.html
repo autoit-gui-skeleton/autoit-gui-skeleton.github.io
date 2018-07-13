@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- URL canonical -->
+    <link rel="canonical" href="https://autoit-gui-skeleton.github.io//documentation/getting-started" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://autoit-gui-skeleton.github.io///assets/css/main.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://autoit-gui-skeleton.github.io///assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://autoit-gui-skeleton.github.io////feed.xml" />
+
+    <!-- Font Awesome -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/vendor/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css" />
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css" />
+    
+
+    <!-- FancyBox style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+
+    <!-- Prism CSS syntax highlighter for AutoIt support -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/prism.css" />
+
+    <!-- Flags sprites -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Getting started with AGS | AutoIt GUI Skeleton</title>
+<meta name="generator" content="Jekyll v3.8.1" />
+<meta property="og:title" content="Getting started with AGS" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." />
+<meta property="og:description" content="AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//documentation/getting-started" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//documentation/getting-started" />
+<meta property="og:site_name" content="AutoIt GUI Skeleton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-22T00:00:00+02:00" />
+<script type="application/ld+json">
+{"url":"https://autoit-gui-skeleton.github.io//documentation/getting-started","headline":"Getting started with AGS","dateModified":"2018-05-22T00:00:00+02:00","datePublished":"2018-05-22T00:00:00+02:00","description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//documentation/getting-started"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+
+    <title>AutoIt GUI Skeleton</title>
+    <meta name="description" content="">
+</head>
+
+  <body>
+    <header class="site-header">
+
+    <!-- Logo and title -->
+	<div class="branding">
+		<a href="https://autoit-gui-skeleton.github.io//">
+			<img class="avatar" src="https://autoit-gui-skeleton.github.io//assets/img/autoit.png" alt=""/>
+		</a>
+
+		<p class="site-title">
+			<a href="https://autoit-gui-skeleton.github.io//">AutoIt Gui Skeleton</a>
+		</p>
+	</div>
+
+    <!-- This finds the current page so it can be highlighted. -->
+    
+
+    <nav class="clear">
+
+        <!-- Toggle menu -->
+        <a id="pull" class="toggle">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide toggleMenu">
+
+            
+              <li><a href="https://autoit-gui-skeleton.github.io//documentation">Documentation</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//articles">Articles</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//about">About</a></li>
+            
+
+            <li class="separator"> | </li>
+
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            <li>
+                <a class="link-fr" href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started">
+                    <span class="flag-icon flag-icon-fr" title="Traduire en français" alt="French"></span>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image">
+  <header id="main"
+          class="call-out"
+          style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/documentation/hand-3285912_1920.jpg')">
+
+    
+      <h1 id="1.+Getting+started+with+AGS" class="title">
+        1. Getting started with AGS
+      </h1>
+      
+    
+  </header>
+
+  <section class="post-content"><!-- Breadcrumb navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="https://autoit-gui-skeleton.github.io//">Home</a></li>
+    <li class="breadcrumb-item"><a href="https://autoit-gui-skeleton.github.io//documentation">Documentation</a></li>
+    <li class="breadcrumb-item active" aria-current="page">1. Getting started</li>
+  </ol>
+</nav>
+
+<!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
+<ul id="markdown-toc">
+  <li><a href="#what-is-ags-" id="markdown-toc-what-is-ags-">What is AGS ?</a></li>
+  <li><a href="#architecture-of-an-ags-project" id="markdown-toc-architecture-of-an-ags-project">Architecture of an AGS project</a>    <ul>
+      <li><a href="#directories-and-files-of-ags-project" id="markdown-toc-directories-and-files-of-ags-project">Directories and files of AGS project</a>        <ul>
+          <li><a href="#directory-assets" id="markdown-toc-directory-assets">Directory <code class="highlighter-rouge">assets</code></a></li>
+          <li><a href="#directory-bin" id="markdown-toc-directory-bin">Directory <code class="highlighter-rouge">bin</code></a></li>
+          <li><a href="#directory-config" id="markdown-toc-directory-config">Directory <code class="highlighter-rouge">config</code></a></li>
+          <li><a href="#directory-releases" id="markdown-toc-directory-releases">Directory <code class="highlighter-rouge">releases</code></a></li>
+          <li><a href="#directory-src" id="markdown-toc-directory-src">Directory <code class="highlighter-rouge">src</code></a></li>
+          <li><a href="#directory-vendor" id="markdown-toc-directory-vendor">Directory <code class="highlighter-rouge">vendor</code></a></li>
+        </ul>
+      </li>
+      <li><a href="#overview-of-ags" id="markdown-toc-overview-of-ags">Overview of AGS</a>        <ul>
+          <li><a href="#the-main-entry-program-myapplicationau3" id="markdown-toc-the-main-entry-program-myapplicationau3">The main entry program <code class="highlighter-rouge">MyApplication.au3</code></a></li>
+          <li><a href="#the-main-manager-of-graphic-user-interface-guiau3" id="markdown-toc-the-main-manager-of-graphic-user-interface-guiau3">The main manager of graphic user interface <code class="highlighter-rouge">GUI.au3</code></a></li>
+          <li><a href="#centralize-the-declaration-of-global-variables" id="markdown-toc-centralize-the-declaration-of-global-variables">Centralize the declaration of global variables</a></li>
+          <li><a href="#the-main-manager-of-services-servicesau3" id="markdown-toc-the-main-manager-of-services-servicesau3">The main manager of services <code class="highlighter-rouge">SERVICES.au3</code></a></li>
+          <li><a href="#easy-deployment-with-windows-installer-generation" id="markdown-toc-easy-deployment-with-windows-installer-generation">Easy deployment with Windows installer generation</a></li>
+        </ul>
+      </li>
+      <li><a href="#dependencies-manager-for-autoit" id="markdown-toc-dependencies-manager-for-autoit">Dependencies manager for AutoIt</a>        <ul>
+          <li><a href="#ags-component-and-ags-wrapper" id="markdown-toc-ags-component-and-ags-wrapper">AGS-component and AGS-Wrapper</a></li>
+          <li><a href="#describe-an-ags-project-and-its-dependencies" id="markdown-toc-describe-an-ags-project-and-its-dependencies">Describe an AGS project and its dependencies</a></li>
+        </ul>
+      </li>
+      <li><a href="#manage-application-versions" id="markdown-toc-manage-application-versions">Manage application versions</a>        <ul>
+          <li><a href="#control-version-with-git" id="markdown-toc-control-version-with-git">Control version with Git</a></li>
+          <li><a href="#check-the-updates-of-the-application" id="markdown-toc-check-the-updates-of-the-application">Check the updates of the application</a></li>
+        </ul>
+      </li>
+      <li><a href="#configure-ags-project" id="markdown-toc-configure-ags-project">Configure AGS project</a>        <ul>
+          <li><a href="#create-a-configuration-file" id="markdown-toc-create-a-configuration-file">Create a configuration file</a></li>
+          <li><a href="#constants-and-global-variables" id="markdown-toc-constants-and-global-variables">Constants and global variables</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="what-is-ags-">What is AGS ?</h1>
+
+<p>AutoIt Gui Skeleton (AGS) give an environment for developers, that makes it easy to build AutoIt applications. To do this AGS proposes to use conventions and a standardized architecture. It also gives tools to help developers in recurring tasks specific to software engineering.</p>
+
+<h1 id="architecture-of-an-ags-project">Architecture of an AGS project</h1>
+
+<p>An AGS project respects this following organization for its files and directories.</p>
+
+<pre>
+<code class="language-markup">Project root folder
+.
+|   .gitignore                 # Specifies untracked files to ignore in AGS project
+|   .yarnrc                    # Yarn configuration used in handling AutoIt dependencies 
+|   MyApplication.au3          # The main entry progam. 
+|   package.json               # Use npm's convention to describe this project
+|   README.md                  # In human readable.
+|   RELEASES.json              # Repository for all releases notes of this application.
+|      
++---assets                     # Applications assets (images, pdf, static files...) 
+|   
++---bin                        # Binary tools
+|              
++---config                     # Configuration of application.
+|       parameters.ini         # Parameters which can be modified by user in application
+|       parameters.ini.dist    # Template of parameters.ini which is save in  control version
+|              
++---releases                   # Releases application (zip and windows setup)
+|          
++---src                        # AutoIt source
+|   |   BUSINESS.au3           # Entry point for business and logic code
+|   |   GLOBALS.au3            # Entry point for constants and global variables of application
+|   |   GUI.au3                # Entry point for graphic user interface (GUI)
+|   |   SERVICES.au3           # Entry point for services applications
+|   |      
+|   +---business               # Folder for store all business annd logic code
+|   |      
+|   +---services               # Folder for store all services application 
+|   |       Dialogbox.au3      # Handler of dialog box in which the user is prompted
+|   |       ParametersIni.au3  # Handler of configuration file parameters.ini     
+|   |       
+|   \---views                  # Folder for store all views application
+|           View_About.au3
+|           View_Footer.au3
+|           View_Settings.au3
+|           View_Welcome.au3
+|            
+\---vendor                     # Third party code and dependencies handles with npm repository            
+</code>
+</pre>
+
+<h2 id="directories-and-files-of-ags-project">Directories and files of AGS project</h2>
+
+<p>We organize the files of an AGS project in specific directories.</p>
+
+<h3 id="directory-assets">Directory <code class="highlighter-rouge">assets</code></h3>
+
+<p>This directory contains all the elements used in the application like images, text files, pdf, html, css, javascript. Note that it is possible to integrate static html file into an AutoIt application by using a web browser embedded in the GUI with the <code class="highlighter-rouge">_IECreateEmbedded ()</code> method provided by the <code class="highlighter-rouge">IE.au3</code> library.</p>
+
+<h3 id="directory-bin">Directory <code class="highlighter-rouge">bin</code></h3>
+
+<p>This directory is used to store all project executables. The AGS-console, as a command line application (CLI) is stored in this folder. It is built in the Node.js ecosystem with the library Caporal.js. It provides commands to help developpers, for example to clean all AutoIt files of project with Tidy, or to create a Windows setup, or to quickly scaffold out a new project by choosing a template of AGS project.</p>
+
+<h3 id="directory-config">Directory <code class="highlighter-rouge">config</code></h3>
+
+<p>An AGS project must have a configuration file <code class="highlighter-rouge">./config/parameters.ini</code>.</p>
+
+<p>Be careful, this file is not save with control version, so to create a new one you can use <code class="highlighter-rouge">./config/parameters.ini.dist</code> as a “template” of what your parameters.ini file should look like. Set parameters here that may be different on each application. To use this configuration file, we have the constant <code class="highlighter-rouge">$APP_PARAMETERS_INI</code>, wich contains the full path of this file. This constant is defined in <code class="highlighter-rouge">./src/GLOBALS.au3</code>, and each time the application is started, AGS checks the existence of the configuration file.</p>
+
+<h3 id="directory-releases">Directory <code class="highlighter-rouge">releases</code></h3>
+
+<p>This directory contains the result of a Windows batch that controls the creation of a Windows installer via <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>. To execute this batch, it is necessary that the InnoSetup compiler and 7zip are installed on the pc. If this is not the case, we advise you to use the Windows package manager <a href="https://chocolatey.org/">Chocolatey</a> to install them easily.</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">choco install 7zip
+choco install innosetup</code>
+</pre>
+
+<h3 id="directory-src">Directory <code class="highlighter-rouge">src</code></h3>
+
+<p>All the AutoIt source code of application is store in this directory. You can found specific directories in the latter : services and views, as well as specific files : <code class="highlighter-rouge">GLOBALS.au3</code>, <code class="highlighter-rouge">GUI.au3</code> and <code class="highlighter-rouge">SERVICES.au3</code>.</p>
+
+<h3 id="directory-vendor">Directory <code class="highlighter-rouge">vendor</code></h3>
+
+<p>All third party code must be store in this directory.</p>
+
+<p>In order to simplifiy handling dependencies of an AutoIt project, we use yarn and the npmjs.org repository to share AutoIt libraries. All AGS packages hosted in this npmjs repository belong to <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton</a> organization. And you can find two types of packages that are hosted in this organization:</p>
+
+<ul>
+  <li>An <strong>AGS-component</strong> is an AutoIt library created specifically for AGS. You can use it more easily in your AutoIt project built with the AGS framework. For the example, take a look of <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component http-request</a>.</li>
+  <li>An <strong>AGS-wrapper</strong> is a simple wrapper for another AutoIt library, created by another team/developper. Take a look at this example <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a>.</li>
+</ul>
+
+<p>To install all dependencies of a given project ; we assume that you have a valid <code class="highlighter-rouge">package.json</code> that describes your project and its dependencies ; you just have to execute this command: <code class="highlighter-rouge">λ  yarn install</code>. And so all the dependencies of this project are installed into the <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code> directory.</p>
+
+<h2 id="overview-of-ags">Overview of AGS</h2>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/autoit-gui-skeleton_overview.png" alt="Overview of AGS architecture" class="img-fancybox img-full" /></p>
+
+<h3 id="the-main-entry-program-myapplicationau3">The main entry program <code class="highlighter-rouge">MyApplication.au3</code></h3>
+
+<p>This is the single point of entry for the application, and the location where the application starts. In the latter, we begin by including all other dependencies that it needs: AutoIt libraries, third-party libraries, global variable declaration, and code for the GUI and application services.</p>
+
+<p>The application starts with the main GUI of the GUI <code class="highlighter-rouge">_main_GUI()</code>.</p>
+
+<h3 id="the-main-manager-of-graphic-user-interface-guiau3">The main manager of graphic user interface <code class="highlighter-rouge">GUI.au3</code></h3>
+
+<p>The <code class="highlighter-rouge">./src/GUI.au3</code> file is the entry point for all view managers, that are saved in the<code class="highlighter-rouge">./views</code> directory. We will call it <strong>main manager of the GUI</strong>. The code for each view is defined each time in a specific file and stored in this <code class="highlighter-rouge">./views</code> directory.</p>
+
+<p>The main manager GUI contains especially the <code class="highlighter-rouge">_main_GUI()</code> method, which allows to start the application. This method is only called from the main entry program of the application, and it was designed to create the user interface (GUI) and manage all user interactions and events in the application.</p>
+
+<h3 id="centralize-the-declaration-of-global-variables">Centralize the declaration of global variables</h3>
+
+<p>All constants and global variables are defined in one place in the <code class="highlighter-rouge">./src/GLOBALS.au3</code> file, in order to centralize the declaration of all global variables. With the exception of all the global variables of the graphic elements, which they are defined in each specific view file. Don’t forget that constants can no longer change value over time, unlike global variables. If a global variable changes its value, it can not be persisted , unless to do it in the configuration file <code class="highlighter-rouge">./config/parameters.ini</code>.</p>
+
+<p>By convention, all global variables must be capitalized and separated by an underscore. For example: <code class="highlighter-rouge">Global Const $ APP_EMAIL_CONTACT</code></p>
+
+<h3 id="the-main-manager-of-services-servicesau3">The main manager of services <code class="highlighter-rouge">SERVICES.au3</code></h3>
+
+<p>The <code class="highlighter-rouge">./src/SERVICES.au3</code> file is the entry point for all services, that are saved in the<code class="highlighter-rouge">./services</code> directory. For example, in AGS, we still have the <code class="highlighter-rouge">ParametersIni.au3</code> service that provides a method to work with the application’s configuration file. It allows to save the changes chosen by a user from the graphical interface.</p>
+
+<h3 id="easy-deployment-with-windows-installer-generation">Easy deployment with Windows installer generation</h3>
+
+<p>To facilitate the deployment of a Windows desktop application develop with AutoIt, AGS provides an automated process for generating a Windows installer with the solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>.</p>
+
+<p>To generate an AutoIt application installer, here are the main steps to follow:</p>
+
+<ul>
+  <li>Assign a version number to the application;</li>
+  <li>Compile the application, i.e. compile the main entry point <code class="highlighter-rouge">myProject.au3</code> with the<code class="highlighter-rouge"> aut2exe</code> compiler;</li>
+  <li>Copy the assets (images, files …) necessary for the proper functioning of the application in the output directory;</li>
+  <li>Create a zip archive to package the application;</li>
+  <li>And finally build the installer by compiling the associated InnoSetup script.</li>
+</ul>
+
+<p>All these steps are driven by a Windows batch.</p>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-package-and-deployment-result.png" alt="Result of process to package AutoIt application and generate Windows installer in AGS" class="img-fancybox" /></p>
+
+<h2 id="dependencies-manager-for-autoit">Dependencies manager for AutoIt</h2>
+
+<p>In order to simplify the management of the dependencies of an AutoIt project built with AGS, we have diverted form its initial use the dependency manager npm, and its evolution Yarn.</p>
+
+<p>This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository. We assume that you have already install <a href="https://nodejs.org/">Node.js</a> and <a href="https://yarnpkg.com/lang/en/">Yarn</a>, for example with <a href="https://chocolatey.org/">Chocolatey</a>.</p>
+
+<h3 id="ags-component-and-ags-wrapper">AGS-component and AGS-Wrapper</h3>
+
+<p>All AGS packages hosted in npmjs.org repository belong to the <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton</a> organization. And you can find two types of package hosted in this organization:</p>
+
+<ul>
+  <li>An <strong>AGS-component</strong> is an AutoIt library, that you can easy use in your AutoIt project built with the AGS framework. Take a look of <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component http-request</a>.</li>
+  <li>An <strong>AGS-wrapper</strong> is a simple wrapper for an another library created by another team/developper. Take a look of <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a></li>
+</ul>
+
+<p>To install an AGS component or wrapper in your project, just type in the root folder where the <code class="highlighter-rouge">package.json</code> is stored:</p>
+
+<pre class="command-line" data-prompt="C: \MyProject\&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-component-xxx --modules-folder vendor
+yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
+</pre>
+
+<h3 id="describe-an-ags-project-and-its-dependencies">Describe an AGS project and its dependencies</h3>
+
+<p>To describe an AGS project and its dependencies we naturally use the <code class="highlighter-rouge">package.json</code> file, specific to the Node.js ecosystem. You can find more information about this file, and how to fill it here : <a href="https://yarnpkg.com/lang/en/docs/package-json/">https://yarnpkg.com/lang/en/docs/package-json/</a>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplicationWithCheckUpdater"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-updater"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"AutoIt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.14.5"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20100v &lt;v20100v@no-reply.com&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT License"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not-yet-git"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="p">},</span><span class="w">  
+  </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"@autoit-gui-skeleton/ags-component-check-updater"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>And finaly to install all the dependencies of a given project, you just have to launch this command:</p>
+
+<pre class="command-line" data-prompt="C: \&gt;MyProject\">
+<code class=" language-bash">yarn install --modules-folder vendor</code>
+</pre>
+
+<p>All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code> directory. If you add AutoIt library in the vendor directory, we recommend wrapping them so that they are also managed by the dependency manager, in the same way as <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a></p>
+
+<p>To install AutoIt dependencies in the <code class="highlighter-rouge">./vendor</code> directory, and not in the default directory of Node.js <code class="highlighter-rouge">./node_modules</code>, you must add the <code class="highlighter-rouge">--modules-folder vendor</code> option. We force this choice to avoid any confusion with a Node.js project. Note that with an AGS project, it is not necessary to explicitly write this option on the command line, thanks to the <code class="highlighter-rouge">.yarnrc</code> file stored at the root of the project, ie in the same place as the<code class="highlighter-rouge"> package.json</code> file. Yarn automatically use this file to add an additional configuration of options.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> #./.yarnrc 
+ --modules-folder vendor
+</code></pre></div></div>
+
+<p>So with this file you can run <code class="highlighter-rouge">yarn install</code> to install the dependencies directly into the appropriate <code class="highlighter-rouge">./vendor</code> directory.</p>
+
+<h2 id="manage-application-versions">Manage application versions</h2>
+
+<h3 id="control-version-with-git">Control version with Git</h3>
+
+<p>In an AGS project, we prefer to use Git for control version. So we natturally add the <code class="highlighter-rouge">.gitignore</code> file in the root of the AGS project to exclude files. It uses globbing patterns to match against file names. You can find help to make it here <a href="https://www.atlassian.com/git/tutorials/saving-changes/gitignore">https://www.atlassian.com/git/tutorials/saving-changes/gitignore</a>.</p>
+
+<p>If you use a control version, don’t forget to set the <code class="highlighter-rouge">repository</code> property of your <code class="highlighter-rouge">./package.json</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://host.com/my-depot.git"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="check-the-updates-of-the-application">Check the updates of the application</h3>
+
+<p>The json file <code class="highlighter-rouge">RELEASES.json</code> is used as a repository to trace all successive versions of the application. For each version described into it, there is a link to download this version of the application and a link for the release notes associated with this version. This file must be hosted on a remote server, without access constraint.</p>
+
+<p>To check if an update is available, just compare the <em>local</em> version of the application installed on the PC, with the latest version stored in this JSON repository. It is therefore necessary to have an internet connection.</p>
+
+<p>The <code class="highlighter-rouge">RELEASES.json</code> file must respect the following schema:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Properties</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">name</code></td>
+      <td>Name of application.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">description</code></td>
+      <td>Short description of application.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">license</code></td>
+      <td>License of application.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">persistUrl</code></td>
+      <td>URL where this file is persist on remote server.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">releases</code></td>
+      <td>Collection of release schema.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">release.version</code></td>
+      <td>Version of application use as an id.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">release.state</code></td>
+      <td>More information of this version.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">release.downloadSetup</code></td>
+      <td>URL where you can find the setup of this version.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">release.published</code></td>
+      <td>Date of publication for this version (YYYY-mm-dd).</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">release.releaseNotes</code></td>
+      <td>URL where you can find the release note of this version.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyApplication"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example of RELEASES.json and implementation of AGS-component-check-updater"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/v20100v/autoit-gui-skeleton/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myServer/myApplication/RELEASES.json"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"releases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/download/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-component-check-updater/blob/master/example/ApplicationWithCheckUpdater/README.md"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/download/setup_myApplication_v0.9.0.exe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-component-check-updater/blob/master/example/ApplicationWithCheckUpdater/README.md"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prototype"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-21"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">RELEASES.json</code> file is used with the <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-updater">AGS-component check-updater</a>. This library provides the function of updating an AutoIt application. Take a look at this sample AutoIt application that implements this component <a href="https://github.com/autoit-gui-skeleton/ags-component-check-updater/tree/master/example/ApplicationWithCheckUpdater">ApplicationWithCheckUpdater</a>. This application has the following features:</p>
+
+<ul>
+  <li>Check the update when starting the AutoIt application;</li>
+  <li>Check the update from an interaction in the menu “? &gt; Check update”;</li>
+  <li>Change the application settings from the “Configuration &gt; Settings” view. Changed values are persisted in the <code class="highlighter-rouge">./config/parameters.ini</code> configuration file. In this view, we can set proxy parameters to specify how this application connects to the Internet, and sends HTTP requests.</li>
+</ul>
+
+<p>If the check option for the update to the start application is enabled and a new version of this application is available, then when the user starts the application this component informs the user in a child window :</p>
+
+<p><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-updater/master/example/ApplicationWithCheckUpdater/docs/check-updater-update-available.png" alt="ags-component-check-updater :: update available" /></p>
+
+<h2 id="configure-ags-project">Configure AGS project</h2>
+
+<p>To configure an AGS project, we have:</p>
+
+<ul>
+  <li>A <code class="highlighter-rouge">./config/parameters.ini</code> configuration file, whose parameter values can be modified by users.</li>
+  <li>Constants and global variables are defined in <code class="highlighter-rouge">./src/GLOBALS.au3</code>.</li>
+</ul>
+
+<h3 id="create-a-configuration-file">Create a configuration file</h3>
+
+<p>When you start a new AGS project, you must create this configuration file <code class="highlighter-rouge">./config/parameters.ini</code>. This file is not versioned. You can use <code class="highlighter-rouge">./config/parameters.ini.dist</code> as a ‘template’ of what this file should look like. Set the parameters here that may be different on each application. Only this file is saved with the control version.</p>
+
+<p>If you add an AGS component, you can configure it into this file. For example with <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-updater">AGS-component check-updater</a> you can choose if the application have to search a new update on start-up with the <code class="highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code> parameter.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_CHECK_UPDATER]</span>
+<span class="c">; [REQUIRED] Enable/disable the search of a new update on start-up.
+</span><span class="py">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</span><span class="p">=</span><span class="s">1</span>
+</code></pre></div></div>
+
+<p>For another example with the component <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component http-request</a>, we can configure a proxy of the following way:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_HTTP_REQUEST]</span>
+<span class="c">; [OPTIONAL] Use a proxy for http connexion
+</span><span class="py">PROXY</span><span class="p">=</span><span class="s">http://myproxy.com:8080</span>
+</code></pre></div></div>
+
+<h3 id="constants-and-global-variables">Constants and global variables</h3>
+
+<p>All constants and global variables are set in one place <code class="highlighter-rouge">./src/GLOBALS.au3</code>, with the exception to global variables of graphic elements which are set in each specific view file. Don’t forget that constants can’t longer change their value over time, unlike global variables. By convention, all global variables must be written in capital letter and separated by underscore - for example : <code class="highlighter-rouge">Global Const $APP_EMAIL_CONTACT</code>.</p>
+
+<p>In this global variables file, we find in particular the following section of the main constants of the application:</p>
+
+<pre><code class="language-autoit">;----------------------------;
+; Application main constants ;
+;----------------------------;
+Global Const $APP_NAME = "ApplicationWithCheckUpdater"
+Global Const $APP_VERSION = "0.9.0"
+Global Const $APP_WEBSITE = "https://myApplication-website.org"
+Global Const $APP_EMAIL_CONTACT = "myApplication@website.org"
+Global Const $APP_ID = "v20100v.ApplicationWithCheckUpdater"
+Global Const $APP_LIFE_PERIOD = "2018-" &amp; @YEAR
+Global Const $APP_COPYRIGHT = "© " &amp; $APP_LIFE_PERIOD &amp; ", v20100v"
+</code></pre>
+
+<p>With the component <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-updater">AGS-component check-updater</a> we set the constant <code class="highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> to specifiy where the repository JSON is hosted. This json file must be persisted in a remote server available via internet, and without restriction.</p>
+
+<pre><code class="language-autoit">Global Const $APP_REMOTE_RELEASES_JSON = "https://myServer/myApplication/RELEASES.json"
+</code></pre>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue reading ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//documentation/code-organization">2. Code organization in AGS project</a>.</p>
+</blockquote>
+
+</section>
+
+  <!-- Tag list for portfolio -->
+  
+  
+
+
+
+<div class="tag-list">
+    
+    <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/tags#AGS">
+        <p><i class="fa fa-tag fa-fw"></i> AGS</p>
+    </a>
+    
+    <a class="button" href="/tags#Documentation">
+        <p><i class="fa fa-tag fa-fw"></i> Documentation</p>
+    </a>
+    
+</div>
+
+
+</article>
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">Built with ♥ with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li>
+	<a href="mailto:vb20100bv@gmail.com" title="Email">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/v20100v" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+    <!-- KaTeX 0.8.3 -->
+
+<link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css">
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/katex.min.js"></script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-119463892-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<!-- Prism CSS syntax highlighter for AutoIt support -->
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/prism.js"></script>
+
+<!-- FancyBox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Enable fancybox evrywhere with this class selector
+        $('.img-fancybox').each(function (index, value) {
+            $(this).wrap('<a href="' + $(this).attr('src') + '" data-fancybox data-caption="' + $(this).attr('alt') + '">');
+        });
+
+        // Enable bootstrap tooltip everywhere with data-toogle attribute
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/assets/js/main.min.js"></script>
+  </body>
+</html>
