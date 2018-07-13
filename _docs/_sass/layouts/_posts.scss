@@ -91,11 +91,16 @@ header {
     @extend %padding-regular;
 
     h1, h2 {
+      /*margin-top: 1.87em;*/
+      margin-top: 2em;
+    }
+    h3{
       margin-top: 1.87em;
     }
-    h3, h4, h5, h6 {
+    h4, h5, h6 {
       margin-top: 1.34em;
     }
+
   }
   footer {
     @extend %padding-regular;

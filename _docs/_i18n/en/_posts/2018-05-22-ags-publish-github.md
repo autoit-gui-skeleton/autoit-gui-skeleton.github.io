@@ -3,9 +3,9 @@ layout: post
 title: Publication of AGS on Github
 tags: [AGS]
 author: v20100v
-feature-img: "assets/img/documentation/hand-3285912_1920.jpg"
+feature-img: "assets/img/GitHub-brave-hed-796x418.jpg"
 feature-datecolor: "#0000009c"
-thumbnail: "assets/img/documentation/hand-3285912_1920.jpg"
+thumbnail: "assets/img/GitHub-brave-hed-796x418.jpg"
 excerpt_separator: <!--more-->
 ---
 
