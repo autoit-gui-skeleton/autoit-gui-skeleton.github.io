@@ -14,39 +14,34 @@ type github_jekyll.txt
 echo.
 echo.
 
-echo ---[ Step 1/5 - Clean output folder ] ---
+echo ---[ Step 1/4 - Clean output folder ] ---
 echo * Attempt to remove : "%FOLDER_BUILD%"
 rmdir %FOLDER_BUILD% /s /q
 
 echo.
 echo.
 
-echo ---[ Step 2/5 - Build Jekyll site ] ---
+echo ---[ Step 2/4 - Build Jekyll site ] ---
 echo * Attempt to build Jekyll website
 call bundle exec jekyll build
 
 echo.
 echo.
 
-echo ---[ Step 3/5 - Copy Jekyll site in the root ] ---
+echo ---[ Step 3/4 - Copy Jekyll site in the root ] ---
 echo * Attempt to copy Jekyll website in the root of project
+echo xcopy "%FOLDER_BUILD%" "%FOLDER_ROOT_GIT%" /E /H /Y
 xcopy "%FOLDER_BUILD%" "%FOLDER_ROOT_GIT%" /E /H /Y
 
 echo.
 echo.
-echo ---[ Step 4/5 - Git commit ] ---
+
+echo ----[ Step 4/4 - Published on Github  ] ----
 git add --all
 git commit -m "Jekyll website published"
-
-echo.
-echo.
-
-echo ---[ Step 5/5 - Git push ] ---
 git push origin master
 
-echo.
-echo.
 
-echo ����[ End process ]����
+echo ----[ End process ]----
 echo.
 pause
