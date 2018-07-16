@@ -4,6 +4,7 @@ baseurl: ""
 title: AutoIt GUI Skeleton
 description: "AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." # used by search engines
 encoding: utf-8
+destination: _site
 
 
 

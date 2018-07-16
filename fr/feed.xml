@@ -5,7 +5,347 @@
         <atom:link href="/fr/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//fr/</link>
         <description></description>
-        <pubDate>Fri, 13 Jul 2018 15:29:26 +0200</pubDate>
+        <pubDate>Mon, 16 Jul 2018 16:43:12 +0200</pubDate>
+        
+        <item>
+            <title>Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json</title>
+            <link>/fr/2018/07/16/ags_wrapper_json.html</link>
+            <guid isPermaLink="true">/fr/2018/07/16/ags_wrapper_json.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;Pour travailler avec des fichiers JSON, AGS fournit le &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json&quot;&gt;@autoit-gui-skeleton/ags-wrapper-json&lt;/a&gt; de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur &lt;a href=&quot;https://zserge.com/jsmn.html&quot;&gt;jsmn&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;comment-installer-ags-wrapper-json-&quot;&gt;Comment installer AGS-wrapper-json ?&lt;/h1&gt;
+
+&lt;p&gt;On suppose que vous avez déjà installé &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; et &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, par example avec &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké:&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-json --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instrcution:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
+
+&lt;h1 id=&quot;comment-décoder-un-json-&quot;&gt;Comment décoder un JSON ?&lt;/h1&gt;
+
+&lt;h2 id=&quot;décoder-depuis-un-fichier-json-local&quot;&gt;Décoder depuis un fichier JSON local&lt;/h2&gt;
+
+&lt;p&gt;Par exemple, crééz ce fichier json dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./assets/DROIDS.json&lt;/code&gt; de votre projet AGS.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Listing droids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Luke&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;luke@2080.org&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;droids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;R2D2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Astromecano&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0,96m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;BB8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Astromecano&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0,67m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;C-3PO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Social&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1,67m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pour décoder ce fichier, on utilise la fonction suivante &lt;code class=&quot;highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
+
+;====================================================================================
+; Decode JSON from a given local file
+;
+; @param $jsonfilePath (string)
+; @return $object (object), instance return by json_decode
+;====================================================================================
+Func json_decode_from_file($filePath)
+	Local $fileOpen, $fileContent, $object
+
+	$fileOpen = FileOpen($filePath, $FO_READ)
+	If $fileOpen = -1 Then
+		Return SetError(1, 0, &quot;An error occurred when reading the file &quot; &amp;amp; $filePath)
+	EndIf
+	$fileContent = FileRead($fileOpen)
+	FileClose($fileOpen)
+	$object = Json_Decode($fileContent)
+
+	Return $object
+EndFunc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Selon la documentation de Ward:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The most JSON data type will be decoded into corresponding AutoIt variable, including 1D array, string, number, true, false, and null. JSON object will be decoded into “Windows Scripting Dictionary Object” retuned from &lt;code class=&quot;highlighter-rouge&quot;&gt;ObjCreate(&quot;Scripting.Dictionary&quot;)&lt;/code&gt;. AutoIt build-in functions like IsArray, IsBool, etc. can be used to check the returned data type. But for Object and Null, Json_IsObject() and Json_IsNull() should be used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If the input JSON string is invalid, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Error&lt;/code&gt; will be set to &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSMN_ERROR_INVAL&lt;/code&gt;. And if the input JSON string is not finish, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Error&lt;/code&gt; will be set to &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSMN_ERROR_PART&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;obtenir-la-valeur-à-partir-dun-objet-json&quot;&gt;Obtenir la valeur à partir d’un objet JSON&lt;/h2&gt;
+
+&lt;p&gt;Pour utiliser &lt;code class=&quot;highlighter-rouge&quot;&gt;$jsonObject&lt;/code&gt;, le retour de &lt;code class=&quot;highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;, vous pouvez utilsier la fonction &lt;code class=&quot;highlighter-rouge&quot;&gt;Json_Get&lt;/code&gt;. Pour sélectionner une variable JSON, vous pouvez utiliser au choix la notation par point ou par crochet.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $file = @ScriptDir &amp;amp; &quot;\assets\DROIDS.json&quot;
+Local $jsonObject = json_decode_from_file($file)
+
+; With dot notation
+Local $project = Json_Get($jsonObject, '.project')     ; Listing droids
+Local $name = Json_Get($jsonObject, '.author.name')    ; Luke
+Local $mail = Json_Get($jsonObject, '.author.mail')    ; luke@2080.org
+local $test = Json_Get($jsonObject, '.droids[1].name') ; BB8
+
+; With array notation
+Local $project2 = Json_Get($jsonObject, '[&quot;project&quot;]')
+Local $name2 = Json_Get($jsonObject, '[&quot;author&quot;][&quot;name&quot;]')
+Local $mail2 = Json_Get($jsonObject, '[&quot;author&quot;][&quot;mail&quot;]')
+local $test2 = Json_Get($jsonObject, '[&quot;droids&quot;][1][&quot;name&quot;]')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vous pouvez également utiliser des fonctions d’aide, qui son des couches d’abtractions des  fonctions de &lt;code class=&quot;highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Json_ObjCreate()&lt;/li&gt;
+  &lt;li&gt;Json_ObjPut(ByRef $Object, $Key, $Value)&lt;/li&gt;
+  &lt;li&gt;Json_ObjGet(ByRef $Object, $Key)&lt;/li&gt;
+  &lt;li&gt;Json_ObjDelete(ByRef $Object, $Key)&lt;/li&gt;
+  &lt;li&gt;Json_ObjExists(ByRef $Object, $Key)&lt;/li&gt;
+  &lt;li&gt;Json_ObjGetCount(ByRef $Object)&lt;/li&gt;
+  &lt;li&gt;Json_ObjGetKeys(ByRef $Object)&lt;/li&gt;
+  &lt;li&gt;Json_ObjClear(ByRef $Object)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;travailler-avec-une-collection-dobjet-et-parcourir-ses-éléments&quot;&gt;Travailler avec une collection d’objet et parcourir ses éléments&lt;/h2&gt;
+
+&lt;p&gt;Pour itérer les valeurs d’un tableau json:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $file = @ScriptDir &amp;amp; &quot;\assets\DROIDS.json&quot;
+Local $jsonObject = json_decode_from_file($file)
+
+; Check if exists an item droid into the collection `droids`
+Local $droids = Json_Get($jsonObject, '.droids')
+If UBound($droids) = 0 Then
+    Return SetError(3, 0, &quot;Array attribute 'droids' is empty.&quot;)
+EndIf
+
+; Iterate items collection to store values into an array 
+Local $array[UBound($droids)][3]
+For $i = 0 To UBound($droids) - 1 Step 1
+    $array[$i][0] = Json_Get($jsonObject, '.droids' &amp;amp; '[' &amp;amp; $i &amp;amp; '].name')
+    $array[$i][1] = Json_Get($jsonObject, '.droids' &amp;amp; '[' &amp;amp; $i &amp;amp; '].type')
+    $array[$i][2] = Json_Get($jsonObject, '.droids' &amp;amp; '[' &amp;amp; $i &amp;amp; '].size')
+Next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;ajouter-un-objet-dans-un-json&quot;&gt;Ajouter un objet dans un JSON&lt;/h2&gt;
+
+&lt;p&gt;Vous pouvez le faire simplement avec la fonction &lt;code class=&quot;highlighter-rouge&quot;&gt;Json_Put&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-àutoit&quot;&gt;Local $Obj
+Json_Put($Obj, &quot;.foo&quot;, &quot;foo&quot;)
+Json_Put($Obj, &quot;.bar[0]&quot;, &quot;bar&quot;)
+Json_Put($Obj, &quot;.test[1].foo.bar[2].foo.bar&quot;, &quot;Test&quot;)
+
+Local $Test = Json_Get($Obj, '[&quot;test&quot;][1][&quot;foo&quot;][&quot;bar&quot;][2][&quot;foo&quot;][&quot;bar&quot;]') ; &quot;Test&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;décoder-un-fichier-json-depuis-un-serveur-distant&quot;&gt;Décoder un fichier JSON depuis un serveur distant&lt;/h2&gt;
+
+&lt;p&gt;Pour décoder un fichier JSON hébergé sur un serveur distant, ou qui se construit depuis un webservice ou encore à partir d’une API Rest, vous pouvez utiliser &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;@autoit-gui-skeleton/ags-component-http-request&lt;/a&gt; pour effectuer des requetes HTTP vers une URL donnée.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
+
+;====================================================================================
+; Decode JSON from a given URL
+;
+; @param $jsonfileUrl (string)
+; @param $proxy (string), by default we load proxy settings form configuration file
+; @return $object (object), instance return by json_decode
+;====================================================================================
+Func json_decode_from_url($jsonfileUrl, $proxy = &quot;&quot;)
+	Local $response = HttpGET($jsonfileUrl, Default, $proxy)
+	If (@error) Then
+		Return SetError(@error, $response, _ 
+		    &quot;Unable to get json file on server &quot; &amp;amp; $jsonfileUrl &amp;amp; &quot;.&quot;)
+	EndIf
+	Local $data = $response.ResponseText
+	Local $object = json_decode($data)
+
+	Return $object
+EndFunc
+
+Local $jsonObject = json_decode_from_url(https://api.spacexdata.com/v2/info)
+
+Local $name = Json_Get($jsonObject, '.name')        ; SpaceX
+Local $founder = Json_Get($jsonObject, '.founder')  ; Elon Musk
+Local $founded = Json_Get($jsonObject, '.founded')  ; 2002
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;comment-encoder-un-json-&quot;&gt;Comment encoder un JSON ?&lt;/h1&gt;
+
+&lt;p&gt;Selon la documentation de Ward’s, vous pouvez utilsier &lt;code class=&quot;highlighter-rouge&quot;&gt;Json_Encode($Data, $Option = 0, $Indent = &quot;\t&quot;, $ArraySep = &quot;,\r\n&quot;, $ObjectSep = &quot;,\r\n&quot;, $ColonSep = &quot;: &quot;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$Data&lt;/code&gt; can be a string, number, bool, keyword : default or null, 1D array, or &lt;code class=&quot;highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/li&gt;
+    &lt;li&gt;Binary will be converted to string in UTF8 encoding.&lt;/li&gt;
+    &lt;li&gt;Ptr will be converted to number&lt;/li&gt;
+    &lt;li&gt;Other unsupported types like 2D array, dllstruct or object will be encoded into null.&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$Option&lt;/code&gt; is bitmask consisting following constant:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNESCAPED_ASCII&lt;/code&gt; ; Don’t escape ascii charcters between chr(1) ~ chr(0x1f)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNESCAPED_UNICODE&lt;/code&gt; ; Encode multibyte Unicode characters literally&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNESCAPED_SLASHES&lt;/code&gt; ; Don’t escape /&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_TAG&lt;/code&gt; ; All &amp;lt; and &amp;gt; are converted to \u003C and \u003E&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_AMP&lt;/code&gt; ; All &amp;amp;amp;amp;amp;s are converted to \u0026&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_APOS&lt;/code&gt; ; All ‘ are converted to \u0027&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_QUOT&lt;/code&gt; ; All “ are converted to \u0022&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_PRETTY_PRINT&lt;/code&gt; ; Use whitespace in returned data to format it&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_STRICT_PRINT&lt;/code&gt; ; Make sure returned JSON string is RFC4627 compliant&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNQUOTED_STRING&lt;/code&gt; ; Output unquoted string if possible (conflicting with $JSMN_STRICT_PRINT)&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Par exemple pour encoder en JSON:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $file = @ScriptDir &amp;amp; &quot;\assets\DROIDS.json&quot;
+Local $jsonObject = json_decode_from_file($file)
+Local $jsonEncoded = Json_Encode($jsonObject, $JSON_PRETTY_PRINT)
+
+ConsoleWrite($jsonEncoded)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Most encoding option have the same means like PHP’s json_encode() function. When &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_PRETTY_PRINT&lt;/code&gt; is set, output format can be change by other 4 parameters : &lt;code class=&quot;highlighter-rouge&quot;&gt;($Indent, $ArraySep, $ObjectSep, $ColonSep)&lt;/code&gt;. Because these 4 output format parameters will be checked inside &lt;code class=&quot;highlighter-rouge&quot;&gt;Jsmn_Encode()&lt;/code&gt; function, returned string will be always accepted by &lt;code class=&quot;highlighter-rouge&quot;&gt;Jsmn_Decode()&lt;/code&gt;. $JSON_UNQUOTED_STRING can be used to output unquoted string that also accetped by Jsmn_Decode(). &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_STRICT_PRINT&lt;/code&gt; is used to check output format setting and avoid non-standard JSON output. So this option is conflicting with &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNQUOTED_STRING&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Continuer la lecture ?&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://www.autoitscript.com/forum/topic/148114-a-non-strict-json-udf-jsmn/&quot;&gt;https://www.autoitscript.com/forum/topic/148114-a-non-strict-json-udf-jsmn/&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#gestion-de-dépendances-pour-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Mon, 16 Jul 2018 00:00:00 +0200</pubDate>
+        </item>
+        
+        <item>
+            <title>AGS fournit un gestionnaire de dépendances rapide pour AutoIt avec Yarn.</title>
+            <link>/fr/2018/07/10/ags_dependencies_manager_for_AutoIt.html</link>
+            <guid isPermaLink="true">/fr/2018/07/10/ags_dependencies_manager_for_AutoIt.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;Pour simplifier la gestion des dépendances d’un projet AutoIt construit avec AGS, nous avons détourné de son usage initial le gestionnaire de dépendances npm, et son évolution Yarn. Ce qui nous permet de gérer les dependances d’un projet AGS avec d’autres librairies AutoIt, et de partager ces packages AutoIt depuis le depôt npmjs.org.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;gestionnaire-de-dépendances-pour-autoit&quot;&gt;Gestionnaire de dépendances pour AutoIt&lt;/h1&gt;
+
+&lt;p&gt;Une dépendance ? C’est un package externe et autonomie (librairie) qui contient un ou plusieurs fichiers, et qui exécute une tâche spécifique. Les gestionnaires de dépendances sont des programmes qui coordonnent l’integration de bibliothèques ou de packages externes dans un projet d’application. Les gestionnaires de dépendances utilisent un fichier de configuration pour décrire le projet et ses dépendances.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://autoit-gui-skeleton.github.io//assets/img/autoit_yarn.jpg&quot; alt=&quot;AGS dependency manager AutoIt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;AGS utilise l’écosystème Node.js et son gestionnaire de dépendances npm et Yarn.&lt;/p&gt;
+
+&lt;h2 id=&quot;package-ags--composant-ou-wrapper&quot;&gt;Package AGS : &lt;em&gt;composant&lt;/em&gt; ou &lt;em&gt;wrapper&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;Tous les paquets AGS hébergés dans le réferentiel npmjs.org appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton&lt;/a&gt;. Et vous pouvez y trouver deux types de paquets hébergés dans cette organisation.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Un &lt;strong&gt;AGS-component&lt;/strong&gt; est une bibliothèque AutoIt, que vous pouvez utiliser facilement dans votre projet Autoit construit avec le framework AGS. Jetez un coup d’œil à ce composant &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;AGS-component http-request&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Un &lt;strong&gt;AGS-wrapper&lt;/strong&gt; est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers. Ce qui permet de beneficier des avantages d’un gestionnaire de dépendances. Jetez un coup d’œil à cet exemple &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json&quot;&gt;AGS-wrapper-json&lt;/a&gt; qui encapsule le projet JSON.au3 conçu par Ward.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;comment-installer-un-package-ags-&quot;&gt;Comment installer un package AGS ?&lt;/h2&gt;
+
+&lt;p&gt;Pour installer un composant AGS ou un wrapper dans son projet, il suffit de taper dans le repertoire racine, où le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké:&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \MyProject\&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-component-xxx --modules-folder vendor
+yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;décrire-un-projet-ags-et-ses-dépendances&quot;&gt;Décrire un projet AGS et ses dépendances&lt;/h3&gt;
+
+&lt;p&gt;Pour décrire un projet AGS et ses dependances, on utilise naturellement le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; propre à l’écosystème Node.js. Vous pouvez trouvez plus d’information sur ce fichier ici &lt;a href=&quot;https://yarnpkg.com/lang/en/docs/package-json/&quot;&gt;https://yarnpkg.com/lang/en/docs/package-json/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ApplicationWithCheckUpdater&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-updater&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AGS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;framework&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AutoIt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3.3.14.5&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v20100v &amp;lt;v20100v@no-reply.com&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT License&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;year&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;private&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;repository&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;not-yet-git&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@autoit-gui-skeleton/ags-component-check-updater&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Et finallement pour installer toutes les dépendances d’un projet donné, il suffit alors de lancer cette commande:&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;MyProject\&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn install --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Toutes les dependances du projet, ainsi que les dépendances filles des dependances mères, sont installés dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Si vous avez ajouter des libraires AutoIt dans le repertoire vendor, nous vous conseillons de les “wrapper”, afin qu’elles soient aussi gérés par le gestionnaire de dépendances, de la même manière qu’avec &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json&quot;&gt;AGS-wrapper-json&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pour que les dépendances AutoIt s’installent dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor&lt;/code&gt;, et pas dans le répertoire par defaut de Node.js &lt;code class=&quot;highlighter-rouge&quot;&gt;./node_modules&lt;/code&gt;, il faut ajouter l’option &lt;code class=&quot;highlighter-rouge&quot;&gt;--modules-folder vendor&lt;/code&gt;. Nous forçons ce choix pour éviter toute confusion avec un projet Node.js. Remarquons qu’avec un projet AGS, il n’est pas nécessaire d’écrire explicitement cet option en ligne de commande grace au fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.yarnrc&lt;/code&gt; stocké à la racine du projet, i.e. au même endroit que le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;. Yarn regarge automatiquement dans ce fichier pour ajouter une configuration d’options supplémentaire.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; #./.yarnrc 
+ --modules-folder vendor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ainsi avec ce fichier vous pouvez lancer &lt;code class=&quot;highlighter-rouge&quot;&gt;yarn install&lt;/code&gt; pour installer les dépendances directement dans le répertoire approprié &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Liens connexes&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;Voir tous les packages publiées sur npmjs.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+            <pubDate>Tue, 10 Jul 2018 00:00:00 +0200</pubDate>
+        </item>
         
         <item>
             <title>Création d'un setup Windows pour une application AutoIt</title>
