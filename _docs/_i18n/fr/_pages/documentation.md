@@ -9,7 +9,7 @@
 
 <!-- Card's documentation -->
 <div class="container">
-    <p class="mt-5 mb-5">Le plus simple pour démarrer avec AGS est de cloner un projet example sur Github, ou bien d'utiliser l'application en ligne de commande AGS-console, qui permet de générer  rapidement un nouveau projet AGS depuis un template choisi, et ensuite de commencer la lecture avec : "<a href="{{ site.url }}{{ site.baseurl }}/documentation/getting-started">1. Démarrer avec AGS</a>".</p>
+    <p class="mt-3">&nbsp;</p>
 
     <div class="row">
 
@@ -53,7 +53,7 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title mt-0"><a href="{{ site.url }}{{ site.baseurl }}/documentation/creating-setup-package-autoit-application">3. Creating d'installeur Windows - setup - pour des applications AutoIt</a></h4>
+                    <h4 class="card-title mt-0"><a href="{{ site.url }}{{ site.baseurl }}/documentation/creating-setup-package-autoit-application">3. Création d'installeur Windows pour des applications AutoIt - Windows setup</a></h4>
                     <hr/>
                     <p class="card-text">Afin de faciliter le déploiement d'une application Windows, AGS propose une approche automatisée de la solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a> pour générer des installeurs Windows.</p>
                     <a href="{{ site.url }}{{ site.baseurl }}/documentation/creating-setup-package-autoit-application" class="black-text d-flex justify-content-end"><h6>{% t global.read %} <i class="fa fa-angle-double-right"></i></h6></a>

@@ -10,14 +10,8 @@
 {% endif %}
 
 {% if site.theme_settings.email_address %}
-<li>
-	<a href="mailto:{{ site.theme_settings.email_address }}" title="{{ site.theme_settings.str_email }}">
-		<span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-        </span>
-	</a>
-</li>{% endif %}
+<li><a href="mailto:{{ site.theme_settings.email_address }}" title="{{ site.theme_settings.str_email }}"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li>
+{% endif %}
 
 {% if site.theme_settings.behance %}
 <li>

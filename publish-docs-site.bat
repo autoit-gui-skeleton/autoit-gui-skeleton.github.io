@@ -2,7 +2,7 @@ cls
 @echo off
 
 @chcp 65001
-cd /d "%~dp0"
+cd /d "%~dp0"/_docs
 
 set FOLDER_CURRENT=%cd%
 set FOLDER_BUILD=%FOLDER_CURRENT%\_site

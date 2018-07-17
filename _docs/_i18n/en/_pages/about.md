@@ -1,7 +1,7 @@
 <div class="container">
 
     <h1 class="text-center">AGS</h1>
-    <p>AGS is available under the <a href="https://github.com/v20100v/autoit-gui-skeleton/blob/master/LICENSE.md">Apache License</a>.</p>
+    <p>AGS framework is available under the MIT license.</p>
     <p>Comments, or pull-request & stars are always welcome on <a href="https://github.com/v20100v/autoit-gui-skeleton/">Github</a> !</p>
 
     <h1 class="text-center">This website</h1>

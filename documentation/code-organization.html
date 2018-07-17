@@ -55,9 +55,9 @@
 <meta property="og:url" content="https://autoit-gui-skeleton.github.io//documentation/code-organization" />
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-05-22T00:00:00+02:00" />
+<meta property="article:published_time" content="2018-07-16T00:00:00+02:00" />
 <script type="application/ld+json">
-{"url":"https://autoit-gui-skeleton.github.io//documentation/code-organization","headline":"Code organization","dateModified":"2018-05-22T00:00:00+02:00","datePublished":"2018-05-22T00:00:00+02:00","description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//documentation/code-organization"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://autoit-gui-skeleton.github.io//documentation/code-organization","headline":"Code organization","dateModified":"2018-07-16T00:00:00+02:00","datePublished":"2018-07-16T00:00:00+02:00","description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//documentation/code-organization"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <!-- Manual seo tags -->
@@ -153,96 +153,296 @@
   </ol>
 </nav>
 
+<p><br /></p>
+
+<blockquote>
+  <p>This article explains in detail the organization of the code of an AutoIt project built with AGS framework. You are advised to have already read the article: <a href="https://autoit-gui-skeleton.github.io//documentation/getting-started">1. Getting started with AGS</a>.</p>
+</blockquote>
+
+<p><br /></p>
+
 <!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
 <ul id="markdown-toc">
-  <li><a href="#organization" id="markdown-toc-organization">Organization</a>    <ul>
-      <li><a href="#main-entry-program" id="markdown-toc-main-entry-program">Main entry program</a></li>
-      <li><a href="#centralize-the-declaration-of-global-variables" id="markdown-toc-centralize-the-declaration-of-global-variables">Centralize the declaration of global variables</a></li>
-      <li><a href="#write-the-businesslogic-code-in-dedicated-files" id="markdown-toc-write-the-businesslogic-code-in-dedicated-files">Write the business/logic code in dedicated files</a></li>
-      <li><a href="#creation-of-gui-with-ags" id="markdown-toc-creation-of-gui-with-ags">Creation of GUI with AGS</a>        <ul>
-          <li><a href="#main-program-to-manage-the-gui" id="markdown-toc-main-program-to-manage-the-gui">Main program to manage the GUI</a></li>
+  <li><a href="#code-organization-of-an-ags-project" id="markdown-toc-code-organization-of-an-ags-project">Code Organization of an AGS project</a>    <ul>
+      <li><a href="#source-code-of-an-ags-project" id="markdown-toc-source-code-of-an-ags-project">Source code of an AGS project</a></li>
+      <li><a href="#overview-of-ags-architecture" id="markdown-toc-overview-of-ags-architecture">Overview of AGS architecture</a>        <ul>
+          <li><a href="#the-main-entry-program" id="markdown-toc-the-main-entry-program">The main entry program</a></li>
+          <li><a href="#centralize-the-declaration-of-global-variables" id="markdown-toc-centralize-the-declaration-of-global-variables">Centralize the declaration of global variables</a></li>
+        </ul>
+      </li>
+      <li><a href="#the-main-manager-of-services" id="markdown-toc-the-main-manager-of-services">The main manager of services</a></li>
+      <li><a href="#control-the-graphic-user-interface-gui" id="markdown-toc-control-the-graphic-user-interface-gui">Control the graphic user interface (GUI)</a>        <ul>
+          <li><a href="#the-main-gui-manager" id="markdown-toc-the-main-gui-manager">The main GUI manager</a></li>
           <li><a href="#declare-code-for-all-views-in-dedicated-files" id="markdown-toc-declare-code-for-all-views-in-dedicated-files">Declare code for all views in dedicated files</a></li>
           <li><a href="#main-events-manager" id="markdown-toc-main-events-manager">Main events manager</a></li>
-          <li><a href="#how-to-handle-switch-view" id="markdown-toc-how-to-handle-switch-view">How to handle switch view</a></li>
-          <li><a href="#example-of-ags-gui" id="markdown-toc-example-of-ags-gui">Example of AGS GUI</a></li>
+          <li><a href="#how-to-navigate-into-the-application-and-switch-view" id="markdown-toc-how-to-navigate-into-the-application-and-switch-view">How to navigate into the application and switch view?</a></li>
+          <li><a href="#code-source" id="markdown-toc-code-source">Code source</a>            <ul>
+              <li><a href="#gui-view-welcome-handler" id="markdown-toc-gui-view-welcome-handler">GUI View Welcome handler</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
 
-<h1 id="organization">Organization</h1>
+<h1 id="code-organization-of-an-ags-project">Code Organization of an AGS project</h1>
 
-<p>You should read this before continuing : <a href="documentation/getting-started">Getting started with AGS</a>.</p>
+<h2 id="source-code-of-an-ags-project">Source code of an AGS project</h2>
 
-<p>In order to organize the code of an AutoIT application with a graphical interface, AGS propose to use conventions and a following model to develop and build AutoIt application with an graphic user interface (GUI). This article explains the organization of the code of a project respecting the AGS conventions. We describe below its main elements.</p>
+<p>All AutoiT source code for the application is stored in the <code class="highlighter-rouge">./src</code> directory. In the latter there are directories and special files.</p>
+
+<pre>
+<code class="language-markup">Project root folder
++---src                        # AutoIt source
+    |   BUSINESS.au3           # Entry point for business and logic code
+    |   GLOBALS.au3            # Entry point for constants and global variables of application
+    |   GUI.au3                # Entry point for graphic user interface (GUI)
+    |   SERVICES.au3           # Entry point for services applications
+    |
+    +---business               # Folder for store all business annd logic code
+    |
+    +---services               # Folder for store all services application
+    |       Dialogbox.au3      # Handler of dialog box in which the user is prompted
+    |       ParametersIni.au3  # Handler of configuration file parameters.ini
+    |
+    \---views                  # Folder for store all views application
+            View_About.au3
+            View_Footer.au3
+            View_Settings.au3
+            View_Welcome.au3
+</code>
+</pre>
+
+<h2 id="overview-of-ags-architecture">Overview of AGS architecture</h2>
 
 <p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/autoit-gui-skeleton_overview.png" alt="Overview of AGS architecture" class="img-fancybox img-full" /></p>
 
-<h2 id="main-entry-program">Main entry program</h2>
+<h3 id="the-main-entry-program">The main entry program</h3>
 
-<p>The <code class="highlighter-rouge">myApplication.au3</code> program serves as a single point of entry for our application. This is the location where the application starts. In the latter we start by including all the other dependencies that it needs: libraries of AutoIt, third-party libraries, the declaration of global variables, the code of the application GUI and business. It calls a single method: _main_GUI (). It is the main GUI manager that is used to build the interface and manage user interactions.</p>
+<p>This is the single point of entry for the application, and the location where the application starts. This file is placed at the root of the AGS project and in this one we start by including all the other dependencies that it needs:</p>
+
+<ul>
+  <li>AutoIt libraries</li>
+  <li>third-party libraries stored in the ./vendor directory;</li>
+  <li>declaration of constants and global variables of the application;</li>
+  <li>the service manager of the application;</li>
+  <li>the user interface manager.</li>
+</ul>
 
 <pre><code class="language-autoit">;; myApplication.au3 ;;
 
-Opt('MustDeclareVars', 1)
-
+;-------------------------------------------------------------------------------
 ; Include all built-in AutoIt library requires
+;-------------------------------------------------------------------------------
 #include &lt;IE.au3&gt;
 #include &lt;GUIConstantsEx.au3&gt;
+#include &lt;ButtonConstants.au3&gt;
 #include &lt;WinAPIDlg.au3&gt;
 
-; Include all third-party code in a project store in vendor directory
-#include 'vendor/GUICtrlOnHover/GUICtrlOnHover.au3'
 
-; Include myApplication scripts
-#include 'myApplication_GLOBAL.au3'
-#include 'myApplication_GUI.au3'
-#include 'myApplication_LOGIC.au3'
+;-------------------------------------------------------------------------------
+; Include all third-party code
+;
+; By convention the directory `./vendor/` is the place where to conventionally
+; store the code developed by third parties in a project.
+;
+; AGS components are a set of AutoIt libraries, that you can use in our own
+; applications. You can choose to enable or disable its loading with comments.
+; By convention the directory `./vendor/@autoit-gui-skeleton` is the place where
+; to conventionally store AGS components or AGS wrapper. Theses dependencies
+; are handled with the tools Yarn which works in Node.js ecosystem.
+;-------------------------------------------------------------------------------
+#include "vendor/@autoit-gui-skeleton/ags-component-check-updater/ags-component-check-updater.au3"
+#include "vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3"
+#include "vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3"
 
-; Start main graphic user interface defined in myApplication_GUI.au3
+
+;-------------------------------------------------------------------------------
+; Include constants and global variables
+;
+; All constants and global variables are set in one place './src/GLOBALS.au3',
+; With the exception to global variables of graphic elements which are set in
+; each specific view file. Don't forget that constants can't longer change their
+; value over time, unlike global variables.
+;
+; By convention, all global variables must be written in capital letter and
+; separated by underscore - for example : Global Const $APP_EMAIL_CONTACT
+;-------------------------------------------------------------------------------
+#include './src/GLOBALS.au3'
+
+
+;-------------------------------------------------------------------------------
+; Include the main program that manages all the business code
+;
+; This is the entry point to business and logic code. This file can include
+; another script store into './src/models/' folder, according to the needs of
+; the application.
+;-------------------------------------------------------------------------------
+#include './src/BUSINESS.au3'
+
+
+;-------------------------------------------------------------------------------
+; Include the main program that manages all services
+;
+; This is the entry point to include all services. This file can include
+; another service store into './src/services/' folder.
+;-------------------------------------------------------------------------------
+#include './src/SERVICES.au3'
+
+
+;-------------------------------------------------------------------------------
+; Include the main handler GUI
+;
+; It contains the _main_GUI() method which is only called by the main entry
+; program. This method is designed to create the graphical user interface (GUI)
+; and manage all user interactions and events.
+;-------------------------------------------------------------------------------
+#include './src/GUI.au3'
+
+
+; Start the application
 _main_GUI()
 </code></pre>
 
-<h2 id="centralize-the-declaration-of-global-variables">Centralize the declaration of global variables</h2>
+<p>The application starts by calling the <code class="highlighter-rouge">_main_GUI()</code> method of the main GUI manager.</p>
 
-<p>This script is used to define all the constants and variables of the application in the overall scope of the program, with the exception of graphic elements, which are defined in a specific view file. Moreover by convention, all the variables declared in myApplication_GLOBALS.au3 must be written in capital letters and separated by underscores.</p>
+<h3 id="centralize-the-declaration-of-global-variables">Centralize the declaration of global variables</h3>
 
-<p>The Global statement is used to explicitly indicate which access to the scope is desired for a variable. If you declare a variable with the same name as a parameter, using Local in a user function, an error will occur. Global can be used to assign global variables within a function, but if a local variable (or parameter) has the same name as a global variable, the local variable will be the only one used. It is recommended that local and global variables have distinct names.</p>
+<p>All constants and global variables are defined in one place in the <code class="highlighter-rouge">./src/GLOBALS.au3</code> file, in order to centralize the declaration of all global variables. With the exception of all the global variables of the graphic elements, which they are defined in each specific view file. Don’t forget that constants can no longer change value over time, unlike global variables. If a global variable changes its value, it can not be persisted , unless to do it in the configuration file <code class="highlighter-rouge">./config/parameters.ini</code>.</p>
 
-<p>The statement Global Const is used to declare a constant. Once created a global constant, you can not change the value of a constant. In addition, you can not replace an existing variable with a constant.</p>
+<p>By convention, all global variables must be capitalized and separated by an underscore.</p>
 
-<pre><code class="language-autoit">;; myApplication_GLOBAL.au3 ;;
+<p>The common constants of AGS projects are:</p>
 
+<ul>
+  <li><code class="highlighter-rouge">$ APP_FOLDER_ROOT</code>: Alias ​​to access the root directory of the project.</li>
+  <li><code class="highlighter-rouge">$ APP_FOLDER_ASSETS</code>: Alias ​​to access the project assets directory.</li>
+  <li><code class="highlighter-rouge">$ APP_PARAMETERS_INI</code>: Alias ​​to access the application settings file. Settings can persist value changes from user or event interactions. Note that at loading, this is where AGS checks that the <code class="highlighter-rouge">. / Config / parameters.ini</code> configuration file exists.</li>
+  <li><code class="highlighter-rouge">$ APP_NAME</code>: The name of the application.</li>
+  <li><code class="highlighter-rouge">$ APP_VERSION</code>: The version number of the application with respect to semantic versionning.</li>
+  <li><code class="highlighter-rouge">$ APP_WEBSITE</code>: The promotion site / documentation associated with the application.</li>
+  <li><code class="highlighter-rouge">$ APP_EMAIL_CONTACT</code>: The contact email for the application.</li>
+  <li><code class="highlighter-rouge">$ APP_ID</code>: Identifier consisting of the owner and the name of the project. Must not contain special characters. ([A-z, 1-9])</li>
+  <li><code class="highlighter-rouge">$ APP_LIFE_PERIOD</code>: Informs since when the application exists.</li>
+  <li><code class="highlighter-rouge">$ APP_COPYRIGHT</code>: The copyright of the application.</li>
+  <li><code class="highlighter-rouge">$ APP_WIDTH</code>: Sets the width of the main window of the application</li>
+  <li><code class="highlighter-rouge">$ APP_HEIGHT</code>: Set the height of the main window of the application</li>
+  <li><code class="highlighter-rouge">$ APP_GUI_TITLE_COLOR</code>: Sets the color of the app titles</li>
+  <li><code class="highlighter-rouge">$ APP_GUI_LINK_COLOR</code>: Sets the color of the app links</li>
+</ul>
+
+<p>There are also global variables specific to AGS components that control their operation. Some examples of global variables specific to AGS components:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">$ APP_REMOTE_RELEASES_JSON</code>: Sets the URL of the RELEASES.json file to use to check for updates to the application.</li>
+  <li><code class="highlighter-rouge">$ APP_GAMP_TRACKING_ID</code>: Set up Google Analytics tracking id</li>
+  <li><code class="highlighter-rouge">$ APP_GAMP_ENABLE</code>: To enable / disable tracking via Google Analytics Mesurement Protocol</li>
+  <li><code class="highlighter-rouge">$ APP_GAMP_DEBUG</code>: To enable / disable console component debug output</li>
+</ul>
+
+<p>And finally a section specific to global variables called “custom”.</p>
+
+<pre><code class="language-autoit">;; ./src/GLOBALS.au3 ;;
+
+#include-once
+
+;-------------------------------------------------------------------------------
+; Application helper alias
+;-------------------------------------------------------------------------------
+Global Const $APP_FOLDER_ROOT = @ScriptDir &amp; "/../"
+Global Const $APP_FOLDER_ASSETS = @ScriptDir &amp; "/assets"
+
+;-------------------------------------------------------------------------------
+; Application parameters
+;-------------------------------------------------------------------------------
+Global Const $APP_PARAMETERS_INI = @ScriptDir &amp; "/config/parameters.ini"
+Local $fileExists = FileExists($APP_PARAMETERS_INI)
+If Not $fileExists Then
+	MsgBox(16, "Error with load parameters.ini", "Unable to find the file './config/parameters.ini'! " &amp; @CRLF &amp; "This application can not work, you must create this file. You wan use the file './config/parameters.ini.dist' to create it.")
+EndIf
+
+;-------------------------------------------------------------------------------
 ; Application main constants
-Global Const $APP_NAME = "myApplication"
-Global Const $APP_VERSION = "1.0.0"
+;-------------------------------------------------------------------------------
+Global Const $APP_NAME = "MyApplication"
+Global Const $APP_VERSION = "0.9.0"
 Global Const $APP_WEBSITE = "https://myApplication-website.org"
 Global Const $APP_EMAIL_CONTACT = "myApplication@website.org"
-Global Const $APP_ID = "acme.myApplication"
-Global Const $APP_LIFE_PERIOD = "2016-"&amp;@YEAR
-Global Const $APP_COPYRIGHT = "© "&amp;$APP_LIFE_PERIOD&amp;", A.C.M.E."
+Global Const $APP_ID = "v20100v.MyApplication"
+Global Const $APP_LIFE_PERIOD = "2018-" &amp; @YEAR
+Global Const $APP_COPYRIGHT = "© " &amp; $APP_LIFE_PERIOD &amp; ", v20100v"
 
+;-------------------------------------------------------------------------------
 ; Application GUI constants
+;-------------------------------------------------------------------------------
 Global Const $APP_WIDTH = 800
 Global Const $APP_HEIGHT = 600
 Global Const $APP_GUI_TITLE_COLOR = 0x85C4ED
 Global Const $APP_GUI_LINK_COLOR = 0x5487FB
 
-; Application global variable
-; Example in order to persist an opened file on action "File &gt; Open"
+;-------------------------------------------------------------------------------
+; AGS-compontents Check Updater constants
+;-------------------------------------------------------------------------------
+; Specifiy the repository JSON use to check for updates. This json file must persist in a remote server available via
+; internet, and without restriction. If you use Github as a control version, you can use it to host this file. In this
+; case use this bellow URL.
+Global Const $APP_REMOTE_RELEASES_JSON = "https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-updater/master/example/ApplicationWithCheckUpdater/RELEASES.json"
+
+;-------------------------------------------------------------------------------
+; Custom application global variable
+; Here is an example to defined custom global variables
+;-------------------------------------------------------------------------------
 Global $OPEN_FILE = False
 Global $OPEN_FILE_PATH = -1
 Global $OPEN_FILE_NAME = -1
 </code></pre>
 
-<h2 id="write-the-businesslogic-code-in-dedicated-files">Write the business/logic code in dedicated files</h2>
+<h2 id="the-main-manager-of-services">The main manager of services</h2>
 
-<p>In this organization, we add a file called <code class="highlighter-rouge">myApplication_LOGIC.au3</code> that contains all the methods of the business code. These logical methods are then called by others usually triggered by user interactions, whose links are defined in the GUI. Simple principle of separation between logic and view.</p>
+<p>The <code class="highlighter-rouge">./src/SERVICES.au3</code> file is the entry point for all services that are stored in the<code class="highlighter-rouge">./src/services/</code> directory. In this file we simply find the instructions to include the services. And each service is defined in a specific file, with a single scope of responsibility, which simplifies reading and maintenance.</p>
 
-<p>For example, we manage with AutoIt library, a dialog box as follows:</p>
+<p>In the case of services that become available between different applications, you should package it with the AutoIt dependency manager in AGS. This eliminates the need to manually update the service consumed by different applications. With the dependency manager, the simple <code class="highlighter-rouge">yarn update</code> statement at the root of the project is enough to update all the dependencies.</p>
 
-<pre><code class="language-autoit">;; myApplication_LOGIC.au3 ;;
+<pre><code class="language-autoit">;; ./src/SERVICES.au3
+#include-once
+
+; Includes services
+#include './services/Dialogbox.au3'
+#include './services/ParametersIni.au3'
+</code></pre>
+
+<p>For example, in AGS, we have the <code class="highlighter-rouge">ParametersIni.au3</code> service which provides a method to interoperate with the<code class="highlighter-rouge">./config/parameters.ini</code> application configuration file. It allows to save the changes chosen by a user from the graphical interface.</p>
+
+<pre><code class="language-autoit">;; ./src/services/ParametersIni.au3
+
+;-------------------------------------------------------------------------------
+; Save values choose by user in 'Setting' views, and launch with 'save' button
+;
+; @params void
+; @return void
+;-------------------------------------------------------------------------------
+Func _save_parameters_ini()
+
+	; Save proxy settings
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "PROXY", GUICtrlRead($input_HTTP_Proxy))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "RESOLVE_TIMEOUT", GUICtrlRead($input_HTTP_Resolve_Timeout))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "CONNECT_TIMEOUT", GUICtrlRead($input_HTTP_Connect_Timeout))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "SEND_TIMEOUT", GUICtrlRead($input_HTTP_Send_Timeout))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "RECEIVE_TIMEOUT", GUICtrlRead($input_HTTP_Receive_Timeout))
+
+	; Startup settings
+	If (GUICtrlRead($checkbox_STARTUP_CHECK_UPDATE) = $GUI_CHECKED) Then
+		IniWrite($APP_PARAMETERS_INI, "AGS_CHECK_UPDATER", "LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP", "1")
+	Else
+		IniWrite($APP_PARAMETERS_INI, "AGS_CHECK_UPDATER", "LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP", "0")
+	EndIf
+EndFunc
+</code></pre>
+
+<p>Another example with the service <code class="highlighter-rouge">./src/services/Dialogbox.au3</code> for the management of dialog box in the application.</p>
+
+<pre><code class="language-autoit">;; ./src/services/Dialogbox.au3 ;;
 
 ;====================================================================================
 ; Show a dialog box to user, in order that he chooses a file in the Windows Explorer
@@ -275,11 +475,13 @@ Func _dialogbox_open()
 EndFunc
 </code></pre>
 
-<h2 id="creation-of-gui-with-ags">Creation of GUI with AGS</h2>
+<h2 id="control-the-graphic-user-interface-gui">Control the graphic user interface (GUI)</h2>
 
-<h3 id="main-program-to-manage-the-gui">Main program to manage the GUI</h3>
+<h3 id="the-main-gui-manager">The main GUI manager</h3>
 
-<p>The myApplication_GUI.au3 file contains the_main_GUI ()method which is called by the main input program. This method is designed to create the graphical user interface (GUI) and manage all user interactions and events. So it calls all the other methods that initialize the elements of the GUI.</p>
+<p>The <code class="highlighter-rouge">./src/GUI.au3</code> file is the entry point for all view managers, that are saved in the./views directory. We will call it main manager of the GUI. The code for each view is defined each time in a specific file and stored in this ./views directory.</p>
+
+<p>The main manager GUI contains especially the _main_GUI() method, which allows to start the application. This method is only called from the main entry program of the application, and it was designed to create the user interface (GUI) and manage all user interactions and events in the application.</p>
 
 <pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
 
@@ -321,8 +523,6 @@ EndFunc
 
 (...)
 </code></pre>
-
-<p><br /></p>
 
 <p>Few comments:</p>
 
@@ -413,7 +613,7 @@ Func _GUI_HandleEvents()
 EndFunc
 </code></pre>
 
-<h3 id="how-to-handle-switch-view">How to handle switch view</h3>
+<h3 id="how-to-navigate-into-the-application-and-switch-view">How to navigate into the application and switch view?</h3>
 
 <p>To switch from a start view to another arrival view, you first have to hide all the graphic elements, then in a second time to display only those of the arrival view. So, how to hide all the graphic elements? Just with a <code class="highlighter-rouge">_GUI_Hide_all_view()</code> method that will call the view manager of each view. These are conventionally named <code class="highlighter-rouge">_GUI_ShowHide_View_Xxx</code>.</p>
 
@@ -425,20 +625,97 @@ Func _GUI_Hide_all_view()
 EndFunc
 </code></pre>
 
-<h3 id="example-of-ags-gui">Example of AGS GUI</h3>
+<p>For example to switch from the <code class="highlighter-rouge">Welcome</code> view to the view <code class="highlighter-rouge">About</code>, we start by hiding all the graphic elements of the <code class="highlighter-rouge">Welcome</code> view. The graphic elements of the footer are always visible.  And then we display the graphic elements of the <code class="highlighter-rouge">About</code> view.</p>
 
 <p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-gui-example.gif" alt="AGS GUI example" class="img-full img-fancybox" /></p>
+
+<h3 id="code-source">Code source</h3>
+
+<h4 id="gui-view-welcome-handler">GUI View Welcome handler</h4>
+
+<pre><code class="language-autoit">#cs ----------------------------------------------------------------------------
+GUI View Welcome handler
+AutoIt Version : 3.3.14.5
+Author         : v20100v &lt;7567933+v20100v@users.noreply.github.com&gt;
+Package        : autoit-gui-skeleton
+Version        : 1.0
+#ce ----------------------------------------------------------------------------
+
+
+#include-once
+
+
+;====================================================================================
+; Create element for the 'Welcome' view
+;
+; @param void
+; @return void
+;====================================================================================
+Func _GUI_Init_View_Welcome()
+	; GUI elements have to register in global scope
+	GUISetFont(20, 800, 0, "Arial Narrow")
+	Global $label_title_View_Welcome = GUICtrlCreateLabel("Welcome", 20, 30, 400)
+	GUICtrlSetColor($label_title_View_Welcome, $APP_GUI_TITLE_COLOR)
+	GUICtrlSetBkColor($label_title_View_Welcome, $GUI_BKCOLOR_TRANSPARENT)
+
+	GUISetFont(10, 400, 0, "Segoe UI")
+	Global $label_welcome = GUICtrlCreateLabel( _
+			"On startup " &amp; $APP_NAME &amp; ", we show this Welcome view. " &amp; _
+			"We add an event click on this label in order to show how to define " &amp; @CRLF &amp; _
+			"a trigger on a view." _
+			, 20, 80)
+	GUICtrlSetCursor($label_welcome, 0)
+EndFunc
+
+
+;====================================================================================
+; Handler for display element on 'Welcome' view
+;
+; @param {int} $action, use GUIConstantsEx $GUI_SHOW or $GUI_HIDE
+; @return void
+;====================================================================================
+Func _GUI_ShowHide_View_Welcome($action)
+	Switch $action
+		Case $GUI_SHOW
+			; Define here all elements to show when user come into this view
+			_GUI_Hide_all_view()
+			GUICtrlSetState($label_title_View_Welcome, $GUI_SHOW)
+			GUICtrlSetState($label_welcome, $GUI_SHOW)
+
+		Case $GUI_HIDE
+			; Define here all elements to hide when user leave this view
+			GUICtrlSetState($label_title_View_Welcome, $GUI_HIDE)
+			GUICtrlSetState($label_welcome, $GUI_HIDE)
+	EndSwitch
+EndFunc
+
+
+;====================================================================================
+; Handler for events in 'Welcome' view
+;
+; @param $msg, the control ID of the control sending the message
+; @return @void
+;====================================================================================
+Func _GUI_HandleEvents_View_Welcome($msg)
+	Switch $msg
+
+		; Trigger for click on $image_banner
+		Case $label_welcome
+			ConsoleWrite('Click on "$label_welcome"' &amp; @CRLF)
+
+			; Add another trigger in view 'Welcome' here
+	EndSwitch
+EndFunc
+</code></pre>
 
 <p><br /></p>
 
 <blockquote>
   <p><strong>Relating reading</strong></p>
 
-  <p><a href="https://autoit-gui-skeleton.github.io//documentation/getting-started">Getting started with AGS</a><br />
-<a href="https://autoit-gui-skeleton.github.io//documentation/creating-setup-package-autoit-application">Creating installation packages for AutoIt application</a></p>
+  <p><a href="https://autoit-gui-skeleton.github.io//documentation/getting-started">1. Getting started with AGS</a><br />
+<a href="https://autoit-gui-skeleton.github.io//documentation/creating-setup-package-autoit-application">3. Creating installation packages for AutoIt applications - Windows setup</a></p>
 </blockquote>
-
-<p>20100</p>
 
 </section>
 
@@ -473,14 +750,8 @@ EndFunc
                 
 
 
-<li>
-	<a href="mailto:vb20100bv@gmail.com" title="Email">
-		<span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-        </span>
-	</a>
-</li>
+<li><a href="mailto:vb20100bv@gmail.com" title="Email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li>
+
 
 
 

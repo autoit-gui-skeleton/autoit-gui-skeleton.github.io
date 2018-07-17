@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Création d'un setup Windows pour une application AutoIt
+title: AGS facilite la création d'installeur Windows (setup) d'application AutoIt
 tags: [AGS, InnoSetup]
 feature-img: "assets/img/pixabay/jigsaw-puzzle-712465_1920.jpg"
 thumbnail: "assets/img/pixabay/jigsaw-puzzle-712465_1920.jpg"

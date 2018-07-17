@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Mon, 16 Jul 2018 16:42:59 +0200</pubDate>
+        <pubDate>Tue, 17 Jul 2018 12:02:43 +0200</pubDate>
         
         <item>
             <title>Use JSON files in AutoIt with AGS-wrapper-json</title>
@@ -346,7 +346,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
         </item>
         
         <item>
-            <title>Creation of a Windows setup for an AutoIt application</title>
+            <title>AGS makes it easy to create setup windows for AutoIt application</title>
             <link>/2018/06/04/autoit-windows-setup.html</link>
             <guid isPermaLink="true">/2018/06/04/autoit-windows-setup.html</guid>
             <description>&lt;blockquote&gt;

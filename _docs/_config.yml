@@ -112,8 +112,8 @@ theme_settings:
   
   
 # PAGINATION
-paginate: 5
-paginate_path: "blog/page:num"
+paginate: 1
+paginate_path: "articles/page:num"
 
 # PORTFOLIO
 collections:

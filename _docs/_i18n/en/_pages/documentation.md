@@ -9,7 +9,7 @@
 
 <!-- Card's documentation -->
 <div class="container">
-    <p class="mt-5 mb-5">The easiest way to get started with AGS is to clone example project on Github, or use the command line application AGS-console which allow you to quickly scaffold out a new AGS project using a given template, and read in first this documentation "<a href="{{ site.url }}{{ site.baseurl }}/documentation/getting-started">1. Getting started with AGS</a>".</p>
+    <p class="mt-3">&nbsp;</p>
 
     <div class="row">
         <div class="col-sm-12 mb-5">
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title mt-0"><a href="{{ site.url }}{{ site.baseurl }}/documentation/creating-setup-package-autoit-application">3. Creating Windows setup and packages for AutoIt application</a></h4>
+                    <h4 class="card-title mt-0"><a href="{{ site.url }}{{ site.baseurl }}/documentation/creating-setup-package-autoit-application">3. Creating installation packages for AutoIt applications - Windows setup</a></h4>
                     <hr/>
                     <p class="card-text">In order to facilitate the deployment of a Windows desktop application, AGS provides a process to build a Windows installer with painless via an automated solution which use <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>.</p>
                     <a href="{{ site.url }}{{ site.baseurl }}/documentation/creating-setup-package-autoit-application" class="black-text d-flex justify-content-end"><h6>Read <i class="fa fa-angle-double-right"></i></h6></a>
