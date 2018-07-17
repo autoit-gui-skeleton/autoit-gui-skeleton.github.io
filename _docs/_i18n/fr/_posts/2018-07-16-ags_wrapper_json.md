@@ -21,7 +21,7 @@ On suppose que vous avez déjà installé [Node.js](https://nodejs.org/) et [Yar
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-json --modules-folder vendor</code>
 </pre>
 
-Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire `./vendor/@autoit-gui-skeleton/`. Pour l'utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l'instrcution: 
+Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire `./vendor/@autoit-gui-skeleton/`. Pour l'utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l'instruction: 
 
 ```autoit
 #include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'

@@ -4,7 +4,9 @@
         <div id="previous-post" class="post-nav-post">
             {% if page.previous.url %}
             <p class="uppercase">{{ site.theme_settings.str_previous_post }}</p>
-            <p><a href="{{ site.baseurl }}{{ page.previous.url }}">{{ page.previous.title }}</a></p>
+            <a href="{{ site.baseurl }}{{ page.previous.url }}">
+            <p>{{ page.previous.title }}</p>
+            </a>
             {% endif %}
         </div>
     </div>
@@ -13,7 +15,9 @@
         <div id="next-post" class="post-nav-post">
             {% if page.next.url %}
             <p class="uppercase">{{ site.theme_settings.str_next_post }}</p>
-            <p><a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }}</a></p>
+            <a href="{{ site.baseurl }}{{ page.next.url }}">
+            <p>{{ page.next.title }}</p>
+            </a>
             {% endif %}
         </div>
     </div>

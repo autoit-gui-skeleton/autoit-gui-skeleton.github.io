@@ -5,7 +5,152 @@
         <atom:link href="/fr/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//fr/</link>
         <description></description>
-        <pubDate>Tue, 17 Jul 2018 12:02:54 +0200</pubDate>
+        <pubDate>Tue, 17 Jul 2018 15:35:50 +0200</pubDate>
+        
+        <item>
+            <title>Envoyer une requête HTTP en AutoIt avec AGS-component-http-request</title>
+            <link>/fr/2018/07/17/ags_component_http_request.html</link>
+            <guid isPermaLink="true">/fr/2018/07/17/ags_component_http_request.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;Pour envoyer des requêtes HTTP, AGS fournit ce composant &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;@autoit-gui-skeleton/ags-component-http-request&lt;/a&gt;. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;comment-insatller-ags-component-http-request-&quot;&gt;Comment insatller AGS-component-http-request ?&lt;/h1&gt;
+
+&lt;p&gt;On suppose que vous avez déjà installé &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; et &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, par example avec &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, et pour installer le package AGS-component-http-request, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké:&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-component-http-request --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
+
+&lt;h1 id=&quot;comment-utiliser-ags-component-http-request-&quot;&gt;Comment utiliser AGS-component-http-request ?&lt;/h1&gt;
+
+&lt;h2 id=&quot;méthodes-disponibles&quot;&gt;Méthodes disponibles&lt;/h2&gt;
+
+&lt;p&gt;Cette bibliothèque fournit plusieurs méthodes pour traiter les requêtes HTTP&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Methods&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpGET($url, $data = &quot;&quot;, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Send HTTP request with GET method.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpPOST($url, $data = &quot;&quot;, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Send HTTP request with POST method.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;URLEncode($urlText)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;URL encoding replaces unsafe ASCII characters.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;URLDecode($urlText)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Inverse operation of URLEncode.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WinHttp_SetProxy_from_configuration_file($oHttp)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Set timeouts by parsing the configuration file AGS project store in ‘./config/parameters.ini’.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WinHttp_SetProxy_from_configuration_file($oHttp)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Set proxy by parsing the configuration file AGS project store in ‘./config/parameters.ini’.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;configurer-le-composant-ags-component-http-request&quot;&gt;Configurer le composant AGS-component-http-request&lt;/h2&gt;
+
+&lt;p&gt;Pour configurer le comportement de ce composant, vous pouvez définir ses options dans le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;. Par exemple, vous pouvez définir un proxy pour toute les connexions HTTP, ou encore définir différents types de délai d’attente. Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; de la section&lt;code class=&quot;highlighter-rouge&quot;&gt; AGS_HTTP_REQUEST&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;## ./config/parameters.ini ##
+&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;[AGS_HTTP_REQUEST]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;; [OPTIONAL] Use a proxy for http connexion. Keep empty to disable it.
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;PROXY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;http:/myproxy.com:20100&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;; [OPTIONAL] Time-out value applied when resolving a host name to an @IP,
+; in miliseconds.
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;RESOLVE_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1000&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;; [OPTIONAL] Time-out value applied when establishing a communication socket
+; with the target server, in milliseconds.
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;CONNECT_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1000&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;; [OPTIONAL] Time-out value applied when sending an individual packet of request
+; data on the communication socket to the target server, in milliseconds. A
+; large request sent to an HTTP server are normally be broken up into multiple
+; packets. The send time-out applies to sending each packet individually.
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;SEND_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1000&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;; [OPTIONAL] Time-out value applied when receiving a packet of response data
+; from the target server, in milliseconds. Large responses are be broken up into
+; multiple packets; the receive time-out applies to fetching each packet of data
+; off the socket.
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;RECEIVE_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comment-envoyer-une-requête-http-en-get-&quot;&gt;Comment envoyer une requête HTTP en GET ?&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $response = HttpGET(&quot;https://soundcloud.com/2080/my-megadrive&quot;)
+    
+ConsoleWrite($response.Status &amp;amp; @CRLF)
+ConsoleWrite($response.ResponseText)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;comment-envoyer-une-requête-http-avec-un-proxy-&quot;&gt;Comment envoyer une requête HTTP avec un proxy ?&lt;/h3&gt;
+
+&lt;p&gt;Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; de la section&lt;code class=&quot;highlighter-rouge&quot;&gt; AGS_HTTP_REQUEST&lt;/code&gt;. Mais vous pouvez également fournir un proxy explicitement dans la méthode.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $response = HttpGET( _ 
+    &quot;https://soundcloud.com/2080/my-megadrive&quot;, _ 
+    default, _ 
+    &quot;http://myproxy.com:20100&quot;)
+    
+ConsoleWrite($response.Status &amp;amp; @CRLF)
+ConsoleWrite($response.ResponseText)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;comment-encoder-une-url-&quot;&gt;Comment encoder une URL ?&lt;/h3&gt;
+
+&lt;p&gt;Le codage d’URL (URL encoding) est un mécanisme d’encodage d’informations dans un URI (Uniform Resource Identifier). Il est utilisé dans la préparation des données du type de support application/x-www-form-urlencoded, et lors de la soumission de données dans les requêtes HTTP.&lt;/p&gt;
+
+&lt;p&gt;Si vous utilisez HttpGET, vous devez nettoyer les données à envoyer avec cet méthode au préalable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $msg = &quot;Welcome in AGS&quot;
+Local $url = &quot;https://myServer.org/foo?msg=&quot; &amp;amp; URLEncode($msg) &amp;amp; &quot;&amp;amp;param=32&quot;
+
+ConsoleWrite($url)
+; Output &amp;gt;&amp;gt; https://myServer.org/foo?msg=Welcome%20in%20AGS&amp;amp;param=32
+
+ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
+; Output &amp;gt;&amp;gt; 123abc!%40%23%24%25%5E%26*()_%2B%20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Tue, 17 Jul 2018 00:00:00 +0200</pubDate>
+        </item>
         
         <item>
             <title>Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json</title>
@@ -25,7 +170,7 @@
 &lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-json --modules-folder vendor&lt;/code&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instrcution:&lt;/p&gt;
+&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
 &lt;/code&gt;&lt;/pre&gt;

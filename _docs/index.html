@@ -27,7 +27,7 @@ layout: default
     </div>
 
     <!-- Pagination list posts -->
-    <h1 class="news-title" id="news">News</h1>
+    <h1 class="news-title" id="news">{% t global.last_article %}</h1>
     <div class="posts posts-home">
         {% for post in paginator.posts %}
         <div class="post-teaser">
@@ -72,10 +72,6 @@ layout: default
           </header>
           <div class="excerpt">
               {{ post.excerpt | strip_html | escape }}
-              <!--{{ post.content | strip_html | truncate: "250" }}-->
-              <!--<a class="button" href="{{ post.url | prepend: site.baseurl }}">
-                {{ site.theme_settings.str_continue_reading }}
-              </a>-->
           </div>
       </span>
         </div>
@@ -99,5 +95,3 @@ layout: default
     </div>
     {% endif %}
 </div>
-
-

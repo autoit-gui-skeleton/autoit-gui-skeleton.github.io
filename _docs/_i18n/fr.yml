@@ -10,6 +10,7 @@ global:
   enter_keywords: Entrez des mots-clés...
   no_result_found: Aucun résultat.
   javascript_required_disqus: Merci d'activité JavaScript pour voir <a href="https://disqus.com/?ref_noscript">les commentaires, fournis par Disqus.</a>
+  last_article: Dernier article
 langs:
   en: Anglais
   fr: Français

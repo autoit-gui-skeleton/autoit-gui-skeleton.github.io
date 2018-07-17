@@ -128,3 +128,7 @@ exclude_from_localizations: ["assets"]
 
 # Plugins
 plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-multiple-languages-plugin]
+
+# SEO metadatas
+author:
+  github: "v20100v"

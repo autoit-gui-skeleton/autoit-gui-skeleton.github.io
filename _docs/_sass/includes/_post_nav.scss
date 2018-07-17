@@ -32,4 +32,11 @@
     width: auto;
     word-wrap: break-word;
   }
+
+  .post-nav-post {
+    padding: 10px 80px;
+    @media (max-width: $break) {
+      padding: 10px 30px;
+    }
+  }
 }

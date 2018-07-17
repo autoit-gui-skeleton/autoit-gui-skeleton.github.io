@@ -17,8 +17,6 @@
     <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://autoit-gui-skeleton.github.io///fr//feed.xml" />
 
     <!-- Font Awesome -->
-    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="/fr/assets/css/vendor/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
 
     <!-- Google Fonts -->
@@ -45,7 +43,6 @@
 
     <!-- seo tags -->
     <!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json | AutoIt GUI Skeleton</title>
 <meta name="generator" content="Jekyll v3.8.1" />
 <meta property="og:title" content="Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json" />
 <meta property="og:locale" content="fr" />
@@ -60,10 +57,7 @@
 {"url":"https://autoit-gui-skeleton.github.io//fr/2018/07/16/ags_wrapper_json.html","headline":"Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json","dateModified":"2018-07-16T00:00:00+02:00","datePublished":"2018-07-16T00:00:00+02:00","description":"Pour travailler avec des fichiers JSON, AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-json de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur jsmn.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//fr/2018/07/16/ags_wrapper_json.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <!-- Manual seo tags -->
-
     <title>AutoIt GUI Skeleton</title>
-    <meta name="description" content="  Pour travailler avec des fichiers JSON, AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-json de la librairie JSON.au3, créé par Ward. Cette librair...">
 </head>
 
   <body>
@@ -158,7 +152,7 @@
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-json --modules-folder vendor</code>
 </pre>
 
-<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instrcution:</p>
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:</p>
 
 <pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
 </code></pre>
@@ -486,17 +480,24 @@ ConsoleWrite($jsonEncoded)
 
 <div id="post-nav" class="row post-nav">
 
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div id="previous-post" class="post-nav-post">
             
             <p class="uppercase">Previous post</p>
-            <p><a href="/fr/2018/07/10/ags_dependencies_manager_for_AutoIt.html">AGS fournit un gestionnaire de dépendances rapide pour AutoIt avec Yarn.</a></p>
+            <a href="/fr/2018/07/10/ags_dependencies_manager_for_AutoIt.html">
+            <p>AGS fournit un gestionnaire de dépendances rapide pour AutoIt avec Yarn.</p>
+            </a>
             
         </div>
     </div>
 
     <div class="col-sm-6">
         <div id="next-post" class="post-nav-post">
+            
+            <p class="uppercase">Next post</p>
+            <a href="/fr/2018/07/17/ags_component_http_request.html">
+            <p>Envoyer une requête HTTP en AutoIt avec AGS-component-http-request</p>
+            </a>
             
         </div>
     </div>
