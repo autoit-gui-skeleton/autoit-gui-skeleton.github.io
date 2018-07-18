@@ -17,9 +17,15 @@
   background: $header-desc-background-color no-repeat;
 
   background-position: center center !important;
-  background-attachment: fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
   background-size: cover; /* version standardisée */
+  @media only screen and (min-width : 320px)  {} // background isn't fixed here.
+  @media only screen and (min-width : 480px)  {} // background still isn't fixed here.
+  @media only screen and (min-width : 768px)  {} // background still isn't fixed here.
+  @media only screen and (min-width : 992px)  {background-attachment: fixed;} // Ok NOW the background is fixed.
+  @media only screen and (min-width : 1200px) {} // background is STILL fixed here.
 
   //For white images
   p,
