@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json
+title: Utiliser des fichiers JSON dans AutoIt avec <b>AGS-wrapper-json</b>
 tags: [AGS, Wrapper]
 feature-img: "assets/img/pixabay/ags-wrapper.jpg"
 thumbnail: "assets/img/pixabay/ags-wrapper.jpg"

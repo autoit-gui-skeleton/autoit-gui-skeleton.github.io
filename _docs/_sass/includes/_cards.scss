@@ -1,0 +1,34 @@
+/*!
+ * Copyright (c) 2018, AGS-console
+ * 20100 <vb20100bv@gmail.com>
+ */
+
+.feature-list {
+  padding: 5em 10% 0;
+
+  .card.card-image {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+  }
+
+  .card-img-top-covered {
+    height: 250px;
+    margin: 0;
+    padding: 0;
+    background-position: top center !important;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+
+  .card-title, .card-text {
+    text-align: center;
+    margin:0.5em 0em;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: $text-color !important;
+  }
+}

@@ -1,0 +1,82 @@
+<div class="feature-list card-deck">
+
+    {% if site.lang == "fr" %}
+    <div class="card mb-4">
+        <a href="{{ site.url }}{{ site.baseurl }}/documentation/code-organization">
+            <div class="card-img-top-covered"
+                 style="background-image: url('{{ site.baseurl_root }}/assets/img/documentation/computer.jpeg');"></div>
+            <div class="card-body">
+                <h4 class="card-title">Organisation du code source AutoIt</h4>
+                <p class="card-text">AGS propose d'utiliser des conventions et une architecture standardisée afin de
+                    simplifier l'organisation du code, et ainsi sa maintenabilité.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="card mb-4">
+        <a href="{{ site.url }}{{ site.baseurl }}/2018/07/10/ags_dependencies_manager_for_AutoIt.html">
+            <div class="card-img-top-covered"
+                 style="background-image: url('{{ site.baseurl_root }}/assets/img/autoit_yarn.jpg');"></div>
+            <div class="card-body">
+                <h4 class="card-title">Gestionnaire de dépendances pour AutoIt</h4>
+                <p class="card-text">Pour gérer les dépendances d'un projet AutoIt, AGS utilise l'écosystème Node.js et
+                    son gestionnaire de dépendances npm et Yarn.
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="card mb-4">
+        <a href="{{ site.url }}{{ site.baseurl }}/2018/06/04/autoit-windows-setup.html">
+            <div class="card-img-top-covered"
+                 style="background-image: url('{{ site.baseurl_root }}/assets/img/pixabay/jigsaw-puzzle-712465_1920.jpg');"></div>
+            <div class="card-body">
+                <h4 class="card-title">Faciliter la création d'installeur Windows</h4>
+                <p class="card-text">AGS fournit un processus et des fonctionnalités afin de faciliter la création
+                    d'installeur Window (setup) pour des applications AutoIt.
+                </p>
+            </div>
+        </a>
+    </div>
+    {% else %}
+    <div class="card mb-4">
+        <a href="{{ site.url }}{{ site.baseurl }}/documentation/code-organization">
+            <div class="card-img-top-covered"
+                 style="background-image: url('{{ site.baseurl_root }}/assets/img/documentation/computer.jpeg');"></div>
+            <div class="card-body">
+                <h4 class="card-title">Autoit source code organization</h4>
+                <p class="card-text">AGS proposes to use conventions and a standardized architecture in order to
+                    simplify
+                    the code organization, and thus its maintainability.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="card mb-4">
+        <a href="{{ site.url }}{{ site.baseurl }}/2018/07/10/ags_dependencies_manager_for_AutoIt.html">
+            <div class="card-img-top-covered"
+                 style="background-image: url('{{ site.baseurl_root }}/assets/img/autoit_yarn.jpg');"></div>
+            <div class="card-body">
+                <h4 class="card-title">Dependency manager for AutoIt</h4>
+                <p class="card-text">To manage AutoIt project dependencies, AGS uses the Node.js ecosystem and its
+                    dependency manager npm and Yarn.
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="card mb-4">
+        <a href="{{ site.url }}{{ site.baseurl }}/2018/06/04/autoit-windows-setup.html">
+            <div class="card-img-top-covered"
+                 style="background-image: url('{{ site.baseurl_root }}/assets/img/pixabay/jigsaw-puzzle-712465_1920.jpg');"></div>
+            <div class="card-body">
+                <h4 class="card-title">Makes it easy creation of Windows installer</h4>
+                <p class="card-text">AGS provides a process and features to facilitate the creation of a Windows
+                    installer (setup) of an AutoIt application.
+                </p>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+
+</div>

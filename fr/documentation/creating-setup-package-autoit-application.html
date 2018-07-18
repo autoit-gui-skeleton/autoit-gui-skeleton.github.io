@@ -451,7 +451,7 @@ cls
 
 :: Change value for this variables
 set VERSION=0.9.0
-set NAME_PROJECT=ApplicationWithCheckUpdater
+set NAME_PROJECT=ApplicationWithCheckForUpdates
 
 :: Deployment variables
 set FOLDER_CURRENT=%cd%
@@ -462,7 +462,7 @@ set FOLDER_SRC=%cd%
 set FOLDER_OUT=%FOLDER_CURRENT%\v%VERSION%\%NAME_PROJECT%_v%VERSION%
 
 :: AutoIt compiler
-Set AUT2EXE_AU3=ApplicationWithCheckUpdater.au3
+Set AUT2EXE_AU3=ApplicationWithCheckForUpdates.au3
 set AUT2EXE_ICON=%FOLDER_SRC%\assets\images\myApplication.ico
 set AUT2EXE_ARGS=/in "%FOLDER_SRC%\%AUT2EXE_AU3%" /out "%FOLDER_OUT%\%NAME_EXE%" /icon "%AUT2EXE_ICON%"
 

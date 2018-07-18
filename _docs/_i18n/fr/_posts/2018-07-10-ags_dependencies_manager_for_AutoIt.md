@@ -46,9 +46,9 @@ Pour décrire un projet AGS et ses dependances, on utilise naturellement le fich
 
 ```json
 {
-  "name": "ApplicationWithCheckUpdater",
+  "name": "ApplicationWithCheckForUpdates",
   "version": "1.0.0",
-  "description": "Example to implementation of AGS-component-check-updater",
+  "description": "Example to implementation of AGS-component-check-for-updates",
   "AGS": {
     "framework": {
       "version": "1.0.0"
@@ -66,7 +66,7 @@ Pour décrire un projet AGS et ses dependances, on utilise naturellement le fich
     "type": "git"
   },  
   "dependencies": {
-    "@autoit-gui-skeleton/ags-component-check-updater": "^1.0.0"
+    "@autoit-gui-skeleton/AGS-component-check-for-updates": "^1.0.0"
   }
 }
 ```

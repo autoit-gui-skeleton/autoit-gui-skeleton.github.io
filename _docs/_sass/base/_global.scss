@@ -210,3 +210,14 @@ video {
 .text-presentation {
     margin-top:1rem;
 }
+
+h1 b, h4 b, h5 b {
+    color: $search-color;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.title b {
+    font-weight: bolder;
+    color: #fff;
+}

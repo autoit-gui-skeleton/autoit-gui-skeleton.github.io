@@ -76,30 +76,30 @@ hide: true
         {% for page in site.pages %}
         {% if page.tags contains tag %}
         <h5 class="tag-title">
-            <a href="{{ site.url }}{{ site.baseurl }}{{ page.url }}"><i class="fa fa-file-image-o" aria-hidden="true"></i>{% if site.lang == "fr" %}{{ page.title_fr }}{% else %}{{ page.title }}{% endif %}</a>
             <span class="tags-date">
-{% if site.lang == "fr" %}
-    {% assign m = page.date | date: "%-m" %}
-    {{ page.date | date: "%-d" }}
-    {% case m %}
-        {% when '1' %}Janvier
-        {% when '2' %}Février
-        {% when '3' %}Mars
-        {% when '4' %}Avril
-        {% when '5' %}Mai
-        {% when '6' %}Juin
-        {% when '7' %}Juillet
-        {% when '8' %}Août
-        {% when '9' %}Septembre
-        {% when '10' %}Octobre
-        {% when '11' %}Novembre
-        {% when '12' %}Décembre
-    {% endcase %}
-    {{ page.date | date: "%Y" }}
-{% else %}
-    {{ page.date | date: "%B %-d, %Y" }}
-{% endif %}
-</span>
+            {% if site.lang == "fr" %}
+                {% assign m = page.date | date: "%-m" %}
+                {{ page.date | date: "%-d" }}
+                {% case m %}
+                    {% when '1' %}Janvier
+                    {% when '2' %}Février
+                    {% when '3' %}Mars
+                    {% when '4' %}Avril
+                    {% when '5' %}Mai
+                    {% when '6' %}Juin
+                    {% when '7' %}Juillet
+                    {% when '8' %}Août
+                    {% when '9' %}Septembre
+                    {% when '10' %}Octobre
+                    {% when '11' %}Novembre
+                    {% when '12' %}Décembre
+                {% endcase %}
+                {{ page.date | date: "%Y" }}
+            {% else %}
+                {{ page.date | date: "%B %-d, %Y" }}
+            {% endif %}
+            </span>
+            <a href="{{ site.url }}{{ site.baseurl }}{{ page.url }}"><i class="fa fa-file-image-o" aria-hidden="true"></i>{% if site.lang == "fr" %}{{ page.title_fr }}{% else %}{{ page.title }}{% endif %}</a>
         </h5>
         {% endif %}
         {% endfor %}
@@ -108,7 +108,6 @@ hide: true
         {% for post in site.posts %}
         {% if post.tags contains tag %}
         <h5 class="tag-title">
-            <a href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{ post.title }}</a>
             <span class="tags-date">
               {% if site.lang == "fr" %}
                 {% assign m = post.date | date: "%-m" %}
@@ -132,6 +131,7 @@ hide: true
                 {{ post.date | date: "%B %-d, %Y" }}
               {% endif %}
             </span>
+            <a href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{ post.title }}</a>
         </h5>
         {% endif %}
         {% endfor %}

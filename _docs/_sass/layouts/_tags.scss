@@ -49,12 +49,23 @@
     a {
       margin-left: $padding-x-small;
     }
+    display:block;
     font-size: 1em;
   }
 }
 
 .tags-date {
-  display: inline;
+  display: block;
   line-height: normal;
   float: right;
+  color: $text-shadow;
+}
+
+.tag-title a {
+  display:block;
+  width: 80%;
+
+  @media (max-width: 576px) {
+    width: 50%;
+  }
 }

@@ -112,7 +112,7 @@ theme_settings:
   
   
 # PAGINATION
-paginate: 1
+paginate: 2
 paginate_path: "articles/page:num"
 
 # PORTFOLIO

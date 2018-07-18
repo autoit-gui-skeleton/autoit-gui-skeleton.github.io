@@ -353,9 +353,9 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 <p>Pour décrire un projet AGS et ses dependances, on utilise naturellement le fichier <code class="highlighter-rouge">package.json</code> propre à l’écosystème Node.js. Vous pouvez trouvez plus d’information sur ce fichier ici <a href="https://yarnpkg.com/lang/en/docs/package-json/">https://yarnpkg.com/lang/en/docs/package-json/</a>.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplicationWithCheckUpdater"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">ApplicationWithCheckForUpdates</span><span class="p">,</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-updater"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
@@ -373,7 +373,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
   </span><span class="p">},</span><span class="w">  
   </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"@autoit-gui-skeleton/ags-component-check-updater"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+    </span><span class="s2">"@autoit-gui-skeleton/AGS-component-check-for-updates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -469,7 +469,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyApplication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example of RELEASES.json and implementation of AGS-component-check-updater"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example of RELEASES.json and implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/v20100v/autoit-gui-skeleton/"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"persistUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myServer/myApplication/RELEASES.json"</span><span class="p">,</span><span class="w">
@@ -479,14 +479,14 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/download/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-component-check-updater/blob/master/example/ApplicationWithCheckUpdater/README.md"</span><span class="w">
+      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="err">ags-component-check-for-updates</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/download/setup_myApplication_v0.9.0.exe"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-component-check-updater/blob/master/example/ApplicationWithCheckUpdater/README.md"</span><span class="w">
+      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="err">ags-component-check-for-updates</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
@@ -499,7 +499,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>Le fichier <code class="highlighter-rouge">RELEASES.json</code> est notamment utilisé dans <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-updater">AGS-component check-updater</a>. Cette bibliothèque fournit la fonction de mise à jour d’une application AutoIt. Jetez un oeil à cet exemple d’application AutoIt qui met en œuvre ce composant <a href="https://github.com/autoit-gui-skeleton/ags-component-check-updater/tree/master/example/ApplicationWithCheckUpdater">ApplicationWithCheckUpdater</a>.<br />
+<p>Le fichier <code class="highlighter-rouge">RELEASES.json</code> est notamment utilisé dans <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/AGS-component-check-for-updates">AGS-component check-updater</a>. Cette bibliothèque fournit la fonction de mise à jour d’une application AutoIt. Jetez un oeil à cet exemple d’application AutoIt qui met en œuvre ce composant <a href="https://github.com/autoit-gui-skeleton/AGS-component-check-for-updates/tree/master/example/ApplicationWithCheckForUpdates">ApplicationWithCheckForUpdates</a>.<br />
  Cette application a les fonctionnalités suivantes :</p>
 
 <ul>
@@ -510,7 +510,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 
 <p>Si l’option de vérification de la mise à jour à l’application de démarrage est activée et qu’une nouvelle version de cette application est disponible, alors lorsque l’utilisateur démarre l’application ce composant informe l’utilisateur dans une fenêtre enfant:</p>
 
-<p><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-updater/master/example/ApplicationWithCheckUpdater/docs/check-updater-update-available.png" alt="ags-component-check-updater :: update available" /></p>
+<p><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/AGS-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/check-updater-update-available.png" alt="AGS-component-check-for-updates :: update available" /></p>
 
 <h2 id="configurer-le-projet-ags">Configurer le projet AGS</h2>
 
@@ -525,9 +525,9 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 
 <p>Lorsque vous démarrez un nouveau projet AGS, vous devez créer ce fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code>. Ce fichier n’est pas versionné. Vous pouvez utiliser <code class="highlighter-rouge">./config/parameters.ini.dist</code> comme un ‘modèle’ de ce à quoi devrait ressembler ce fichier. Définissez les paramètres ici qui peuvent être différents sur chaque application. Seul ce fichier est enregistré avec la version de contrôle.</p>
 
-<p>La configuration des composants AGS se fait dans ce fichier. Par exemple avec <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-updater">AGS-component check-updater</a>, vous pouvez choisir avec le paramètre <code class="highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code> si l’application doit vérifier à chaque démarrage si une mise à jour de l’application est disponible.</p>
+<p>La configuration des composants AGS se fait dans ce fichier. Par exemple avec <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/AGS-component-check-for-updates">AGS-component check-updater</a>, vous pouvez choisir avec le paramètre <code class="highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code> si l’application doit vérifier à chaque démarrage si une mise à jour de l’application est disponible.</p>
 
-<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_CHECK_UPDATER]</span>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_CHECK_FOR_UPDATES]</span>
 <span class="c">; [REQUIRED] Enable/disable the search of a new update on start-up.
 </span><span class="py">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</span><span class="p">=</span><span class="s">1</span>
 </code></pre></div></div>
@@ -548,16 +548,16 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 <pre><code class="language-autoit">;----------------------------;
 ; Application main constants ;
 ;----------------------------;
-Global Const $APP_NAME = "ApplicationWithCheckUpdater"
+Global Const $APP_NAME = "ApplicationWithCheckForUpdates"
 Global Const $APP_VERSION = "0.9.0"
 Global Const $APP_WEBSITE = "https://myApplication-website.org"
 Global Const $APP_EMAIL_CONTACT = "myApplication@website.org"
-Global Const $APP_ID = "v20100v.ApplicationWithCheckUpdater"
+Global Const $APP_ID = "v20100v.ApplicationWithCheckForUpdates"
 Global Const $APP_LIFE_PERIOD = "2018-" &amp; @YEAR
 Global Const $APP_COPYRIGHT = "© " &amp; $APP_LIFE_PERIOD &amp; ", v20100v"
 </code></pre>
 
-<p>Avec le composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-updater">AGS-component check-updater</a> nous définissons la constante <code class="highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> pour spécifier où le référentiel JSON est hebergé. Ce fichier json doit être persister dans un serveur distant disponible via internet, et sans restriction.</p>
+<p>Avec le composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/AGS-component-check-for-updates">AGS-component check-updater</a> nous définissons la constante <code class="highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> pour spécifier où le référentiel JSON est hebergé. Ce fichier json doit être persister dans un serveur distant disponible via internet, et sans restriction.</p>
 
 <pre><code class="language-autoit">Global Const $APP_REMOTE_RELEASES_JSON = "https://myServer/myApplication/RELEASES.json"
 </code></pre>

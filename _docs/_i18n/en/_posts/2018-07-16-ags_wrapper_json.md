@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Use JSON files in AutoIt with AGS-wrapper-json
+title: Use JSON files in AutoIt with <b>AGS-wrapper-json</b>
 tags: [AGS, Wrapper]
 feature-img: "assets/img/pixabay/ags-wrapper.jpg"
 thumbnail: "assets/img/pixabay/ags-wrapper.jpg"

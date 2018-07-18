@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Send HTTP request in AutoIt with AGS-component-http-request
+title: Send HTTP request in AutoIt with <b>AGS-component-http-request</b>
 tags: [AGS, Component]
 feature-img: "assets/img/pixabay/ags-component.jpg"
 thumbnail: "assets/img/pixabay/ags-component.jpg"

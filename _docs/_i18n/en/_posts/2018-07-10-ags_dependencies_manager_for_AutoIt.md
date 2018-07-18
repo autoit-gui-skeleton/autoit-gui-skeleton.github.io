@@ -47,9 +47,9 @@ To describe an AGS project and its dependencies we naturally use the `package.js
 
 ```json
 {
-  "name": "ApplicationWithCheckUpdater",
+  "name": ApplicationWithCheckForUpdates,
   "version": "1.0.0",
-  "description": "Example to implementation of AGS-component-check-updater",
+  "description": "Example to implementation of AGS-component-check-for-updates",
   "AGS": {
     "framework": {
       "version": "1.0.0"
@@ -67,7 +67,7 @@ To describe an AGS project and its dependencies we naturally use the `package.js
     "type": "git"
   },  
   "dependencies": {
-    "@autoit-gui-skeleton/ags-component-check-updater": "^1.0.0"
+    "@autoit-gui-skeleton/AGS-component-check-for-updates": "^1.0.0"
   }
 }
 ```

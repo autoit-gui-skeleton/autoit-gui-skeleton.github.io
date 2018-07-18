@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Envoyer une requête HTTP en AutoIt avec AGS-component-http-request
+title: Envoyer une requête HTTP en AutoIt avec <b>AGS-component-http-request</b>
 tags: [AGS, Component]
 feature-img: "assets/img/pixabay/ags-component.jpg"
 thumbnail: "assets/img/pixabay/ags-component.jpg"
@@ -15,7 +15,7 @@ excerpt_separator: <!--more-->
 <!--more-->
 
 
-# Comment insatller AGS-component-http-request ?
+# Comment installer AGS-component-http-request ?
 
 On suppose que vous avez déjà installé [Node.js](https://nodejs.org/) et [Yarn](https://yarnpkg.com/lang/en/), par example avec [Chocolatey](https://chocolatey.org/), et pour installer le package AGS-component-http-request, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier `package.json` est stocké:
 
