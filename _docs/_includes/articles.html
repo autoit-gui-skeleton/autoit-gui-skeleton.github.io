@@ -1,21 +1,83 @@
 <div class="container archive-post-list">
 
-    {% for post in site.posts %}
-        {% assign currentDate = post.date | date: "%Y" %}
-        {% if currentDate != myDate %}
-            {% unless forloop.first %}
-            </div>
-            {% endunless %}
-            <h1 class="archive-post-title">{{ currentDate }}</h1>
 
-            <div class="card-columns">
-            {% assign myDate = currentDate %}
-        {% endif %}
+{% assign idx = 0 %}
+{% for post in site.posts %}
+    {% assign currentDate = post.date | date: "%Y" %}
+    {% assign currentMonth = post.date | date: "%-m" %}
+    {% assign idx = idx | plus:1 %}
+
+    {% if site.lang == "fr" %}
+        {% case currentMonth %}
+            {% when '1' %} {% assign currentMonthRead = "Janvier" %}
+            {% when '2' %}  {% assign currentMonthRead = "Février" %}
+            {% when '3' %}  {% assign currentMonthRead = "Mars" %}
+            {% when '4' %}  {% assign currentMonthRead = "Avril" %}
+            {% when '5' %}  {% assign currentMonthRead = "Mai" %}
+            {% when '6' %}  {% assign currentMonthRead = "Juin" %}
+            {% when '7' %}  {% assign currentMonthRead = "Juillet" %}
+            {% when '8' %}  {% assign currentMonthRead = "Août" %}
+            {% when '9' %}  {% assign currentMonthRead = "Septembre" %}
+            {% when '10' %} {% assign currentMonthRead = "Octobre" %}
+            {% when '11' %} {% assign currentMonthRead = "Novembre" %}
+            {% when '12' %} {% assign currentMonthRead = "Décembre" %}
+        {% endcase %}
+    {% else %}
+        {% case currentMonth %}
+            {% when '1' %} {% assign currentMonthRead = "January" %}
+            {% when '2' %}  {% assign currentMonthRead = "February" %}
+            {% when '3' %}  {% assign currentMonthRead = "March" %}
+            {% when '4' %}  {% assign currentMonthRead = "April" %}
+            {% when '5' %}  {% assign currentMonthRead = "May" %}
+            {% when '6' %}  {% assign currentMonthRead = "June" %}
+            {% when '7' %}  {% assign currentMonthRead = "July" %}
+            {% when '8' %}  {% assign currentMonthRead = "August" %}
+            {% when '9' %}  {% assign currentMonthRead = "September" %}
+            {% when '10' %} {% assign currentMonthRead = "October" %}
+            {% when '11' %} {% assign currentMonthRead = "November" %}
+            {% when '12' %} {% assign currentMonthRead = "December" %}
+        {% endcase %}
+    {% endif %}
+
+
+    {% if currentDate != myDate %}
+        {% unless forloop.first %}
+            {% if idx != 2 %}
+                </div>
+            {% endif %}
+            </div>
+            {% assign idx = 1 %}
+        {% endunless %}
+
+        <div class="blocks">
+        <h1 class="archive-post-title">{{ currentDate }}</h1>
+        {% assign myDate = currentDate %}
+    {% endif %}
+
+    {% if currentMonth != myMonth %}
+        {% unless forloop.first %}
+            {% if idx != 2 %}
+                </div>
+            {% endif %}
+        </div>
+        {% assign idx = 1 %}
+        {% endunless %}
+
+        <div class="blocks-month">
+        <h2 class="archive-post-title">{{ currentMonthRead }} {{ currentDate }}</h2>
+        {% assign myMonth = currentMonth %}
+    {% endif %}
+
+    {% if idx == 1 %}
+    <div class="cards-articles card-deck">
+    {% endif %}
+
         <div class="card">
             {% if post.feature-img %}
             <div class="animated-zoom-img">
                 <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
-                    <img class="card-img-top animation-img" src="{{ site.url }}{{ site.baseurl_root }}/{{ post.feature-img }}" alt="Card image cap">
+                    <img class="card-img-top animation-img"
+                         src="{{ site.url }}{{ site.baseurl_root }}/{{ post.feature-img }}" alt="Card image cap">
                 </a>
             </div>
             {% endif %}
@@ -24,37 +86,32 @@
                 <h4 class="card-title mt-0"><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
                 <p class="card-text meta">
                     {% if site.lang == "fr" %}
-                    {% assign m = post.date | date: "%-m" %}
-                    {{ post.date | date: "%-d" }}
-                    {% case m %}
-                    {% when '1' %}Janvier
-                    {% when '2' %}Février
-                    {% when '3' %}Mars
-                    {% when '4' %}Avril
-                    {% when '5' %}Mai
-                    {% when '6' %}Juin
-                    {% when '7' %}Juillet
-                    {% when '8' %}Août
-                    {% when '9' %}Septembre
-                    {% when '10' %}Octobre
-                    {% when '11' %}Novembre
-                    {% when '12' %}Décembre
-                    {% endcase %}
-                    {{ post.date | date: "%Y" }}
+                        {{ post.date | date: "%-d" }}
+                        {{ currentMonthRead }}
+                        {{ post.date | date: "%Y" }}
                     {% else %}
-                    {{ post.date | date: "%B %-d, %Y" }}
+                        {{ post.date | date: "%B %-d, %Y" }}
                     {% endif %}
                 </p>
                 <p class="card-text archive-post-item-excerpt">
                     {{ post.excerpt | strip_html | escape }}
                 </p>
-                <p class="card-text"><small class="text-muted">{{ post.author }}</small></p>
-                <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" class="black-text d-flex justify-content-end"><h6>{% t global.read %} <i class="fa fa-angle-double-right"></i></h6></a>
+                <p class="card-text">
+                    <small class="text-muted">{{ post.author }}</small>
+                </p>
+                <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" class="black-text d-flex justify-content-end">
+                    <h6>{% t global.read %} <i class="fa fa-angle-double-right"></i></h6>
+                </a>
             </div>
         </div>
 
-        {% if forloop.last %}
-        {% endif %}
-    {% endfor %}
+    {% if idx == 2 %}
+        </div> <!-- regular close <div class="card-deck"> -->
+        {% assign idx = 0 %}
+    {% endif %}
+
+    {% if forloop.last %}
+    {% endif %}
+{% endfor %}
 
 </div>
