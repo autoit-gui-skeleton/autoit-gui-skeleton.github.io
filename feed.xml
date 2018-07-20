@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Fri, 20 Jul 2018 10:29:32 +0200</pubDate>
+        <pubDate>Fri, 20 Jul 2018 10:38:15 +0200</pubDate>
         
         <item>
             <title>Check for updates into an AutoIt application with &lt;b&gt;AGS-component-check-for-updates&lt;/b&gt;</title>
