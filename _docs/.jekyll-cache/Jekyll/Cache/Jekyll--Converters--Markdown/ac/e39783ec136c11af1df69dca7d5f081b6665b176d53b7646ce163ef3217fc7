@@ -1,0 +1,35 @@
+I"�<blockquote>
+  <p>AGS fournit un processus et d’autres fonctionnalités pour faciliter la création d’un installeur Windows (setup) d’une application AutoIt.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="fonctionnalités-pour-faciliter-le-déploiement-dapplication-dautoit">Fonctionnalités pour faciliter le déploiement d’application d’AutoIt</h1>
+
+<p>Voici quelques nouvelles fonctionnalités avec le couple AGS et InnoSetup:</p>
+
+<ul>
+  <li>Générer un package (archive zip) et un installeur Windows.</li>
+  <li>Soutenir l’internationalisation (i18n).</li>
+  <li>Vérifier si l’application est déjà installée.</li>
+  <li>Configurer des messages supplémentaires dans la configuration comme: contrat de licence, prérequis et projet d’historique.</li>
+  <li>Ajouter l’application dans le menu Démarrer de Windows.</li>
+  <li>Lancer une commande personnalisée après la fin de l’installation.</li>
+  <li>Personnaliser et modifier les éléments graphiques du programme d’installation de Windows.</li>
+</ul>
+
+<h1 id="ags-utilise-un-batch-windows-pour-automatiser-la-génération-du-setup">AGS utilise un batch Windows pour automatiser la génération du setup</h1>
+
+<p>Dans AGS on utilise un batch Windows qui joue le rôle de chef d’orchestre, pour générer le setup.</p>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-package-and-deployment-process.gif" alt="AGS GUI package and deployment process" class="img-full img-fancybox" /></p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Lire la documentation AGS</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/creating-setup-package-autoit-application">Création d’installeur - setup Windows - pour des applications AutoIt</a></p>
+</blockquote>
+
+:ET

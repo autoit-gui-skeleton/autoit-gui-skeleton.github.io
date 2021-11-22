@@ -1,0 +1,138 @@
+I"n <blockquote>
+  <p>Pour envoyer des requêtes HTTP, AGS fournit ce composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">@autoit-gui-skeleton/ags-component-http-request</a>. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="comment-installer-ags-component-http-request-">Comment installer AGS-component-http-request ?</h1>
+
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-component-http-request, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké:</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-component-http-request --modules-folder vendor</code>
+</pre>
+
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
+</code></pre>
+
+<p>Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.</p>
+
+<h1 id="comment-utiliser-ags-component-http-request-">Comment utiliser AGS-component-http-request ?</h1>
+
+<h2 id="méthodes-disponibles">Méthodes disponibles</h2>
+
+<p>Cette bibliothèque fournit plusieurs méthodes pour traiter les requêtes HTTP</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Methods</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HttpGET($url, $data = "", $proxy = "")</code></td>
+      <td>Send HTTP request with GET method.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HttpPOST($url, $data = "", $proxy = "")</code></td>
+      <td>Send HTTP request with POST method.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">URLEncode($urlText)</code></td>
+      <td>URL encoding replaces unsafe ASCII characters.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">URLDecode($urlText)</code></td>
+      <td>Inverse operation of URLEncode.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WinHttp_SetProxy_from_configuration_file($oHttp)</code></td>
+      <td>Set timeouts by parsing the configuration file AGS project store in ‘./config/parameters.ini’.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WinHttp_SetProxy_from_configuration_file($oHttp)</code></td>
+      <td>Set proxy by parsing the configuration file AGS project store in ‘./config/parameters.ini’.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="configurer-le-composant-ags-component-http-request">Configurer le composant AGS-component-http-request</h2>
+
+<p>Pour configurer le comportement de ce composant, vous pouvez définir ses options dans le fichier <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Par exemple, vous pouvez définir un proxy pour toute les connexions HTTP, ou encore définir différents types de délai d’attente. Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="language-plaintext highlighter-rouge">PROXY</code> de la section<code class="language-plaintext highlighter-rouge"> AGS_HTTP_REQUEST</code>.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## ./config/parameters.ini ##
+</span>
+<span class="nn">[AGS_HTTP_REQUEST]</span>
+<span class="c">; [OPTIONAL] Use a proxy for http connexion. Keep empty to disable it.
+</span><span class="py">PROXY</span><span class="p">=</span><span class="s">http:/myproxy.com:20100</span>
+
+<span class="c">; [OPTIONAL] Time-out value applied when resolving a host name to an @IP,
+; in miliseconds.
+</span><span class="py">RESOLVE_TIMEOUT</span><span class="p">=</span><span class="s">1000</span>
+
+<span class="c">; [OPTIONAL] Time-out value applied when establishing a communication socket
+; with the target server, in milliseconds.
+</span><span class="py">CONNECT_TIMEOUT</span><span class="p">=</span><span class="s">1000</span>
+
+<span class="c">; [OPTIONAL] Time-out value applied when sending an individual packet of request
+; data on the communication socket to the target server, in milliseconds. A
+; large request sent to an HTTP server are normally be broken up into multiple
+; packets. The send time-out applies to sending each packet individually.
+</span><span class="py">SEND_TIMEOUT</span><span class="p">=</span><span class="s">1000</span>
+
+<span class="c">; [OPTIONAL] Time-out value applied when receiving a packet of response data
+; from the target server, in milliseconds. Large responses are be broken up into
+; multiple packets; the receive time-out applies to fetching each packet of data
+; off the socket.
+</span><span class="py">RECEIVE_TIMEOUT</span><span class="p">=</span><span class="s">1000</span>
+</code></pre></div></div>
+
+<h2 id="comment-envoyer-une-requête-http-en-get-">Comment envoyer une requête HTTP en GET ?</h2>
+
+<pre><code class="language-autoit">Local $response = HttpGET("https://soundcloud.com/2080/my-megadrive")
+    
+ConsoleWrite($response.Status &amp; @CRLF)
+ConsoleWrite($response.ResponseText)
+</code></pre>
+
+<h3 id="comment-envoyer-une-requête-http-avec-un-proxy-">Comment envoyer une requête HTTP avec un proxy ?</h3>
+
+<p>Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="language-plaintext highlighter-rouge">PROXY</code> de la section<code class="language-plaintext highlighter-rouge"> AGS_HTTP_REQUEST</code>. Mais vous pouvez également fournir un proxy explicitement dans la méthode.</p>
+
+<pre><code class="language-autoit">Local $response = HttpGET( _ 
+    "https://soundcloud.com/2080/my-megadrive", _ 
+    default, _ 
+    "http://myproxy.com:20100")
+    
+ConsoleWrite($response.Status &amp; @CRLF)
+ConsoleWrite($response.ResponseText)
+</code></pre>
+
+<h3 id="comment-encoder-une-url-">Comment encoder une URL ?</h3>
+
+<p>Le codage d’URL (URL encoding) est un mécanisme d’encodage d’informations dans un URI (Uniform Resource Identifier). Il est utilisé dans la préparation des données du type de support application/x-www-form-urlencoded, et lors de la soumission de données dans les requêtes HTTP.</p>
+
+<p>Si vous utilisez HttpGET, vous devez nettoyer les données à envoyer avec cet méthode au préalable.</p>
+
+<pre><code class="language-autoit">Local $msg = "Welcome in AGS"
+Local $url = "https://myServer.org/foo?msg=" &amp; URLEncode($msg) &amp; "&amp;param=32"
+
+ConsoleWrite($url)
+; Output &gt;&gt; https://myServer.org/foo?msg=Welcome%20in%20AGS&amp;param=32
+
+ConsoleWrite(URLEncode("123abc!@#$%^&amp;*()_+ ") &amp; @crlf)
+; Output &gt;&gt; 123abc!%40%23%24%25%5E%26*()_%2B%20
+</code></pre>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue reading ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
+:ET

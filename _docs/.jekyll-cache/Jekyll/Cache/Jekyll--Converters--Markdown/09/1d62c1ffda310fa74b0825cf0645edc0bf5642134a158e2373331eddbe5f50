@@ -1,0 +1,5 @@
+I"�<blockquote>
+  <p>Pour travailler avec des fichiers JSON, AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">@autoit-gui-skeleton/ags-wrapper-json</a> de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur <a href="https://zserge.com/jsmn.html">jsmn</a>.</p>
+</blockquote>
+
+:ET

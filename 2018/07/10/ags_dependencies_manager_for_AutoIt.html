@@ -39,8 +39,8 @@
     <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
 
     <!-- seo tags -->
-    <!-- Begin Jekyll SEO tag v2.4.0 -->
-<meta name="generator" content="Jekyll v3.8.1" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="AGS provides a fast dependencies manager for AutoIt with Yarn." />
 <meta property="og:locale" content="en" />
 <meta name="description" content="In order to simplify the management of the dependencies of an AutoIt project built with AGS, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository." />
@@ -50,8 +50,10 @@
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-10T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AGS provides a fast dependencies manager for AutoIt with Yarn." />
 <script type="application/ld+json">
-{"url":"https://autoit-gui-skeleton.github.io//2018/07/10/ags_dependencies_manager_for_AutoIt.html","headline":"AGS provides a fast dependencies manager for AutoIt with Yarn.","dateModified":"2018-07-10T00:00:00+02:00","datePublished":"2018-07-10T00:00:00+02:00","description":"In order to simplify the management of the dependencies of an AutoIt project built with AGS, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//2018/07/10/ags_dependencies_manager_for_AutoIt.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","headline":"AGS provides a fast dependencies manager for AutoIt with Yarn.","dateModified":"2018-07-10T00:00:00+02:00","datePublished":"2018-07-10T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//2018/07/10/ags_dependencies_manager_for_AutoIt.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//2018/07/10/ags_dependencies_manager_for_AutoIt.html"},"description":"In order to simplify the management of the dependencies of an AutoIt project built with AGS, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -159,7 +161,7 @@
 
 <h2 id="how-to-install-an-ags-package-">How to install an AGS package ?</h2>
 
-<p>To install an AGS component or wrapper in your project, just type in the root folder where the <code class="highlighter-rouge">package.json</code> is stored:</p>
+<p>To install an AGS component or wrapper in your project, just type in the root folder where the <code class="language-plaintext highlighter-rouge">package.json</code> is stored:</p>
 
 <pre class="command-line" data-prompt="C: \MyProject\&gt;">
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-component-xxx --modules-folder vendor
@@ -168,30 +170,30 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 
 <h2 id="describe-an-ags-project-and-its-dependencies">Describe an AGS project and its dependencies</h2>
 
-<p>To describe an AGS project and its dependencies we naturally use the <code class="highlighter-rouge">package.json</code> file, specific to the Node.js ecosystem. You can find more information about this file, and how to fill it here : <a href="https://yarnpkg.com/lang/en/docs/package-json/">https://yarnpkg.com/lang/en/docs/package-json/</a>.</p>
+<p>To describe an AGS project and its dependencies we naturally use the <code class="language-plaintext highlighter-rouge">package.json</code> file, specific to the Node.js ecosystem. You can find more information about this file, and how to fill it here : <a href="https://yarnpkg.com/lang/en/docs/package-json/">https://yarnpkg.com/lang/en/docs/package-json/</a>.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">ApplicationWithCheckForUpdates</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">ApplicationWithCheckForUpdates</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"AutoIt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.14.5"</span><span class="w">
+    </span><span class="nl">"AutoIt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.14.5"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20100v &lt;v20100v@no-reply.com&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT License"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not-yet-git"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20100v &lt;v20100v@no-reply.com&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT License"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not-yet-git"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
   </span><span class="p">},</span><span class="w">  
-  </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"@autoit-gui-skeleton/AGS-component-check-for-updates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@autoit-gui-skeleton/AGS-component-check-for-updates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -202,15 +204,15 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 <code class=" language-bash">yarn install --modules-folder vendor</code>
 </pre>
 
-<p>All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code> directory. If you add AutoIt library in the vendor directory, we recommend wrapping them so that they are also managed by the dependency manager, in the same way as <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a></p>
+<p>All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code> directory. If you add AutoIt library in the vendor directory, we recommend wrapping them so that they are also managed by the dependency manager, in the same way as <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a></p>
 
-<p>To install AutoIt dependencies in the <code class="highlighter-rouge">./vendor</code> directory, and not in the default directory of Node.js <code class="highlighter-rouge">./node_modules</code>, you must add the <code class="highlighter-rouge">--modules-folder vendor</code> option. We force this choice to avoid any confusion with a Node.js project. Note that with an AGS project, it is not necessary to explicitly write this option on the command line, thanks to the <code class="highlighter-rouge">.yarnrc</code> file stored at the root of the project, ie in the same place as the<code class="highlighter-rouge"> package.json</code> file. Yarn automatically use this file to add an additional configuration of options.</p>
+<p>To install AutoIt dependencies in the <code class="language-plaintext highlighter-rouge">./vendor</code> directory, and not in the default directory of Node.js <code class="language-plaintext highlighter-rouge">./node_modules</code>, you must add the <code class="language-plaintext highlighter-rouge">--modules-folder vendor</code> option. We force this choice to avoid any confusion with a Node.js project. Note that with an AGS project, it is not necessary to explicitly write this option on the command line, thanks to the <code class="language-plaintext highlighter-rouge">.yarnrc</code> file stored at the root of the project, ie in the same place as the<code class="language-plaintext highlighter-rouge"> package.json</code> file. Yarn automatically use this file to add an additional configuration of options.</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> #./.yarnrc 
  --modules-folder vendor
 </code></pre></div></div>
 
-<p>So with this file you can run <code class="highlighter-rouge">yarn install</code> to install the dependencies directly into the appropriate <code class="highlighter-rouge">./vendor</code> directory.</p>
+<p>So with this file you can run <code class="language-plaintext highlighter-rouge">yarn install</code> to install the dependencies directly into the appropriate <code class="language-plaintext highlighter-rouge">./vendor</code> directory.</p>
 
 <p><br /></p>
 
@@ -344,26 +346,9 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
 </div>
 
 
-<!-- Disqus -->
+<!-- Disqus
 
-<div class="comments">
-    <div id="disqus_thread"></div>
-<script>
-
-    
-        var disqus_shortname = 'https-autoit-gui-skeleton-github-io-en';
-    
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-
+-->
     </div>
     
 <footer class="site-footer">

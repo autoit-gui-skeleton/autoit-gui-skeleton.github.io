@@ -1,0 +1,20 @@
+I"�<blockquote>
+  <p>Procédure pour activer la coloration syntaxique dans l’IDE Jetbrains.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="activer-la-coloration-syntaxique-dans-ide-jetbrains">Activer la coloration syntaxique dans IDE Jetbrains</h1>
+
+<ol>
+  <li>
+    <p>Ouvrir la fenetre de configuration de l’éditeur : <code class="language-plaintext highlighter-rouge">File &gt; Settings &gt; Editor &gt; TextMate Bundles</code> ; <img src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-syntax-highlighting.png" alt="AGS GUI package and deployment process" class="img-full img-fancybox" /><br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter AutoIt bundle for Sublime Text editor en cliquant sur le bouton “plus”. Le fichier se trouve dans le répertoire de votre installation d’AutoIt <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\Extras\Editors\Sublime Text</code>.<br /><br /></p>
+  </li>
+  <li>
+    <p>Et voila ! <img src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-syntax-highlighting2.png" alt="AGS GUI package and deployment process" class="img-full img-fancybox" /><br /><br /></p>
+  </li>
+</ol>
+:ET

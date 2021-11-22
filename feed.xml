@@ -5,7 +5,34 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Tue, 04 Sep 2018 14:29:24 +0200</pubDate>
+        <pubDate>Mon, 22 Nov 2021 10:08:19 +0100</pubDate>
+        
+        <item>
+            <title>AutoIt syntax highlighting&lt;/b&gt;</title>
+            <link>/2021/11/21/autoit-syntax-highlighting.html</link>
+            <guid isPermaLink="true">/2021/11/21/autoit-syntax-highlighting.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;How to enable syntax highlighting in Jetbrains.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;enable-syntax-highlighting-in-jetbrains&quot;&gt;Enable syntax highlighting in Jetbrains&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open the configuration window in Jetbrain : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;File &amp;gt; Settings &amp;gt; Editor &amp;gt; TextMate Bundles&lt;/code&gt; ; &lt;img src=&quot;https://autoit-gui-skeleton.github.io//assets/img/post/autoit-syntax-highlighting.png&quot; alt=&quot;AGS GUI package and deployment process&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add AutoIt bundle for Sublime Text edito by clicking on the “more” button. This file is located in the directory of your AutoIt installation : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\Program Files (x86)\AutoIt3\Extras\Editors\Sublime Text&lt;/code&gt;.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Et voila ! &lt;img src=&quot;https://autoit-gui-skeleton.github.io//assets/img/post/autoit-syntax-highlighting2.png&quot; alt=&quot;AGS GUI package and deployment process&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+            <pubDate>Sun, 21 Nov 2021 00:00:00 +0100</pubDate>
+        </item>
         
         <item>
             <title>Check for updates into an AutoIt application with &lt;b&gt;AGS-component-check-for-updates&lt;/b&gt;</title>
@@ -19,13 +46,13 @@
 
 &lt;h1 id=&quot;how-to-install-ags-component-check-for-updates-&quot;&gt;How to install AGS-component-check-for-updates ?&lt;/h1&gt;
 
-&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-component-http-request, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
+&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-component-http-request, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
 
 &lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
 &lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-component-check-for-updates --modules-folder vendor&lt;/code&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory.&lt;/p&gt;
 
 &lt;p&gt;All AGS packages hosted in this npmjs repository belong to the organization &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. Indeed in order to simplify the management of the dependencies of an AutoIt project built with AGS framework, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.&lt;/p&gt;
 
@@ -37,29 +64,29 @@
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png&quot; alt=&quot;ags-component-check-for-updates :: update available&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;To work, it compares the local version of the application installed on the user’s PC with the repository of the published versions of the application. This repository is a json file, &lt;code class=&quot;highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt;, which is therefore hosted on a remote server. So we need to connect to the Internet to send an HTTP request to retrieve this file, and we need a JSON parse. This component therefore depends on other AGS components: ags-wrapper-json and ags-component-http-request. If you want to simulate different scenarios ofcheck for updates, you just need to change the value of the application version set in &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To work, it compares the local version of the application installed on the user’s PC with the repository of the published versions of the application. This repository is a json file, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt;, which is therefore hosted on a remote server. So we need to connect to the Internet to send an HTTP request to retrieve this file, and we need a JSON parse. This component therefore depends on other AGS components: ags-wrapper-json and ags-component-http-request. If you want to simulate different scenarios ofcheck for updates, you just need to change the value of the application version set in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;The remote file &lt;code class=&quot;highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt; looks like this:&lt;/p&gt;
+&lt;p&gt;The remote file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt; looks like this:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ApplicationWithCheckForUpdates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;homepage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://autoit-gui-skeleton.github.io&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;releases&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ApplicationWithCheckForUpdates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;homepage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://autoit-gui-skeleton.github.io&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;releases&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018-10-07&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/README.md&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018-10-07&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/README.md&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.1.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2014-03-21&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.1.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2014-03-21&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -90,31 +117,31 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;json_decode_from_file($filePath)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json_decode_from_file($filePath)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Decode JSON from a given local file.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;json_decode_from_url($jsonfileUrl, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json_decode_from_url($jsonfileUrl, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Decode JSON from a given URL.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RELEASES_JSON_get_all_versions($jsonObject)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELEASES_JSON_get_all_versions($jsonObject)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Parse all defined version(s) persisted in a decoded RELEASES.json file given.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RELEASES_JSON_get_last_version($jsonObject)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELEASES_JSON_get_last_version($jsonObject)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Get last version persisted in RELEASES.json&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CheckForUpdates($currentApplicationVersion, $remoteUrlReleasesJson, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CheckForUpdates($currentApplicationVersion, $remoteUrlReleasesJson, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Compare the current version with the last version persisted in an remote RELEASES.json file, in order to check if an update is available.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_GUI_launch_CheckForUpdates($main_GUI, $context)&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Launch a check for updates. The build of a GUI exposing the results depends on the context when the check for update is launch : with an user interaction from menu or on startup application. We store the option to search update on starup in the configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; in parameter &lt;code class=&quot;highlighter-rouge&quot;&gt;LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP&lt;/code&gt;.&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_GUI_launch_CheckForUpdates($main_GUI, $context)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Launch a check for updates. The build of a GUI exposing the results depends on the context when the check for update is launch : with an user interaction from menu or on startup application. We store the option to search update on starup in the configuration file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; in parameter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP&lt;/code&gt;.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_GUI_build_view_to_CheckForUpdates($main_GUI, $resultCheckForUpdate, $context = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_GUI_build_view_to_CheckForUpdates($main_GUI, $resultCheckForUpdate, $context = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Create a child GUI use to expose the result of a check updater. It exposes if an update of current application is available. The child GUI is related to a given main GUI of application. If this method is execute on startup, we built this child GUI only if an update is available. And when this method is called by a user interaction, we built this child GUI in any case : no update available, new update or experimental.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -122,18 +149,18 @@
 
 &lt;h2 id=&quot;configure-the-component-ags-component-check-for-updates&quot;&gt;Configure the component AGS-component-check-for-updates&lt;/h2&gt;
 
-&lt;h3 id=&quot;create-configuration-file-configparametersini&quot;&gt;Create configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;create-configuration-file-configparametersini&quot;&gt;Create configuration file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;&lt;/h3&gt;
 
-&lt;p&gt;With AGS, you must have the configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;. This file must not save with control version. You can use &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini.dist&lt;/code&gt; as a “template” of what your parameters.ini file should look like. Set parameters here that may be different on each application. Only this file is save with control version and push on remote server.&lt;/p&gt;
+&lt;p&gt;With AGS, you must have the configuration file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;. This file must not save with control version. You can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini.dist&lt;/code&gt; as a “template” of what your parameters.ini file should look like. Set parameters here that may be different on each application. Only this file is save with control version and push on remote server.&lt;/p&gt;
 
-&lt;p&gt;To configure the behavior of this component, you can set its options in this configuration file. You can enable or disable the search of a new update when the application starts, with the &lt;code class=&quot;highlighter-rouge&quot;&gt;LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP&lt;/code&gt; variable of the section &lt;code class=&quot;highlighter-rouge&quot;&gt;AGS_CHECK_FOR_UPDATES&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To configure the behavior of this component, you can set its options in this configuration file. You can enable or disable the search of a new update when the application starts, with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP&lt;/code&gt; variable of the section &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGS_CHECK_FOR_UPDATES&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[AGS_CHECK_FOR_UPDATES]&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;; [REQUIRED] Enable/disable the search of a new update on start-up.
 &lt;/span&gt;&lt;span class=&quot;py&quot;&gt;LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;In this component we use an another component &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;AGS-component-http-request&lt;/a&gt;. This library is used to send HTTP request in GET or POST method, and with or wihtout behind a corporate proxy, in order to get the remote &lt;code class=&quot;highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt;. So you can also configure this component. For example, you can set a proxy for all HTTP connections, or set different types of timeouts. By default, this component looks in the configuration file if a proxy is defined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; variable in the &lt;code class=&quot;highlighter-rouge&quot;&gt;AGS_HTTP_REQUEST&lt;/code&gt; section.&lt;/p&gt;
+&lt;p&gt;In this component we use an another component &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;AGS-component-http-request&lt;/a&gt;. This library is used to send HTTP request in GET or POST method, and with or wihtout behind a corporate proxy, in order to get the remote &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt;. So you can also configure this component. For example, you can set a proxy for all HTTP connections, or set different types of timeouts. By default, this component looks in the configuration file if a proxy is defined in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; variable in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGS_HTTP_REQUEST&lt;/code&gt; section.&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[AGS_HTTP_REQUEST]&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;; [OPTIONAL] Use a proxy for http connexion or choose NONE to disable it
@@ -141,9 +168,9 @@
 &lt;/span&gt;&lt;span class=&quot;py&quot;&gt;PROXY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;http://myProxy.com:20100&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;set-constants-in-srcglobalsau3&quot;&gt;Set constants in &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;set-constants-in-srcglobalsau3&quot;&gt;Set constants in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;&lt;/h3&gt;
 
-&lt;p&gt;All constants and global variables are set in one place &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;, with the exception to global variables of graphic elements which are set in each specific view file. AGS-component-check-for-udpates use the constant &lt;code class=&quot;highlighter-rouge&quot;&gt;$APP_REMOTE_RELEASES_JSON&lt;/code&gt; to specifiy where the repository &lt;code class=&quot;highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt; is hosted.&lt;/p&gt;
+&lt;p&gt;All constants and global variables are set in one place &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;, with the exception to global variables of graphic elements which are set in each specific view file. AGS-component-check-for-udpates use the constant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$APP_REMOTE_RELEASES_JSON&lt;/code&gt; to specifiy where the repository &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELEASES.json&lt;/code&gt; is hosted.&lt;/p&gt;
 
 &lt;p&gt;This json file must be persisted in a remote server available via internet, and without restriction. For example, you can use Github to host this file, like this:&lt;/p&gt;
 
@@ -152,7 +179,7 @@
 
 &lt;h3 id=&quot;how-to-perform-a-check-for-updates-on-startup-&quot;&gt;How to perform a check-for-updates on startup ?&lt;/h3&gt;
 
-&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;_main_GUI()&lt;/code&gt; method of the main manager of graphic user interface &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/GUI.au3&lt;/code&gt;, it just add a call to the  method &lt;code class=&quot;highlighter-rouge&quot;&gt;_GUI_launch_CheckForUpdates&lt;/code&gt; like this.&lt;/p&gt;
+&lt;p&gt;In the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_main_GUI()&lt;/code&gt; method of the main manager of graphic user interface &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/GUI.au3&lt;/code&gt;, it just add a call to the  method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_GUI_launch_CheckForUpdates&lt;/code&gt; like this.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;;; ./src/GUI.au3 ;;
 
@@ -187,7 +214,7 @@ EndFunc
 
 &lt;h3 id=&quot;how-to-perform-a-check-for-updates-from-an-item-menu-&quot;&gt;How to perform a check-for-updates from an item menu ?&lt;/h3&gt;
 
-&lt;p&gt;Into the &lt;code class=&quot;highlighter-rouge&quot;&gt;GUI_Init_Menu&lt;/code&gt; method, we add a new menu item for check-for-udpates.&lt;/p&gt;
+&lt;p&gt;Into the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GUI_Init_Menu&lt;/code&gt; method, we add a new menu item for check-for-udpates.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;;; ./src/GUI.au3 ;;
 
@@ -218,11 +245,11 @@ EndFunc
 
 &lt;h3 id=&quot;user-can-change-the-settings-directly-in-the-application&quot;&gt;user can change the settings directly in the application&lt;/h3&gt;
 
-&lt;p&gt;You can create a view into application in order to change settings. All values are persisted into the configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;. In this view, we can set proxy parameters to specify how this application try to connect to internet and if the application searchs an update on startup.&lt;/p&gt;
+&lt;p&gt;You can create a view into application in order to change settings. All values are persisted into the configuration file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt;. In this view, we can set proxy parameters to specify how this application try to connect to internet and if the application searchs an update on startup.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-view-settings.png&quot; alt=&quot;AGS-component-check-for-updates :: view settings application&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;When the user click on save button, it uses the service &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/services/ParametersIni.au3&lt;/code&gt;, which call &lt;code class=&quot;highlighter-rouge&quot;&gt;IniWrite&lt;/code&gt; method on configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; to persist values.&lt;/p&gt;
+&lt;p&gt;When the user click on save button, it uses the service &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/services/ParametersIni.au3&lt;/code&gt;, which call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IniWrite&lt;/code&gt; method on configuration file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; to persist values.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;;====================================================================================
 ; Save values choose by user in 'Setting' views, and launch with 'save' button
@@ -404,40 +431,40 @@ EndFunc
 &lt;p&gt;In this example of remote RELEASES.json, we set two releases like this:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ApplicationWithCheckForUpdates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;homepage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://autoit-gui-skeleton.github.io&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;releases&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ApplicationWithCheckForUpdates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;homepage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://autoit-gui-skeleton.github.io&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;releases&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018-10-07&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/README.md&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018-10-07&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://myApplication.com/v1.0.0/README.md&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.9.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2014-03-21&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.9.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;state&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;downloadSetup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;published&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2014-03-21&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;releaseNotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;If you want to simulate different scenarios on check updater, you just need to change the value of the application version set in &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;. For example to simulate the case of:&lt;/p&gt;
+&lt;p&gt;If you want to simulate different scenarios on check updater, you just need to change the value of the application version set in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/GLOBALS.au3&lt;/code&gt;. For example to simulate the case of:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;new version available set it to : &lt;code class=&quot;highlighter-rouge&quot;&gt;Global Const $APP_VERSION = &quot;0.9.0&quot;&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;&lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png&quot; alt=&quot;ags-component-check-for-updates :: update available&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;new version available set it to : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Global Const $APP_VERSION = &quot;0.9.0&quot;&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;&lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png&quot; alt=&quot;ags-component-check-for-updates :: update available&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;application have not update available : &lt;code class=&quot;highlighter-rouge&quot;&gt;Global Const $APP_VERSION = &quot;1.0.0&quot;&lt;/code&gt; &lt;br /&gt;&lt;br /&gt; &lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-no-update-available.png&quot; alt=&quot;AGS-component-check-for-updates :: no update available&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;application have not update available : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Global Const $APP_VERSION = &quot;1.0.0&quot;&lt;/code&gt; &lt;br /&gt;&lt;br /&gt; &lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-no-update-available.png&quot; alt=&quot;AGS-component-check-for-updates :: no update available&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;application is experimental: &lt;code class=&quot;highlighter-rouge&quot;&gt;Global Const $APP_VERSION = &quot;1.1.0&quot;&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;
+    &lt;p&gt;application is experimental: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Global Const $APP_VERSION = &quot;1.1.0&quot;&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;
  &lt;img src=&quot;https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-experimental.png&quot; alt=&quot;AGS-component-check-for-updates :: experimental version&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -465,13 +492,13 @@ EndFunc
 
 &lt;h1 id=&quot;how-to-install-ags-component-http-request-&quot;&gt;How to install AGS-component-http-request ?&lt;/h1&gt;
 
-&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-component-http-request, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
+&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-component-http-request, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
 
 &lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
 &lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-component-http-request --modules-folder vendor&lt;/code&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. To use it in your AutoIt program, you need to include this library with this instruction:&lt;/p&gt;
+&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. To use it in your AutoIt program, you need to include this library with this instruction:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
 &lt;/code&gt;&lt;/pre&gt;
@@ -493,27 +520,27 @@ EndFunc
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpGET($url, $data = &quot;&quot;, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpGET($url, $data = &quot;&quot;, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Send HTTP request with GET method.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpPOST($url, $data = &quot;&quot;, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpPOST($url, $data = &quot;&quot;, $proxy = &quot;&quot;)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Send HTTP request with POST method.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;URLEncode($urlText)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;URLEncode($urlText)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;URL encoding replaces unsafe ASCII characters.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;URLDecode($urlText)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;URLDecode($urlText)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Inverse operation of URLEncode.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WinHttp_SetProxy_from_configuration_file($oHttp)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WinHttp_SetProxy_from_configuration_file($oHttp)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Set timeouts by parsing the configuration file AGS project store in ‘./config/parameters.ini’.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WinHttp_SetProxy_from_configuration_file($oHttp)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WinHttp_SetProxy_from_configuration_file($oHttp)&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Set proxy by parsing the configuration file AGS project store in ‘./config/parameters.ini’.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -521,7 +548,7 @@ EndFunc
 
 &lt;h2 id=&quot;configure-the-ags-component-http-request-component&quot;&gt;Configure the AGS-component-http-request component&lt;/h2&gt;
 
-&lt;p&gt;To configure the behavior of this component, you can set its options in the &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; file. For example, you can set a proxy for all HTTP connections, or set different types of timeouts. By default, this component looks in the configuration file if a proxy is defined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; variable in the &lt;code class=&quot;highlighter-rouge&quot;&gt;AGS_HTTP_REQUEST&lt;/code&gt; section.&lt;/p&gt;
+&lt;p&gt;To configure the behavior of this component, you can set its options in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; file. For example, you can set a proxy for all HTTP connections, or set different types of timeouts. By default, this component looks in the configuration file if a proxy is defined in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; variable in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGS_HTTP_REQUEST&lt;/code&gt; section.&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;## ./config/parameters.ini ##
 &lt;/span&gt;
@@ -560,7 +587,7 @@ ConsoleWrite($response.ResponseText)
 
 &lt;h2 id=&quot;how-to-send-http-request-behind-a-corporate-proxy-&quot;&gt;How to send HTTP request behind a corporate proxy ?&lt;/h2&gt;
 
-&lt;p&gt;By default this component search in the configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; if a proxy is defined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; variable of the section &lt;code class=&quot;highlighter-rouge&quot;&gt;AGS_HTTP_REQUEST&lt;/code&gt;. But you can also provide a proxy directly in the method.&lt;/p&gt;
+&lt;p&gt;By default this component search in the configuration file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; if a proxy is defined in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROXY&lt;/code&gt; variable of the section &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGS_HTTP_REQUEST&lt;/code&gt;. But you can also provide a proxy directly in the method.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $response = HttpGET( _ 
     &quot;https://soundcloud.com/2080/my-megadrive&quot;, _ 
@@ -610,13 +637,13 @@ ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
 
 &lt;h1 id=&quot;how-to-install-ags-wrapper-json-&quot;&gt;How to install AGS-wrapper-json ?&lt;/h1&gt;
 
-&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-wrapper-json, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
+&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-wrapper-json, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
 
 &lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
 &lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-json --modules-folder vendor&lt;/code&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. To use it in your AutoIt program, you need to include this library with this instruction:&lt;/p&gt;
+&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. To use it in your AutoIt program, you need to include this library with this instruction:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
 &lt;/code&gt;&lt;/pre&gt;
@@ -627,36 +654,36 @@ ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
 
 &lt;h2 id=&quot;decode-a-json-file-from-local&quot;&gt;Decode a JSON file from local&lt;/h2&gt;
 
-&lt;p&gt;For example, create this json file in your &lt;code class=&quot;highlighter-rouge&quot;&gt;./assets/DROIDS.json&lt;/code&gt; folder of your AGS project.&lt;/p&gt;
+&lt;p&gt;For example, create this json file in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./assets/DROIDS.json&lt;/code&gt; folder of your AGS project.&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Listing droids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Luke&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;luke@2080.org&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;project&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Listing droids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Luke&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;luke@2080.org&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;droids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;droids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;R2D2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Astromecano&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0,96m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;R2D2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Astromecano&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0,96m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;BB8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Astromecano&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0,67m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;BB8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Astromecano&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0,67m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;C-3PO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Social&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1,67m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;C-3PO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Social&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1,67m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;To decode this local file, we use this bellow function &lt;code class=&quot;highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To decode this local file, we use this bellow function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
 
@@ -684,14 +711,14 @@ EndFunc
 &lt;p&gt;According to Ward’s documentation.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;The most JSON data type will be decoded into corresponding AutoIt variable, including 1D array, string, number, true, false, and null. JSON object will be decoded into “Windows Scripting Dictionary Object” retuned from &lt;code class=&quot;highlighter-rouge&quot;&gt;ObjCreate(&quot;Scripting.Dictionary&quot;)&lt;/code&gt;. AutoIt build-in functions like IsArray, IsBool, etc. can be used to check the returned data type. But for Object and Null, Json_IsObject() and Json_IsNull() should be used.&lt;/p&gt;
+  &lt;p&gt;The most JSON data type will be decoded into corresponding AutoIt variable, including 1D array, string, number, true, false, and null. JSON object will be decoded into “Windows Scripting Dictionary Object” retuned from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ObjCreate(&quot;Scripting.Dictionary&quot;)&lt;/code&gt;. AutoIt build-in functions like IsArray, IsBool, etc. can be used to check the returned data type. But for Object and Null, Json_IsObject() and Json_IsNull() should be used.&lt;/p&gt;
 
-  &lt;p&gt;If the input JSON string is invalid, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Error&lt;/code&gt; will be set to &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSMN_ERROR_INVAL&lt;/code&gt;. And if the input JSON string is not finish, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Error&lt;/code&gt; will be set to &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSMN_ERROR_PART&lt;/code&gt;.&lt;/p&gt;
+  &lt;p&gt;If the input JSON string is invalid, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Error&lt;/code&gt; will be set to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSMN_ERROR_INVAL&lt;/code&gt;. And if the input JSON string is not finish, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Error&lt;/code&gt; will be set to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSMN_ERROR_PART&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;get-values-from-a-json-object&quot;&gt;Get values from a json object&lt;/h2&gt;
 
-&lt;p&gt;To work with &lt;code class=&quot;highlighter-rouge&quot;&gt;$jsonObject&lt;/code&gt;, the return of &lt;code class=&quot;highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;Json_Get&lt;/code&gt; function. To select a JSON variable, both dot notation and square bracket notation can be supported.&lt;/p&gt;
+&lt;p&gt;To work with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$jsonObject&lt;/code&gt;, the return of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;, you can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Json_Get&lt;/code&gt; function. To select a JSON variable, both dot notation and square bracket notation can be supported.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $file = @ScriptDir &amp;amp; &quot;\assets\DROIDS.json&quot;
 Local $jsonObject = json_decode_from_file($file)
@@ -709,7 +736,7 @@ Local $mail2 = Json_Get($jsonObject, '[&quot;author&quot;][&quot;mail&quot;]')
 local $test2 = Json_Get($jsonObject, '[&quot;droids&quot;][1][&quot;name&quot;]')
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You also can use object help functions. These functions are just warps of &lt;code class=&quot;highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/p&gt;
+&lt;p&gt;You also can use object help functions. These functions are just warps of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Json_ObjCreate()&lt;/li&gt;
@@ -746,7 +773,7 @@ Next
 
 &lt;h2 id=&quot;add-object-into-a-json&quot;&gt;Add object into a JSON&lt;/h2&gt;
 
-&lt;p&gt;You can do it with &lt;code class=&quot;highlighter-rouge&quot;&gt;Json_Put&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;You can do it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Json_Put&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-àutoit&quot;&gt;Local $Obj
 Json_Put($Obj, &quot;.foo&quot;, &quot;foo&quot;)
@@ -790,29 +817,29 @@ Local $founded = Json_Get($jsonObject, '.founded')  ; 2002
 
 &lt;h1 id=&quot;how-to-encode-a-json-&quot;&gt;How to encode a JSON ?&lt;/h1&gt;
 
-&lt;p&gt;According to Ward’s documentation, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;Json_Encode($Data, $Option = 0, $Indent = &quot;\t&quot;, $ArraySep = &quot;,\r\n&quot;, $ObjectSep = &quot;,\r\n&quot;, $ColonSep = &quot;: &quot;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;According to Ward’s documentation, you can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Json_Encode($Data, $Option = 0, $Indent = &quot;\t&quot;, $ArraySep = &quot;,\r\n&quot;, $ObjectSep = &quot;,\r\n&quot;, $ColonSep = &quot;: &quot;)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$Data&lt;/code&gt; can be a string, number, bool, keyword : default or null, 1D array, or &lt;code class=&quot;highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$Data&lt;/code&gt; can be a string, number, bool, keyword : default or null, 1D array, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/li&gt;
     &lt;li&gt;Binary will be converted to string in UTF8 encoding.&lt;/li&gt;
     &lt;li&gt;Ptr will be converted to number&lt;/li&gt;
     &lt;li&gt;Other unsupported types like 2D array, dllstruct or object will be encoded into null.&lt;/li&gt;
   &lt;/ul&gt;
 
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$Option&lt;/code&gt; is bitmask consisting following constant:&lt;/p&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$Option&lt;/code&gt; is bitmask consisting following constant:&lt;/p&gt;
 
   &lt;ul&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNESCAPED_ASCII&lt;/code&gt; ; Don’t escape ascii charcters between chr(1) ~ chr(0x1f)&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNESCAPED_UNICODE&lt;/code&gt; ; Encode multibyte Unicode characters literally&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNESCAPED_SLASHES&lt;/code&gt; ; Don’t escape /&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_TAG&lt;/code&gt; ; All &amp;lt; and &amp;gt; are converted to \u003C and \u003E&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_AMP&lt;/code&gt; ; All &amp;amp;amp;amp;amp;s are converted to \u0026&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_APOS&lt;/code&gt; ; All ‘ are converted to \u0027&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_HEX_QUOT&lt;/code&gt; ; All “ are converted to \u0022&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_PRETTY_PRINT&lt;/code&gt; ; Use whitespace in returned data to format it&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_STRICT_PRINT&lt;/code&gt; ; Make sure returned JSON string is RFC4627 compliant&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNQUOTED_STRING&lt;/code&gt; ; Output unquoted string if possible (conflicting with $JSMN_STRICT_PRINT)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_UNESCAPED_ASCII&lt;/code&gt; ; Don’t escape ascii charcters between chr(1) ~ chr(0x1f)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_UNESCAPED_UNICODE&lt;/code&gt; ; Encode multibyte Unicode characters literally&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_UNESCAPED_SLASHES&lt;/code&gt; ; Don’t escape /&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_HEX_TAG&lt;/code&gt; ; All &amp;lt; and &amp;gt; are converted to \u003C and \u003E&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_HEX_AMP&lt;/code&gt; ; All &amp;amp;amp;amp;amp;s are converted to \u0026&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_HEX_APOS&lt;/code&gt; ; All ‘ are converted to \u0027&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_HEX_QUOT&lt;/code&gt; ; All “ are converted to \u0022&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_PRETTY_PRINT&lt;/code&gt; ; Use whitespace in returned data to format it&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_STRICT_PRINT&lt;/code&gt; ; Make sure returned JSON string is RFC4627 compliant&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_UNQUOTED_STRING&lt;/code&gt; ; Output unquoted string if possible (conflicting with $JSMN_STRICT_PRINT)&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/blockquote&gt;
 
@@ -826,7 +853,7 @@ ConsoleWrite($jsonEncoded)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Most encoding option have the same means like PHP’s json_encode() function. When &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_PRETTY_PRINT&lt;/code&gt; is set, output format can be change by other 4 parameters : &lt;code class=&quot;highlighter-rouge&quot;&gt;($Indent, $ArraySep, $ObjectSep, $ColonSep)&lt;/code&gt;. Because these 4 output format parameters will be checked inside &lt;code class=&quot;highlighter-rouge&quot;&gt;Jsmn_Encode()&lt;/code&gt; function, returned string will be always accepted by &lt;code class=&quot;highlighter-rouge&quot;&gt;Jsmn_Decode()&lt;/code&gt;. $JSON_UNQUOTED_STRING can be used to output unquoted string that also accetped by Jsmn_Decode(). &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_STRICT_PRINT&lt;/code&gt; is used to check output format setting and avoid non-standard JSON output. So this option is conflicting with &lt;code class=&quot;highlighter-rouge&quot;&gt;$JSON_UNQUOTED_STRING&lt;/code&gt;.&lt;/p&gt;
+  &lt;p&gt;Most encoding option have the same means like PHP’s json_encode() function. When &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_PRETTY_PRINT&lt;/code&gt; is set, output format can be change by other 4 parameters : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;($Indent, $ArraySep, $ObjectSep, $ColonSep)&lt;/code&gt;. Because these 4 output format parameters will be checked inside &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Jsmn_Encode()&lt;/code&gt; function, returned string will be always accepted by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Jsmn_Decode()&lt;/code&gt;. $JSON_UNQUOTED_STRING can be used to output unquoted string that also accetped by Jsmn_Decode(). &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_STRICT_PRINT&lt;/code&gt; is used to check output format setting and avoid non-standard JSON output. So this option is conflicting with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JSON_UNQUOTED_STRING&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -871,7 +898,7 @@ ConsoleWrite($jsonEncoded)
 
 &lt;h2 id=&quot;how-to-install-an-ags-package-&quot;&gt;How to install an AGS package ?&lt;/h2&gt;
 
-&lt;p&gt;To install an AGS component or wrapper in your project, just type in the root folder where the &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
+&lt;p&gt;To install an AGS component or wrapper in your project, just type in the root folder where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
 
 &lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \MyProject\&amp;gt;&quot;&gt;
 &lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-component-xxx --modules-folder vendor
@@ -880,30 +907,30 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
 
 &lt;h2 id=&quot;describe-an-ags-project-and-its-dependencies&quot;&gt;Describe an AGS project and its dependencies&lt;/h2&gt;
 
-&lt;p&gt;To describe an AGS project and its dependencies we naturally use the &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; file, specific to the Node.js ecosystem. You can find more information about this file, and how to fill it here : &lt;a href=&quot;https://yarnpkg.com/lang/en/docs/package-json/&quot;&gt;https://yarnpkg.com/lang/en/docs/package-json/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To describe an AGS project and its dependencies we naturally use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; file, specific to the Node.js ecosystem. You can find more information about this file, and how to fill it here : &lt;a href=&quot;https://yarnpkg.com/lang/en/docs/package-json/&quot;&gt;https://yarnpkg.com/lang/en/docs/package-json/&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ApplicationWithCheckForUpdates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AGS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;framework&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ApplicationWithCheckForUpdates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Example to implementation of AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;AGS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;framework&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AutoIt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3.3.14.5&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;AutoIt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3.3.14.5&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v20100v &amp;lt;v20100v@no-reply.com&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT License&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;year&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;private&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;repository&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;not-yet-git&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v20100v &amp;lt;v20100v@no-reply.com&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT License&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;year&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;private&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;repository&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;not-yet-git&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@autoit-gui-skeleton/AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;@autoit-gui-skeleton/AGS-component-check-for-updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -914,15 +941,15 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
 &lt;code class=&quot; language-bash&quot;&gt;yarn install --modules-folder vendor&lt;/code&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. If you add AutoIt library in the vendor directory, we recommend wrapping them so that they are also managed by the dependency manager, in the same way as &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json&quot;&gt;AGS-wrapper-json&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. If you add AutoIt library in the vendor directory, we recommend wrapping them so that they are also managed by the dependency manager, in the same way as &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json&quot;&gt;AGS-wrapper-json&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;To install AutoIt dependencies in the &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor&lt;/code&gt; directory, and not in the default directory of Node.js &lt;code class=&quot;highlighter-rouge&quot;&gt;./node_modules&lt;/code&gt;, you must add the &lt;code class=&quot;highlighter-rouge&quot;&gt;--modules-folder vendor&lt;/code&gt; option. We force this choice to avoid any confusion with a Node.js project. Note that with an AGS project, it is not necessary to explicitly write this option on the command line, thanks to the &lt;code class=&quot;highlighter-rouge&quot;&gt;.yarnrc&lt;/code&gt; file stored at the root of the project, ie in the same place as the&lt;code class=&quot;highlighter-rouge&quot;&gt; package.json&lt;/code&gt; file. Yarn automatically use this file to add an additional configuration of options.&lt;/p&gt;
+&lt;p&gt;To install AutoIt dependencies in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor&lt;/code&gt; directory, and not in the default directory of Node.js &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./node_modules&lt;/code&gt;, you must add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--modules-folder vendor&lt;/code&gt; option. We force this choice to avoid any confusion with a Node.js project. Note that with an AGS project, it is not necessary to explicitly write this option on the command line, thanks to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.yarnrc&lt;/code&gt; file stored at the root of the project, ie in the same place as the&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; package.json&lt;/code&gt; file. Yarn automatically use this file to add an additional configuration of options.&lt;/p&gt;
 
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; #./.yarnrc 
  --modules-folder vendor
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;So with this file you can run &lt;code class=&quot;highlighter-rouge&quot;&gt;yarn install&lt;/code&gt; to install the dependencies directly into the appropriate &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;So with this file you can run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yarn install&lt;/code&gt; to install the dependencies directly into the appropriate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor&lt;/code&gt; directory.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 

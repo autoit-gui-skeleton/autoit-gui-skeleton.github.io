@@ -39,19 +39,21 @@
     <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
 
     <!-- seo tags -->
-    <!-- Begin Jekyll SEO tag v2.4.0 -->
-<meta name="generator" content="Jekyll v3.8.1" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Vérifier les mises à jour dans une application AutoIt avec AGS-component-check-for-updates" />
 <meta property="og:locale" content="fr" />
 <meta name="description" content="AGS fournit le composant @autoit-gui-skeleton/ags-component-check-for-updates afin d’ajouter la fonctionnalité pour vérifier les mises à jour dans une application AutoIt." />
 <meta property="og:description" content="AGS fournit le composant @autoit-gui-skeleton/ags-component-check-for-updates afin d’ajouter la fonctionnalité pour vérifier les mises à jour dans une application AutoIt." />
-<link rel="canonical" href="https://autoit-gui-skeleton.github.io//fr/2018/07/18/ags_component_check-for-updates.html" />
-<meta property="og:url" content="https://autoit-gui-skeleton.github.io//fr/2018/07/18/ags_component_check-for-updates.html" />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//2018/07/18/ags_component_check-for-updates.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//2018/07/18/ags_component_check-for-updates.html" />
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-18T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Vérifier les mises à jour dans une application AutoIt avec AGS-component-check-for-updates" />
 <script type="application/ld+json">
-{"url":"https://autoit-gui-skeleton.github.io//fr/2018/07/18/ags_component_check-for-updates.html","headline":"Vérifier les mises à jour dans une application AutoIt avec AGS-component-check-for-updates","dateModified":"2018-07-18T00:00:00+02:00","datePublished":"2018-07-18T00:00:00+02:00","description":"AGS fournit le composant @autoit-gui-skeleton/ags-component-check-for-updates afin d’ajouter la fonctionnalité pour vérifier les mises à jour dans une application AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//fr/2018/07/18/ags_component_check-for-updates.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Vérifier les mises à jour dans une application AutoIt avec AGS-component-check-for-updates","dateModified":"2018-07-18T00:00:00+02:00","datePublished":"2018-07-18T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//2018/07/18/ags_component_check-for-updates.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//2018/07/18/ags_component_check-for-updates.html"},"description":"AGS fournit le composant @autoit-gui-skeleton/ags-component-check-for-updates afin d’ajouter la fonctionnalité pour vérifier les mises à jour dans une application AutoIt.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -143,13 +145,13 @@
 
 <h1 id="comment-installer-ags-component-check-for-updates-">Comment installer AGS-component-check-for-updates ?</h1>
 
-<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-component-check-for-updatest, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="highlighter-rouge">package.json</code> est stocké:</p>
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-component-check-for-updatest, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké:</p>
 
 <pre class="command-line" data-prompt="C: \&gt;">
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-component-check-for-updates --modules-folder vendor</code>
 </pre>
 
-<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>.</p>
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>.</p>
 
 <p>Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.</p>
 
@@ -161,29 +163,29 @@
 
 <p><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png" alt="ags-component-check-for-updates :: update available" /></p>
 
-<p>Pour fonctionner, il compare la version locale de l’application installée sur le PC de l’utilisateur avec le référentiel des versions publiées de l’application. Ce référentiel est un fichier json, <code class="highlighter-rouge">RELEASES.json</code>, qui est hébergé sur un serveur distant. Nous devons donc nous connecter à Internet pour envoyer une requête HTTP pour récupérer ce fichier, et nous avons besoin d’une analyse JSON. Ce composant dépend donc des autres composants AGS: ags-wrapper-json et ags-component-http-request. Si vous souhaitez simuler différents scénarios de vérification des mises à jour, il vous suffit de modifier la valeur de l’ensemble des versions de l’application dans <code class="highlighter-rouge">./src/GLOBALS.au3</code>.</p>
+<p>Pour fonctionner, il compare la version locale de l’application installée sur le PC de l’utilisateur avec le référentiel des versions publiées de l’application. Ce référentiel est un fichier json, <code class="language-plaintext highlighter-rouge">RELEASES.json</code>, qui est hébergé sur un serveur distant. Nous devons donc nous connecter à Internet pour envoyer une requête HTTP pour récupérer ce fichier, et nous avons besoin d’une analyse JSON. Ce composant dépend donc des autres composants AGS: ags-wrapper-json et ags-component-http-request. Si vous souhaitez simuler différents scénarios de vérification des mises à jour, il vous suffit de modifier la valeur de l’ensemble des versions de l’application dans <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>.</p>
 
-<p>Le fichier distant <code class="highlighter-rouge">RELEASES.json</code> ressemble à ceci:</p>
+<p>Le fichier distant <code class="language-plaintext highlighter-rouge">RELEASES.json</code> ressemble à ceci:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplicationWithCheckForUpdates"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autoit-gui-skeleton.github.io"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"releases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplicationWithCheckForUpdates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autoit-gui-skeleton.github.io"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/README.md"</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/README.md"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prototype"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-21"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prototype"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -196,7 +198,7 @@
 <ul>
   <li>Vérifier la mise à jour au démarrage de l’application AutoIt;</li>
   <li>Vérifier la mise à jour depuis le menu “?&gt; Vérifier la mise à jour”;</li>
-  <li>Modifierles paramètres de l’application à partir de la vue “Configuration&gt; Paramètres”. Les valeurs sont conservées dans le fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code>. Dans cette vue, nous pouvons définir des paramètres proxy pour spécifier comment cette application essaie de se connecter à Internet.</li>
+  <li>Modifierles paramètres de l’application à partir de la vue “Configuration&gt; Paramètres”. Les valeurs sont conservées dans le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Dans cette vue, nous pouvons définir des paramètres proxy pour spécifier comment cette application essaie de se connecter à Internet.</li>
 </ul>
 
 <p>Si l’option de vérification de recherche de mise à jour de l’application à chaque démarrage est activée, et si une nouvelle version de cette application est disponible, alors lorsque l’utilisateur démarre l’application, il donne cette information dans une fenêtre enfant.</p>
@@ -214,31 +216,31 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">json_decode_from_file($filePath)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">json_decode_from_file($filePath)</code></td>
       <td>Decode JSON from a given local file.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">json_decode_from_url($jsonfileUrl, $proxy = "")</code></td>
+      <td><code class="language-plaintext highlighter-rouge">json_decode_from_url($jsonfileUrl, $proxy = "")</code></td>
       <td>Decode JSON from a given URL.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">RELEASES_JSON_get_all_versions($jsonObject)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">RELEASES_JSON_get_all_versions($jsonObject)</code></td>
       <td>Parse all defined version(s) persisted in a decoded RELEASES.json file given.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">RELEASES_JSON_get_last_version($jsonObject)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">RELEASES_JSON_get_last_version($jsonObject)</code></td>
       <td>Get last version persisted in RELEASES.json</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">CheckForUpdates($currentApplicationVersion, $remoteUrlReleasesJson, $proxy = "")</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CheckForUpdates($currentApplicationVersion, $remoteUrlReleasesJson, $proxy = "")</code></td>
       <td>Compare the current version with the last version persisted in an remote RELEASES.json file, in order to check if an update is available.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">_GUI_launch_CheckForUpdates($main_GUI, $context)</code></td>
-      <td>Launch a check for updates. The build of a GUI exposing the results depends on the context when the check for update is launch : with an user interaction from menu or on startup application. We store the option to search update on starup in the configuration file <code class="highlighter-rouge">./config/parameters.ini</code> in parameter <code class="highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">_GUI_launch_CheckForUpdates($main_GUI, $context)</code></td>
+      <td>Launch a check for updates. The build of a GUI exposing the results depends on the context when the check for update is launch : with an user interaction from menu or on startup application. We store the option to search update on starup in the configuration file <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code> in parameter <code class="language-plaintext highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code>.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">_GUI_build_view_to_CheckForUpdates($main_GUI, $resultCheckForUpdate, $context = "")</code></td>
+      <td><code class="language-plaintext highlighter-rouge">_GUI_build_view_to_CheckForUpdates($main_GUI, $resultCheckForUpdate, $context = "")</code></td>
       <td>Create a child GUI use to expose the result of a check updater. It exposes if an update of current application is available. The child GUI is related to a given main GUI of application. If this method is execute on startup, we built this child GUI only if an update is available. And when this method is called by a user interaction, we built this child GUI in any case : no update available, new update or experimental.</td>
     </tr>
   </tbody>
@@ -246,18 +248,18 @@
 
 <h2 id="configurer-le-composant-ags-component-check-for-updates">Configurer le composant AGS-component-check-for-updates</h2>
 
-<h3 id="création-du-fichier-de-configuration-configparametersini">Création du fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code></h3>
+<h3 id="création-du-fichier-de-configuration-configparametersini">Création du fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code></h3>
 
-<p>Avec AGS vous devez avoir un fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code>. Ce fichier ne doit pas être sauvegarder avec le contrôle de version. Vous pouvez utiliser <code class="highlighter-rouge">./config/parameters.ini.dist</code> comme un ‘template’ de ce à quoi devrait ressembler votre fichier parameters.ini. Définissez les paramètres ici qui peuvent être différents sur chaque application.</p>
+<p>Avec AGS vous devez avoir un fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Ce fichier ne doit pas être sauvegarder avec le contrôle de version. Vous pouvez utiliser <code class="language-plaintext highlighter-rouge">./config/parameters.ini.dist</code> comme un ‘template’ de ce à quoi devrait ressembler votre fichier parameters.ini. Définissez les paramètres ici qui peuvent être différents sur chaque application.</p>
 
-<p>Pour configurer le comportement de ce composant, vous pouvez définir ses options dans ce fichier de configuration. Vous pouvez activer ou désactiver la recherche d’une nouvelle mise à jour lorsque l’application démarre, avec la variable <code class="highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code> de la section <code class="highlighter-rouge">AGS_CHECK_FOR_UPDATES</code>.</p>
+<p>Pour configurer le comportement de ce composant, vous pouvez définir ses options dans ce fichier de configuration. Vous pouvez activer ou désactiver la recherche d’une nouvelle mise à jour lorsque l’application démarre, avec la variable <code class="language-plaintext highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code> de la section <code class="language-plaintext highlighter-rouge">AGS_CHECK_FOR_UPDATES</code>.</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_CHECK_FOR_UPDATES]</span>
 <span class="c">; [REQUIRED] Enable/disable the search of a new update on start-up.
 </span><span class="py">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</span><span class="p">=</span><span class="s">1</span>
 </code></pre></div></div>
 
-<p>Dans ce composant, on utilise un autre composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component-http-request</a>. Cette bibliothèque est utilisée pour envoyer une requête HTTP avec la méthode GET ou POST, et avec ou sans un proxy, afin d’obtenir le fichier distant <code class="highlighter-rouge">RELEASES.json</code>. Vous pouvez donc également configurer ce composant. Par exemple, vous pouvez définir un proxy pour toutes les connexions HTTP ou définir différents types de délais. Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="highlighter-rouge">PROXY</code> de la section<code class="highlighter-rouge"> AGS_HTTP_REQUEST</code>.</p>
+<p>Dans ce composant, on utilise un autre composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component-http-request</a>. Cette bibliothèque est utilisée pour envoyer une requête HTTP avec la méthode GET ou POST, et avec ou sans un proxy, afin d’obtenir le fichier distant <code class="language-plaintext highlighter-rouge">RELEASES.json</code>. Vous pouvez donc également configurer ce composant. Par exemple, vous pouvez définir un proxy pour toutes les connexions HTTP ou définir différents types de délais. Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="language-plaintext highlighter-rouge">PROXY</code> de la section<code class="language-plaintext highlighter-rouge"> AGS_HTTP_REQUEST</code>.</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_HTTP_REQUEST]</span>
 <span class="c">; [OPTIONAL] Use a proxy for http connexion or choose NONE to disable it
@@ -265,9 +267,9 @@
 </span><span class="py">PROXY</span><span class="p">=</span><span class="s">http://myProxy.com:20100</span>
 </code></pre></div></div>
 
-<h3 id="définir-les-constantes-dans-srcglobalsau3">Définir les constantes dans <code class="highlighter-rouge">./src/GLOBALS.au3</code></h3>
+<h3 id="définir-les-constantes-dans-srcglobalsau3">Définir les constantes dans <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code></h3>
 
-<p>Toutes les constantes et les variables globales sont définies à un seul endroit <code class="highlighter-rouge">./src/GLOBALS.au3</code>, à l’exception des variables globales des éléments graphiques qui sont définies dans chaque fichier de vue spécifique. AGS-component-check-for-udpates utilise la constante <code class="highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> pour spécifier où le référentiel<code class="highlighter-rouge"> RELEASES.json</code> est hébergé.</p>
+<p>Toutes les constantes et les variables globales sont définies à un seul endroit <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>, à l’exception des variables globales des éléments graphiques qui sont définies dans chaque fichier de vue spécifique. AGS-component-check-for-udpates utilise la constante <code class="language-plaintext highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> pour spécifier où le référentiel<code class="language-plaintext highlighter-rouge"> RELEASES.json</code> est hébergé.</p>
 
 <p>Ce fichier json doit être sauvegarder dans un serveur distant disponible via internet, et sans restriction. Par exemple, vous pouvez utiliser Github pour héberger ce fichier, comme ceci:</p>
 
@@ -276,7 +278,7 @@
 
 <h3 id="comment-effectuer-une-recherche-de-mise-à-jour-au-démarrage-">Comment effectuer une recherche de mise à jour au démarrage ?</h3>
 
-<p>Dans la méthode <code class="highlighter-rouge">_main_GUI()</code> du manager principal de l’interface utilisateur <code class="highlighter-rouge">./src/GUI.au3</code>, il suffit d’ajouter un appel à la méthode <code class="highlighter-rouge">_GUI_launch_CheckForUpdates</code> comme ceci.</p>
+<p>Dans la méthode <code class="language-plaintext highlighter-rouge">_main_GUI()</code> du manager principal de l’interface utilisateur <code class="language-plaintext highlighter-rouge">./src/GUI.au3</code>, il suffit d’ajouter un appel à la méthode <code class="language-plaintext highlighter-rouge">_GUI_launch_CheckForUpdates</code> comme ceci.</p>
 
 <pre><code class="language-autoit">;; ./src/GUI.au3 ;;
 
@@ -311,7 +313,7 @@ EndFunc
 
 <h3 id="comment-effectuer-une-recherche-de-mise-à-jour-depuis-un-élement-du-menu-">Comment effectuer une recherche de mise à jour depuis un élement du menu ?</h3>
 
-<p>Dans la méthode <code class="highlighter-rouge">GUI_Init_Menu</code>, on ajoute un nouvel item pour vérifier les mises à jour.</p>
+<p>Dans la méthode <code class="language-plaintext highlighter-rouge">GUI_Init_Menu</code>, on ajoute un nouvel item pour vérifier les mises à jour.</p>
 
 <pre><code class="language-autoit">;; ./src/GUI.au3 ;;
 
@@ -342,11 +344,11 @@ EndFunc
 
 <h3 id="lutilisateur-peut-modifier-les-paramètres-directement-dans-lapplication">L’utilisateur peut modifier les paramètres directement dans l’application</h3>
 
-<p>Vous pouvez créer une vue dans l’application afin de modifier ses paramètres. Toutes les valeurs sont conservées dans le fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code>. Dans cette vue, nous pouvons définir des paramètres proxy pour spécifier comment cette application essaie de se connecter à Internet et si l’application recherche une mise à jour au démarrage.</p>
+<p>Vous pouvez créer une vue dans l’application afin de modifier ses paramètres. Toutes les valeurs sont conservées dans le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Dans cette vue, nous pouvons définir des paramètres proxy pour spécifier comment cette application essaie de se connecter à Internet et si l’application recherche une mise à jour au démarrage.</p>
 
 <p><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-view-settings.png" alt="AGS-component-check-for-updates :: view settings application" /></p>
 
-<p>Lorsque l’utilisateur clique sur le bouton Enregistrer, il utilise le service <code class="highlighter-rouge">./src/services/ParametersIni.au3</code>, qui appelle la méthode<code class="highlighter-rouge"> IniWrite</code> sur le fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code> pour sauvegarder les changements.</p>
+<p>Lorsque l’utilisateur clique sur le bouton Enregistrer, il utilise le service <code class="language-plaintext highlighter-rouge">./src/services/ParametersIni.au3</code>, qui appelle la méthode<code class="language-plaintext highlighter-rouge"> IniWrite</code> sur le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code> pour sauvegarder les changements.</p>
 
 <pre><code class="language-autoit">;====================================================================================
 ; Save values choose by user in 'Setting' views, and launch with 'save' button
@@ -528,40 +530,40 @@ EndFunc
 <p>Dans cet example, nous avons défini deux versions comme ceci:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplicationWithCheckForUpdates"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autoit-gui-skeleton.github.io"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"releases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplicationWithCheckForUpdates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autoit-gui-skeleton.github.io"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/README.md"</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/v1.0.0/README.md"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prototype"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-21"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prototype"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>Si vous voulez simuler différents scénarios sur la recherche de mise à jour de chèques, il vous suffit de changer la valeur de la version de l’application définie dans <code class="highlighter-rouge">./src/GLOBALS.au3</code>. Par exemple pour simuler le cas de:</p>
+<p>Si vous voulez simuler différents scénarios sur la recherche de mise à jour de chèques, il vous suffit de changer la valeur de la version de l’application définie dans <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>. Par exemple pour simuler le cas de:</p>
 
 <ul>
   <li>
-    <p>une nouvelle version disponbile, changer la valeur pour : <code class="highlighter-rouge">Global Const $APP_VERSION = "0.9.0"</code> <br /><br /><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png" alt="ags-component-check-for-updates :: update available" /><br /><br /></p>
+    <p>une nouvelle version disponbile, changer la valeur pour : <code class="language-plaintext highlighter-rouge">Global Const $APP_VERSION = "0.9.0"</code> <br /><br /><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png" alt="ags-component-check-for-updates :: update available" /><br /><br /></p>
   </li>
   <li>
-    <p>il n’y a pas de nouvelle version disponible : <code class="highlighter-rouge">Global Const $APP_VERSION = "1.0.0"</code> <br /><br /> <img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-no-update-available.png" alt="AGS-component-check-for-updates :: no update available" /><br /><br /></p>
+    <p>il n’y a pas de nouvelle version disponible : <code class="language-plaintext highlighter-rouge">Global Const $APP_VERSION = "1.0.0"</code> <br /><br /> <img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-no-update-available.png" alt="AGS-component-check-for-updates :: no update available" /><br /><br /></p>
   </li>
   <li>
-    <p>vous utilisez une version experimental : <code class="highlighter-rouge">Global Const $APP_VERSION = "1.1.0"</code> <br /><br />
+    <p>vous utilisez une version experimental : <code class="language-plaintext highlighter-rouge">Global Const $APP_VERSION = "1.1.0"</code> <br /><br />
  <img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-experimental.png" alt="AGS-component-check-for-updates :: experimental version" /><br /><br /></p>
   </li>
 </ul>
@@ -677,7 +679,7 @@ EndFunc
 
 <div id="post-nav" class="row post-nav">
 
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div id="previous-post" class="post-nav-post">
             
             <p class="uppercase">Previous post</p>
@@ -691,31 +693,19 @@ EndFunc
     <div class="col-sm-6">
         <div id="next-post" class="post-nav-post">
             
+            <p class="uppercase">Next post</p>
+            <a href="/fr/2021/11/21/autoit-syntax-highlighting.html">
+            <p>AutoIt coloration syntaxique</b></p>
+            </a>
+            
         </div>
     </div>
 </div>
 
 
-<!-- Disqus -->
+<!-- Disqus
 
-<div class="comments">
-    <div id="disqus_thread"></div>
-<script>
-
-    
-        var disqus_shortname = 'https-autoit-gui-skeleton-github-io-fr';
-    
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Merci d'activité JavaScript pour voir <a href="https://disqus.com/?ref_noscript">les commentaires, fournis par Disqus.</a></noscript>
-</div>
-
+-->
     </div>
     
 <footer class="site-footer">

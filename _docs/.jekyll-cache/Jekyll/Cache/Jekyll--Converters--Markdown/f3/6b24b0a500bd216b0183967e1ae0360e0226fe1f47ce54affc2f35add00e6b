@@ -1,0 +1,573 @@
+I">�<!-- Breadcrumb navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="https://autoit-gui-skeleton.github.io//fr/">Entrée</a></li>
+    <li class="breadcrumb-item"><a href="https://autoit-gui-skeleton.github.io//fr/documentation">Documentation</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Organisation du code</li>
+  </ol>
+</nav>
+
+<p><br /></p>
+
+<blockquote>
+  <p>Cet article explique plus en détails l’organisation du code d’un projet respectant les préconisations d’AGS. Il est conseillé d’avoir déjà lu l’article : <a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started">1. Démarrer avec AGS</a>.</p>
+</blockquote>
+
+<p><br /></p>
+
+<!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
+<ul id="markdown-toc">
+  <li><a href="#organisation-du-code-dun-projet-ags" id="markdown-toc-organisation-du-code-dun-projet-ags">Organisation du code d’un projet AGS</a>    <ul>
+      <li><a href="#code-source-dun-projet-ags" id="markdown-toc-code-source-dun-projet-ags">Code source d’un projet AGS</a></li>
+      <li><a href="#vue-densemble-de-larchitecture-dags" id="markdown-toc-vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</a>        <ul>
+          <li><a href="#le-programme-dentrée-principal-de-lapplication" id="markdown-toc-le-programme-dentrée-principal-de-lapplication">Le programme d’entrée principal de l’application</a></li>
+        </ul>
+      </li>
+      <li><a href="#centralisez-la-déclaration-des-variables-globales" id="markdown-toc-centralisez-la-déclaration-des-variables-globales">Centralisez la déclaration des variables globales</a></li>
+      <li><a href="#le-gestionnaire-principal-des-services" id="markdown-toc-le-gestionnaire-principal-des-services">Le gestionnaire principal des services</a></li>
+      <li><a href="#piloter-linterface-graphique" id="markdown-toc-piloter-linterface-graphique">Piloter l’interface graphique</a>        <ul>
+          <li><a href="#le-gestionnaire-principal-de-linterface-graphique" id="markdown-toc-le-gestionnaire-principal-de-linterface-graphique">Le gestionnaire principal de l’interface graphique</a></li>
+          <li><a href="#déclarez-le-code-de-toutes-les-vues-dans-des-fichiers-spécifiquement-dédiés" id="markdown-toc-déclarez-le-code-de-toutes-les-vues-dans-des-fichiers-spécifiquement-dédiés">Déclarez le code de toutes les vues dans des fichiers spécifiquement dédiés</a></li>
+          <li><a href="#gestionnaire-principal-des-événements" id="markdown-toc-gestionnaire-principal-des-événements">Gestionnaire principal des événements</a></li>
+          <li><a href="#comment-naviguer-dans-lapplication-et-changer-de-vue-" id="markdown-toc-comment-naviguer-dans-lapplication-et-changer-de-vue-">Comment naviguer dans l’application et changer de vue ?</a></li>
+          <li><a href="#code-source--gui-view-welcome-handler" id="markdown-toc-code-source--gui-view-welcome-handler">Code source : GUI View Welcome handler</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="organisation-du-code-dun-projet-ags">Organisation du code d’un projet AGS</h1>
+
+<h2 id="code-source-dun-projet-ags">Code source d’un projet AGS</h2>
+
+<p>Tout le code source AutoiT de l’application est stocké dans le repertoire <code class="language-plaintext highlighter-rouge">./src</code>. Dans ce dernier on y trouve des répertoires et fichiers spécfiques.</p>
+
+<pre>
+<code class="language-markup">Project root folder
++---src                        # AutoIt source
+    |   BUSINESS.au3           # Entry point for business and logic code
+    |   GLOBALS.au3            # Entry point for constants and global variables of application
+    |   GUI.au3                # Entry point for graphic user interface (GUI)
+    |   SERVICES.au3           # Entry point for services applications
+    |
+    +---business               # Folder for store all business annd logic code
+    |
+    +---services               # Folder for store all services application
+    |       Dialogbox.au3      # Handler of dialog box in which the user is prompted
+    |       ParametersIni.au3  # Handler of configuration file parameters.ini
+    |
+    \---views                  # Folder for store all views application
+            View_About.au3
+            View_Footer.au3
+            View_Settings.au3
+            View_Welcome.au3
+</code>
+</pre>
+
+<h2 id="vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</h2>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/autoit-gui-skeleton_overview.png" alt="Overview of AGS architecture" class="img-fancybox img-full" /></p>
+
+<h3 id="le-programme-dentrée-principal-de-lapplication">Le programme d’entrée principal de l’application</h3>
+
+<p>C’est le point d’entrée unique de l’application, et l’emplacement où l’application démarre. Ce fichier est placé à la racine du projet AGS et dans ce dernier, nous commençons par inclure toutes les autres dépendances dont il a besoin :</p>
+
+<ul>
+  <li>les bibliothèques AutoIt;</li>
+  <li>les bibliothèques tierces (<em>third-party code</em>) stockés dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor</code>;</li>
+  <li>la déclaration des constantes et des variables globales de l’application ;</li>
+  <li>le gestionnaire des services de l’application ;</li>
+  <li>le gestionnaire de l’interface utilisateur ;</li>
+</ul>
+
+<pre><code class="language-autoit">;; myApplication.au3 ;;
+
+;-------------------------------------------------------------------------------
+; Include all built-in AutoIt library requires
+;-------------------------------------------------------------------------------
+#include &lt;IE.au3&gt;
+#include &lt;GUIConstantsEx.au3&gt;
+#include &lt;ButtonConstants.au3&gt;
+#include &lt;WinAPIDlg.au3&gt;
+
+
+;-------------------------------------------------------------------------------
+; Include all third-party code
+;
+; By convention the directory `./vendor/` is the place where to conventionally
+; store the code developed by third parties in a project.
+;
+; AGS components are a set of AutoIt libraries, that you can use in our own
+; applications. You can choose to enable or disable its loading with comments.
+; By convention the directory `./vendor/@autoit-gui-skeleton` is the place where
+; to conventionally store AGS components or AGS wrapper. Theses dependencies
+; are handled with the tools Yarn which works in Node.js ecosystem.
+;-------------------------------------------------------------------------------
+#include "vendor/@autoit-gui-skeleton/AGS-component-check-for-updates/AGS-component-check-for-updates.au3"
+#include "vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3"
+#include "vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3"
+
+
+;-------------------------------------------------------------------------------
+; Include constants and global variables
+;
+; All constants and global variables are set in one place './src/GLOBALS.au3',
+; With the exception to global variables of graphic elements which are set in
+; each specific view file. Don't forget that constants can't longer change their
+; value over time, unlike global variables.
+;
+; By convention, all global variables must be written in capital letter and
+; separated by underscore - for example : Global Const $APP_EMAIL_CONTACT
+;-------------------------------------------------------------------------------
+#include './src/GLOBALS.au3'
+
+
+;-------------------------------------------------------------------------------
+; Include the main program that manages all the business code
+;
+; This is the entry point to business and logic code. This file can include
+; another script store into './src/models/' folder, according to the needs of
+; the application.
+;-------------------------------------------------------------------------------
+#include './src/BUSINESS.au3'
+
+
+;-------------------------------------------------------------------------------
+; Include the main program that manages all services
+;
+; This is the entry point to include all services. This file can include
+; another service store into './src/services/' folder.
+;-------------------------------------------------------------------------------
+#include './src/SERVICES.au3'
+
+
+;-------------------------------------------------------------------------------
+; Include the main handler GUI
+;
+; It contains the _main_GUI() method which is only called by the main entry
+; program. This method is designed to create the graphical user interface (GUI)
+; and manage all user interactions and events.
+;-------------------------------------------------------------------------------
+#include './src/GUI.au3'
+
+
+; Start the application
+_main_GUI()
+</code></pre>
+
+<p>L’application démarre par l’appel de la méthode <code class="language-plaintext highlighter-rouge">_main_GUI()</code> du gestionnaire principal de l’IHM.</p>
+
+<h2 id="centralisez-la-déclaration-des-variables-globales">Centralisez la déclaration des variables globales</h2>
+
+<p>Toutes les constantes et les variables globales sont définies à un seul endroit dans le fichier <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>, afin de centraliser la déclaration de toutes les variables à portée globale. À l’exception de toutes les variables globales des éléments graphiques, qui eux, sont définies dans chaque fichier de vue spécifique. On rappelle que les constantes ne peuvent plus changer de valeur dans le temps, contrairement aux variables globales. Si une variable globale change de valeur, il n’est pas possible de persister son résutlat, a moins de le faire dans le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code></p>
+
+<p>Par convention, toutes les variables globales doivent être écrites en majuscule et séparées par un trait de soulignement.</p>
+
+<p>Les constantes communes des projets AGS sont:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$APP_FOLDER_ROOT</code>     : Alias pour accèder au répertoire racine du projet.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_FOLDER_ASSETS</code>   : Alias pour accèder au répertoire des assets du projet.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_PARAMETERS_INI</code>  : Alias pour accèder au fichier des paramètres de l’application. Les paramètres peuvent persisté les changements de valeurs depuis des interactions utilisateurs ou evenement. Remarquons qu’au chargement, c’est ici qu’AGS vérifie que le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code> existe bien.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_NAME</code>            :  Le nom de l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_VERSION</code>         :  Le numéro de version de l’application en respect du semantic versionning.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_WEBSITE</code>         : Le site de promotion/documentation associé à l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_EMAIL_CONTACT</code>   : L’email de contact pour l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_ID</code>              : Identifiant constitué du propritaire et du nom du projet. Ne doit pas contenir de caractère speciaux. ([a-z;1-9])</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_LIFE_PERIOD</code>     : Renseigne depuis quand l’application existe.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_COPYRIGHT</code>       : Le copyright de l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_WIDTH</code>           : Définit la largeur de la fenetre principal de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_HEIGHT</code>          : Définit la hauteur de la fenetre principal de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GUI_TITLE_COLOR</code> : Définit la couleur des titres de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GUI_LINK_COLOR</code>  : Définit la couleur des liens de l’application</li>
+</ul>
+
+<p>On trouve également des variables globales propres à des composants AGS qui permettent de contrôler leur fonctionnement. Quelques exemples de variables globales propres à des composants AGS:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> : Définit l’URL du fichier RELEASES.json utiliser pour vérifier les mises à jours de l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GAMP_TRACKING_ID</code> : Configure Google Analytics tracking id</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GAMP_ENABLE</code> : Pour activer/désactiver le tracking via Google Analytics Mesurement Protocol</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GAMP_DEBUG</code> : Pour activer/désactiver le debug en sortie console du composant</li>
+</ul>
+
+<p>Et enfin une section propre à des variables globales dites “custom”.</p>
+
+<pre><code class="language-autoit">;; ./src/GLOBALS.au3 ;;
+
+#include-once
+
+;-------------------------------------------------------------------------------
+; Application helper alias
+;-------------------------------------------------------------------------------
+Global Const $APP_FOLDER_ROOT = @ScriptDir &amp; "/../"
+Global Const $APP_FOLDER_ASSETS = @ScriptDir &amp; "/assets"
+
+;-------------------------------------------------------------------------------
+; Application parameters
+;-------------------------------------------------------------------------------
+Global Const $APP_PARAMETERS_INI = @ScriptDir &amp; "/config/parameters.ini"
+Local $fileExists = FileExists($APP_PARAMETERS_INI)
+If Not $fileExists Then
+	MsgBox(16, "Error with load parameters.ini", "Unable to find the file './config/parameters.ini'! " &amp; @CRLF &amp; "This application can not work, you must create this file. You wan use the file './config/parameters.ini.dist' to create it.")
+EndIf
+
+;-------------------------------------------------------------------------------
+; Application main constants
+;-------------------------------------------------------------------------------
+Global Const $APP_NAME = "MyApplication"
+Global Const $APP_VERSION = "0.9.0"
+Global Const $APP_WEBSITE = "https://myApplication-website.org"
+Global Const $APP_EMAIL_CONTACT = "myApplication@website.org"
+Global Const $APP_ID = "v20100v.MyApplication"
+Global Const $APP_LIFE_PERIOD = "2018-" &amp; @YEAR
+Global Const $APP_COPYRIGHT = "© " &amp; $APP_LIFE_PERIOD &amp; ", v20100v"
+
+;-------------------------------------------------------------------------------
+; Application GUI constants
+;-------------------------------------------------------------------------------
+Global Const $APP_WIDTH = 800
+Global Const $APP_HEIGHT = 600
+Global Const $APP_GUI_TITLE_COLOR = 0x85C4ED
+Global Const $APP_GUI_LINK_COLOR = 0x5487FB
+
+;-------------------------------------------------------------------------------
+; AGS-compontents Check Updater constants
+;-------------------------------------------------------------------------------
+; Specifiy the repository JSON use to check for updates. This json file must persist in a remote server available via
+; internet, and without restriction. If you use Github as a control version, you can use it to host this file. In this
+; case use this bellow URL.
+Global Const $APP_REMOTE_RELEASES_JSON = "https://raw.githubusercontent.com/autoit-gui-skeleton/AGS-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/RELEASES.json"
+
+;-------------------------------------------------------------------------------
+; Custom application global variable
+; Here is an example to defined custom global variables
+;-------------------------------------------------------------------------------
+Global $OPEN_FILE = False
+Global $OPEN_FILE_PATH = -1
+Global $OPEN_FILE_NAME = -1
+</code></pre>
+
+<h2 id="le-gestionnaire-principal-des-services">Le gestionnaire principal des services</h2>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">./src/SERVICES.au3</code> est le point d’entrée de tous les services qui sont sauvegardés dans le répertoire <code class="language-plaintext highlighter-rouge">./services</code>. Dans ce fichier on trouve simplement les instructions pour inclure les services. Et chaque service est definit dans un fichier spécifique, avec un périmètre de responsabilité unique, ce qui en simplifie la lecture et la maintenance.</p>
+
+<p>Dans le cas de services qui deviennent recurent entre différentes applications, il est alors conseillé de le packager avec le gestionnaire de dépendances AutoIt dans AGS. Cela évite de devoir mettre à jour manuellement le service consommé par différentes applications. Avec le gestionnaire de dépendances, la simple instruction <code class="language-plaintext highlighter-rouge">yarn update</code> à la racine du projet suffit pour mettre à jour toutes les dependances.</p>
+
+<pre><code class="language-autoit">;; ./src/SERVICES.au3
+#include-once
+
+; Includes services
+#include './services/Dialogbox.au3'
+#include './services/ParametersIni.au3'
+</code></pre>
+
+<p>Par exemple dans AGS, nous avons le service <code class="language-plaintext highlighter-rouge">ParametersIni.au3</code> qui fournit une méthode pour interargir avec le fichier de configuration de l’application <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Il permet de sauvegarder les changements choisis par un utilisateur depuis l’interface graphique.</p>
+
+<pre><code class="language-autoit">;; ./src/services/ParametersIni.au3
+
+;-------------------------------------------------------------------------------
+; Save values choose by user in 'Setting' views, and launch with 'save' button
+;
+; @params void
+; @return void
+;-------------------------------------------------------------------------------
+Func _save_parameters_ini()
+
+	; Save proxy settings
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "PROXY", GUICtrlRead($input_HTTP_Proxy))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "RESOLVE_TIMEOUT", GUICtrlRead($input_HTTP_Resolve_Timeout))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "CONNECT_TIMEOUT", GUICtrlRead($input_HTTP_Connect_Timeout))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "SEND_TIMEOUT", GUICtrlRead($input_HTTP_Send_Timeout))
+	IniWrite($APP_PARAMETERS_INI, "AGS_HTTP_REQUEST", "RECEIVE_TIMEOUT", GUICtrlRead($input_HTTP_Receive_Timeout))
+
+	; Startup settings
+	If (GUICtrlRead($checkbox_STARTUP_CHECK_UPDATE) = $GUI_CHECKED) Then
+		IniWrite($APP_PARAMETERS_INI, "AGS_CHECK_FOR_UPDATES", "LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP", "1")
+	Else
+		IniWrite($APP_PARAMETERS_INI, "AGS_CHECK_FOR_UPDATES", "LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP", "0")
+	EndIf
+EndFunc
+</code></pre>
+
+<p>Ou encore un autre exemple avec le service <code class="language-plaintext highlighter-rouge">./src/services/Dialogbox.au3</code> pour la gestion de boite de dialogue dans l’application.</p>
+
+<pre><code class="language-autoit">;; ./src/services/Dialogbox.au3 ;;
+
+;====================================================================================
+; Show a dialog box to user, in order that he chooses a file in the Windows Explorer
+;
+; @params : void
+; @return : $array_result[0] = file path
+;           $array_result[1] = file name
+;====================================================================================
+Func _dialogbox_open()
+   Local $info_fichier = _WinAPI_GetOpenFileName("Open file", "*.*", _ 
+                         @WorkingDir, "", "", 2, _ 
+                         BitOR($OFN_ALLOWMULTISELECT, $OFN_EXPLORER), _
+                         $OFN_EX_NOPLACESBAR)
+                         
+   Local $array_result[2]
+
+   If @error Then
+      $array_result[0] = -1
+      $array_result[1] = -1
+   Else
+      
+      ; $PATHFILE_OF_OPEN_FILE_IN_APP
+      $array_result[0] = $info_fichier[1]&amp;"\"&amp;$info_fichier[2] 
+      
+      ; $NAME_OF_OPEN_FILE_IN_APP
+      $array_result[1] = $info_fichier[2] 
+   EndIf
+
+   Return $array_result
+EndFunc
+</code></pre>
+
+<h2 id="piloter-linterface-graphique">Piloter l’interface graphique</h2>
+
+<h3 id="le-gestionnaire-principal-de-linterface-graphique">Le gestionnaire principal de l’interface graphique</h3>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">./src/GUI.au3</code> est le point d’entrée de tous les gestionnaires de vues qui sont sauvegardés dans le répertoire <code class="language-plaintext highlighter-rouge">./views</code>. Nous l’appellerons gestionnaire principal de l’IHM. Le code de chaque vue est défini à chaque fois dans un fichier spécifique et stocké dans le répertoire ./views.</p>
+
+<p>Le gestionnaire principal de l’IHM contient la méthode <code class="language-plaintext highlighter-rouge">_main_GUI()</code> qui permet de démarrer l’application. Cette méthode n’est appellée que depuis le programme d’entrée principal de l’application, et elle a été conçue pour créer l’interface utilisateur (GUI) et gérer toutes les intéractions utilisateurs et les évenements dans l’application.</p>
+
+<pre><code class="language-autoit">;; ./src/GUI.au3 ;;
+
+#include-once
+
+; Includes all views definition
+#include './views/View_Footer.au3'
+#include './views/View_Welcome.au3'
+#include './views/View_About.au3'
+
+;====================================================================================
+; Main graphic user interface
+;
+; @param void
+; @return void
+;====================================================================================
+Func _main_GUI()
+	Global $main_GUI = GUICreate($APP_NAME, $APP_WIDTH, $APP_HEIGHT, -1, -1)
+
+	_GUI_Init_Menu()
+
+	; By default all elements of this view are visible
+	_GUI_Init_Footer()
+
+	; By default all elements of below views are hidden
+	_GUI_Init_View_Welcome()
+	_GUI_Init_View_About()
+	_GUI_Init_View_Settings()
+
+	; Set configuration application : icon, background color
+	_GUI_Configuration()
+
+	; Show Welcome view on startup
+	_GUI_ShowHide_View_Welcome($GUI_SHOW)
+	GUISetState(@SW_SHOW)
+
+	; Handle all user interactions and events
+	_GUI_HandleEvents()
+
+	GUIDelete()
+	Exit
+EndFunc
+
+(...)
+</code></pre>
+
+<p>Quelques commentaires:</p>
+
+<ul>
+  <li>Toutes les variables majuscules (<code class="language-plaintext highlighter-rouge">$ APP_NAME</code>,<code class="language-plaintext highlighter-rouge"> $ APP_WIDTH</code>, <code class="language-plaintext highlighter-rouge">$ APP_HEIGHT</code>) sont déclarées dans la portée globale de l’application. Leur définition se fait dans le fichier <code class="language-plaintext highlighter-rouge">myApplication_GLOBAL.au3</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_Init_Menu()</code> est utilisé pour créer un contrôle de menu dans l’interface graphique principale;</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_Init_Footer()</code> est utilisé pour créer des éléments de pied de page dans l’interface graphique principale. Sa définition est faite dans un fichier spécial séparé. Tous les éléments de pied de page sont visibles dans toutes les vues par défaut, nous n’avons donc pas besoin de gérer sa visibilité.</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_Init_View_Welcome()</code> est utilisé pour créer des éléments GUI pour un nom de vue “Welcome”. Tous les éléments déclarés dans cette méthode sont masqués par défaut. Pour afficher la vue “Welcome”, c’est-à-dire pour la rendre visible, appelez simplement la méthode avec ce paramètre <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Welcome($ GUI_SHOW)</code>. Et pour les cacher, appelez simplement <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Welcome($ GUI_HIDE)</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_HandleEvents()</code> gère toutes les interactions et les événements utilisateur en analysant le message de retour avec la méthode <code class="language-plaintext highlighter-rouge">GUIGetMsg()</code>. Le retour d’événement avec la méthode GUIGetMsg est l’ID de contrôle du contrôle qui envoie le message. Cette méthode appelle un autre événement de gestionnaire spécifique par vue, par exemple <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents_View_Welcome($msg)</code>;</li>
+</ul>
+
+<h3 id="déclarez-le-code-de-toutes-les-vues-dans-des-fichiers-spécifiquement-dédiés">Déclarez le code de toutes les vues dans des fichiers spécifiquement dédiés</h3>
+
+<p>Chaque vue est gérée dans un fichier spécifique.</p>
+
+<p>Par exemple pour la gestion de la création des éléments graphique de la vue “Welcome”, on utilise la méthode <code class="language-plaintext highlighter-rouge">_GUI_Init_View_Welcome()</code>.</p>
+
+<pre><code class="language-autoit">;; ./view/View_Welcome.au3 ;;
+
+Func _GUI_Init_View_Welcome()
+   ; Create GUI elements here for "Welcome view" in global scope
+   Global $label_title_View_Welcome = GUICtrlCreateLabel("Welcome", 20, 30, 400)
+EndFunc
+</code></pre>
+
+<p>Pour la gestion de l’affichage des éléments de la vue “Welcome”, on utilise la méthode <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Welcome($action)</code></p>
+
+<pre><code class="language-autoit">;; ./view/View_Welcome.au3 ;;
+
+Func _GUI_ShowHide_View_Welcome($action)
+   Switch $action
+      Case $GUI_SHOW
+         ; Define here all elements to show when user come into this view
+         _GUI_Hide_all_view() ; Hide all elements defined in all method _GUI_ShowHide_View_xxx
+         GUICtrlSetState($label_title_View_Welcome, $GUI_SHOW)
+         GUICtrlSetState($label_welcome, $GUI_SHOW)
+
+      Case $GUI_HIDE
+         ; Define here all elements to hide when user leave this view
+         GUICtrlSetState($label_title_View_Welcome, $GUI_HIDE)
+         GUICtrlSetState($label_welcome, $GUI_HIDE)
+    EndSwitch
+EndFunc
+</code></pre>
+
+<p>Et pour la gestion des événements dans la vue “Welcome”, on utilise la méthode <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents_View_Welcome($msg)</code>. Cette méthode est appelée dans la méthode du gestionnaire principal <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents()</code>.</p>
+
+<pre><code class="language-autoit">;; ./view/View_Welcome.au3 ;;
+
+Func _GUI_HandleEvents_View_Welcome($msg)
+   Switch $msg
+
+      ; Trigger for click on $image_banner
+      Case $label_welcome
+         ConsoleWrite('Click on "$label_welcome"' &amp; @CRLF)
+
+      ; Add another trigger in view 'Welcome' here
+   EndSwitch
+EndFunc
+</code></pre>
+
+<h3 id="gestionnaire-principal-des-événements">Gestionnaire principal des événements</h3>
+
+<p>Le gestionnaire principal des événements utilisateurs et dans l’application se nomme <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents()</code>. C’est ce dernier qui va appeler tous les autres gestionnaires d’événement spécifique à chaque vue. Ils sont nommés par convention <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents_View_Xxx($msg)</code>.</p>
+
+<pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
+
+Func _GUI_HandleEvents()
+   Local $msg
+   While 1
+    ; event return with GUIGetMsg method, i.e. the control ID of the control sending the message
+    $msg = GUIGetMsg()
+      Switch $msg
+         ; Trigger on close dialog box
+         Case $GUI_EVENT_CLOSE
+            ExitLoop
+
+         ; Trigger on click on item menu 'File &gt; Exit'
+         Case $menuitem_Exit
+            ExitLoop
+      EndSwitch
+
+      _GUI_HandleEvents_View_Welcome($msg)
+      _GUI_HandleEvents_View_About($msg)
+      _GUI_HandleEvents_Menu_File($msg)
+      _GUI_HandleEvents_Menu_About($msg)
+   WEnd
+EndFunc
+</code></pre>
+
+<h3 id="comment-naviguer-dans-lapplication-et-changer-de-vue-">Comment naviguer dans l’application et changer de vue ?</h3>
+
+<p>Pour passer d’une vue de départ à une autre vue d’arrivée, il suffit d’abord de masquer tous les éléments graphiques, puis dans un second temps d’afficher uniquement ceux de la vue d’arrivée. Alors, comment cacher tous les éléments graphiques? Juste avec une méthode <code class="language-plaintext highlighter-rouge">_GUI_Hide_all_view()</code> qui va appeller le gestionnaire de visibilité de chaque vue. Ces derniers sont nommés par convention <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Xxx</code>.</p>
+
+<pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
+
+Func _GUI_Hide_all_view()
+   _GUI_ShowHide_View_Welcome($GUI_HIDE)
+   _GUI_ShowHide_View_About($GUI_HIDE)
+EndFunc
+</code></pre>
+
+<p>Par exemple pour passer de la vue <code class="language-plaintext highlighter-rouge">Welcome</code> à la vue <code class="language-plaintext highlighter-rouge">About</code>. On commence par cacher tous les éléments graphqiues de la vue <code class="language-plaintext highlighter-rouge">Welcome</code>. Les éléments graphiques du footer sont eux toujours visibles. Et ensuite on affiche les éléments graphiques de la vue <code class="language-plaintext highlighter-rouge">About</code>.</p>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-gui-example.gif" alt="AGS GUI example" class="img-full img-fancybox" /></p>
+
+<h3 id="code-source--gui-view-welcome-handler">Code source : GUI View Welcome handler</h3>
+
+<pre><code class="language-autoit">#cs ----------------------------------------------------------------------------
+GUI View Welcome handler
+AutoIt Version : 3.3.14.5
+Author         : v20100v &lt;7567933+v20100v@users.noreply.github.com&gt;
+Package        : autoit-gui-skeleton
+Version        : 1.0
+#ce ----------------------------------------------------------------------------
+
+
+#include-once
+
+
+;====================================================================================
+; Create element for the 'Welcome' view
+;
+; @param void
+; @return void
+;====================================================================================
+Func _GUI_Init_View_Welcome()
+	; GUI elements have to register in global scope
+	GUISetFont(20, 800, 0, "Arial Narrow")
+	Global $label_title_View_Welcome = GUICtrlCreateLabel("Welcome", 20, 30, 400)
+	GUICtrlSetColor($label_title_View_Welcome, $APP_GUI_TITLE_COLOR)
+	GUICtrlSetBkColor($label_title_View_Welcome, $GUI_BKCOLOR_TRANSPARENT)
+
+	GUISetFont(10, 400, 0, "Segoe UI")
+	Global $label_welcome = GUICtrlCreateLabel( _
+			"On startup " &amp; $APP_NAME &amp; ", we show this Welcome view. " &amp; _
+			"We add an event click on this label in order to show how to define " &amp; @CRLF &amp; _
+			"a trigger on a view." _
+			, 20, 80)
+	GUICtrlSetCursor($label_welcome, 0)
+EndFunc
+
+
+;====================================================================================
+; Handler for display element on 'Welcome' view
+;
+; @param {int} $action, use GUIConstantsEx $GUI_SHOW or $GUI_HIDE
+; @return void
+;====================================================================================
+Func _GUI_ShowHide_View_Welcome($action)
+	Switch $action
+		Case $GUI_SHOW
+			; Define here all elements to show when user come into this view
+			_GUI_Hide_all_view()
+			GUICtrlSetState($label_title_View_Welcome, $GUI_SHOW)
+			GUICtrlSetState($label_welcome, $GUI_SHOW)
+
+		Case $GUI_HIDE
+			; Define here all elements to hide when user leave this view
+			GUICtrlSetState($label_title_View_Welcome, $GUI_HIDE)
+			GUICtrlSetState($label_welcome, $GUI_HIDE)
+	EndSwitch
+EndFunc
+
+
+;====================================================================================
+; Handler for events in 'Welcome' view
+;
+; @param $msg, the control ID of the control sending the message
+; @return @void
+;====================================================================================
+Func _GUI_HandleEvents_View_Welcome($msg)
+	Switch $msg
+
+		; Trigger for click on $image_banner
+		Case $label_welcome
+			ConsoleWrite('Click on "$label_welcome"' &amp; @CRLF)
+
+			; Add another trigger in view 'Welcome' here
+	EndSwitch
+EndFunc
+</code></pre>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continuer la lecture ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started">1. Démarrer avec AGS</a><br />
+<a href="https://autoit-gui-skeleton.github.io//fr/documentation/creating-setup-package-autoit-application">3. Création d’installeur Windows pour des applications AutoIt - Windows setup</a></p>
+</blockquote>
+
+:ET

@@ -76,8 +76,8 @@ theme_settings:
 
   # Features
   google_analytics: "UA-119463892-1" # Tracking ID
-  disqus_shortname: https-autoit-gui-skeleton-github-io-en
-  disqus_shortname_fr: https-autoit-gui-skeleton-github-io-fr
+  #disqus_shortname: https-autoit-gui-skeleton-github-io-en
+  #disqus_shortname_fr: https-autoit-gui-skeleton-github-io-fr
   katex: true # Enable if using math markup
   
   special_page:

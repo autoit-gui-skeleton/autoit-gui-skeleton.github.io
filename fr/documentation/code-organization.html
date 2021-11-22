@@ -39,19 +39,21 @@
     <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
 
     <!-- seo tags -->
-    <!-- Begin Jekyll SEO tag v2.4.0 -->
-<meta name="generator" content="Jekyll v3.8.1" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Code organization" />
 <meta property="og:locale" content="fr" />
 <meta name="description" content="AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." />
 <meta property="og:description" content="AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." />
-<link rel="canonical" href="https://autoit-gui-skeleton.github.io//fr/documentation/code-organization" />
-<meta property="og:url" content="https://autoit-gui-skeleton.github.io//fr/documentation/code-organization" />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//documentation/code-organization" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//documentation/code-organization" />
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-16T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Code organization" />
 <script type="application/ld+json">
-{"url":"https://autoit-gui-skeleton.github.io//fr/documentation/code-organization","headline":"Code organization","dateModified":"2018-07-16T00:00:00+02:00","datePublished":"2018-07-16T00:00:00+02:00","description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//fr/documentation/code-organization"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Code organization","dateModified":"2018-07-16T00:00:00+02:00","datePublished":"2018-07-16T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//documentation/code-organization","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//documentation/code-organization"},"description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -179,7 +181,7 @@
 
 <h2 id="code-source-dun-projet-ags">Code source d’un projet AGS</h2>
 
-<p>Tout le code source AutoiT de l’application est stocké dans le repertoire <code class="highlighter-rouge">./src</code>. Dans ce dernier on y trouve des répertoires et fichiers spécfiques.</p>
+<p>Tout le code source AutoiT de l’application est stocké dans le repertoire <code class="language-plaintext highlighter-rouge">./src</code>. Dans ce dernier on y trouve des répertoires et fichiers spécfiques.</p>
 
 <pre>
 <code class="language-markup">Project root folder
@@ -213,7 +215,7 @@
 
 <ul>
   <li>les bibliothèques AutoIt;</li>
-  <li>les bibliothèques tierces (<em>third-party code</em>) stockés dans le répertoire <code class="highlighter-rouge">./vendor</code>;</li>
+  <li>les bibliothèques tierces (<em>third-party code</em>) stockés dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor</code>;</li>
   <li>la déclaration des constantes et des variables globales de l’application ;</li>
   <li>le gestionnaire des services de l’application ;</li>
   <li>le gestionnaire de l’interface utilisateur ;</li>
@@ -294,40 +296,40 @@
 _main_GUI()
 </code></pre>
 
-<p>L’application démarre par l’appel de la méthode <code class="highlighter-rouge">_main_GUI()</code> du gestionnaire principal de l’IHM.</p>
+<p>L’application démarre par l’appel de la méthode <code class="language-plaintext highlighter-rouge">_main_GUI()</code> du gestionnaire principal de l’IHM.</p>
 
 <h2 id="centralisez-la-déclaration-des-variables-globales">Centralisez la déclaration des variables globales</h2>
 
-<p>Toutes les constantes et les variables globales sont définies à un seul endroit dans le fichier <code class="highlighter-rouge">./src/GLOBALS.au3</code>, afin de centraliser la déclaration de toutes les variables à portée globale. À l’exception de toutes les variables globales des éléments graphiques, qui eux, sont définies dans chaque fichier de vue spécifique. On rappelle que les constantes ne peuvent plus changer de valeur dans le temps, contrairement aux variables globales. Si une variable globale change de valeur, il n’est pas possible de persister son résutlat, a moins de le faire dans le fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code></p>
+<p>Toutes les constantes et les variables globales sont définies à un seul endroit dans le fichier <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>, afin de centraliser la déclaration de toutes les variables à portée globale. À l’exception de toutes les variables globales des éléments graphiques, qui eux, sont définies dans chaque fichier de vue spécifique. On rappelle que les constantes ne peuvent plus changer de valeur dans le temps, contrairement aux variables globales. Si une variable globale change de valeur, il n’est pas possible de persister son résutlat, a moins de le faire dans le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code></p>
 
 <p>Par convention, toutes les variables globales doivent être écrites en majuscule et séparées par un trait de soulignement.</p>
 
 <p>Les constantes communes des projets AGS sont:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">$APP_FOLDER_ROOT</code>     : Alias pour accèder au répertoire racine du projet.</li>
-  <li><code class="highlighter-rouge">$APP_FOLDER_ASSETS</code>   : Alias pour accèder au répertoire des assets du projet.</li>
-  <li><code class="highlighter-rouge">$APP_PARAMETERS_INI</code>  : Alias pour accèder au fichier des paramètres de l’application. Les paramètres peuvent persisté les changements de valeurs depuis des interactions utilisateurs ou evenement. Remarquons qu’au chargement, c’est ici qu’AGS vérifie que le fichier de configuration <code class="highlighter-rouge">./config/parameters.ini</code> existe bien.</li>
-  <li><code class="highlighter-rouge">$APP_NAME</code>            :  Le nom de l’application.</li>
-  <li><code class="highlighter-rouge">$APP_VERSION</code>         :  Le numéro de version de l’application en respect du semantic versionning.</li>
-  <li><code class="highlighter-rouge">$APP_WEBSITE</code>         : Le site de promotion/documentation associé à l’application.</li>
-  <li><code class="highlighter-rouge">$APP_EMAIL_CONTACT</code>   : L’email de contact pour l’application.</li>
-  <li><code class="highlighter-rouge">$APP_ID</code>              : Identifiant constitué du propritaire et du nom du projet. Ne doit pas contenir de caractère speciaux. ([a-z;1-9])</li>
-  <li><code class="highlighter-rouge">$APP_LIFE_PERIOD</code>     : Renseigne depuis quand l’application existe.</li>
-  <li><code class="highlighter-rouge">$APP_COPYRIGHT</code>       : Le copyright de l’application.</li>
-  <li><code class="highlighter-rouge">$APP_WIDTH</code>           : Définit la largeur de la fenetre principal de l’application</li>
-  <li><code class="highlighter-rouge">$APP_HEIGHT</code>          : Définit la hauteur de la fenetre principal de l’application</li>
-  <li><code class="highlighter-rouge">$APP_GUI_TITLE_COLOR</code> : Définit la couleur des titres de l’application</li>
-  <li><code class="highlighter-rouge">$APP_GUI_LINK_COLOR</code>  : Définit la couleur des liens de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_FOLDER_ROOT</code>     : Alias pour accèder au répertoire racine du projet.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_FOLDER_ASSETS</code>   : Alias pour accèder au répertoire des assets du projet.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_PARAMETERS_INI</code>  : Alias pour accèder au fichier des paramètres de l’application. Les paramètres peuvent persisté les changements de valeurs depuis des interactions utilisateurs ou evenement. Remarquons qu’au chargement, c’est ici qu’AGS vérifie que le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code> existe bien.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_NAME</code>            :  Le nom de l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_VERSION</code>         :  Le numéro de version de l’application en respect du semantic versionning.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_WEBSITE</code>         : Le site de promotion/documentation associé à l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_EMAIL_CONTACT</code>   : L’email de contact pour l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_ID</code>              : Identifiant constitué du propritaire et du nom du projet. Ne doit pas contenir de caractère speciaux. ([a-z;1-9])</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_LIFE_PERIOD</code>     : Renseigne depuis quand l’application existe.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_COPYRIGHT</code>       : Le copyright de l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_WIDTH</code>           : Définit la largeur de la fenetre principal de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_HEIGHT</code>          : Définit la hauteur de la fenetre principal de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GUI_TITLE_COLOR</code> : Définit la couleur des titres de l’application</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GUI_LINK_COLOR</code>  : Définit la couleur des liens de l’application</li>
 </ul>
 
 <p>On trouve également des variables globales propres à des composants AGS qui permettent de contrôler leur fonctionnement. Quelques exemples de variables globales propres à des composants AGS:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> : Définit l’URL du fichier RELEASES.json utiliser pour vérifier les mises à jours de l’application.</li>
-  <li><code class="highlighter-rouge">$APP_GAMP_TRACKING_ID</code> : Configure Google Analytics tracking id</li>
-  <li><code class="highlighter-rouge">$APP_GAMP_ENABLE</code> : Pour activer/désactiver le tracking via Google Analytics Mesurement Protocol</li>
-  <li><code class="highlighter-rouge">$APP_GAMP_DEBUG</code> : Pour activer/désactiver le debug en sortie console du composant</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> : Définit l’URL du fichier RELEASES.json utiliser pour vérifier les mises à jours de l’application.</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GAMP_TRACKING_ID</code> : Configure Google Analytics tracking id</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GAMP_ENABLE</code> : Pour activer/désactiver le tracking via Google Analytics Mesurement Protocol</li>
+  <li><code class="language-plaintext highlighter-rouge">$APP_GAMP_DEBUG</code> : Pour activer/désactiver le debug en sortie console du composant</li>
 </ul>
 
 <p>Et enfin une section propre à des variables globales dites “custom”.</p>
@@ -389,9 +391,9 @@ Global $OPEN_FILE_NAME = -1
 
 <h2 id="le-gestionnaire-principal-des-services">Le gestionnaire principal des services</h2>
 
-<p>Le fichier <code class="highlighter-rouge">./src/SERVICES.au3</code> est le point d’entrée de tous les services qui sont sauvegardés dans le répertoire <code class="highlighter-rouge">./services</code>. Dans ce fichier on trouve simplement les instructions pour inclure les services. Et chaque service est definit dans un fichier spécifique, avec un périmètre de responsabilité unique, ce qui en simplifie la lecture et la maintenance.</p>
+<p>Le fichier <code class="language-plaintext highlighter-rouge">./src/SERVICES.au3</code> est le point d’entrée de tous les services qui sont sauvegardés dans le répertoire <code class="language-plaintext highlighter-rouge">./services</code>. Dans ce fichier on trouve simplement les instructions pour inclure les services. Et chaque service est definit dans un fichier spécifique, avec un périmètre de responsabilité unique, ce qui en simplifie la lecture et la maintenance.</p>
 
-<p>Dans le cas de services qui deviennent recurent entre différentes applications, il est alors conseillé de le packager avec le gestionnaire de dépendances AutoIt dans AGS. Cela évite de devoir mettre à jour manuellement le service consommé par différentes applications. Avec le gestionnaire de dépendances, la simple instruction <code class="highlighter-rouge">yarn update</code> à la racine du projet suffit pour mettre à jour toutes les dependances.</p>
+<p>Dans le cas de services qui deviennent recurent entre différentes applications, il est alors conseillé de le packager avec le gestionnaire de dépendances AutoIt dans AGS. Cela évite de devoir mettre à jour manuellement le service consommé par différentes applications. Avec le gestionnaire de dépendances, la simple instruction <code class="language-plaintext highlighter-rouge">yarn update</code> à la racine du projet suffit pour mettre à jour toutes les dependances.</p>
 
 <pre><code class="language-autoit">;; ./src/SERVICES.au3
 #include-once
@@ -401,7 +403,7 @@ Global $OPEN_FILE_NAME = -1
 #include './services/ParametersIni.au3'
 </code></pre>
 
-<p>Par exemple dans AGS, nous avons le service <code class="highlighter-rouge">ParametersIni.au3</code> qui fournit une méthode pour interargir avec le fichier de configuration de l’application <code class="highlighter-rouge">./config/parameters.ini</code>. Il permet de sauvegarder les changements choisis par un utilisateur depuis l’interface graphique.</p>
+<p>Par exemple dans AGS, nous avons le service <code class="language-plaintext highlighter-rouge">ParametersIni.au3</code> qui fournit une méthode pour interargir avec le fichier de configuration de l’application <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Il permet de sauvegarder les changements choisis par un utilisateur depuis l’interface graphique.</p>
 
 <pre><code class="language-autoit">;; ./src/services/ParametersIni.au3
 
@@ -429,7 +431,7 @@ Func _save_parameters_ini()
 EndFunc
 </code></pre>
 
-<p>Ou encore un autre exemple avec le service <code class="highlighter-rouge">./src/services/Dialogbox.au3</code> pour la gestion de boite de dialogue dans l’application.</p>
+<p>Ou encore un autre exemple avec le service <code class="language-plaintext highlighter-rouge">./src/services/Dialogbox.au3</code> pour la gestion de boite de dialogue dans l’application.</p>
 
 <pre><code class="language-autoit">;; ./src/services/Dialogbox.au3 ;;
 
@@ -468,9 +470,9 @@ EndFunc
 
 <h3 id="le-gestionnaire-principal-de-linterface-graphique">Le gestionnaire principal de l’interface graphique</h3>
 
-<p>Le fichier <code class="highlighter-rouge">./src/GUI.au3</code> est le point d’entrée de tous les gestionnaires de vues qui sont sauvegardés dans le répertoire <code class="highlighter-rouge">./views</code>. Nous l’appellerons gestionnaire principal de l’IHM. Le code de chaque vue est défini à chaque fois dans un fichier spécifique et stocké dans le répertoire ./views.</p>
+<p>Le fichier <code class="language-plaintext highlighter-rouge">./src/GUI.au3</code> est le point d’entrée de tous les gestionnaires de vues qui sont sauvegardés dans le répertoire <code class="language-plaintext highlighter-rouge">./views</code>. Nous l’appellerons gestionnaire principal de l’IHM. Le code de chaque vue est défini à chaque fois dans un fichier spécifique et stocké dans le répertoire ./views.</p>
 
-<p>Le gestionnaire principal de l’IHM contient la méthode <code class="highlighter-rouge">_main_GUI()</code> qui permet de démarrer l’application. Cette méthode n’est appellée que depuis le programme d’entrée principal de l’application, et elle a été conçue pour créer l’interface utilisateur (GUI) et gérer toutes les intéractions utilisateurs et les évenements dans l’application.</p>
+<p>Le gestionnaire principal de l’IHM contient la méthode <code class="language-plaintext highlighter-rouge">_main_GUI()</code> qui permet de démarrer l’application. Cette méthode n’est appellée que depuis le programme d’entrée principal de l’application, et elle a été conçue pour créer l’interface utilisateur (GUI) et gérer toutes les intéractions utilisateurs et les évenements dans l’application.</p>
 
 <pre><code class="language-autoit">;; ./src/GUI.au3 ;;
 
@@ -520,18 +522,18 @@ EndFunc
 <p>Quelques commentaires:</p>
 
 <ul>
-  <li>Toutes les variables majuscules (<code class="highlighter-rouge">$ APP_NAME</code>,<code class="highlighter-rouge"> $ APP_WIDTH</code>, <code class="highlighter-rouge">$ APP_HEIGHT</code>) sont déclarées dans la portée globale de l’application. Leur définition se fait dans le fichier <code class="highlighter-rouge">myApplication_GLOBAL.au3</code>;</li>
-  <li><code class="highlighter-rouge">_GUI_Init_Menu()</code> est utilisé pour créer un contrôle de menu dans l’interface graphique principale;</li>
-  <li><code class="highlighter-rouge">_GUI_Init_Footer()</code> est utilisé pour créer des éléments de pied de page dans l’interface graphique principale. Sa définition est faite dans un fichier spécial séparé. Tous les éléments de pied de page sont visibles dans toutes les vues par défaut, nous n’avons donc pas besoin de gérer sa visibilité.</li>
-  <li><code class="highlighter-rouge">_GUI_Init_View_Welcome()</code> est utilisé pour créer des éléments GUI pour un nom de vue “Welcome”. Tous les éléments déclarés dans cette méthode sont masqués par défaut. Pour afficher la vue “Welcome”, c’est-à-dire pour la rendre visible, appelez simplement la méthode avec ce paramètre <code class="highlighter-rouge">_GUI_ShowHide_View_Welcome($ GUI_SHOW)</code>. Et pour les cacher, appelez simplement <code class="highlighter-rouge">_GUI_ShowHide_View_Welcome($ GUI_HIDE)</code>;</li>
-  <li><code class="highlighter-rouge">_GUI_HandleEvents()</code> gère toutes les interactions et les événements utilisateur en analysant le message de retour avec la méthode <code class="highlighter-rouge">GUIGetMsg()</code>. Le retour d’événement avec la méthode GUIGetMsg est l’ID de contrôle du contrôle qui envoie le message. Cette méthode appelle un autre événement de gestionnaire spécifique par vue, par exemple <code class="highlighter-rouge">_GUI_HandleEvents_View_Welcome($msg)</code>;</li>
+  <li>Toutes les variables majuscules (<code class="language-plaintext highlighter-rouge">$ APP_NAME</code>,<code class="language-plaintext highlighter-rouge"> $ APP_WIDTH</code>, <code class="language-plaintext highlighter-rouge">$ APP_HEIGHT</code>) sont déclarées dans la portée globale de l’application. Leur définition se fait dans le fichier <code class="language-plaintext highlighter-rouge">myApplication_GLOBAL.au3</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_Init_Menu()</code> est utilisé pour créer un contrôle de menu dans l’interface graphique principale;</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_Init_Footer()</code> est utilisé pour créer des éléments de pied de page dans l’interface graphique principale. Sa définition est faite dans un fichier spécial séparé. Tous les éléments de pied de page sont visibles dans toutes les vues par défaut, nous n’avons donc pas besoin de gérer sa visibilité.</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_Init_View_Welcome()</code> est utilisé pour créer des éléments GUI pour un nom de vue “Welcome”. Tous les éléments déclarés dans cette méthode sont masqués par défaut. Pour afficher la vue “Welcome”, c’est-à-dire pour la rendre visible, appelez simplement la méthode avec ce paramètre <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Welcome($ GUI_SHOW)</code>. Et pour les cacher, appelez simplement <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Welcome($ GUI_HIDE)</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">_GUI_HandleEvents()</code> gère toutes les interactions et les événements utilisateur en analysant le message de retour avec la méthode <code class="language-plaintext highlighter-rouge">GUIGetMsg()</code>. Le retour d’événement avec la méthode GUIGetMsg est l’ID de contrôle du contrôle qui envoie le message. Cette méthode appelle un autre événement de gestionnaire spécifique par vue, par exemple <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents_View_Welcome($msg)</code>;</li>
 </ul>
 
 <h3 id="déclarez-le-code-de-toutes-les-vues-dans-des-fichiers-spécifiquement-dédiés">Déclarez le code de toutes les vues dans des fichiers spécifiquement dédiés</h3>
 
 <p>Chaque vue est gérée dans un fichier spécifique.</p>
 
-<p>Par exemple pour la gestion de la création des éléments graphique de la vue “Welcome”, on utilise la méthode <code class="highlighter-rouge">_GUI_Init_View_Welcome()</code>.</p>
+<p>Par exemple pour la gestion de la création des éléments graphique de la vue “Welcome”, on utilise la méthode <code class="language-plaintext highlighter-rouge">_GUI_Init_View_Welcome()</code>.</p>
 
 <pre><code class="language-autoit">;; ./view/View_Welcome.au3 ;;
 
@@ -541,7 +543,7 @@ Func _GUI_Init_View_Welcome()
 EndFunc
 </code></pre>
 
-<p>Pour la gestion de l’affichage des éléments de la vue “Welcome”, on utilise la méthode <code class="highlighter-rouge">_GUI_ShowHide_View_Welcome($action)</code></p>
+<p>Pour la gestion de l’affichage des éléments de la vue “Welcome”, on utilise la méthode <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Welcome($action)</code></p>
 
 <pre><code class="language-autoit">;; ./view/View_Welcome.au3 ;;
 
@@ -561,7 +563,7 @@ Func _GUI_ShowHide_View_Welcome($action)
 EndFunc
 </code></pre>
 
-<p>Et pour la gestion des événements dans la vue “Welcome”, on utilise la méthode <code class="highlighter-rouge">_GUI_HandleEvents_View_Welcome($msg)</code>. Cette méthode est appelée dans la méthode du gestionnaire principal <code class="highlighter-rouge">_GUI_HandleEvents()</code>.</p>
+<p>Et pour la gestion des événements dans la vue “Welcome”, on utilise la méthode <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents_View_Welcome($msg)</code>. Cette méthode est appelée dans la méthode du gestionnaire principal <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents()</code>.</p>
 
 <pre><code class="language-autoit">;; ./view/View_Welcome.au3 ;;
 
@@ -579,7 +581,7 @@ EndFunc
 
 <h3 id="gestionnaire-principal-des-événements">Gestionnaire principal des événements</h3>
 
-<p>Le gestionnaire principal des événements utilisateurs et dans l’application se nomme <code class="highlighter-rouge">_GUI_HandleEvents()</code>. C’est ce dernier qui va appeler tous les autres gestionnaires d’événement spécifique à chaque vue. Ils sont nommés par convention <code class="highlighter-rouge">_GUI_HandleEvents_View_Xxx($msg)</code>.</p>
+<p>Le gestionnaire principal des événements utilisateurs et dans l’application se nomme <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents()</code>. C’est ce dernier qui va appeler tous les autres gestionnaires d’événement spécifique à chaque vue. Ils sont nommés par convention <code class="language-plaintext highlighter-rouge">_GUI_HandleEvents_View_Xxx($msg)</code>.</p>
 
 <pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
 
@@ -608,7 +610,7 @@ EndFunc
 
 <h3 id="comment-naviguer-dans-lapplication-et-changer-de-vue-">Comment naviguer dans l’application et changer de vue ?</h3>
 
-<p>Pour passer d’une vue de départ à une autre vue d’arrivée, il suffit d’abord de masquer tous les éléments graphiques, puis dans un second temps d’afficher uniquement ceux de la vue d’arrivée. Alors, comment cacher tous les éléments graphiques? Juste avec une méthode <code class="highlighter-rouge">_GUI_Hide_all_view()</code> qui va appeller le gestionnaire de visibilité de chaque vue. Ces derniers sont nommés par convention <code class="highlighter-rouge">_GUI_ShowHide_View_Xxx</code>.</p>
+<p>Pour passer d’une vue de départ à une autre vue d’arrivée, il suffit d’abord de masquer tous les éléments graphiques, puis dans un second temps d’afficher uniquement ceux de la vue d’arrivée. Alors, comment cacher tous les éléments graphiques? Juste avec une méthode <code class="language-plaintext highlighter-rouge">_GUI_Hide_all_view()</code> qui va appeller le gestionnaire de visibilité de chaque vue. Ces derniers sont nommés par convention <code class="language-plaintext highlighter-rouge">_GUI_ShowHide_View_Xxx</code>.</p>
 
 <pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
 
@@ -618,7 +620,7 @@ Func _GUI_Hide_all_view()
 EndFunc
 </code></pre>
 
-<p>Par exemple pour passer de la vue <code class="highlighter-rouge">Welcome</code> à la vue <code class="highlighter-rouge">About</code>. On commence par cacher tous les éléments graphqiues de la vue <code class="highlighter-rouge">Welcome</code>. Les éléments graphiques du footer sont eux toujours visibles. Et ensuite on affiche les éléments graphiques de la vue <code class="highlighter-rouge">About</code>.</p>
+<p>Par exemple pour passer de la vue <code class="language-plaintext highlighter-rouge">Welcome</code> à la vue <code class="language-plaintext highlighter-rouge">About</code>. On commence par cacher tous les éléments graphqiues de la vue <code class="language-plaintext highlighter-rouge">Welcome</code>. Les éléments graphiques du footer sont eux toujours visibles. Et ensuite on affiche les éléments graphiques de la vue <code class="language-plaintext highlighter-rouge">About</code>.</p>
 
 <p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-gui-example.gif" alt="AGS GUI example" class="img-full img-fancybox" /></p>
 

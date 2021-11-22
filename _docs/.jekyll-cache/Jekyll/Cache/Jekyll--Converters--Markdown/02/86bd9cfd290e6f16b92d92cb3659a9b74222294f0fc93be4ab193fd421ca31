@@ -1,0 +1,24 @@
+I"�<blockquote>
+  <p>Le site de documentation d’AGS est déployé sur Github Pages avec Jekyll. Merci pour ce mariage heureux.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="cest-quoi-github-pages">C’est quoi GitHub Pages?</h1>
+
+<p>GitHub Pages est un service d’hebergement de site statique à destination d’une organisation, d’une personne ou pour un projet directement depuis un dépôt GitHub.</p>
+
+<p>Plus d’informations ici : <a href="https://help.github.com/articles/what-is-github-pages/">Github Pages</a>.</p>
+
+<h1 id="cest-quoi-jekyll-">C’est quoi Jekyll ?</h1>
+
+<p>Jekyll est un simple geneateur de site statique, type blod, adapté pour des sites personnels, projet ou d’une organisation.</p>
+
+<p>Plus d’inforamtion ici : <a href="https://jekyllrb.com/">Jekyll</a>.</p>
+
+<h1 id="github-pages-avec-jekyll">Github Pages avec Jekyll</h1>
+
+<p>Pour ce site, on utilise Jekyll comme generateur de site en lien avec Github Pages. En effet en plus de supporter les contenus HTML, Github Pages fonctionne également avec Jekyll.</p>
+
+<p>Plus d’information ici : <a href="https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/">Jekyll support on Github Pages</a>.</p>
+:ET

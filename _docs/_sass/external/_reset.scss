@@ -1,7 +1,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
- * 1. Set default font family to sans-serif.
+ * 1. Set defaultOLD font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
@@ -13,7 +13,7 @@ html {
 }
 
 /**
- * Remove default margin.
+ * Remove defaultOLD margin.
  */
 
 body {
@@ -238,7 +238,7 @@ samp {
    ========================================================================== */
 
 /**
- * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * Known limitation: by defaultOLD, Chrome and Safari on OS X allow very limited
  * styling of `select`, unless a `border` property is set.
  */
 
@@ -296,7 +296,7 @@ input[type="submit"] {
 }
 
 /**
- * Re-set default cursor for disabled elements.
+ * Re-set defaultOLD cursor for disabled elements.
  */
 
 button[disabled],
@@ -340,7 +340,7 @@ input[type="radio"] {
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
  * `font-size` values of the `input`, it causes the cursor style of the
- * decrement button to change from `default` to `text`.
+ * decrement button to change from `defaultOLD` to `text`.
  */
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -393,7 +393,7 @@ legend {
 }
 
 /**
- * Remove default vertical scrollbar in IE 8/9/10/11.
+ * Remove defaultOLD vertical scrollbar in IE 8/9/10/11.
  */
 
 textarea {
@@ -402,7 +402,7 @@ textarea {
 
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
- * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ * NOTE: the defaultOLD cannot safely be changed in Chrome and Safari on OS X.
  */
 
 optgroup {

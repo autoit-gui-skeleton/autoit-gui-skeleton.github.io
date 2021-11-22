@@ -39,8 +39,8 @@
     <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
 
     <!-- seo tags -->
-    <!-- Begin Jekyll SEO tag v2.4.0 -->
-<meta name="generator" content="Jekyll v3.8.1" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Creating installation packages for AutoIt applications - Windows setup" />
 <meta property="og:locale" content="en" />
 <meta name="description" content="AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." />
@@ -50,8 +50,10 @@
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-17T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Creating installation packages for AutoIt applications - Windows setup" />
 <script type="application/ld+json">
-{"url":"https://autoit-gui-skeleton.github.io//documentation/creating-setup-package-autoit-application","headline":"Creating installation packages for AutoIt applications - Windows setup","dateModified":"2018-07-17T00:00:00+02:00","datePublished":"2018-07-17T00:00:00+02:00","description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//documentation/creating-setup-package-autoit-application"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Creating installation packages for AutoIt applications - Windows setup","dateModified":"2018-07-17T00:00:00+02:00","datePublished":"2018-07-17T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//documentation/creating-setup-package-autoit-application","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//documentation/creating-setup-package-autoit-application"},"description":"AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -198,7 +200,7 @@
 
 <h2 id="use-a-windows-batch-to-control-installer-generation">Use a Windows batch to control installer generation</h2>
 
-<p>In AGS we use a Windows batch file, called <code class="highlighter-rouge">AGS-deployment-setup.bat</code>, which plays the role of orquestrian leader. In the <code class="highlighter-rouge">\Deployment</code> directory, it will create the <code class="highlighter-rouge">\releases\vx.y.z\</code> directories where the application zip archive and the Windows installer will be built.</p>
+<p>In AGS we use a Windows batch file, called <code class="language-plaintext highlighter-rouge">AGS-deployment-setup.bat</code>, which plays the role of orquestrian leader. In the <code class="language-plaintext highlighter-rouge">\Deployment</code> directory, it will create the <code class="language-plaintext highlighter-rouge">\releases\vx.y.z\</code> directories where the application zip archive and the Windows installer will be built.</p>
 
 <p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-package-and-deployment-process.gif" alt="AGS GUI package and deployment process" class="img-full img-fancybox" /></p>
 
@@ -219,37 +221,37 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">%VERSION%</code></td>
+      <td><code class="language-plaintext highlighter-rouge">%VERSION%</code></td>
       <td>Version assigned to the application.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">%NAME_PROJECT%</code></td>
+      <td><code class="language-plaintext highlighter-rouge">%NAME_PROJECT%</code></td>
       <td>Used to name the executable of the application. Note that the version number also appears in the executable name.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">%AUT2EXE_AU3%</code></td>
-      <td>The name of the main AutoIt file (<code class="highlighter-rouge">myApplication.au3</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">%AUT2EXE_AU3%</code></td>
+      <td>The name of the main AutoIt file (<code class="language-plaintext highlighter-rouge">myApplication.au3</code>)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">%AUT2EXE_ICON%</code></td>
-      <td>The application icon (<code class="highlighter-rouge">%FOLDER_SRC%\assets\images\myApplication.ico</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">%AUT2EXE_ICON%</code></td>
+      <td>The application icon (<code class="language-plaintext highlighter-rouge">%FOLDER_SRC%\assets\images\myApplication.ico</code>)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">%ZIP_CLI%</code></td>
-      <td>Path of the 7zip binary to create an archive (<code class="highlighter-rouge">"C:\Program Files\7-Zip\7z.exe"</code>). I advise you to install it via the manager Chocolatey.</td>
+      <td><code class="language-plaintext highlighter-rouge">%ZIP_CLI%</code></td>
+      <td>Path of the 7zip binary to create an archive (<code class="language-plaintext highlighter-rouge">"C:\Program Files\7-Zip\7z.exe"</code>). I advise you to install it via the manager Chocolatey.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">%ISCC_CLI%</code></td>
-      <td>InnoSetup compiler binary path (<code class="highlighter-rouge">"C:\Program Files (x86)\Inno Setup 5\ISCC.exe "</code>). I advise you to install it via the manager Chocolatey.</td>
+      <td><code class="language-plaintext highlighter-rouge">%ISCC_CLI%</code></td>
+      <td>InnoSetup compiler binary path (<code class="language-plaintext highlighter-rouge">"C:\Program Files (x86)\Inno Setup 5\ISCC.exe "</code>). I advise you to install it via the manager Chocolatey.</td>
     </tr>
   </tbody>
 </table>
 
-<p>From these variables, it will build the output directory, in which the main AutoIt file will compile: <code class="highlighter-rouge">.\Releases\v1.0.0\myApplication_v1.0.0 \</code>.</p>
+<p>From these variables, it will build the output directory, in which the main AutoIt file will compile: <code class="language-plaintext highlighter-rouge">.\Releases\v1.0.0\myApplication_v1.0.0 \</code>.</p>
 
 <h3 id="step-27-autoit-compilation-of-the-main-program">Step 2/7: AutoIt compilation of the main program</h3>
 
-<p>The main AutoIt program is compiled from the command line with the <code class="highlighter-rouge">aut2exe</code> binary. Warning, it is necessary that this last one is to inform in the variable of environment PATH of the operating system.</p>
+<p>The main AutoIt program is compiled from the command line with the <code class="language-plaintext highlighter-rouge">aut2exe</code> binary. Warning, it is necessary that this last one is to inform in the variable of environment PATH of the operating system.</p>
 
 <pre><code class="language-Batch">:: deployment_autoit_application.bat ::
 
@@ -266,11 +268,11 @@ echo Compilation AutoIt is finished.
 
 <h3 id="step-47-create-a-file-with-metadatas-of-generation">Step 4/7: Create a file with metadatas of generation</h3>
 
-<p>In order to keep the build date, we create a file named <code class="highlighter-rouge">".v%VERSION%"</code> in the output directory. It’s possible to store in this text file any metadats need to describe this generated application.</p>
+<p>In order to keep the build date, we create a file named <code class="language-plaintext highlighter-rouge">".v%VERSION%"</code> in the output directory. It’s possible to store in this text file any metadats need to describe this generated application.</p>
 
 <h3 id="step-57-creating-the-zip-archive">Step 5/7: Creating the zip archive</h3>
 
-<p>Creating the zip archive requires that 7zip is installed on the computer and that the <code class="highlighter-rouge">%ZIP_CLI%</code> variable is correctly filled in to the binary path. The command that generates the archive is as follows:</p>
+<p>Creating the zip archive requires that 7zip is installed on the computer and that the <code class="language-plaintext highlighter-rouge">%ZIP_CLI%</code> variable is correctly filled in to the binary path. The command that generates the archive is as follows:</p>
 
 <pre><code class="language-Batch">set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
 
@@ -280,14 +282,14 @@ echo * The zip has been created.
 
 <h3 id="step-67-creating-the-windows-installer-via-innosetup">Step 6/7: Creating the Windows Installer via InnoSetup</h3>
 
-<p>The script InnoSetup file <code class="highlighter-rouge">.\Deployment\deployment_autoit_application.iss</code> contains all the instructions for generating the associated Windows installer.</p>
+<p>The script InnoSetup file <code class="language-plaintext highlighter-rouge">.\Deployment\deployment_autoit_application.iss</code> contains all the instructions for generating the associated Windows installer.</p>
 
-<p>We pass the arguments defined in the Windows batch to the ISS script via the <code class="highlighter-rouge">/dNameVariable=ValueVariable</code> set on the command line. Thus it is sufficient to configure only once the project variables (name, version …) in the Windows batch file.</p>
+<p>We pass the arguments defined in the Windows batch to the ISS script via the <code class="language-plaintext highlighter-rouge">/dNameVariable=ValueVariable</code> set on the command line. Thus it is sufficient to configure only once the project variables (name, version …) in the Windows batch file.</p>
 
 <blockquote>
   <p>** !!! Warning !!!**</p>
 
-  <p>In the ISS script file, there are other variables to configure: <code class="highlighter-rouge">ApplicationPublisher</code>,<code class="highlighter-rouge"> ApplicationURL</code>, <code class="highlighter-rouge">ApplicationGUID</code>, …</p>
+  <p>In the ISS script file, there are other variables to configure: <code class="language-plaintext highlighter-rouge">ApplicationPublisher</code>,<code class="language-plaintext highlighter-rouge"> ApplicationURL</code>, <code class="language-plaintext highlighter-rouge">ApplicationGUID</code>, …</p>
 </blockquote>
 
 <pre><code class="language-Batch">set ISCC_CLI="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
@@ -308,14 +310,14 @@ echo * Compilation has been finished.
 
 <h2 id="support-internationalization-i18n">Support internationalization (i18n)</h2>
 
-<p>In order to add a new language, just add in the section <code class="highlighter-rouge">[languages]</code> the language provided in the compiler in the InnoSetup script file (ISS). This will translate all native messages to InnoSetup. Watch out for the <code class="highlighter-rouge">YES/NO</code> buttons in MsgBox. It is last serves forcing in the language of the operating Windows system.</p>
+<p>In order to add a new language, just add in the section <code class="language-plaintext highlighter-rouge">[languages]</code> the language provided in the compiler in the InnoSetup script file (ISS). This will translate all native messages to InnoSetup. Watch out for the <code class="language-plaintext highlighter-rouge">YES/NO</code> buttons in MsgBox. It is last serves forcing in the language of the operating Windows system.</p>
 
 <pre><code class="language-Batch">[Languages]
 Name: "en"; MessagesFile: compiler:Default.isl;
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 </code></pre>
 
-<p>In order to translate the other messages, just declare them in the section <code class="highlighter-rouge">[CustomMessages]</code>, prefixing the variables with the language (<code class="highlighter-rouge">en</code>,<code class="highlighter-rouge"> french</code>, <code class="highlighter-rouge">nl</code>, …). More information: http://www.jrsoftware.org/ishelp/index.php?topic=languagessection</p>
+<p>In order to translate the other messages, just declare them in the section <code class="language-plaintext highlighter-rouge">[CustomMessages]</code>, prefixing the variables with the language (<code class="language-plaintext highlighter-rouge">en</code>,<code class="language-plaintext highlighter-rouge"> french</code>, <code class="language-plaintext highlighter-rouge">nl</code>, …). More information: http://www.jrsoftware.org/ishelp/index.php?topic=languagessection</p>
 
 <pre><code class="language-Batch">[CustomMessages]
 french.CheckInstall=est déjà installé sur ce PC.
@@ -343,32 +345,32 @@ en.CheckInstallAction=Do you want to uninstall this existing version before cont
 #define ApplicationID ApplicationName + "_" + ApplicationGUID
 </code></pre>
 
-<p>In addition, the installer adds the <code class="highlighter-rouge">SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1</code> key into the Windows registry. When the application is uninstalled, this key is removed. So we just have to check the presence of this key in the registry to know if the application has already been installed.</p>
+<p>In addition, the installer adds the <code class="language-plaintext highlighter-rouge">SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1</code> key into the Windows registry. When the application is uninstalled, this key is removed. So we just have to check the presence of this key in the registry to know if the application has already been installed.</p>
 
 <p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/innosetup_check_already_install2.png" alt="AGS InnoSetup check already install in Windows registry" class="img-fancybox img-full" /></p>
 
 <h2 id="configure-additional-messages-in-the-setup--license-agreement-prerequisites--history-project">Configure additional messages in the setup : license agreement, prerequisites &amp; history project</h2>
 
-<p>To configure the different messages to be displayed in the installer, including the license agreements, just fill in the text files in the <code class="highlighter-rouge">./assets/</code> directory.</p>
+<p>To configure the different messages to be displayed in the installer, including the license agreements, just fill in the text files in the <code class="language-plaintext highlighter-rouge">./assets/</code> directory.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">AFTER_INSTALL.txt</code>: usually to display the roadmap and project history;</li>
-  <li><code class="highlighter-rouge">BEFORE_INSTALL.txt</code>: usually to display the prerequisites of the application;</li>
-  <li><code class="highlighter-rouge">LICENSE.txt</code>: the license of use.</li>
+  <li><code class="language-plaintext highlighter-rouge">AFTER_INSTALL.txt</code>: usually to display the roadmap and project history;</li>
+  <li><code class="language-plaintext highlighter-rouge">BEFORE_INSTALL.txt</code>: usually to display the prerequisites of the application;</li>
+  <li><code class="language-plaintext highlighter-rouge">LICENSE.txt</code>: the license of use.</li>
 </ul>
 
 <p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/innosetup_choose_license_agreement.png" alt="AGS InnoSetup licence aggrement" /></p>
 
 <h2 id="add-icons-into-windows-start-menu">Add icons into Windows start menu</h2>
 
-<p>To add items to the Windows start menu, enter the <code class="highlighter-rouge">[Icons]</code> section in the InnoSetup script as follows:</p>
+<p>To add items to the Windows start menu, enter the <code class="language-plaintext highlighter-rouge">[Icons]</code> section in the InnoSetup script as follows:</p>
 
-<pre><code class="language-batch">[Icons]
-Name: "{group}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico;
-Name: "{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"; Filename: "{#ApplicationURL}";
-Name: "{group}\{cm:UninstallProgram,{#ApplicationName}}"; Filename: "{uninstallexe}"; IconFilename: {app}\assets\images\setup.ico;
-Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico; IconIndex: 0
-</code></pre>
+<div class="language-batch highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="kd">Icons</span><span class="o">]</span>
+<span class="kd">Name</span>: <span class="s2">"{group}\{#ApplicationName}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{app}\{#ApplicationExeName}"</span><span class="o">;</span> <span class="kd">IconFilename</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\assets\images\myApplication.ico<span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{#ApplicationURL}"</span><span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"{group}\{cm:UninstallProgram,{#ApplicationName}}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{uninstallexe}"</span><span class="o">;</span> <span class="kd">IconFilename</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\assets\images\setup.ico<span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"{commondesktop}\{#ApplicationName}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{app}\{#ApplicationExeName}"</span><span class="o">;</span> <span class="kd">IconFilename</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\assets\images\myApplication.ico<span class="o">;</span> <span class="kd">IconIndex</span>: <span class="m">0</span>
+</code></pre></div></div>
 
 <p>So we have.</p>
 
@@ -384,7 +386,7 @@ Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeNam
 
 <p>We choose a static size for the installer. It’s not the easiest to choose another size.</p>
 
-<p>There are 2 images and 2 icons used in the installer. They are stored in the <code class="highlighter-rouge">.\Assets\images</code> directory. The images are necessarily in the format bmp and must respect standard sizes.</p>
+<p>There are 2 images and 2 icons used in the installer. They are stored in the <code class="language-plaintext highlighter-rouge">.\Assets\images</code> directory. The images are necessarily in the format bmp and must respect standard sizes.</p>
 
 <table>
   <thead>
@@ -597,175 +599,175 @@ echo.
 
 <h2 id="innosetup-script-iss-associated">InnoSetup Script (ISS) associated</h2>
 
-<pre><code class="language-batch">;---------------------------------------------------------------------------------
-;
-;    Copyright © 2018-05, v20100v
-;
-;    @author    v20100v
-;    @contact   7567933+v20100v@users.noreply.github.com
-;    @version   1.0.0
-;
-;---------------------------------------------------------------------------------
+<div class="language-batch highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">;---------------------------------------------------------------------------------</span>
+<span class="o">;</span>
+<span class="o">;</span>    <span class="kd">Copyright</span> © <span class="m">2018</span><span class="o">-</span><span class="m">05</span><span class="o">,</span> <span class="kd">v20100v</span>
+<span class="o">;</span>
+<span class="o">;</span>    @author    <span class="kd">v20100v</span>
+<span class="o">;</span>    @contact   <span class="m">7567933</span><span class="na">+v</span><span class="m">20100</span><span class="kd">v</span>@users.noreply.github.com
+<span class="o">;</span>    @version   <span class="m">1</span>.0.0
+<span class="o">;</span>
+<span class="o">;---------------------------------------------------------------------------------</span>
 
-; ApplicationVersion : the version number is defined by InnoSetupCommandLineCompiler (iscc) with /d&lt;name&gt;[=&lt;value&gt;]	(/dApplicationVersion=0.3.6.5)
-; ApplicationName : the name of applciation is defined by InnoSetupCommandLineCompiler (iscc) with /d&lt;name&gt;[=&lt;value&gt;]	(/dApplicationName=MyApplication)
+<span class="o">;</span> <span class="kd">ApplicationVersion</span> : <span class="kd">the</span> <span class="kd">version</span> <span class="kd">number</span> <span class="kd">is</span> <span class="ow">defined</span> <span class="kd">by</span> <span class="kd">InnoSetupCommandLineCompiler</span> <span class="o">(</span><span class="kd">iscc</span><span class="o">)</span> <span class="kd">with</span> <span class="na">/d</span><span class="o">&lt;</span><span class="kd">name</span><span class="o">&gt;[=&lt;</span><span class="kd">value</span><span class="o">&gt;]</span>	<span class="o">(</span><span class="na">/dApplicationVersion</span><span class="o">=</span><span class="m">0</span>.3.6.5<span class="o">)</span>
+<span class="o">;</span> <span class="kd">ApplicationName</span> : <span class="kd">the</span> <span class="kd">name</span> <span class="kd">of</span> <span class="kd">applciation</span> <span class="kd">is</span> <span class="ow">defined</span> <span class="kd">by</span> <span class="kd">InnoSetupCommandLineCompiler</span> <span class="o">(</span><span class="kd">iscc</span><span class="o">)</span> <span class="kd">with</span> <span class="na">/d</span><span class="o">&lt;</span><span class="kd">name</span><span class="o">&gt;[=&lt;</span><span class="kd">value</span><span class="o">&gt;]</span>	<span class="o">(</span><span class="na">/dApplicationName</span><span class="o">=</span><span class="kd">MyApplication</span><span class="o">)</span>
 
-#define ApplicationPublisher "v20100v"
-#define ApplicationURL "https://github.com/v20100v/autoit-gui-skeleton"
-#define ApplicationExeName ApplicationName+"_v" + ApplicationVersion + ".exe"
-#define ApplicationCopyright "Copyright (C) 2018, A.C.M.E v20100v"
+#define <span class="kd">ApplicationPublisher</span> <span class="s2">"v20100v"</span>
+#define <span class="kd">ApplicationURL</span> <span class="s2">"https://github.com/v20100v/autoit-gui-skeleton"</span>
+#define <span class="kd">ApplicationExeName</span> <span class="kd">ApplicationName</span><span class="o">+</span><span class="s2">"_v"</span> <span class="o">+</span> <span class="kd">ApplicationVersion</span> <span class="o">+</span> <span class="s2">".exe"</span>
+#define <span class="kd">ApplicationCopyright</span> <span class="s2">"Copyright (C) 2018, A.C.M.E v20100v"</span>
 
-; Get the path where the script iss is placed
-#define PathRelease SourcePath + "releases\v" + ApplicationVersion + "\"+ApplicationName+"_v" + ApplicationVersion
-#define PathOutput SourcePath + "releases\v" + ApplicationVersion + "\"
-#define PathAssets SourcePath + "..\assets"
+<span class="o">;</span> <span class="kd">Get</span> <span class="kd">the</span> <span class="nb">path</span> <span class="nb">where</span> <span class="kd">the</span> <span class="kd">script</span> <span class="kd">iss</span> <span class="kd">is</span> <span class="kd">placed</span>
+#define <span class="kd">PathRelease</span> <span class="kd">SourcePath</span> <span class="o">+</span> <span class="s2">"releases\v"</span> <span class="o">+</span> <span class="kd">ApplicationVersion</span> <span class="o">+</span> <span class="s2">"\"</span><span class="na">+ApplicationName</span><span class="o">+</span><span class="s2">"_v"</span> <span class="o">+</span> <span class="kd">ApplicationVersion</span>
+#define <span class="kd">PathOutput</span> <span class="kd">SourcePath</span> <span class="o">+</span> <span class="s2">"releases\v"</span> <span class="o">+</span> <span class="kd">ApplicationVersion</span> <span class="o">+</span> <span class="s2">"\"</span>
+#define <span class="kd">PathAssets</span> <span class="kd">SourcePath</span> <span class="o">+</span> <span class="s2">"..\assets"</span>
 
-; NOTE: The value of AppId uniquely identifies this application.
-; Do not use the same AppId value in installers for other applications.
-; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-#define ApplicationGUID "6886E28B-AAB5-4866-BCD5-E1B4C171A87A"
-#define ApplicationID ApplicationName + "_" + ApplicationGUID
+<span class="o">;</span> <span class="kd">NOTE</span>: <span class="kd">The</span> <span class="kd">value</span> <span class="kd">of</span> <span class="kd">AppId</span> <span class="kd">uniquely</span> <span class="kd">identifies</span> <span class="kd">this</span> <span class="kd">application</span>.
+<span class="o">;</span> <span class="kd">Do</span> <span class="ow">not</span> <span class="kd">use</span> <span class="kd">the</span> <span class="kd">same</span> <span class="kd">AppId</span> <span class="kd">value</span> <span class="k">in</span> <span class="kd">installers</span> <span class="k">for</span> <span class="kd">other</span> <span class="kd">applications</span>.
+<span class="o">;</span> <span class="o">(</span><span class="kd">To</span> <span class="kd">generate</span> <span class="kd">a</span> <span class="kd">new</span> <span class="kd">GUID</span><span class="o">,</span> <span class="kd">click</span> <span class="kd">Tools</span> <span class="o">|</span> <span class="kd">Generate</span> <span class="kd">GUID</span> <span class="kd">inside</span> <span class="kd">the</span> <span class="kd">IDE</span>.<span class="o">)</span>
+#define <span class="kd">ApplicationGUID</span> <span class="s2">"6886E28B-AAB5-4866-BCD5-E1B4C171A87A"</span>
+#define <span class="kd">ApplicationID</span> <span class="kd">ApplicationName</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="kd">ApplicationGUID</span>
 
-[Setup]
-; NOTE: The value of AppId uniquely identifies this application.
-; Do not use the same AppId value in installers for other applications.
-; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={#ApplicationID}
-AppName={#ApplicationName}
-AppVersion={#ApplicationVersion}
-AppPublisher={#ApplicationPublisher}
-AppPublisherURL={#ApplicationURL}
-AppSupportURL={#ApplicationURL}
-AppUpdatesURL={#ApplicationURL}
-AppCopyright={#ApplicationCopyright}
-DefaultDirName={sd}\ACME\{#ApplicationName}
-DefaultGroupName=ACME\{#ApplicationName}
-LicenseFile={#PathAssets}\LICENSE.txt
-InfoBeforeFile={#PathAssets}\BEFORE_INSTALL.txt
-InfoAfterFile={#PathAssets}\AFTER_INSTALL.txt
-OutputDir={#PathOutput}\
-OutputBaseFilename=Setup_{#ApplicationName}_v{#ApplicationVersion}
-Compression=lzma2/fast
-SolidCompression=yes
-AppContact=7567933+v20100v@users.noreply.github.com
-UninstallDisplayIcon={app}\assets\images\myApplication.ico
-WizardImageFile={#PathAssets}\images\innosetup_background.bmp
-WizardImageStretch=no
-WizardSmallImageFile={#PathAssets}\images\innosetup_image.bmp
-SetupIconFile={#PathAssets}\images\setup.ico
-BackColor=$FFFF00
-VersionInfoVersion={#ApplicationVersion}
+<span class="o">[</span><span class="kd">Setup</span><span class="o">]</span>
+<span class="o">;</span> <span class="kd">NOTE</span>: <span class="kd">The</span> <span class="kd">value</span> <span class="kd">of</span> <span class="kd">AppId</span> <span class="kd">uniquely</span> <span class="kd">identifies</span> <span class="kd">this</span> <span class="kd">application</span>.
+<span class="o">;</span> <span class="kd">Do</span> <span class="ow">not</span> <span class="kd">use</span> <span class="kd">the</span> <span class="kd">same</span> <span class="kd">AppId</span> <span class="kd">value</span> <span class="k">in</span> <span class="kd">installers</span> <span class="k">for</span> <span class="kd">other</span> <span class="kd">applications</span>.
+<span class="o">;</span> <span class="o">(</span><span class="kd">To</span> <span class="kd">generate</span> <span class="kd">a</span> <span class="kd">new</span> <span class="kd">GUID</span><span class="o">,</span> <span class="kd">click</span> <span class="kd">Tools</span> <span class="o">|</span> <span class="kd">Generate</span> <span class="kd">GUID</span> <span class="kd">inside</span> <span class="kd">the</span> <span class="kd">IDE</span>.<span class="o">)</span>
+<span class="kd">AppId</span><span class="o">={</span>#ApplicationID<span class="o">}</span>
+<span class="kd">AppName</span><span class="o">={</span>#ApplicationName<span class="o">}</span>
+<span class="kd">AppVersion</span><span class="o">={</span>#ApplicationVersion<span class="o">}</span>
+<span class="kd">AppPublisher</span><span class="o">={</span>#ApplicationPublisher<span class="o">}</span>
+<span class="kd">AppPublisherURL</span><span class="o">={</span>#ApplicationURL<span class="o">}</span>
+<span class="kd">AppSupportURL</span><span class="o">={</span>#ApplicationURL<span class="o">}</span>
+<span class="kd">AppUpdatesURL</span><span class="o">={</span>#ApplicationURL<span class="o">}</span>
+<span class="kd">AppCopyright</span><span class="o">={</span>#ApplicationCopyright<span class="o">}</span>
+<span class="kd">DefaultDirName</span><span class="o">={</span><span class="kd">sd</span><span class="o">}</span>\ACME\<span class="o">{</span>#ApplicationName<span class="o">}</span>
+<span class="kd">DefaultGroupName</span><span class="o">=</span><span class="kd">ACME</span>\<span class="o">{</span>#ApplicationName<span class="o">}</span>
+<span class="kd">LicenseFile</span><span class="o">={</span>#PathAssets<span class="o">}</span>\LICENSE.txt
+<span class="kd">InfoBeforeFile</span><span class="o">={</span>#PathAssets<span class="o">}</span>\BEFORE_INSTALL.txt
+<span class="kd">InfoAfterFile</span><span class="o">={</span>#PathAssets<span class="o">}</span>\AFTER_INSTALL.txt
+<span class="kd">OutputDir</span><span class="o">={</span>#PathOutput<span class="o">}</span>\
+<span class="kd">OutputBaseFilename</span><span class="o">=</span><span class="kd">Setup_</span><span class="o">{</span>#ApplicationName<span class="o">}</span>_v<span class="o">{</span>#ApplicationVersion<span class="o">}</span>
+<span class="kd">Compression</span><span class="o">=</span><span class="kd">lzma2</span><span class="na">/fast
+</span><span class="kd">SolidCompression</span><span class="o">=</span><span class="kd">yes</span>
+<span class="kd">AppContact</span><span class="o">=</span><span class="m">7567933</span><span class="na">+v</span><span class="m">20100</span><span class="kd">v</span>@users.noreply.github.com
+<span class="kd">UninstallDisplayIcon</span><span class="o">={</span><span class="kd">app</span><span class="o">}</span>\assets\images\myApplication.ico
+<span class="kd">WizardImageFile</span><span class="o">={</span>#PathAssets<span class="o">}</span>\images\innosetup_background.bmp
+<span class="kd">WizardImageStretch</span><span class="o">=</span><span class="kd">no</span>
+<span class="kd">WizardSmallImageFile</span><span class="o">={</span>#PathAssets<span class="o">}</span>\images\innosetup_image.bmp
+<span class="kd">SetupIconFile</span><span class="o">={</span>#PathAssets<span class="o">}</span>\images\setup.ico
+<span class="kd">BackColor</span><span class="o">=</span>$FFFF00
+<span class="kd">VersionInfoVersion</span><span class="o">={</span>#ApplicationVersion<span class="o">}</span>
 
-; Make this setup program work with 32-bit and 64-bit Windows
-ArchitecturesAllowed=x86 x64
-ArchitecturesInstallIn64BitMode=x64
+<span class="o">;</span> <span class="kd">Make</span> <span class="kd">this</span> <span class="kd">setup</span> <span class="kd">program</span> <span class="kd">work</span> <span class="kd">with</span> <span class="m">32</span><span class="na">-bit </span><span class="kd">and</span> <span class="m">64</span><span class="na">-bit </span><span class="kd">Windows</span>
+<span class="kd">ArchitecturesAllowed</span><span class="o">=</span><span class="kd">x86</span> <span class="kd">x64</span>
+<span class="kd">ArchitecturesInstallIn64BitMode</span><span class="o">=</span><span class="kd">x64</span>
 
 
-[Languages]
-Name: "en"; MessagesFile: compiler:Default.isl;
-Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+<span class="o">[</span><span class="kd">Languages</span><span class="o">]</span>
+<span class="kd">Name</span>: <span class="s2">"en"</span><span class="o">;</span> <span class="kd">MessagesFile</span>: <span class="kd">compiler</span><span class="nl">:Default</span>.isl<span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"french"</span><span class="o">;</span> <span class="kd">MessagesFile</span>: <span class="s2">"compiler:Languages\French.isl"</span>
 
-[CustomMessages]
-french.CheckInstall=est déjà installé sur ce PC.
-french.CheckInstallAction=Souhaitez-vous désinstaller cette version existante avant de poursuivre?
-en.CheckInstall=is already install on this PC.
-en.CheckInstallAction=Do you want to uninstall this existing version before continuing?
+<span class="o">[</span><span class="kd">CustomMessages</span><span class="o">]</span>
+<span class="kd">french</span>.CheckInstall<span class="o">=</span><span class="kd">est</span> <span class="kd">d</span>éjà <span class="kd">install</span>é <span class="kd">sur</span> <span class="kd">ce</span> <span class="kd">PC</span>.
+<span class="kd">french</span>.CheckInstallAction<span class="o">=</span><span class="kd">Souhaitez</span><span class="na">-vous </span><span class="kd">d</span>ésinstaller <span class="kd">cette</span> <span class="kd">version</span> <span class="kd">existante</span> <span class="kd">avant</span> <span class="kd">de</span> <span class="kd">poursuivre</span><span class="o">?</span>
+<span class="kd">en</span>.CheckInstall<span class="o">=</span><span class="kd">is</span> <span class="kd">already</span> <span class="kd">install</span> <span class="na">on</span> <span class="kd">this</span> <span class="kd">PC</span>.
+<span class="kd">en</span>.CheckInstallAction<span class="o">=</span><span class="kd">Do</span> <span class="kd">you</span> <span class="kd">want</span> <span class="kd">to</span> <span class="kd">uninstall</span> <span class="kd">this</span> <span class="kd">existing</span> <span class="kd">version</span> <span class="kd">before</span> <span class="kd">continuing</span><span class="o">?</span>
 
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
+<span class="o">[</span><span class="kd">Tasks</span><span class="o">]</span>
+<span class="kd">Name</span>: <span class="s2">"desktopicon"</span><span class="o">;</span> <span class="kd">Description</span>: <span class="s2">"{cm:CreateDesktopIcon}"</span><span class="o">;</span> <span class="kd">GroupDescription</span>: <span class="s2">"{cm:AdditionalIcons}"</span><span class="o">;</span>
 
-[Files]
-Source: "{#PathRelease}\{#ApplicationExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#PathRelease}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+<span class="o">[</span><span class="kd">Files</span><span class="o">]</span>
+<span class="kd">Source</span>: <span class="s2">"{#PathRelease}\{#ApplicationExeName}"</span><span class="o">;</span> <span class="kd">DestDir</span>: <span class="s2">"{app}"</span><span class="o">;</span> <span class="kd">Flags</span>: <span class="kd">ignoreversion</span>
+<span class="kd">Source</span>: <span class="s2">"{#PathRelease}\*"</span><span class="o">;</span> <span class="kd">DestDir</span>: <span class="s2">"{app}"</span><span class="o">;</span> <span class="kd">Flags</span>: <span class="kd">ignoreversion</span> <span class="kd">recursesubdirs</span> <span class="kd">createallsubdirs</span>
                                                                           
-[Icons]
-Name: "{group}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico;
-Name: "{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"; Filename: "{#ApplicationURL}";
-Name: "{group}\{cm:UninstallProgram,{#ApplicationName}}"; Filename: "{uninstallexe}"; IconFilename: {app}\assets\images\setup.ico;
-Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico; IconIndex: 0 
+<span class="o">[</span><span class="kd">Icons</span><span class="o">]</span>
+<span class="kd">Name</span>: <span class="s2">"{group}\{#ApplicationName}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{app}\{#ApplicationExeName}"</span><span class="o">;</span> <span class="kd">IconFilename</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\assets\images\myApplication.ico<span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{#ApplicationURL}"</span><span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"{group}\{cm:UninstallProgram,{#ApplicationName}}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{uninstallexe}"</span><span class="o">;</span> <span class="kd">IconFilename</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\assets\images\setup.ico<span class="o">;</span>
+<span class="kd">Name</span>: <span class="s2">"{commondesktop}\{#ApplicationName}"</span><span class="o">;</span> <span class="kd">Filename</span>: <span class="s2">"{app}\{#ApplicationExeName}"</span><span class="o">;</span> <span class="kd">IconFilename</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\assets\images\myApplication.ico<span class="o">;</span> <span class="kd">IconIndex</span>: <span class="m">0</span> 
 
-[Run]
-Filename: "{app}\{#ApplicationExeName}"; Description: "{cm:LaunchProgram,{#StringChange(ApplicationName, '&amp;', '&amp;&amp;')}}"; Flags: shellexec postinstall skipifsilent
+<span class="o">[</span><span class="kd">Run</span><span class="o">]</span>
+<span class="kd">Filename</span>: <span class="s2">"{app}\{#ApplicationExeName}"</span><span class="o">;</span> <span class="kd">Description</span>: <span class="s2">"{cm:LaunchProgram,{#StringChange(ApplicationName, '&amp;', '&amp;&amp;')}}"</span><span class="o">;</span> <span class="kd">Flags</span>: <span class="kd">shellexec</span> <span class="kd">postinstall</span> <span class="kd">skipifsilent</span>
 
-[Registry]
-Root: HKCR; Subkey: {#ApplicationName}Application; ValueType: string; ValueName: ; ValueData: Program {#ApplicationName}; Flags: uninsdeletekey
-Root: HKCR; Subkey: {#ApplicationName}Application\DefaultIcon; ValueType: string; ValueName: ; ValueData: {app}\{#ApplicationExeName},0; Flags: uninsdeletevalue
-Root: HKCR; Subkey: {#ApplicationName}Application\shell\open\command; ValueType: string; ValueName: ; ValueData: """{app}\{#ApplicationExeName}"" ""%1"""; Flags: uninsdeletevalue
+<span class="o">[</span><span class="kd">Registry</span><span class="o">]</span>
+<span class="kd">Root</span>: <span class="kd">HKCR</span><span class="o">;</span> <span class="kd">Subkey</span>: <span class="o">{</span>#ApplicationName<span class="o">}</span><span class="kd">Application</span><span class="o">;</span> <span class="kd">ValueType</span>: <span class="kd">string</span><span class="o">;</span> <span class="kd">ValueName</span>: <span class="o">;</span> <span class="kd">ValueData</span>: <span class="kd">Program</span> <span class="o">{</span>#ApplicationName<span class="o">};</span> <span class="kd">Flags</span>: <span class="kd">uninsdeletekey</span>
+<span class="kd">Root</span>: <span class="kd">HKCR</span><span class="o">;</span> <span class="kd">Subkey</span>: <span class="o">{</span>#ApplicationName<span class="o">}</span><span class="kd">Application</span>\DefaultIcon<span class="o">;</span> <span class="kd">ValueType</span>: <span class="kd">string</span><span class="o">;</span> <span class="kd">ValueName</span>: <span class="o">;</span> <span class="kd">ValueData</span>: <span class="o">{</span><span class="kd">app</span><span class="o">}</span>\<span class="o">{</span>#ApplicationExeName<span class="o">},</span><span class="m">0</span><span class="o">;</span> <span class="kd">Flags</span>: <span class="kd">uninsdeletevalue</span>
+<span class="kd">Root</span>: <span class="kd">HKCR</span><span class="o">;</span> <span class="kd">Subkey</span>: <span class="o">{</span>#ApplicationName<span class="o">}</span><span class="kd">Application</span>\shell\open\command<span class="o">;</span> <span class="kd">ValueType</span>: <span class="kd">string</span><span class="o">;</span> <span class="kd">ValueName</span>: <span class="o">;</span> <span class="kd">ValueData</span>: <span class="s2">"""{app}\{#ApplicationExeName}"" ""</span><span class="err">%</span><span class="s2">1"""</span><span class="o">;</span> <span class="kd">Flags</span>: <span class="kd">uninsdeletevalue</span>
 
-[Code]
-function InitializeSetup(): Boolean;
-var
-  ResultCode: Integer;
-  ResultStr:string;
-begin
-  // Check if the application is already install
-  // MsgBox('ApplicationID = ' + '{#ApplicationID}', mbInformation, mb_Ok);
-  begin
-    If RegQueryStringValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1', 'UninstallString', ResultStr) then begin
-      If ResultStr&lt;&gt;'' then begin
-        ResultStr:=RemoveQuotes(ResultStr);
-          if MsgBox('{#ApplicationName} ' + ExpandConstant('{cm:CheckInstall}') + #13#13 + ExpandConstant('{cm:CheckInstallAction}'), mbConfirmation, MB_YESNO) = idYes then
-          if not Exec(ResultStr, '/silent', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
-            MsgBox('Erreur !!! ' #13#13 '' + SysErrorMessage(ResultCode) + '.', mbError, MB_OK);
-      end;
-    end;
-  end ;
-  Result := True;
-end;
+<span class="o">[</span><span class="kd">Code</span><span class="o">]</span>
+<span class="kd">function</span> <span class="kd">InitializeSetup</span><span class="o">()</span>: <span class="kd">Boolean</span><span class="o">;</span>
+<span class="kd">var</span>
+  <span class="kd">ResultCode</span>: <span class="kd">Integer</span><span class="o">;</span>
+  <span class="kd">ResultStr</span><span class="nl">:string</span><span class="o">;</span>
+<span class="kd">begin</span>
+  // <span class="kd">Check</span> <span class="k">if</span> <span class="kd">the</span> <span class="kd">application</span> <span class="kd">is</span> <span class="kd">already</span> <span class="kd">install</span>
+  // <span class="kd">MsgBox</span><span class="o">(</span><span class="s1">'ApplicationID = '</span> <span class="o">+</span> <span class="s1">'{#ApplicationID}'</span><span class="o">,</span> <span class="kd">mbInformation</span><span class="o">,</span> <span class="kd">mb_Ok</span><span class="o">);</span>
+  <span class="kd">begin</span>
+    <span class="kd">If</span> <span class="kd">RegQueryStringValue</span><span class="o">(</span><span class="kd">HKLM</span><span class="o">,</span> <span class="s1">'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1'</span><span class="o">,</span> <span class="s1">'UninstallString'</span><span class="o">,</span> <span class="kd">ResultStr</span><span class="o">)</span> <span class="kd">then</span> <span class="kd">begin</span>
+      <span class="kd">If</span> <span class="kd">ResultStr</span><span class="o">&lt;&gt;</span><span class="s1">''</span> <span class="kd">then</span> <span class="kd">begin</span>
+        <span class="kd">ResultStr</span>:<span class="o">=</span><span class="kd">RemoveQuotes</span><span class="o">(</span><span class="kd">ResultStr</span><span class="o">);</span>
+          <span class="k">if</span> <span class="kd">MsgBox</span><span class="o">(</span><span class="s1">'{#ApplicationName} '</span> <span class="o">+</span> <span class="kd">ExpandConstant</span><span class="o">(</span><span class="s1">'{cm:CheckInstall}'</span><span class="o">)</span> <span class="o">+</span> #13#13 <span class="o">+</span> <span class="kd">ExpandConstant</span><span class="o">(</span><span class="s1">'{cm:CheckInstallAction}'</span><span class="o">),</span> <span class="kd">mbConfirmation</span><span class="o">,</span> <span class="kd">MB_YESNO</span><span class="o">)</span> <span class="o">=</span> <span class="kd">idYes</span> <span class="kd">then</span>
+          <span class="k">if</span> <span class="ow">not</span> <span class="kd">Exec</span><span class="o">(</span><span class="kd">ResultStr</span><span class="o">,</span> <span class="s1">'/silent'</span><span class="o">,</span> <span class="s1">''</span><span class="o">,</span> <span class="kd">SW_SHOW</span><span class="o">,</span> <span class="kd">ewWaitUntilTerminated</span><span class="o">,</span> <span class="kd">ResultCode</span><span class="o">)</span> <span class="kd">then</span>
+            <span class="kd">MsgBox</span><span class="o">(</span><span class="s1">'Erreur </span><span class="err">!!!</span><span class="s1"> '</span> #13#13 <span class="s1">''</span> <span class="o">+</span> <span class="kd">SysErrorMessage</span><span class="o">(</span><span class="kd">ResultCode</span><span class="o">)</span> <span class="o">+</span> <span class="s1">'.'</span><span class="o">,</span> <span class="kd">mbError</span><span class="o">,</span> <span class="kd">MB_OK</span><span class="o">);</span>
+      <span class="kd">end</span><span class="o">;</span>
+    <span class="kd">end</span><span class="o">;</span>
+  <span class="kd">end</span> <span class="o">;</span>
+  <span class="kd">Result</span> :<span class="o">=</span> <span class="kd">True</span><span class="o">;</span>
+<span class="kd">end</span><span class="o">;</span>
 
-procedure InitializeWizard();
-var
-  WLabel1, WLabel2 : TLabel;
-begin
-  WizardForm.WelcomeLabel1.Hide;
-  WizardForm.WelcomeLabel2.Hide;
-  WizardForm.FinishedHeadingLabel.Hide;
+<span class="kd">procedure</span> <span class="kd">InitializeWizard</span><span class="o">();</span>
+<span class="kd">var</span>
+  <span class="kd">WLabel1</span><span class="o">,</span> <span class="kd">WLabel2</span> : <span class="kd">TLabel</span><span class="o">;</span>
+<span class="kd">begin</span>
+  <span class="kd">WizardForm</span>.WelcomeLabel1.Hide<span class="o">;</span>
+  <span class="kd">WizardForm</span>.WelcomeLabel2.Hide<span class="o">;</span>
+  <span class="kd">WizardForm</span>.FinishedHeadingLabel.Hide<span class="o">;</span>
 
-  WizardForm.WizardBitmapImage.Width := 500;
-  WizardForm.WizardBitmapImage.Height := 315;
+  <span class="kd">WizardForm</span>.WizardBitmapImage.Width :<span class="o">=</span> <span class="m">500</span><span class="o">;</span>
+  <span class="kd">WizardForm</span>.WizardBitmapImage.Height :<span class="o">=</span> <span class="m">315</span><span class="o">;</span>
 
-  WLabel1 := TLabel.Create(WizardForm);
-  WLabel1.Left := ScaleX(176); 
-  WLabel1.Top := ScaleY(16);
-  WLabel1.Width := ScaleX(301); 
-  WLabel1.Height := ScaleY(54); 
-  WLabel1.AutoSize := False;
-  WLabel1.WordWrap := True;
-  WLabel1.Font.Name := 'tahoma'; 
-  WLabel1.Font.Size := 12; 
-  WLabel1.Font.Style := [fsBold];
-  WLabel1.Font.Color:= clBlack; 
-  WLabel1.ShowAccelChar := False;
-  WLabel1.Caption := WizardForm.WelcomeLabel1.Caption;
-  WLabel1.Transparent := True;
-  WLabel1.Parent := WizardForm.WelcomePage;
-  WLabel1.Hide;
+  <span class="kd">WLabel1</span> :<span class="o">=</span> <span class="kd">TLabel</span>.Create<span class="o">(</span><span class="kd">WizardForm</span><span class="o">);</span>
+  <span class="kd">WLabel1</span>.Left :<span class="o">=</span> <span class="kd">ScaleX</span><span class="o">(</span><span class="m">176</span><span class="o">);</span> 
+  <span class="kd">WLabel1</span>.Top :<span class="o">=</span> <span class="kd">ScaleY</span><span class="o">(</span><span class="m">16</span><span class="o">);</span>
+  <span class="kd">WLabel1</span>.Width :<span class="o">=</span> <span class="kd">ScaleX</span><span class="o">(</span><span class="m">301</span><span class="o">);</span> 
+  <span class="kd">WLabel1</span>.Height :<span class="o">=</span> <span class="kd">ScaleY</span><span class="o">(</span><span class="m">54</span><span class="o">);</span> 
+  <span class="kd">WLabel1</span>.AutoSize :<span class="o">=</span> <span class="kd">False</span><span class="o">;</span>
+  <span class="kd">WLabel1</span>.WordWrap :<span class="o">=</span> <span class="kd">True</span><span class="o">;</span>
+  <span class="kd">WLabel1</span>.Font.Name :<span class="o">=</span> <span class="s1">'tahoma'</span><span class="o">;</span> 
+  <span class="kd">WLabel1</span>.Font.Size :<span class="o">=</span> <span class="m">12</span><span class="o">;</span> 
+  <span class="kd">WLabel1</span>.Font.Style :<span class="o">=</span> <span class="o">[</span><span class="kd">fsBold</span><span class="o">];</span>
+  <span class="kd">WLabel1</span>.Font.Color:<span class="o">=</span> <span class="kd">clBlack</span><span class="o">;</span> 
+  <span class="kd">WLabel1</span>.ShowAccelChar :<span class="o">=</span> <span class="kd">False</span><span class="o">;</span>
+  <span class="kd">WLabel1</span>.Caption :<span class="o">=</span> <span class="kd">WizardForm</span>.WelcomeLabel1.Caption<span class="o">;</span>
+  <span class="kd">WLabel1</span>.Transparent :<span class="o">=</span> <span class="kd">True</span><span class="o">;</span>
+  <span class="kd">WLabel1</span>.Parent :<span class="o">=</span> <span class="kd">WizardForm</span>.WelcomePage<span class="o">;</span>
+  <span class="kd">WLabel1</span>.Hide<span class="o">;</span>
 
-  WLabel2 :=TLabel.Create(WizardForm);
-  WLabel2.Left := ScaleX(176); 
-  WLabel2.Top := ScaleY(136);
-  WLabel2.Width := ScaleX(301); 
-  WLabel2.Height := ScaleY(234); 
-  WLabel2.AutoSize := False;
-  WLabel2.WordWrap := True;
-  WLabel2.Font.Name := 'tahoma'; 
-  WLabel2.Font.Color:= clBlack; 
-  WLabel2.ShowAccelChar := False;
-  WLabel2.Caption := WizardForm.WelcomeLabel2.Caption;
-  WLabel2.Transparent := True;
-  WLabel2.Parent := WizardForm.WelcomePage;
+  <span class="kd">WLabel2</span> :<span class="o">=</span><span class="kd">TLabel</span>.Create<span class="o">(</span><span class="kd">WizardForm</span><span class="o">);</span>
+  <span class="kd">WLabel2</span>.Left :<span class="o">=</span> <span class="kd">ScaleX</span><span class="o">(</span><span class="m">176</span><span class="o">);</span> 
+  <span class="kd">WLabel2</span>.Top :<span class="o">=</span> <span class="kd">ScaleY</span><span class="o">(</span><span class="m">136</span><span class="o">);</span>
+  <span class="kd">WLabel2</span>.Width :<span class="o">=</span> <span class="kd">ScaleX</span><span class="o">(</span><span class="m">301</span><span class="o">);</span> 
+  <span class="kd">WLabel2</span>.Height :<span class="o">=</span> <span class="kd">ScaleY</span><span class="o">(</span><span class="m">234</span><span class="o">);</span> 
+  <span class="kd">WLabel2</span>.AutoSize :<span class="o">=</span> <span class="kd">False</span><span class="o">;</span>
+  <span class="kd">WLabel2</span>.WordWrap :<span class="o">=</span> <span class="kd">True</span><span class="o">;</span>
+  <span class="kd">WLabel2</span>.Font.Name :<span class="o">=</span> <span class="s1">'tahoma'</span><span class="o">;</span> 
+  <span class="kd">WLabel2</span>.Font.Color:<span class="o">=</span> <span class="kd">clBlack</span><span class="o">;</span> 
+  <span class="kd">WLabel2</span>.ShowAccelChar :<span class="o">=</span> <span class="kd">False</span><span class="o">;</span>
+  <span class="kd">WLabel2</span>.Caption :<span class="o">=</span> <span class="kd">WizardForm</span>.WelcomeLabel2.Caption<span class="o">;</span>
+  <span class="kd">WLabel2</span>.Transparent :<span class="o">=</span> <span class="kd">True</span><span class="o">;</span>
+  <span class="kd">WLabel2</span>.Parent :<span class="o">=</span> <span class="kd">WizardForm</span>.WelcomePage<span class="o">;</span>
 
-  WizardForm.WizardBitmapImage2.Width := 500; 
-  WizardForm.WizardBitmapImage2.Height := 315; 
+  <span class="kd">WizardForm</span>.WizardBitmapImage2.Width :<span class="o">=</span> <span class="m">500</span><span class="o">;</span> 
+  <span class="kd">WizardForm</span>.WizardBitmapImage2.Height :<span class="o">=</span> <span class="m">315</span><span class="o">;</span> 
 
-  WizardForm.FinishedLabel.Left := ScaleX(176);
-  WizardForm.FinishedLabel.Top := ScaleY(116);
-end;
+  <span class="kd">WizardForm</span>.FinishedLabel.Left :<span class="o">=</span> <span class="kd">ScaleX</span><span class="o">(</span><span class="m">176</span><span class="o">);</span>
+  <span class="kd">WizardForm</span>.FinishedLabel.Top :<span class="o">=</span> <span class="kd">ScaleY</span><span class="o">(</span><span class="m">116</span><span class="o">);</span>
+<span class="kd">end</span><span class="o">;</span>
 
-procedure CurPageChanged(CurPageID: Integer);
-begin
-  // you must do this as late as possible, because the RunList is being modified
-  // after installation; so this will check if there's at least one item in the
+<span class="kd">procedure</span> <span class="kd">CurPageChanged</span><span class="o">(</span><span class="kd">CurPageID</span>: <span class="kd">Integer</span><span class="o">);</span>
+<span class="kd">begin</span>
+  // <span class="kd">you</span> <span class="kd">must</span> <span class="k">do</span> <span class="kd">this</span> <span class="kd">as</span> <span class="kd">late</span> <span class="kd">as</span> <span class="kd">possible</span><span class="o">,</span> <span class="kd">because</span> <span class="kd">the</span> <span class="kd">RunList</span> <span class="kd">is</span> <span class="kd">being</span> <span class="kd">modified</span>
+  // <span class="kd">after</span> <span class="kd">installation</span><span class="o">;</span> <span class="kd">so</span> <span class="kd">this</span> <span class="kd">will</span> <span class="kd">check</span> <span class="k">if</span> <span class="kd">there</span><span class="s1">'s at least one item in the
   // RunList and then set to the first item (indexing starts at 0) Enabled state
   // to False
   if (CurPageID = wpFinished) then    
@@ -773,7 +775,7 @@ begin
     WizardForm.RunList.Left := ScaleX(176);
     WizardForm.RunList.Top := ScaleY(214);
 end;
-</code></pre>
+</span></code></pre></div></div>
 
 <p><br /></p>
 

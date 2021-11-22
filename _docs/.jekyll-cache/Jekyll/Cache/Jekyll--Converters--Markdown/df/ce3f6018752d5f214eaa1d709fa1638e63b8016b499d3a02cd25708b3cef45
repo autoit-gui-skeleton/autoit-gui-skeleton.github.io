@@ -1,0 +1,5 @@
+I"�<blockquote>
+  <p>Pour simplifier la gestion des dépendances d’un projet AutoIt construit avec AGS, nous avons détourné de son usage initial le gestionnaire de dépendances npm, et son évolution Yarn. Ce qui nous permet de gérer les dependances d’un projet AGS avec d’autres librairies AutoIt, et de partager ces packages AutoIt depuis le depôt npmjs.org.</p>
+</blockquote>
+
+:ET

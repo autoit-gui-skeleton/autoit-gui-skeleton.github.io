@@ -1,0 +1,432 @@
+I"��<!-- Breadcrumb navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="https://autoit-gui-skeleton.github.io//fr/">Home</a></li>
+    <li class="breadcrumb-item"><a href="https://autoit-gui-skeleton.github.io//fr/documentation">Documentation</a></li>
+    <li class="breadcrumb-item active" aria-current="page">1. Démarrer avec AGS</li>
+  </ol>
+</nav>
+
+<!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
+<ul id="markdown-toc">
+  <li><a href="#ags-" id="markdown-toc-ags-">AGS ?</a></li>
+  <li><a href="#architecture-dun-projet-ags" id="markdown-toc-architecture-dun-projet-ags">Architecture d’un projet AGS</a>    <ul>
+      <li><a href="#répertoires-et-fichiers-dun-projet-ags" id="markdown-toc-répertoires-et-fichiers-dun-projet-ags">Répertoires et fichiers d’un projet AGS</a>        <ul>
+          <li><a href="#répertoire-assets" id="markdown-toc-répertoire-assets">Répertoire <code class="language-plaintext highlighter-rouge">assets</code></a></li>
+          <li><a href="#répertoire-bin" id="markdown-toc-répertoire-bin">Répertoire <code class="language-plaintext highlighter-rouge">bin</code></a></li>
+          <li><a href="#répertoire-config" id="markdown-toc-répertoire-config">Répertoire <code class="language-plaintext highlighter-rouge">config</code></a></li>
+          <li><a href="#répertoire-releases" id="markdown-toc-répertoire-releases">Répertoire <code class="language-plaintext highlighter-rouge">releases</code></a></li>
+          <li><a href="#répertoire-src" id="markdown-toc-répertoire-src">Répertoire <code class="language-plaintext highlighter-rouge">src</code></a></li>
+          <li><a href="#répertoire-vendor" id="markdown-toc-répertoire-vendor">Répertoire <code class="language-plaintext highlighter-rouge">vendor</code></a></li>
+        </ul>
+      </li>
+      <li><a href="#vue-densemble-de-larchitecture-dags" id="markdown-toc-vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</a>        <ul>
+          <li><a href="#le-programme-dentrée-principal-myapplicationau3" id="markdown-toc-le-programme-dentrée-principal-myapplicationau3">Le programme d’entrée principal <code class="language-plaintext highlighter-rouge">MyApplication.au3</code></a></li>
+          <li><a href="#le-gestionnaire-principal-de-linterface-graphique-guiau3" id="markdown-toc-le-gestionnaire-principal-de-linterface-graphique-guiau3">Le gestionnaire principal de l’interface graphique <code class="language-plaintext highlighter-rouge">GUI.au3</code></a></li>
+          <li><a href="#centralisez-la-déclaration-des-variables-globales-avec-globalsau3" id="markdown-toc-centralisez-la-déclaration-des-variables-globales-avec-globalsau3">Centralisez la déclaration des variables globales avec <code class="language-plaintext highlighter-rouge">GLOBALS.au3</code></a></li>
+          <li><a href="#le-gestionnaire-principal-des-services-servicesau3" id="markdown-toc-le-gestionnaire-principal-des-services-servicesau3">Le gestionnaire principal des services <code class="language-plaintext highlighter-rouge">SERVICES.au3</code></a></li>
+          <li><a href="#déploiement-facile-avec-génération-dun-installateur-windows" id="markdown-toc-déploiement-facile-avec-génération-dun-installateur-windows">Déploiement facile avec génération d’un installateur Windows</a></li>
+        </ul>
+      </li>
+      <li><a href="#gestion-de-dépendances-pour-autoit" id="markdown-toc-gestion-de-dépendances-pour-autoit">Gestion de dépendances pour AutoIt</a>        <ul>
+          <li><a href="#ags-component-and-ags-wrapper" id="markdown-toc-ags-component-and-ags-wrapper">AGS-component and AGS-Wrapper</a></li>
+          <li><a href="#décrire-un-projet-ags-et-ses-dépendances" id="markdown-toc-décrire-un-projet-ags-et-ses-dépendances">Décrire un projet AGS et ses dépendances</a></li>
+        </ul>
+      </li>
+      <li><a href="#gérer-les-versions-de-lapplication" id="markdown-toc-gérer-les-versions-de-lapplication">Gérer les versions de l’application</a>        <ul>
+          <li><a href="#contrôle-de-versions-avec-git" id="markdown-toc-contrôle-de-versions-avec-git">Contrôle de versions avec Git</a></li>
+          <li><a href="#vérifier-les-mises-à-jours-de-lapplication" id="markdown-toc-vérifier-les-mises-à-jours-de-lapplication">Vérifier les mises à jours de l’application</a></li>
+        </ul>
+      </li>
+      <li><a href="#configurer-le-projet-ags" id="markdown-toc-configurer-le-projet-ags">Configurer le projet AGS</a>        <ul>
+          <li><a href="#créer-un-fichier-de-configuration" id="markdown-toc-créer-un-fichier-de-configuration">Créer un fichier de configuration</a></li>
+          <li><a href="#constantes-et-variables-globales" id="markdown-toc-constantes-et-variables-globales">Constantes et variables globales</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="ags-">AGS ?</h1>
+
+<p>AutoIt Gui Skeleton (AGS) offre un environnement pour les développeurs, facilitant la création d’applications AutoIt. AGS propose d’utiliser des conventions et une architecture standardisé. Il donne également des outils pour aider les développeurs dans les tâches récurrentes propre à l’ingénierie logicielle.</p>
+
+<h1 id="architecture-dun-projet-ags">Architecture d’un projet AGS</h1>
+
+<p>Un projet AGS respecte cette organisation pour ses fichiers et répertoires:</p>
+
+<pre>
+<code class="language-markup">Project root folder
+.
+|   .gitignore                 # Specifies untracked files to ignore in AGS project
+|   .yarnrc                    # Yarn configuration used in handling AutoIt dependencies 
+|   MyApplication.au3          # The main entry progam. 
+|   package.json               # Use npm's convention to describe this project
+|   README.md                  # In human readable.
+|   RELEASES.json              # Repository for all releases notes of this application.
+|      
++---assets                     # Applications assets (images, pdf, static files...) 
+|   
++---bin                        # Binary tools
+|              
++---config                     # Configuration of application.
+|       parameters.ini         # Parameters which can be modified by user in application
+|       parameters.ini.dist    # Template of parameters.ini which is save in  control version
+|              
++---releases                   # Releases application (zip and windows setup)
+|          
++---src                        # AutoIt source
+|   |   BUSINESS.au3           # Entry point for business and logic code
+|   |   GLOBALS.au3            # Entry point for constants and global variables of application
+|   |   GUI.au3                # Entry point for graphic user interface (GUI)
+|   |   SERVICES.au3           # Entry point for services applications
+|   |      
+|   +---business               # Folder for store all business annd logic code
+|   |      
+|   +---services               # Folder for store all services application 
+|   |       Dialogbox.au3      # Handler of dialog box in which the user is prompted
+|   |       ParametersIni.au3  # Handler of configuration file parameters.ini     
+|   |       
+|   \---views                  # Folder for store all views application
+|           View_About.au3
+|           View_Footer.au3
+|           View_Settings.au3
+|           View_Welcome.au3
+|            
+\---vendor                     # Third party code and dependencies handles with npm repository            
+</code>
+</pre>
+
+<h2 id="répertoires-et-fichiers-dun-projet-ags">Répertoires et fichiers d’un projet AGS</h2>
+
+<p>On organise les fichiers d’un projet AGS dans des répertoires spécifiques.</p>
+
+<h3 id="répertoire-assets">Répertoire <code class="language-plaintext highlighter-rouge">assets</code></h3>
+
+<p>Ce répertoire contient tous les éléments utilisés dans l’application comme les images, les fichiers texte, pdf, html, css, javascript. Remarquons qu’il est possible d’intégrer un fichier html statique dans une application AutoIt en utilisant un navigateur web intégré dans l’interface graphique avec la méthode <code class="language-plaintext highlighter-rouge">_IECreateEmbedded()</code> fournie par la bibliothèque <code class="language-plaintext highlighter-rouge">IE.au3</code>.</p>
+
+<h3 id="répertoire-bin">Répertoire <code class="language-plaintext highlighter-rouge">bin</code></h3>
+
+<p>Ce répertoire est utilisé pour stocker tous les exécutables du projet. L’application AGS-console en ligne de commande (CLI) est stockée dans ce dossier. Elle est construite dans l’écosystème Node.js avec la bibliothèque Caporal.js. Elle fournit des commandes pour aider les développeurs, par exemple pour nettoyer tous les fichiers AutoIt du projet avec Tidy, poru créer un installeur Windows, ou pour créer rapidement un nouveau projet en choissisnant un modèle.</p>
+
+<h3 id="répertoire-config">Répertoire <code class="language-plaintext highlighter-rouge">config</code></h3>
+
+<p>Un projet AGS doit avoir un fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>.</p>
+
+<p>Attention ce fichier n’est pas versionné, donc pour en créer un nouveau vous pouvez utiliser <code class="language-plaintext highlighter-rouge">./config/parameters.ini.dist</code> comme un ‘modèle’ de ce à quoi devrait ressembler votre fichier parameters.ini. Définissez les paramètres ici qui peuvent être différents sur chaque application. Pour utiliser ce fichier de configuration, nous utilisons la constante <code class="language-plaintext highlighter-rouge">$APP_PARAMETERS_INI</code> qui contient le chemin d’accès complet. Cette constante est définie dans <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code> et lors de chaque démarrage de l’application, AGS vérifie l’existence du fichier de configuration.</p>
+
+<h3 id="répertoire-releases">Répertoire <code class="language-plaintext highlighter-rouge">releases</code></h3>
+
+<p>Ce répertorie contient le résultat d’un bacth Windows qui contrôle la création d’un installeur Windows via la solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a> solution. Pour executer ce batch, il est nécessaire que le compilateur InnoSetup et 7zip soient installées sur le PC. Si ce n’est pas le cas, nous vous conseillons d’utilisteur le gestionnaire de paquets Windows <a href="https://chocolatey.org/">Chocolatey</a> pour les installer sans peine.</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">choco install 7zip
+choco install innosetup</code>
+</pre>
+
+<h3 id="répertoire-src">Répertoire <code class="language-plaintext highlighter-rouge">src</code></h3>
+
+<p>Tout le code source AutoiT de l’application est stocké dans ce repertoire. Vous pouvez trouvé des répertoires spécfiques dans ce dernier : services, views, ainsi que des fichiers spécifiques : <code class="language-plaintext highlighter-rouge">GLOBALS.au3</code>, <code class="language-plaintext highlighter-rouge">GUI.au3</code> and <code class="language-plaintext highlighter-rouge">SERVICES.au3</code>.</p>
+
+<h3 id="répertoire-vendor">Répertoire <code class="language-plaintext highlighter-rouge">vendor</code></h3>
+
+<p>Ce répertoire est l’endroit par convention où stocker le code développé par des tiers.</p>
+
+<p>Afin de simplifier la gestion des dépendances d’un projet AutoIt, nous utilisons yarn et le référentiel npmjs.org pour partager des bibliothèques AutoIt. Tous les paquets AGS hébergés dans ce référentiel npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton</a>. Vous pouvez trouver deux types de package hébérgés dans cette organisation:</p>
+
+<ul>
+  <li>Un <strong>AGS-component</strong> est une bibliothèque AutoIt créé spécfiquement pour AGS. Vous pouvez l’utiliser plus facilement dans votre projet AutoIt construit avec le framework AGS. Pour l’exemple jetez un coup d’œil sur <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">requête http du composant AGS</a>.</li>
+  <li>Un <strong>AGS-wrapper</strong> est une simple enveloppe pour une autre bibliothèque AutoIt, créée par une autre équipe/développeur. Jetez un oeil à cet exemple <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a>
+ 
+Pour installer toutes les dépendances d’un projet donné ; nous supposons que vous avez un <code class="language-plaintext highlighter-rouge">package.json</code> valide qui décrit votre projet et ses dépendences ; vous devez lancer la commande <code class="language-plaintext highlighter-rouge">λ yarn install --modules-folder vendor</code>. Et ainsi toutes les dépendances de ce projet sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>.</li>
+</ul>
+
+<h2 id="vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</h2>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/autoit-gui-skeleton_overview.png" alt="Vue d'ensemble de l'architecture d'AGS" class="img-fancybox img-full" /></p>
+
+<h3 id="le-programme-dentrée-principal-myapplicationau3">Le programme d’entrée principal <code class="language-plaintext highlighter-rouge">MyApplication.au3</code></h3>
+
+<p>C’est le point d’entrée unique de l’application, et l’emplacement où l’application démarre. Dans ce dernier, nous commençons par inclure toutes les autres dépendances dont il a besoin : les bibliothèques d’AutoIt, les bibliothèques tierces, la déclaration des variables globales et le code pour l’interface graphique et les services de l’application.</p>
+
+<p>L’application démarre avec le gestionnaire principal de l’IHM <code class="language-plaintext highlighter-rouge">_main_GUI()</code>.</p>
+
+<h3 id="le-gestionnaire-principal-de-linterface-graphique-guiau3">Le gestionnaire principal de l’interface graphique <code class="language-plaintext highlighter-rouge">GUI.au3</code></h3>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">./src/GUI.au3</code> est le point d’entrée de tous les gestionnaires de vues qui sont sauvegardés dans le répertoire <code class="language-plaintext highlighter-rouge">./views</code>. Nous l’appellerons <strong>gestionnaire principal de l’IHM</strong>. Le code de chaque vue est défini à chaque fois dans un fichier spécifique et stocké dans le répertoire <code class="language-plaintext highlighter-rouge">./views</code>.</p>
+
+<p>Le gestionnaire principal de l’IHM contient la méthode <code class="language-plaintext highlighter-rouge">_main_GUI()</code> qui permet de démarrer l’application. Cette méthode n’est appellée que depuis le programme d’entrée principal de l’application, et elle a été conçue pour créer l’interface utilisateur (GUI) et gérer toutes les intéractions utilisateurs et les évenements dans l’application.</p>
+
+<h3 id="centralisez-la-déclaration-des-variables-globales-avec-globalsau3">Centralisez la déclaration des variables globales avec <code class="language-plaintext highlighter-rouge">GLOBALS.au3</code></h3>
+
+<p>Toutes les constantes et les variables globales sont définies à un seul endroit dans le fichier <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>, afin de centraliser la déclaration de toutes les variables à portée globale. À l’exception de toutes les variables globales des éléments graphiques, qui eux, sont définies dans chaque fichier de vue spécifique. On rappelle que les constantes ne peuvent plus changer de valeur dans le temps, contrairement aux variables globales. Si une variable globale change de valeur, il n’est pas possible de persister son résutlat, a moins de le faire dans le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code></p>
+
+<p>Par convention, toutes les variables globales doivent être écrites en majuscule et séparées par un trait de soulignement. Par exemple: <code class="language-plaintext highlighter-rouge">Global Const $ APP_EMAIL_CONTACT</code></p>
+
+<h3 id="le-gestionnaire-principal-des-services-servicesau3">Le gestionnaire principal des services <code class="language-plaintext highlighter-rouge">SERVICES.au3</code></h3>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">./src/SERVICES.au3</code> est le point d’entrée de tous les services qui sont sauvegardés dans le répertoire <code class="language-plaintext highlighter-rouge">./services</code>. Par exemple, dans AGS, nous avons toujours le service <code class="language-plaintext highlighter-rouge">ParametersIni.au3</code> qui fournit une méthode pour interargir avec le fichier de configuration de l’application. Il permet de sauvegarder les changements choisis par un utilisateur depuis l’interface graphique.</p>
+
+<h3 id="déploiement-facile-avec-génération-dun-installateur-windows">Déploiement facile avec génération d’un installateur Windows</h3>
+
+<p>Pour faciliter le déploiement d’une application de bureau Windows développer avec AutoIt, AGS fournit un processus automatisé pour générer un installeur Windows avec la solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>.</p>
+
+<p>Pour générer un programme d’installation d’application AutoIt, voici les principales étapes à suivre:</p>
+
+<ul>
+  <li>Attribuer un numéro de version à l’application;</li>
+  <li>Compilez l’application, c’est-à-dire compilez le point d’entrée principal <code class="language-plaintext highlighter-rouge">myProject.au3</code> avec le compilateur <code class="language-plaintext highlighter-rouge">aut2exe</code>;</li>
+  <li>Copier les assets (images, fichiers …) nécessaires au bon fonctionnement de l’application dans le répertoire de sortie;</li>
+  <li>Créer une archive zip pour packager l’application;</li>
+  <li>Et finalement construire le programme d’installation en compilant le script InnoSetup associé.</li>
+</ul>
+
+<p>Toutes ces étapes sont pilotées par un batch Windows.</p>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/documentation/AGS-package-and-deployment-result.png" alt="Resultat du processus pour packager une application AutoIt dans AGS" class="img-fancybox" /></p>
+
+<h2 id="gestion-de-dépendances-pour-autoit">Gestion de dépendances pour AutoIt</h2>
+
+<p>Pour simplifier la gestion des dépendances d’un projet AutoIt construit avec AGS, nous avons détourné de son usage initial le gestionnaire de dépendances npm, et son évolution Yarn.</p>
+
+<p>Ce qui nous permet de gérer les dependances d’un projet AGS avec d’autres librairies AutoIt, et de partager ces packages AutoIt depuis le depôt npmjs.org. Nous supposons que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par exemple avec [chocolatey] (https://chocolatey.org/) sur votre PC.</p>
+
+<h3 id="ags-component-and-ags-wrapper">AGS-component and AGS-Wrapper</h3>
+
+<p>Tous les paquets AGS hébergés dans le réferentiel npmjs.org appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton</a>. Et vous pouvez y trouver deux types de paquets hébergés dans cette organisation.</p>
+
+<ul>
+  <li>Un <strong>AGS-component</strong> est une bibliothèque AutoIt, que vous pouvez utiliser facilement dans votre projet Autoit construit avec le framework AGS. Jetez un coup d’œil à ce composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component http-request</a>.</li>
+  <li>Un <strong>AGS-wrapper</strong> est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers. Ce qui permet de beneficier des avantages d’un gestionnaire de dépendances. Jetez un coup d’œil à cet exemple <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a> qui encapsule le projet JSON.au3 conçu par Ward.</li>
+</ul>
+
+<p>Pour installer un composant AGS ou un wrapper dans son projet, il suffit de taper dans le repertoire racine, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké:</p>
+
+<pre class="command-line" data-prompt="C: \MyProject\&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-component-xxx --modules-folder vendor
+yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor</code>
+</pre>
+
+<h3 id="décrire-un-projet-ags-et-ses-dépendances">Décrire un projet AGS et ses dépendances</h3>
+
+<p>Pour décrire un projet AGS et ses dependances, on utilise naturellement le fichier <code class="language-plaintext highlighter-rouge">package.json</code> propre à l’écosystème Node.js. Vous pouvez trouvez plus d’information sur ce fichier ici <a href="https://yarnpkg.com/lang/en/docs/package-json/">https://yarnpkg.com/lang/en/docs/package-json/</a>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">ApplicationWithCheckForUpdates</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example to implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"AutoIt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.14.5"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20100v &lt;v20100v@no-reply.com&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT License"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not-yet-git"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="p">},</span><span class="w">  
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@autoit-gui-skeleton/AGS-component-check-for-updates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Et finallement pour installer toutes les dépendances d’un projet donné, il suffit alors de lancer cette commande:</p>
+
+<pre class="command-line" data-prompt="C: \&gt;MyProject\">
+<code class=" language-bash">yarn install --modules-folder vendor</code>
+</pre>
+
+<p>Toutes les dependances du projet, ainsi que les dépendances filles des dependances mères, sont installés dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Si vous avez ajouter des libraires AutoIt dans le repertoire vendor, nous vous conseillons de les “wrapper”, afin qu’elles soient aussi gérés par le gestionnaire de dépendances, de la même manière qu’avec <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">AGS-wrapper-json</a>.</p>
+
+<p>Pour que les dépendances AutoIt s’installent dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor</code>, et pas dans le répertoire par defaut de Node.js <code class="language-plaintext highlighter-rouge">./node_modules</code>, il faut ajouter l’option <code class="language-plaintext highlighter-rouge">--modules-folder vendor</code>. Nous forçons ce choix pour éviter toute confusion avec un projet Node.js. Remarquons qu’avec un projet AGS, il n’est pas nécessaire d’écrire explicitement cet option en ligne de commande grace au fichier <code class="language-plaintext highlighter-rouge">.yarnrc</code> stocké à la racine du projet, i.e. au même endroit que le fichier <code class="language-plaintext highlighter-rouge">package.json</code>. Yarn regarge automatiquement dans ce fichier pour ajouter une configuration d’options supplémentaire.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> #./.yarnrc 
+ --modules-folder vendor
+</code></pre></div></div>
+
+<p>Ainsi avec ce fichier vous pouvez lancer <code class="language-plaintext highlighter-rouge">yarn install</code> pour installer les dépendances directement dans le répertoire approprié <code class="language-plaintext highlighter-rouge">./vendor</code>.</p>
+
+<h2 id="gérer-les-versions-de-lapplication">Gérer les versions de l’application</h2>
+
+<h3 id="contrôle-de-versions-avec-git">Contrôle de versions avec Git</h3>
+
+<p>Dans le projet AGS, nous préférons utiliser Git pour le contrôle de version. Nous avons donc ajouter naturellement le fichier <code class="language-plaintext highlighter-rouge">.gitignore</code> à la racine du projet AGS pour exclure certains fichiers. Il utilise des modèles de <em>globbing</em> pour faire correspondre les noms de fichiers. Vous pouvez trouver de l’aide pour le faire ici <a href="https://www.atlassian.com/git/tutorials/saving-changes/gitignore">https://www.atlassian.com/git/tutorials/saving-changes/gitignore</a> .</p>
+
+<p>Si vous utilisez git, n’oubliez pas de définir la propriété <code class="language-plaintext highlighter-rouge">repository</code> dans votre <code class="language-plaintext highlighter-rouge">./package.json</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://host.com/my-depot.git"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="vérifier-les-mises-à-jours-de-lapplication">Vérifier les mises à jours de l’application</h3>
+
+<p>On utilise un fichier json <code class="language-plaintext highlighter-rouge">RELEASES.json</code> en tant que référentiel pour tracer toutes les versions successives de l’application. Pour chaque version décrite, on trouve un lien pour télécharger cette version de l’application et un lien pour les notes de sortie associé à cette version. Ce fichier est hébergé sur un serveur distant, sans contrainte d’accès.</p>
+
+<p>Pour vérifier si une mise à jour est disponible, il suffit alors de comparer la version <em>locale</em> de l’application installé sur le PC, avec la dernière version stocké dans ce référentiel JSON. Il est donc necessaire d’avoir une connexion internet.</p>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">RELEASES.json</code> doit respecter le schema suivant:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Properties</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>Name of application.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">description</code></td>
+      <td>Short description of application.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">license</code></td>
+      <td>License of application.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">persistUrl</code></td>
+      <td>URL where this file is persist on remote server.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">releases</code></td>
+      <td>Collection of release schema.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">release.version</code></td>
+      <td>Version of application use as an id.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">release.state</code></td>
+      <td>More information of this version.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">release.downloadSetup</code></td>
+      <td>URL where you can find the setup of this version.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">release.published</code></td>
+      <td>Date of publication for this version (YYYY-mm-dd).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">release.releaseNotes</code></td>
+      <td>URL where you can find the release note of this version.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyApplication"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example of RELEASES.json and implementation of AGS-component-check-for-updates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/v20100v/autoit-gui-skeleton/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"persistUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myServer/myApplication/RELEASES.json"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/download/setup_myApplication_v1.0.0.exe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="err">ags-component-check-for-updates</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myApplication.com/download/setup_myApplication_v0.9.0.exe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="err">ags-component-check-for-updates</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prototype"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"downloadSetup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"releaseNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">RELEASES.json</code> est notamment utilisé dans <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/AGS-component-check-for-updates">AGS-component check-updater</a>. Cette bibliothèque fournit la fonction de mise à jour d’une application AutoIt. Jetez un oeil à cet exemple d’application AutoIt qui met en œuvre ce composant <a href="https://github.com/autoit-gui-skeleton/AGS-component-check-for-updates/tree/master/example/ApplicationWithCheckForUpdates">ApplicationWithCheckForUpdates</a>.<br />
+ Cette application a les fonctionnalités suivantes :</p>
+
+<ul>
+  <li>Vérifier la mise à jour au démarrage de l’application AutoIt;</li>
+  <li>Vérifier la mise à jour depuis une intéraction dans le menu “?&gt; Vérifier la mise à jour”;</li>
+  <li>Modifier les paramètres de l’application à partir de la vue “Configuration &gt; Paramètres”. Les valeurs modifiés sont persistés dans le fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Dans cette vue, nous pouvons définir des paramètres proxy pour spécifier comment cette application se connecte à Internet, et envoie des requêtes HTTP.</li>
+</ul>
+
+<p>Si l’option de vérification de la mise à jour à l’application de démarrage est activée et qu’une nouvelle version de cette application est disponible, alors lorsque l’utilisateur démarre l’application ce composant informe l’utilisateur dans une fenêtre enfant:</p>
+
+<p><img src="https://raw.githubusercontent.com/autoit-gui-skeleton/ags-component-check-for-updates/master/example/ApplicationWithCheckForUpdates/docs/AGS-component-check-for-updates-update-available.png" alt="AGS-component-check-for-updates :: update available" /></p>
+
+<h2 id="configurer-le-projet-ags">Configurer le projet AGS</h2>
+
+<p>Pour configurer un projet AGS, nous avons:</p>
+
+<ul>
+  <li>Un fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>, dont les valeurs des paramètres peuvent être modifiés par des utilisateurs.</li>
+  <li>Les constantes et les variables globales sont définies dans <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>.</li>
+</ul>
+
+<h3 id="créer-un-fichier-de-configuration">Créer un fichier de configuration</h3>
+
+<p>Lorsque vous démarrez un nouveau projet AGS, vous devez créer ce fichier de configuration <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Ce fichier n’est pas versionné. Vous pouvez utiliser <code class="language-plaintext highlighter-rouge">./config/parameters.ini.dist</code> comme un ‘modèle’ de ce à quoi devrait ressembler ce fichier. Définissez les paramètres ici qui peuvent être différents sur chaque application. Seul ce fichier est enregistré avec la version de contrôle.</p>
+
+<p>La configuration des composants AGS se fait dans ce fichier. Par exemple avec <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/AGS-component-check-for-updates">AGS-component check-updater</a>, vous pouvez choisir avec le paramètre <code class="language-plaintext highlighter-rouge">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</code> si l’application doit vérifier à chaque démarrage si une mise à jour de l’application est disponible.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_CHECK_FOR_UPDATES]</span>
+<span class="c">; [REQUIRED] Enable/disable the search of a new update on start-up.
+</span><span class="py">LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP</span><span class="p">=</span><span class="s">1</span>
+</code></pre></div></div>
+
+<p>Pour un autre exemple avec le composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">AGS-component http-request</a>, on peut configurer un proxy de la manière suivante:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AGS_HTTP_REQUEST]</span>
+<span class="c">; [OPTIONAL] Use a proxy for http connexion
+</span><span class="py">PROXY</span><span class="p">=</span><span class="s">http://myproxy.com:8080</span>
+</code></pre></div></div>
+
+<h3 id="constantes-et-variables-globales">Constantes et variables globales</h3>
+
+<p>Toutes les constantes et les variables globales sont définies à un seul endroit <code class="language-plaintext highlighter-rouge">./src/GLOBALS.au3</code>, à l’exception des variables globales des éléments graphiques, qui elles, sont définies dans chaque fichier de vue spécifique. N’oubliez pas que les constantes ne peuvent plus changer leur valeur au fil du temps, contrairement aux variables globales. Par convention, toutes les variables globales doivent être écrites en majuscules et séparées par un caractère de soulignement - par exemple: <code class="language-plaintext highlighter-rouge">Global Const $APP_EMAIL_CONTACT</code>.</p>
+
+<p>Dans ce fichier de variables globales, on trouve notamment la section suivante des principales constantes de l’application:</p>
+
+<pre><code class="language-autoit">;----------------------------;
+; Application main constants ;
+;----------------------------;
+Global Const $APP_NAME = "ApplicationWithCheckForUpdates"
+Global Const $APP_VERSION = "0.9.0"
+Global Const $APP_WEBSITE = "https://myApplication-website.org"
+Global Const $APP_EMAIL_CONTACT = "myApplication@website.org"
+Global Const $APP_ID = "v20100v.ApplicationWithCheckForUpdates"
+Global Const $APP_LIFE_PERIOD = "2018-" &amp; @YEAR
+Global Const $APP_COPYRIGHT = "© " &amp; $APP_LIFE_PERIOD &amp; ", v20100v"
+</code></pre>
+
+<p>Avec le composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/AGS-component-check-for-updates">AGS-component check-updater</a> nous définissons la constante <code class="language-plaintext highlighter-rouge">$APP_REMOTE_RELEASES_JSON</code> pour spécifier où le référentiel JSON est hebergé. Ce fichier json doit être persister dans un serveur distant disponible via internet, et sans restriction.</p>
+
+<pre><code class="language-autoit">Global Const $APP_REMOTE_RELEASES_JSON = "https://myServer/myApplication/RELEASES.json"
+</code></pre>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continuer la lecture ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/code-organization">2. Organisation du code d’un projet AGS</a>.</p>
+</blockquote>
+
+:ET

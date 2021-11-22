@@ -39,19 +39,21 @@
     <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
 
     <!-- seo tags -->
-    <!-- Begin Jekyll SEO tag v2.4.0 -->
-<meta name="generator" content="Jekyll v3.8.1" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Envoyer une requête HTTP en AutoIt avec AGS-component-http-request" />
 <meta property="og:locale" content="fr" />
 <meta name="description" content="Pour envoyer des requêtes HTTP, AGS fournit ce composant @autoit-gui-skeleton/ags-component-http-request. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy." />
 <meta property="og:description" content="Pour envoyer des requêtes HTTP, AGS fournit ce composant @autoit-gui-skeleton/ags-component-http-request. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy." />
-<link rel="canonical" href="https://autoit-gui-skeleton.github.io//fr/2018/07/17/ags_component_http_request.html" />
-<meta property="og:url" content="https://autoit-gui-skeleton.github.io//fr/2018/07/17/ags_component_http_request.html" />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//2018/07/17/ags_component_http_request.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//2018/07/17/ags_component_http_request.html" />
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-17T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Envoyer une requête HTTP en AutoIt avec AGS-component-http-request" />
 <script type="application/ld+json">
-{"url":"https://autoit-gui-skeleton.github.io//fr/2018/07/17/ags_component_http_request.html","headline":"Envoyer une requête HTTP en AutoIt avec AGS-component-http-request","dateModified":"2018-07-17T00:00:00+02:00","datePublished":"2018-07-17T00:00:00+02:00","description":"Pour envoyer des requêtes HTTP, AGS fournit ce composant @autoit-gui-skeleton/ags-component-http-request. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy.","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//fr/2018/07/17/ags_component_http_request.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Envoyer une requête HTTP en AutoIt avec AGS-component-http-request","dateModified":"2018-07-17T00:00:00+02:00","datePublished":"2018-07-17T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//2018/07/17/ags_component_http_request.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//2018/07/17/ags_component_http_request.html"},"description":"Pour envoyer des requêtes HTTP, AGS fournit ce composant @autoit-gui-skeleton/ags-component-http-request. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -143,13 +145,13 @@
 
 <h1 id="comment-installer-ags-component-http-request-">Comment installer AGS-component-http-request ?</h1>
 
-<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-component-http-request, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="highlighter-rouge">package.json</code> est stocké:</p>
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-component-http-request, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké:</p>
 
 <pre class="command-line" data-prompt="C: \&gt;">
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-component-http-request --modules-folder vendor</code>
 </pre>
 
-<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:</p>
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:</p>
 
 <pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
 </code></pre>
@@ -171,27 +173,27 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">HttpGET($url, $data = "", $proxy = "")</code></td>
+      <td><code class="language-plaintext highlighter-rouge">HttpGET($url, $data = "", $proxy = "")</code></td>
       <td>Send HTTP request with GET method.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">HttpPOST($url, $data = "", $proxy = "")</code></td>
+      <td><code class="language-plaintext highlighter-rouge">HttpPOST($url, $data = "", $proxy = "")</code></td>
       <td>Send HTTP request with POST method.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">URLEncode($urlText)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">URLEncode($urlText)</code></td>
       <td>URL encoding replaces unsafe ASCII characters.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">URLDecode($urlText)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">URLDecode($urlText)</code></td>
       <td>Inverse operation of URLEncode.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">WinHttp_SetProxy_from_configuration_file($oHttp)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">WinHttp_SetProxy_from_configuration_file($oHttp)</code></td>
       <td>Set timeouts by parsing the configuration file AGS project store in ‘./config/parameters.ini’.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">WinHttp_SetProxy_from_configuration_file($oHttp)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">WinHttp_SetProxy_from_configuration_file($oHttp)</code></td>
       <td>Set proxy by parsing the configuration file AGS project store in ‘./config/parameters.ini’.</td>
     </tr>
   </tbody>
@@ -199,7 +201,7 @@
 
 <h2 id="configurer-le-composant-ags-component-http-request">Configurer le composant AGS-component-http-request</h2>
 
-<p>Pour configurer le comportement de ce composant, vous pouvez définir ses options dans le fichier <code class="highlighter-rouge">./config/parameters.ini</code>. Par exemple, vous pouvez définir un proxy pour toute les connexions HTTP, ou encore définir différents types de délai d’attente. Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="highlighter-rouge">PROXY</code> de la section<code class="highlighter-rouge"> AGS_HTTP_REQUEST</code>.</p>
+<p>Pour configurer le comportement de ce composant, vous pouvez définir ses options dans le fichier <code class="language-plaintext highlighter-rouge">./config/parameters.ini</code>. Par exemple, vous pouvez définir un proxy pour toute les connexions HTTP, ou encore définir différents types de délai d’attente. Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="language-plaintext highlighter-rouge">PROXY</code> de la section<code class="language-plaintext highlighter-rouge"> AGS_HTTP_REQUEST</code>.</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## ./config/parameters.ini ##
 </span>
@@ -238,7 +240,7 @@ ConsoleWrite($response.ResponseText)
 
 <h3 id="comment-envoyer-une-requête-http-avec-un-proxy-">Comment envoyer une requête HTTP avec un proxy ?</h3>
 
-<p>Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="highlighter-rouge">PROXY</code> de la section<code class="highlighter-rouge"> AGS_HTTP_REQUEST</code>. Mais vous pouvez également fournir un proxy explicitement dans la méthode.</p>
+<p>Par défaut, ce composant recherche dans le fichier de configuration si un proxy est défini dans la variable <code class="language-plaintext highlighter-rouge">PROXY</code> de la section<code class="language-plaintext highlighter-rouge"> AGS_HTTP_REQUEST</code>. Mais vous pouvez également fournir un proxy explicitement dans la méthode.</p>
 
 <pre><code class="language-autoit">Local $response = HttpGET( _ 
     "https://soundcloud.com/2080/my-megadrive", _ 
@@ -400,26 +402,9 @@ ConsoleWrite(URLEncode("123abc!@#$%^&amp;*()_+ ") &amp; @crlf)
 </div>
 
 
-<!-- Disqus -->
+<!-- Disqus
 
-<div class="comments">
-    <div id="disqus_thread"></div>
-<script>
-
-    
-        var disqus_shortname = 'https-autoit-gui-skeleton-github-io-fr';
-    
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Merci d'activité JavaScript pour voir <a href="https://disqus.com/?ref_noscript">les commentaires, fournis par Disqus.</a></noscript>
-</div>
-
+-->
     </div>
     
 <footer class="site-footer">
