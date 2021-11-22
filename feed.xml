@@ -5,14 +5,14 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Mon, 22 Nov 2021 10:20:44 +0100</pubDate>
+        <pubDate>Mon, 22 Nov 2021 10:49:21 +0100</pubDate>
         
         <item>
-            <title>AutoIt syntax highlighting&lt;/b&gt;</title>
+            <title>AutoIt syntax highlighting</title>
             <link>/2021/11/21/autoit-syntax-highlighting.html</link>
             <guid isPermaLink="true">/2021/11/21/autoit-syntax-highlighting.html</guid>
             <description>&lt;blockquote&gt;
-  &lt;p&gt;How to enable syntax highlighting in Jetbrains.&lt;/p&gt;
+  &lt;p&gt;How to enable AutoIt syntax highlighting in Jetbrains.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;!--more--&gt;

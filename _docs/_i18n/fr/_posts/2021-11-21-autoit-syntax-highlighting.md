@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoIt coloration syntaxique</b>
+title: AutoIt coloration syntaxique
 tags: [AutoIt]
 feature-img: "assets/img/documentation/computer.jpeg"
 thumbnail: "assets/img/documentation/computer.jpeg"
@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 
 
-> Procédure pour activer la coloration syntaxique dans l'IDE Jetbrains.
+> Procédure pour activer la coloration syntaxique d'AutoIt dans l'IDE Jetbrains.
 
 <!--more-->
 

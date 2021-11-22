@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoIt syntax highlighting</b>
+title: AutoIt syntax highlighting
 tags: [AutoIt]
 feature-img: "assets/img/documentation/computer.jpeg"
 thumbnail: "assets/img/documentation/computer.jpeg"
@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 
 
-> How to enable syntax highlighting in Jetbrains.
+> How to enable AutoIt syntax highlighting in Jetbrains.
 
 <!--more-->
 

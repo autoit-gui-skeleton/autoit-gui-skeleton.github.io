@@ -1,4 +1,4 @@
-I"C7<div class="container archive-post-list">
+I"D7<div class="container archive-post-list">
 
 
 
@@ -40,7 +40,7 @@
             
 
             <div class="card-body">
-                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/2021/11/21/autoit-syntax-highlighting.html">AutoIt coloration syntaxique&lt;/b&gt;</a></h4>
+                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/2021/11/21/autoit-syntax-highlighting.html">AutoIt coloration syntaxique</a></h4>
                 <p class="card-text meta">
                     
                         21
@@ -50,7 +50,7 @@
                 </p>
                 <p class="card-text archive-post-item-excerpt">
                     
-  Procédure pour activer la coloration syntaxique dans l’IDE Jetbrains.
+  Procédure pour activer la coloration syntaxique d’AutoIt dans l’IDE Jetbrains.
 
 
 
