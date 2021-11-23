@@ -1,0 +1,134 @@
+# --- Site --- #
+url: "https://autoit-gui-skeleton.github.io/"
+baseurl: ""
+title: AutoIt GUI Skeleton
+description: "AGS proposes to provide an architecture and tools to efficiently build an desktop application Windows with AutoIt." # used by search engines
+encoding: utf-8
+destination: _site
+
+
+
+# --- Build --- #
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: :compressed
+exclude: [
+  "Gemfile",
+  "Gemfile.lock",
+  "type-on-strap.gemspec",
+  "*.gem",
+  "LICENSE",
+  "README.md",
+  "*.bat"]
+permalink: /blog/:year/:month/:day/:title:output_ext
+
+# --- Theme --- #
+theme_settings:
+
+  title: AutoIt GUI Skeleton # blog's title
+  avatar: assets/img/autoit.png # blog's icon
+  gravatar: bf10596cd55afa7150cc66f793af1619 # Email MD5 hash
+  header_text_feature_image: assets/img/abstract-black-background-blue-604684.jpg
+  footer_text: >
+   Built with ♥ with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+
+  # Icons
+  rss: false  # Make sure you created a feed.xml with feed.xml layout
+  email_address: vb20100bv@gmail.com # Full email address, e.g. "sam@example.com"
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  gitlab:
+  github: "v20100v"
+  google_plus:
+  instagram:
+  keybase:
+  linkedin:  # Full URL
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter: # "twitter username"
+  vimeo:
+  wordpress:
+  youtube:
+
+  # Sharing options
+  share_buttons:
+    facebook: true
+    twitter: true
+    google_plus: true
+    tumblr:
+    pinterest: true
+    pocket:
+    reddit:
+    linkedin: true
+    wordpress:
+    email: true
+
+  # Features
+  google_analytics: "UA-119463892-1" # Tracking ID
+  #disqus_shortname: https-autoit-gui-skeleton-github-io-en
+  #disqus_shortname_fr: https-autoit-gui-skeleton-github-io-fr
+  katex: true # Enable if using math markup
+  
+  special_page:
+    search: 
+      icon: "search" # Assuming page link and icon are the same
+      enabled: true
+    tags:
+      icon: "tags"
+      enabled: true
+  
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_share_on: "Share on"
+  str_add_to: "Add to"
+  str_email: "Email"
+  str_tweet: "Tweet"
+  str_pin_it: "Pin it"
+  str_next_post: "Next post"
+  str_previous_post: "Previous post"
+  str_next_page: "Next"
+  str_previous_page: "Prev"
+  str_continue_reading: "Continue reading"
+
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: true
+  
+  
+# PAGINATION
+paginate: 2
+paginate_path: "articles/page:num"
+
+# PORTFOLIO
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:name
+
+# Languages
+languages: ["en", "fr"]
+exclude_from_localizations: ["assets"]
+
+
+# Plugins
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-multiple-languages-plugin]
+
+# SEO metadatas
+author:
+  github: "v20100v"

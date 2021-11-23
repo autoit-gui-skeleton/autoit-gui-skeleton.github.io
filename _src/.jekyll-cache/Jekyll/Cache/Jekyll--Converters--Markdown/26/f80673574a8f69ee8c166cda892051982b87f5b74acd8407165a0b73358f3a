@@ -1,0 +1,136 @@
+I"F'<blockquote>
+  <p>Un AGS-wrapper est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers, et qui permet de bénéficier des avantages d’un gestionnaire de dépendances.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="comment-créer-un-nouveau-ags-wrapper-">Comment créer un nouveau AGS-wrapper ?</h1>
+
+<h2 id="procedure">Procedure</h2>
+
+<ol>
+  <li>
+    <p>Créer un nouveau répertoire <code class="language-plaintext highlighter-rouge">./ags-wrapper-xxx</code>. Remplacer <strong>xxx</strong> avec le nom de la librairie à encapsuler.<br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter un fichier <code class="language-plaintext highlighter-rouge">package.json</code> à la racine du répertoire, et remplacer les propriétés en respectant les conventions AGS.<br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter un fichier <code class="language-plaintext highlighter-rouge">README.md</code> pour décrire le wrapper. Vous pouvez le copier depuis un autre projet pour garder la même structure de document (see https://github.com/autoit-gui-skeleton/ags-wrapper-json#readme).<br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter les fichiers de la libraire à encapsuler et remplir correctement la propriété <code class="language-plaintext highlighter-rouge">AGS.wrapper.main</code>. Il peut être utile de créer un nouveau fichier AutoIt dans lequel nous ajouterons toutes les directives #include des fichiers de la libraire pour faciliter son utilisation. Autrement dit en incluant ce fichier, nous ajouterons tous les éléments de la bibliothèque. N’oubliez pas d’ajouter la directive <code class="language-plaintext highlighter-rouge"># include-once</code>.<br /><br /></p>
+  </li>
+  <li>Créer un dépot git dans Github (ou autre).
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git init
+ git add README.md
+ git commit -m "Init repository"
+ git remote add origin https://github.com/autoit-gui-skeleton/ags-wrapper-xxx.git
+ git push -u orgin master
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Commit et push les autres fichiers, et lorsque la realse est prete, changer le numéro de version en respect du Semantic Versioning dans le fichier package.json. Ajouter également un git tag <code class="language-plaintext highlighter-rouge">1.x.x</code>.<br /><br /></p>
+  </li>
+  <li>Finalement publier le projet avec npm.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm login
+ npm publish --access public
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="conventions-ags-dun-wrapper">Conventions AGS d’un wrapper</h2>
+
+<p>Pour décrire un wrapper AGS et ses dépendances nous utilisons naturellement le fichier <code class="language-plaintext highlighter-rouge">package.json</code>, spécifique à l’écosystème Node.js. Vous pouvez trouver plus d’informations sur ce fichier, et comment le remplir ici : https://yarnpkg.com/lang/en/docs/package-json/.</p>
+
+<p>À la racine de ce nouveau dossier, ajoutez un <code class="language-plaintext highlighter-rouge">package.json</code> comme suit.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@autoit-gui-skeleton/ags-wrapper-xxx"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AGS package for the library xxx, created by ???. This library provides features to ..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20100v &lt;vb20100bv@gmail.com&gt; (https://github.com/v20100v)"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"v20100v &lt;vb20100bv@gmail.com&gt; (https://github.com/v20100v)"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"AGS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AutoIt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AutoIt-GUI-Skeleton"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AGS-wrapper"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"???"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autoit-gui-skeleton.github.io/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-wrapper-xxx.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-wrapper-xxx/issues"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@autoit-gui-skeleton/ags-wrapper-binary-call"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.2"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"AutoIt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.14.5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"wrapper"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx.au3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Il est appréciable d’ajouter des exemples d’utilisations dans le répertoire dédié <code class="language-plaintext highlighter-rouge">./examples</code>.</p>
+
+<p>N’oubliez pas de citer les principaux auteurs de la bibliothèque qui a été encapsulée.</p>
+
+<h2 id="ajouter-un-fichier-wrapper-principal">Ajouter un fichier wrapper principal</h2>
+
+<p>Lorsque nous créons un wrapper pour une bibliothèque, il n’y a toujours pas un seul fichier AutoIt. Afin de simplifier, nous pouvons créer un fichier simple afin d’inclure tous les fichiers de la bibliothèque dans un seul appel de la directive <code class="language-plaintext highlighter-rouge">#include</code>.</p>
+
+<p>Par exemple :</p>
+
+<pre><code class="language-autoit">; ./xxx.au3
+
+#include-once
+
+#include "File-one.au3"
+#include "File-two.au3"
+#include "File-three.au3"
+
+(...)
+</code></pre>
+
+<h2 id="vérifiez-que-la-bibliothèque-est-disponible">Vérifiez que la bibliothèque est disponible</h2>
+
+<p>Dans un dossier vide, exécutez la commande suivante pour tester l’installation du wrapper :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor
+</code></pre></div></div>
+
+<p>Lors de la résolution des packages de fil, si le package n’est pas disponible, vous obtenez une erreur comme celle-ci :</p>
+
+<blockquote>
+  <p><em>An unexpected error occurred: “https://registry.yarnpkg.com/@autoit-gui-skeleton%2fags-wrapper-xxx: Not found”.</em></p>
+</blockquote>
+
+<p>Et si le package est disponible, il est installé dans le dossier <code class="language-plaintext highlighter-rouge">./vendor</code> avec toutes ses dépendances.</p>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/post/ags-wrapper-installed.png" alt="AGS wrapper installed" class="img-full img-fancybox" /><br /><br /></p>
+
+<p>Here we go !</p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue reading ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
+:ET

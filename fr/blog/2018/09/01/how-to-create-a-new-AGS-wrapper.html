@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://autoit-gui-skeleton.github.io///assets/css/main.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://autoit-gui-skeleton.github.io///assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://autoit-gui-skeleton.github.io///fr//feed.xml" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css" />
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css" />
+    
+
+    <!-- FancyBox style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+
+    <!-- Prism CSS syntax highlighter for AutoIt support -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/prism.css" />
+
+    <!-- Flags sprites -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Comment créer un nouveau AGS-wrapper ?" />
+<meta property="og:locale" content="fr" />
+<meta name="description" content="Un AGS-wrapper est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers, et qui permet de bénéficier des avantages d’un gestionnaire de dépendances." />
+<meta property="og:description" content="Un AGS-wrapper est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers, et qui permet de bénéficier des avantages d’un gestionnaire de dépendances." />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html" />
+<meta property="og:site_name" content="AutoIt GUI Skeleton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-01T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Comment créer un nouveau AGS-wrapper ?" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Comment créer un nouveau AGS-wrapper ?","dateModified":"2018-09-01T00:00:00+02:00","datePublished":"2018-09-01T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html"},"description":"Un AGS-wrapper est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers, et qui permet de bénéficier des avantages d’un gestionnaire de dépendances.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <title>AutoIt GUI Skeleton</title>
+</head>
+
+  <body>
+    <header class="site-header">
+
+    <!-- Logo and title -->
+	<div class="branding">
+		<a href="https://autoit-gui-skeleton.github.io//fr/">
+			<img class="avatar" src="https://autoit-gui-skeleton.github.io//assets/img/autoit.png" alt=""/>
+		</a>
+
+		<p class="site-title">
+			<a href="https://autoit-gui-skeleton.github.io//fr/">AutoIt Gui Skeleton</a>
+		</p>
+	</div>
+
+    <!-- This finds the current page so it can be highlighted. -->
+    
+
+    <nav class="clear">
+
+        <!-- Toggle menu -->
+        <a id="pull" class="toggle">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide toggleMenu">
+
+            
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/documentation">Documentation</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/articles">Articles</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/about">À propos</a></li>
+            
+
+            <li class="separator"> | </li>
+
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//fr/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//fr/tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            <li>
+                <a class="link-en" href="https://autoit-gui-skeleton.github.io///blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html">
+                    <span class="flag-icon flag-icon-gb" title="Translate in english" alt="Anglais"></span>
+                    <!-- <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="Translate in english" alt="Anglais"></span> -->
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image" >
+    <header id="main"
+            class="call-out"
+            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg')">
+        <h1 id="Comment+cr%C3%A9er+un+nouveau+AGS-wrapper+%3F" class="title">Comment créer un nouveau AGS-wrapper ?</h1>
+
+        
+            <p class="date">
+        
+        September 1, 2018 </p>
+    </header>
+
+    <section class="post-content"><blockquote>
+  <p>Un AGS-wrapper est une simple enveloppe d’une bibliothèque AutoIt développé par un tiers, et qui permet de bénéficier des avantages d’un gestionnaire de dépendances.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="comment-créer-un-nouveau-ags-wrapper-">Comment créer un nouveau AGS-wrapper ?</h1>
+
+<h2 id="procedure">Procedure</h2>
+
+<ol>
+  <li>
+    <p>Créer un nouveau répertoire <code class="language-plaintext highlighter-rouge">./ags-wrapper-xxx</code>. Remplacer <strong>xxx</strong> avec le nom de la librairie à encapsuler.<br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter un fichier <code class="language-plaintext highlighter-rouge">package.json</code> à la racine du répertoire, et remplacer les propriétés en respectant les conventions AGS.<br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter un fichier <code class="language-plaintext highlighter-rouge">README.md</code> pour décrire le wrapper. Vous pouvez le copier depuis un autre projet pour garder la même structure de document (see https://github.com/autoit-gui-skeleton/ags-wrapper-json#readme).<br /><br /></p>
+  </li>
+  <li>
+    <p>Ajouter les fichiers de la libraire à encapsuler et remplir correctement la propriété <code class="language-plaintext highlighter-rouge">AGS.wrapper.main</code>. Il peut être utile de créer un nouveau fichier AutoIt dans lequel nous ajouterons toutes les directives #include des fichiers de la libraire pour faciliter son utilisation. Autrement dit en incluant ce fichier, nous ajouterons tous les éléments de la bibliothèque. N’oubliez pas d’ajouter la directive <code class="language-plaintext highlighter-rouge"># include-once</code>.<br /><br /></p>
+  </li>
+  <li>Créer un dépot git dans Github (ou autre).
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git init
+ git add README.md
+ git commit -m "Init repository"
+ git remote add origin https://github.com/autoit-gui-skeleton/ags-wrapper-xxx.git
+ git push -u orgin master
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Commit et push les autres fichiers, et lorsque la realse est prete, changer le numéro de version en respect du Semantic Versioning dans le fichier package.json. Ajouter également un git tag <code class="language-plaintext highlighter-rouge">1.x.x</code>.<br /><br /></p>
+  </li>
+  <li>Finalement publier le projet avec npm.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm login
+ npm publish --access public
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="conventions-ags-dun-wrapper">Conventions AGS d’un wrapper</h2>
+
+<p>Pour décrire un wrapper AGS et ses dépendances nous utilisons naturellement le fichier <code class="language-plaintext highlighter-rouge">package.json</code>, spécifique à l’écosystème Node.js. Vous pouvez trouver plus d’informations sur ce fichier, et comment le remplir ici : https://yarnpkg.com/lang/en/docs/package-json/.</p>
+
+<p>À la racine de ce nouveau dossier, ajoutez un <code class="language-plaintext highlighter-rouge">package.json</code> comme suit.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@autoit-gui-skeleton/ags-wrapper-xxx"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AGS package for the library xxx, created by ???. This library provides features to ..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20100v &lt;vb20100bv@gmail.com&gt; (https://github.com/v20100v)"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"v20100v &lt;vb20100bv@gmail.com&gt; (https://github.com/v20100v)"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"AGS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AutoIt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AutoIt-GUI-Skeleton"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AGS-wrapper"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"???"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autoit-gui-skeleton.github.io/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-wrapper-xxx.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/autoit-gui-skeleton/ags-wrapper-xxx/issues"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@autoit-gui-skeleton/ags-wrapper-binary-call"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.2"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"AGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"framework"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"AutoIt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.14.5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"wrapper"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx.au3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Il est appréciable d’ajouter des exemples d’utilisations dans le répertoire dédié <code class="language-plaintext highlighter-rouge">./examples</code>.</p>
+
+<p>N’oubliez pas de citer les principaux auteurs de la bibliothèque qui a été encapsulée.</p>
+
+<h2 id="ajouter-un-fichier-wrapper-principal">Ajouter un fichier wrapper principal</h2>
+
+<p>Lorsque nous créons un wrapper pour une bibliothèque, il n’y a toujours pas un seul fichier AutoIt. Afin de simplifier, nous pouvons créer un fichier simple afin d’inclure tous les fichiers de la bibliothèque dans un seul appel de la directive <code class="language-plaintext highlighter-rouge">#include</code>.</p>
+
+<p>Par exemple :</p>
+
+<pre><code class="language-autoit">; ./xxx.au3
+
+#include-once
+
+#include "File-one.au3"
+#include "File-two.au3"
+#include "File-three.au3"
+
+(...)
+</code></pre>
+
+<h2 id="vérifiez-que-la-bibliothèque-est-disponible">Vérifiez que la bibliothèque est disponible</h2>
+
+<p>Dans un dossier vide, exécutez la commande suivante pour tester l’installation du wrapper :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor
+</code></pre></div></div>
+
+<p>Lors de la résolution des packages de fil, si le package n’est pas disponible, vous obtenez une erreur comme celle-ci :</p>
+
+<blockquote>
+  <p><em>An unexpected error occurred: “https://registry.yarnpkg.com/@autoit-gui-skeleton%2fags-wrapper-xxx: Not found”.</em></p>
+</blockquote>
+
+<p>Et si le package est disponible, il est installé dans le dossier <code class="language-plaintext highlighter-rouge">./vendor</code> avec toutes ses dépendances.</p>
+
+<p><img src="https://autoit-gui-skeleton.github.io//assets/img/post/ags-wrapper-installed.png" alt="AGS wrapper installed" class="img-full img-fancybox" /><br /><br /></p>
+
+<p>Here we go !</p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue reading ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
+</section>
+
+    <!-- Social media shares -->
+    <div class="share-buttons">
+    <ul>
+        
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html&quote=Comment créer un nouveau AGS-wrapper ?%20%7C%20AutoIt GUI Skeleton"
+               target="_blank" title="Share on Facebook">
+                <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Facebook</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://twitter.com/intent/tweet?source=https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html&text=Comment créer un nouveau AGS-wrapper ?%20%7C%20AutoIt GUI Skeleton:%20https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html"
+               target="_blank" title="Tweet">
+                <i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Tweet</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://plus.google.com/share?url=https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html"
+               target="_blank" title="Share on Google+">
+                <i class="fab fa-google-plus-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Google+</span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a href="http://pinterest.com/pin/create/button/?url=https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html&description="
+               target="_blank" title="Pin it">
+                <i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Pin it</span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html&title=Comment créer un nouveau AGS-wrapper ?%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html"
+               target="_blank" title="Share on LinkedIn">
+                <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on LinkedIn</span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a href="mailto:?subject=Comment créer un nouveau AGS-wrapper ?%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html"
+               target="_blank" title="Email">
+                <i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Email</span>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <!-- Tag list -->
+    
+    
+
+
+
+<div class="tag-list">
+    
+    <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/fr/tags#AGS">
+        <p><i class="fa fa-tag fa-fw"></i> AGS</p>
+    </a>
+    
+    <a class="button" href="/fr/tags#Wrapper">
+        <p><i class="fa fa-tag fa-fw"></i> Wrapper</p>
+    </a>
+    
+</div>
+
+
+</article>
+
+<!-- Post navigation -->
+
+<div id="post-nav" class="row post-nav">
+
+    <div class="col-sm-6">
+        <div id="previous-post" class="post-nav-post">
+            
+            <p class="uppercase">Previous post</p>
+            <a href="/fr/blog/2018/07/18/ags_component_check-for-updates.html">
+            <p>Vérifier les mises à jour dans une application AutoIt avec <b>AGS-component-check-for-updates</b></p>
+            </a>
+            
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div id="next-post" class="post-nav-post">
+            
+            <p class="uppercase">Next post</p>
+            <a href="/fr/blog/2021/10/11/autoit-jetbrains.html">
+            <p>Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains</p>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Disqus
+
+-->
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">Built with ♥ with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li><a href="mailto:vb20100bv@gmail.com" title="Email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/v20100v" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+    <!-- KaTeX 0.8.3 -->
+
+<link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css">
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/katex.min.js"></script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-119463892-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<!-- Prism CSS syntax highlighter for AutoIt support -->
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/prism.js"></script>
+
+<!-- FancyBox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Enable fancybox evrywhere with this class selector
+        $('.img-fancybox').each(function (index, value) {
+            $(this).wrap('<a href="' + $(this).attr('src') + '" data-fancybox data-caption="' + $(this).attr('alt') + '">');
+        });
+
+        // Enable bootstrap tooltip everywhere with data-toogle attribute
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/assets/js/main.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://autoit-gui-skeleton.github.io///assets/css/main.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://autoit-gui-skeleton.github.io///assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://autoit-gui-skeleton.github.io///fr//feed.xml" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css" />
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css" />
+    
+
+    <!-- FancyBox style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+
+    <!-- Prism CSS syntax highlighter for AutoIt support -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/prism.css" />
+
+    <!-- Flags sprites -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json" />
+<meta property="og:locale" content="fr" />
+<meta name="description" content="Pour travailler avec des fichiers JSON, AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-json de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur jsmn." />
+<meta property="og:description" content="Pour travailler avec des fichiers JSON, AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-json de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur jsmn." />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2018/07/16/ags_wrapper_json.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2018/07/16/ags_wrapper_json.html" />
+<meta property="og:site_name" content="AutoIt GUI Skeleton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-16T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Utiliser des fichiers JSON dans AutoIt avec AGS-wrapper-json","dateModified":"2018-07-16T00:00:00+02:00","datePublished":"2018-07-16T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//blog/2018/07/16/ags_wrapper_json.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2018/07/16/ags_wrapper_json.html"},"description":"Pour travailler avec des fichiers JSON, AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-json de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur jsmn.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <title>AutoIt GUI Skeleton</title>
+</head>
+
+  <body>
+    <header class="site-header">
+
+    <!-- Logo and title -->
+	<div class="branding">
+		<a href="https://autoit-gui-skeleton.github.io//fr/">
+			<img class="avatar" src="https://autoit-gui-skeleton.github.io//assets/img/autoit.png" alt=""/>
+		</a>
+
+		<p class="site-title">
+			<a href="https://autoit-gui-skeleton.github.io//fr/">AutoIt Gui Skeleton</a>
+		</p>
+	</div>
+
+    <!-- This finds the current page so it can be highlighted. -->
+    
+
+    <nav class="clear">
+
+        <!-- Toggle menu -->
+        <a id="pull" class="toggle">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide toggleMenu">
+
+            
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/documentation">Documentation</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/articles">Articles</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/about">À propos</a></li>
+            
+
+            <li class="separator"> | </li>
+
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//fr/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//fr/tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            <li>
+                <a class="link-en" href="https://autoit-gui-skeleton.github.io///blog/2018/07/16/ags_wrapper_json.html">
+                    <span class="flag-icon flag-icon-gb" title="Translate in english" alt="Anglais"></span>
+                    <!-- <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="Translate in english" alt="Anglais"></span> -->
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image" >
+    <header id="main"
+            class="call-out"
+            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg')">
+        <h1 id="Utiliser+des+fichiers+JSON+dans+AutoIt+avec+%3Cb%3EAGS-wrapper-json%3C%2Fb%3E" class="title">Utiliser des fichiers JSON dans AutoIt avec <b>AGS-wrapper-json</b></h1>
+
+        
+            <p class="date">
+        
+        July 16, 2018 </p>
+    </header>
+
+    <section class="post-content"><blockquote>
+  <p>Pour travailler avec des fichiers JSON, AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json">@autoit-gui-skeleton/ags-wrapper-json</a> de la librairie JSON.au3, créé par Ward. Cette librairie nous permet de décoder / encoder en JSON en utilisant l’analyseur <a href="https://zserge.com/jsmn.html">jsmn</a>.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="comment-installer-ags-wrapper-json-">Comment installer AGS-wrapper-json ?</h1>
+
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké:</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-json --modules-folder vendor</code>
+</pre>
+
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
+</code></pre>
+
+<p>Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.</p>
+
+<h1 id="comment-décoder-un-json-">Comment décoder un JSON ?</h1>
+
+<h2 id="décoder-depuis-un-fichier-json-local">Décoder depuis un fichier JSON local</h2>
+
+<p>Par exemple, crééz ce fichier json dans le répertoire <code class="language-plaintext highlighter-rouge">./assets/DROIDS.json</code> de votre projet AGS.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Listing droids"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luke"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"luke@2080.org"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"droids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R2D2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Astromecano"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0,96m"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BB8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Astromecano"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0,67m"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C-3PO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Social"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1,67m"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Pour décoder ce fichier, on utilise la fonction suivante <code class="language-plaintext highlighter-rouge">json_decode_from_file</code>.</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
+
+;====================================================================================
+; Decode JSON from a given local file
+;
+; @param $jsonfilePath (string)
+; @return $object (object), instance return by json_decode
+;====================================================================================
+Func json_decode_from_file($filePath)
+	Local $fileOpen, $fileContent, $object
+
+	$fileOpen = FileOpen($filePath, $FO_READ)
+	If $fileOpen = -1 Then
+		Return SetError(1, 0, "An error occurred when reading the file " &amp; $filePath)
+	EndIf
+	$fileContent = FileRead($fileOpen)
+	FileClose($fileOpen)
+	$object = Json_Decode($fileContent)
+
+	Return $object
+EndFunc
+</code></pre>
+
+<p>Selon la documentation de Ward:</p>
+
+<blockquote>
+  <p>The most JSON data type will be decoded into corresponding AutoIt variable, including 1D array, string, number, true, false, and null. JSON object will be decoded into “Windows Scripting Dictionary Object” retuned from <code class="language-plaintext highlighter-rouge">ObjCreate("Scripting.Dictionary")</code>. AutoIt build-in functions like IsArray, IsBool, etc. can be used to check the returned data type. But for Object and Null, Json_IsObject() and Json_IsNull() should be used.</p>
+</blockquote>
+
+<blockquote>
+  <p>If the input JSON string is invalid, <code class="language-plaintext highlighter-rouge">@Error</code> will be set to <code class="language-plaintext highlighter-rouge">$JSMN_ERROR_INVAL</code>. And if the input JSON string is not finish, <code class="language-plaintext highlighter-rouge">@Error</code> will be set to <code class="language-plaintext highlighter-rouge">$JSMN_ERROR_PART</code>.</p>
+</blockquote>
+
+<h2 id="obtenir-la-valeur-à-partir-dun-objet-json">Obtenir la valeur à partir d’un objet JSON</h2>
+
+<p>Pour utiliser <code class="language-plaintext highlighter-rouge">$jsonObject</code>, le retour de <code class="language-plaintext highlighter-rouge">json_decode_from_file</code>, vous pouvez utilsier la fonction <code class="language-plaintext highlighter-rouge">Json_Get</code>. Pour sélectionner une variable JSON, vous pouvez utiliser au choix la notation par point ou par crochet.</p>
+
+<pre><code class="language-autoit">Local $file = @ScriptDir &amp; "\assets\DROIDS.json"
+Local $jsonObject = json_decode_from_file($file)
+
+; With dot notation
+Local $project = Json_Get($jsonObject, '.project')     ; Listing droids
+Local $name = Json_Get($jsonObject, '.author.name')    ; Luke
+Local $mail = Json_Get($jsonObject, '.author.mail')    ; luke@2080.org
+local $test = Json_Get($jsonObject, '.droids[1].name') ; BB8
+
+; With array notation
+Local $project2 = Json_Get($jsonObject, '["project"]')
+Local $name2 = Json_Get($jsonObject, '["author"]["name"]')
+Local $mail2 = Json_Get($jsonObject, '["author"]["mail"]')
+local $test2 = Json_Get($jsonObject, '["droids"][1]["name"]')
+</code></pre>
+
+<p>Vous pouvez également utiliser des fonctions d’aide, qui son des couches d’abtractions des  fonctions de <code class="language-plaintext highlighter-rouge">Scripting.Dictionary</code> COM object.</p>
+
+<ul>
+  <li>Json_ObjCreate()</li>
+  <li>Json_ObjPut(ByRef $Object, $Key, $Value)</li>
+  <li>Json_ObjGet(ByRef $Object, $Key)</li>
+  <li>Json_ObjDelete(ByRef $Object, $Key)</li>
+  <li>Json_ObjExists(ByRef $Object, $Key)</li>
+  <li>Json_ObjGetCount(ByRef $Object)</li>
+  <li>Json_ObjGetKeys(ByRef $Object)</li>
+  <li>Json_ObjClear(ByRef $Object)</li>
+</ul>
+
+<h2 id="travailler-avec-une-collection-dobjet-et-parcourir-ses-éléments">Travailler avec une collection d’objet et parcourir ses éléments</h2>
+
+<p>Pour itérer les valeurs d’un tableau json:</p>
+
+<pre><code class="language-autoit">Local $file = @ScriptDir &amp; "\assets\DROIDS.json"
+Local $jsonObject = json_decode_from_file($file)
+
+; Check if exists an item droid into the collection `droids`
+Local $droids = Json_Get($jsonObject, '.droids')
+If UBound($droids) = 0 Then
+    Return SetError(3, 0, "Array attribute 'droids' is empty.")
+EndIf
+
+; Iterate items collection to store values into an array 
+Local $array[UBound($droids)][3]
+For $i = 0 To UBound($droids) - 1 Step 1
+    $array[$i][0] = Json_Get($jsonObject, '.droids' &amp; '[' &amp; $i &amp; '].name')
+    $array[$i][1] = Json_Get($jsonObject, '.droids' &amp; '[' &amp; $i &amp; '].type')
+    $array[$i][2] = Json_Get($jsonObject, '.droids' &amp; '[' &amp; $i &amp; '].size')
+Next
+</code></pre>
+
+<h2 id="ajouter-un-objet-dans-un-json">Ajouter un objet dans un JSON</h2>
+
+<p>Vous pouvez le faire simplement avec la fonction <code class="language-plaintext highlighter-rouge">Json_Put</code>:</p>
+
+<pre><code class="language-àutoit">Local $Obj
+Json_Put($Obj, ".foo", "foo")
+Json_Put($Obj, ".bar[0]", "bar")
+Json_Put($Obj, ".test[1].foo.bar[2].foo.bar", "Test")
+
+Local $Test = Json_Get($Obj, '["test"][1]["foo"]["bar"][2]["foo"]["bar"]') ; "Test"
+</code></pre>
+
+<h2 id="décoder-un-fichier-json-depuis-un-serveur-distant">Décoder un fichier JSON depuis un serveur distant</h2>
+
+<p>Pour décoder un fichier JSON hébergé sur un serveur distant, ou qui se construit depuis un webservice ou encore à partir d’une API Rest, vous pouvez utiliser <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">@autoit-gui-skeleton/ags-component-http-request</a> pour effectuer des requetes HTTP vers une URL donnée.</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
+
+;====================================================================================
+; Decode JSON from a given URL
+;
+; @param $jsonfileUrl (string)
+; @param $proxy (string), by default we load proxy settings form configuration file
+; @return $object (object), instance return by json_decode
+;====================================================================================
+Func json_decode_from_url($jsonfileUrl, $proxy = "")
+	Local $response = HttpGET($jsonfileUrl, Default, $proxy)
+	If (@error) Then
+		Return SetError(@error, $response, _ 
+		    "Unable to get json file on server " &amp; $jsonfileUrl &amp; ".")
+	EndIf
+	Local $data = $response.ResponseText
+	Local $object = json_decode($data)
+
+	Return $object
+EndFunc
+
+Local $jsonObject = json_decode_from_url(https://api.spacexdata.com/v2/info)
+
+Local $name = Json_Get($jsonObject, '.name')        ; SpaceX
+Local $founder = Json_Get($jsonObject, '.founder')  ; Elon Musk
+Local $founded = Json_Get($jsonObject, '.founded')  ; 2002
+</code></pre>
+
+<h1 id="comment-encoder-un-json-">Comment encoder un JSON ?</h1>
+
+<p>Selon la documentation de Ward’s, vous pouvez utilsier <code class="language-plaintext highlighter-rouge">Json_Encode($Data, $Option = 0, $Indent = "\t", $ArraySep = ",\r\n", $ObjectSep = ",\r\n", $ColonSep = ": ")</code>.</p>
+
+<blockquote>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">$Data</code> can be a string, number, bool, keyword : default or null, 1D array, or <code class="language-plaintext highlighter-rouge">Scripting.Dictionary</code> COM object.</li>
+    <li>Binary will be converted to string in UTF8 encoding.</li>
+    <li>Ptr will be converted to number</li>
+    <li>Other unsupported types like 2D array, dllstruct or object will be encoded into null.</li>
+  </ul>
+
+  <p><code class="language-plaintext highlighter-rouge">$Option</code> is bitmask consisting following constant:</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_UNESCAPED_ASCII</code> ; Don’t escape ascii charcters between chr(1) ~ chr(0x1f)</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_UNESCAPED_UNICODE</code> ; Encode multibyte Unicode characters literally</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_UNESCAPED_SLASHES</code> ; Don’t escape /</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_HEX_TAG</code> ; All &lt; and &gt; are converted to \u003C and \u003E</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_HEX_AMP</code> ; All &amp;amp;amp;amp;s are converted to \u0026</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_HEX_APOS</code> ; All ‘ are converted to \u0027</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_HEX_QUOT</code> ; All “ are converted to \u0022</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_PRETTY_PRINT</code> ; Use whitespace in returned data to format it</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_STRICT_PRINT</code> ; Make sure returned JSON string is RFC4627 compliant</li>
+    <li><code class="language-plaintext highlighter-rouge">$JSON_UNQUOTED_STRING</code> ; Output unquoted string if possible (conflicting with $JSMN_STRICT_PRINT)</li>
+  </ul>
+</blockquote>
+
+<p>Par exemple pour encoder en JSON:</p>
+
+<pre><code class="language-autoit">Local $file = @ScriptDir &amp; "\assets\DROIDS.json"
+Local $jsonObject = json_decode_from_file($file)
+Local $jsonEncoded = Json_Encode($jsonObject, $JSON_PRETTY_PRINT)
+
+ConsoleWrite($jsonEncoded)
+</code></pre>
+
+<blockquote>
+  <p>Most encoding option have the same means like PHP’s json_encode() function. When <code class="language-plaintext highlighter-rouge">$JSON_PRETTY_PRINT</code> is set, output format can be change by other 4 parameters : <code class="language-plaintext highlighter-rouge">($Indent, $ArraySep, $ObjectSep, $ColonSep)</code>. Because these 4 output format parameters will be checked inside <code class="language-plaintext highlighter-rouge">Jsmn_Encode()</code> function, returned string will be always accepted by <code class="language-plaintext highlighter-rouge">Jsmn_Decode()</code>. $JSON_UNQUOTED_STRING can be used to output unquoted string that also accetped by Jsmn_Decode(). <code class="language-plaintext highlighter-rouge">$JSON_STRICT_PRINT</code> is used to check output format setting and avoid non-standard JSON output. So this option is conflicting with <code class="language-plaintext highlighter-rouge">$JSON_UNQUOTED_STRING</code>.</p>
+</blockquote>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continuer la lecture ?</strong></p>
+
+  <p><a href="https://www.autoitscript.com/forum/topic/148114-a-non-strict-json-udf-jsmn/">https://www.autoitscript.com/forum/topic/148114-a-non-strict-json-udf-jsmn/</a></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#gestion-de-dépendances-pour-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
+</section>
+
+    <!-- Social media shares -->
+    <div class="share-buttons">
+    <ul>
+        
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html&quote=Utiliser des fichiers JSON dans AutoIt avec <b>AGS-wrapper-json</b>%20%7C%20AutoIt GUI Skeleton"
+               target="_blank" title="Share on Facebook">
+                <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Facebook</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://twitter.com/intent/tweet?source=https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html&text=Utiliser des fichiers JSON dans AutoIt avec <b>AGS-wrapper-json</b>%20%7C%20AutoIt GUI Skeleton:%20https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html"
+               target="_blank" title="Tweet">
+                <i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Tweet</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://plus.google.com/share?url=https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html"
+               target="_blank" title="Share on Google+">
+                <i class="fab fa-google-plus-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Google+</span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a href="http://pinterest.com/pin/create/button/?url=https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html&description="
+               target="_blank" title="Pin it">
+                <i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Pin it</span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html&title=Utiliser des fichiers JSON dans AutoIt avec <b>AGS-wrapper-json</b>%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html"
+               target="_blank" title="Share on LinkedIn">
+                <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on LinkedIn</span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a href="mailto:?subject=Utiliser des fichiers JSON dans AutoIt avec <b>AGS-wrapper-json</b>%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//fr/blog/2018/07/16/ags_wrapper_json.html"
+               target="_blank" title="Email">
+                <i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Email</span>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <!-- Tag list -->
+    
+    
+
+
+
+<div class="tag-list">
+    
+    <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/fr/tags#AGS">
+        <p><i class="fa fa-tag fa-fw"></i> AGS</p>
+    </a>
+    
+    <a class="button" href="/fr/tags#Wrapper">
+        <p><i class="fa fa-tag fa-fw"></i> Wrapper</p>
+    </a>
+    
+</div>
+
+
+</article>
+
+<!-- Post navigation -->
+
+<div id="post-nav" class="row post-nav">
+
+    <div class="col-sm-6">
+        <div id="previous-post" class="post-nav-post">
+            
+            <p class="uppercase">Previous post</p>
+            <a href="/fr/blog/2018/07/10/ags_dependencies_manager_for_AutoIt.html">
+            <p>AGS fournit un gestionnaire de dépendances rapide pour AutoIt avec Yarn.</p>
+            </a>
+            
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div id="next-post" class="post-nav-post">
+            
+            <p class="uppercase">Next post</p>
+            <a href="/fr/blog/2018/07/17/ags_component_http_request.html">
+            <p>Envoyer une requête HTTP en AutoIt avec <b>AGS-component-http-request</b></p>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Disqus
+
+-->
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">Built with ♥ with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li><a href="mailto:vb20100bv@gmail.com" title="Email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/v20100v" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+    <!-- KaTeX 0.8.3 -->
+
+<link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css">
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/katex.min.js"></script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-119463892-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<!-- Prism CSS syntax highlighter for AutoIt support -->
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/prism.js"></script>
+
+<!-- FancyBox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Enable fancybox evrywhere with this class selector
+        $('.img-fancybox').each(function (index, value) {
+            $(this).wrap('<a href="' + $(this).attr('src') + '" data-fancybox data-caption="' + $(this).attr('alt') + '">');
+        });
+
+        // Enable bootstrap tooltip everywhere with data-toogle attribute
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/assets/js/main.min.js"></script>
+  </body>
+</html>

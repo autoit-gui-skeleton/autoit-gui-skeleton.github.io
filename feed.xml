@@ -5,12 +5,12 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Tue, 23 Nov 2021 10:02:27 +0100</pubDate>
+        <pubDate>Tue, 23 Nov 2021 17:57:38 +0100</pubDate>
         
         <item>
             <title>Calculates the size of label required for a given text string with &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
-            <link>/2021/11/22/ags_wrapper_string_size.html</link>
-            <guid isPermaLink="true">/2021/11/22/ags_wrapper_string_size.html</guid>
+            <link>/blog/2021/11/22/ags_wrapper_string_size.html</link>
+            <guid isPermaLink="true">/blog/2021/11/22/ags_wrapper_string_size.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;StringSize takes a text string and calculates the size of label required to hold it as well as formatting the string to fit. AGS provides the &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-string-size&quot;&gt;@autoit-gui-skeleton/ags-wrapper-string-size&lt;/a&gt; from library of Melba23 &lt;a href=&quot;https://www.autoitscript.com/forum/topic/114034-stringsize-m23-new-version-16-aug-11/&quot;&gt;StringSize.au3&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -186,8 +186,8 @@ WEnd
         
         <item>
             <title>AutoIt syntax highlighting in Jetbrains</title>
-            <link>/2021/10/11/autoit-syntax-highlighting.html</link>
-            <guid isPermaLink="true">/2021/10/11/autoit-syntax-highlighting.html</guid>
+            <link>/blog/2021/10/11/autoit-syntax-highlighting.html</link>
+            <guid isPermaLink="true">/blog/2021/10/11/autoit-syntax-highlighting.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;How to enable AutoIt syntax highlighting in Jetbrains.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -213,8 +213,8 @@ WEnd
         
         <item>
             <title>Adding AutoIt actions (Run, Compile, Syntax check...) in Jetbrains</title>
-            <link>/2021/10/11/autoit-jetbrains.html</link>
-            <guid isPermaLink="true">/2021/10/11/autoit-jetbrains.html</guid>
+            <link>/blog/2021/10/11/autoit-jetbrains.html</link>
+            <guid isPermaLink="true">/blog/2021/10/11/autoit-jetbrains.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;How to add AutoIt actions (Compile, Run, Syntax Check…) in Jetbrains.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -259,9 +259,152 @@ WEnd
         </item>
         
         <item>
+            <title>How to create a new AGS wrapper ?</title>
+            <link>/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html</link>
+            <guid isPermaLink="true">/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;An AGS-wrapper is a simple wrapper for an another library created by another team/developper and which allows you to benefit from the advantages of a dependency manager.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;how-to-create-a-new-ags-wrapper-&quot;&gt;How to create a new AGS wrapper ?&lt;/h1&gt;
+
+&lt;h2 id=&quot;procedure&quot;&gt;Procedure&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a new folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./ags-wrapper-xxx&lt;/code&gt;. Replace xxx with the name of the library to wrapped.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; at the root of this new folder, and fill properties with new values. When you fill this file, respect the AGS conventions.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;README.md&lt;/code&gt; to describe the wrapper. Copy this document from another README wrapper (see https://github.com/autoit-gui-skeleton/ags-wrapper-json#readme).&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the files of library to wrapped, and fill the property &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGS.wrapper.main&lt;/code&gt; with the name of main library. It can be usefull to create a new AutoIt fill in which we will add all the directives included in order to facilitate its inclusion. In other words by including this file, we will add all the elements of the library. Don’t forget to add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#include-once&lt;/code&gt; directive.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a local git repository with a remote origin on Github (or another).
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git init
+ git add README.md
+ git commit -m &quot;Init repository&quot;
+ git remote add origin https://github.com/autoit-gui-skeleton/ags-wrapper-xxx.git
+ git push -u orgin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Commit and push another files and when the release is ready change the number version (in respect of Semantic versioning) in package.json, and add a git tag &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1.x.x&lt;/code&gt;.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Finally publish the project with npm.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; npm login
+ npm publish --access public
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;ags-wrapper-conventions&quot;&gt;AGS wrapper conventions&lt;/h2&gt;
+
+&lt;p&gt;To describe an AGS wrapper and its dependencies we naturally use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; file, specific to the Node.js ecosystem. You can find more information about this file, and how to fill it here : https://yarnpkg.com/lang/en/docs/package-json/.&lt;/p&gt;
+
+&lt;p&gt;At the root of this new folder, add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; as follows.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@autoit-gui-skeleton/ags-wrapper-xxx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AGS package for the library xxx, created by ???. This library provides features to ...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v20100v &amp;lt;vb20100bv@gmail.com&amp;gt; (https://github.com/v20100v)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;contributors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v20100v &amp;lt;vb20100bv@gmail.com&amp;gt; (https://github.com/v20100v)&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;keywords&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AGS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AutoIt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AutoIt-GUI-Skeleton&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AGS-wrapper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;???&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;homepage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://autoit-gui-skeleton.github.io/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;repository&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/autoit-gui-skeleton/ags-wrapper-xxx.git&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;bugs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/autoit-gui-skeleton/ags-wrapper-xxx/issues&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;@autoit-gui-skeleton/ags-wrapper-binary-call&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^1.0.2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;AGS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;framework&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;AutoIt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3.3.14.5&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;wrapper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;xxx.au3&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is appreciable to add examples of uses in the dedicated directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./examples&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Do not forget to cite the main authors of the library which been wrapped.&lt;/p&gt;
+
+&lt;h2 id=&quot;add-a-main-wrapper-file&quot;&gt;Add a main wrapper file&lt;/h2&gt;
+
+&lt;p&gt;When we create a wrapper for a library, there is still not just one AutoIt file. In order to simplify, we can create a simple file in order to include all the files of the library in a single call of directive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#include&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;; ./xxx.au3
+
+#include-once
+
+#include &quot;File-one.au3&quot;
+#include &quot;File-two.au3&quot;
+#include &quot;File-three.au3&quot;
+
+(...)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;check-the-library-is-available&quot;&gt;Check the library is available&lt;/h2&gt;
+
+&lt;p&gt;In an empty folder, run the following command to test the install the wrapper :&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When Yarn resolving packages, if the package is not available you get an unexpected error like this :&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;An unexpected error occurred: “https://registry.yarnpkg.com/@autoit-gui-skeleton%2fags-wrapper-xxx: Not found”.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And if the package is available, is installed into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vendor&lt;/code&gt; folder with all its dependencies.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://autoit-gui-skeleton.github.io//assets/img/post/ags-wrapper-installed.png&quot; alt=&quot;AGS wrapper installed&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we go !&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Sat, 01 Sep 2018 00:00:00 +0200</pubDate>
+        </item>
+        
+        <item>
             <title>Check for updates into an AutoIt application with &lt;b&gt;AGS-component-check-for-updates&lt;/b&gt;</title>
-            <link>/2018/07/18/ags_component_check-for-updates.html</link>
-            <guid isPermaLink="true">/2018/07/18/ags_component_check-for-updates.html</guid>
+            <link>/blog/2018/07/18/ags_component_check-for-updates.html</link>
+            <guid isPermaLink="true">/blog/2018/07/18/ags_component_check-for-updates.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;AGS provides the component &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-check-for-updates&quot;&gt;@autoit-gui-skeleton/ags-component-check-for-updates&lt;/a&gt; in order to add the feature to check for updates to an AutoIt application&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -706,8 +849,8 @@ EndFunc
         
         <item>
             <title>Send HTTP request in AutoIt with &lt;b&gt;AGS-component-http-request&lt;/b&gt;</title>
-            <link>/2018/07/17/ags_component_http_request.html</link>
-            <guid isPermaLink="true">/2018/07/17/ags_component_http_request.html</guid>
+            <link>/blog/2018/07/17/ags_component_http_request.html</link>
+            <guid isPermaLink="true">/blog/2018/07/17/ags_component_http_request.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;In order to send HTTP request, AGS provides this component &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;@autoit-gui-skeleton/ags-component-http-request&lt;/a&gt;. This library is used to send HTTP request in GET or POST method, and with or wihtout behind a corporate proxy.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -851,8 +994,8 @@ ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
         
         <item>
             <title>Use JSON files in AutoIt with &lt;b&gt;AGS-wrapper-json&lt;/b&gt;</title>
-            <link>/2018/07/16/ags_wrapper_json.html</link>
-            <guid isPermaLink="true">/2018/07/16/ags_wrapper_json.html</guid>
+            <link>/blog/2018/07/16/ags_wrapper_json.html</link>
+            <guid isPermaLink="true">/blog/2018/07/16/ags_wrapper_json.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;In order to work with JSON, AGS provides a &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-json&quot;&gt;@autoit-gui-skeleton/ags-wrapper-json&lt;/a&gt; of the library JSON.au3, created by Ward. This library allows us to decode/encode JSON with the minimalistic JSON parser &lt;a href=&quot;https://zserge.com/jsmn.html&quot;&gt;jsmn&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1095,8 +1238,8 @@ ConsoleWrite($jsonEncoded)
         
         <item>
             <title>AGS provides a fast dependencies manager for AutoIt with Yarn.</title>
-            <link>/2018/07/10/ags_dependencies_manager_for_AutoIt.html</link>
-            <guid isPermaLink="true">/2018/07/10/ags_dependencies_manager_for_AutoIt.html</guid>
+            <link>/blog/2018/07/10/ags_dependencies_manager_for_AutoIt.html</link>
+            <guid isPermaLink="true">/blog/2018/07/10/ags_dependencies_manager_for_AutoIt.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;In order to simplify the management of the dependencies of an AutoIt project built with AGS, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1189,8 +1332,8 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
         
         <item>
             <title>AGS makes it easy to create Windows installer (setup) for AutoIt applications</title>
-            <link>/2018/06/04/autoit-windows-setup.html</link>
-            <guid isPermaLink="true">/2018/06/04/autoit-windows-setup.html</guid>
+            <link>/blog/2018/06/04/autoit-windows-setup.html</link>
+            <guid isPermaLink="true">/blog/2018/06/04/autoit-windows-setup.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;AGS provides a process and some features to facilitate the creation of a Windows setup to an AutoIt application.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1230,8 +1373,8 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
         
         <item>
             <title>Publication of AGS on Github</title>
-            <link>/2018/05/22/ags-publish-github.html</link>
-            <guid isPermaLink="true">/2018/05/22/ags-publish-github.html</guid>
+            <link>/blog/2018/05/22/ags-publish-github.html</link>
+            <guid isPermaLink="true">/blog/2018/05/22/ags-publish-github.html</guid>
             <description>&lt;p&gt;AutoIt Gui Skeleton (AGS) is now available on &lt;a href=&quot;https://github.com/autoit-gui-skeleton&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -1254,8 +1397,8 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
         
         <item>
             <title>Github Pages with Jekyll support</title>
-            <link>/2018/05/17/thx-github-jekyll.html</link>
-            <guid isPermaLink="true">/2018/05/17/thx-github-jekyll.html</guid>
+            <link>/blog/2018/05/17/thx-github-jekyll.html</link>
+            <guid isPermaLink="true">/blog/2018/05/17/thx-github-jekyll.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;This website is deployed on Github pages, with Jekyll. Thanks to them for this wedding.&lt;/p&gt;
 &lt;/blockquote&gt;
