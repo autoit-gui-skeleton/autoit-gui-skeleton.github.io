@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//fr/</link>
         <description></description>
-        <pubDate>Tue, 23 Nov 2021 09:55:19 +0100</pubDate>
+        <pubDate>Tue, 23 Nov 2021 09:55:56 +0100</pubDate>
         
         <item>
             <title>Calculer la taille requise par une chaîne de caractères pour l'inserer dans un label avec &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
