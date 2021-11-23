@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoIt syntax highlighting
+title: AutoIt syntax highlighting in Jetbrains
 tags: [AutoIt]
 feature-img: "assets/img/documentation/computer.jpeg"
 thumbnail: "assets/img/documentation/computer.jpeg"

@@ -1,76 +1,73 @@
+{%- if site.posts -%}
+    {%- assign sorted = site.posts | sort: 'date' | reverse -%}
+{%- endif -%}
+
 <div class="container archive-post-list">
 
+    {% assign idx = 0 %}
+    {% for post in sorted %}
+        {% assign currentDate = post.date | date: "%Y" %}
+        {% assign currentMonth = post.date | date: "%-m" %}
+        {% assign idx = idx | plus:1 %}
 
-{% assign idx = 0 %}
-{% for post in site.posts %}
-    {% assign currentDate = post.date | date: "%Y" %}
-    {% assign currentMonth = post.date | date: "%-m" %}
-    {% assign idx = idx | plus:1 %}
-
-    {% if site.lang == "fr" %}
-        {% case currentMonth %}
-            {% when '1' %} {% assign currentMonthRead = "Janvier" %}
-            {% when '2' %}  {% assign currentMonthRead = "Février" %}
-            {% when '3' %}  {% assign currentMonthRead = "Mars" %}
-            {% when '4' %}  {% assign currentMonthRead = "Avril" %}
-            {% when '5' %}  {% assign currentMonthRead = "Mai" %}
-            {% when '6' %}  {% assign currentMonthRead = "Juin" %}
-            {% when '7' %}  {% assign currentMonthRead = "Juillet" %}
-            {% when '8' %}  {% assign currentMonthRead = "Août" %}
-            {% when '9' %}  {% assign currentMonthRead = "Septembre" %}
-            {% when '10' %} {% assign currentMonthRead = "Octobre" %}
-            {% when '11' %} {% assign currentMonthRead = "Novembre" %}
-            {% when '12' %} {% assign currentMonthRead = "Décembre" %}
-        {% endcase %}
-    {% else %}
-        {% case currentMonth %}
-            {% when '1' %} {% assign currentMonthRead = "January" %}
-            {% when '2' %}  {% assign currentMonthRead = "February" %}
-            {% when '3' %}  {% assign currentMonthRead = "March" %}
-            {% when '4' %}  {% assign currentMonthRead = "April" %}
-            {% when '5' %}  {% assign currentMonthRead = "May" %}
-            {% when '6' %}  {% assign currentMonthRead = "June" %}
-            {% when '7' %}  {% assign currentMonthRead = "July" %}
-            {% when '8' %}  {% assign currentMonthRead = "August" %}
-            {% when '9' %}  {% assign currentMonthRead = "September" %}
-            {% when '10' %} {% assign currentMonthRead = "October" %}
-            {% when '11' %} {% assign currentMonthRead = "November" %}
-            {% when '12' %} {% assign currentMonthRead = "December" %}
-        {% endcase %}
-    {% endif %}
+        {% if site.lang == "fr" %}
+            {% case currentMonth %}
+                {% when '1' %} {% assign currentMonthRead = "Janvier" %}
+                {% when '2' %}  {% assign currentMonthRead = "Février" %}
+                {% when '3' %}  {% assign currentMonthRead = "Mars" %}
+                {% when '4' %}  {% assign currentMonthRead = "Avril" %}
+                {% when '5' %}  {% assign currentMonthRead = "Mai" %}
+                {% when '6' %}  {% assign currentMonthRead = "Juin" %}
+                {% when '7' %}  {% assign currentMonthRead = "Juillet" %}
+                {% when '8' %}  {% assign currentMonthRead = "Août" %}
+                {% when '9' %}  {% assign currentMonthRead = "Septembre" %}
+                {% when '10' %} {% assign currentMonthRead = "Octobre" %}
+                {% when '11' %} {% assign currentMonthRead = "Novembre" %}
+                {% when '12' %} {% assign currentMonthRead = "Décembre" %}
+            {% endcase %}
+        {% else %}
+            {% case currentMonth %}
+                {% when '1' %} {% assign currentMonthRead = "January" %}
+                {% when '2' %}  {% assign currentMonthRead = "February" %}
+                {% when '3' %}  {% assign currentMonthRead = "March" %}
+                {% when '4' %}  {% assign currentMonthRead = "April" %}
+                {% when '5' %}  {% assign currentMonthRead = "May" %}
+                {% when '6' %}  {% assign currentMonthRead = "June" %}
+                {% when '7' %}  {% assign currentMonthRead = "July" %}
+                {% when '8' %}  {% assign currentMonthRead = "August" %}
+                {% when '9' %}  {% assign currentMonthRead = "September" %}
+                {% when '10' %} {% assign currentMonthRead = "October" %}
+                {% when '11' %} {% assign currentMonthRead = "November" %}
+                {% when '12' %} {% assign currentMonthRead = "December" %}
+            {% endcase %}
+        {% endif %}
 
 
-    {% if currentDate != myDate %}
-        {% unless forloop.first %}
-            {% if idx != 2 %}
+        {% if currentDate != myDate %}
+            {% unless forloop.first %}
+                    </div>
                 </div>
-            {% endif %}
-            </div>
-            {% assign idx = 1 %}
-        {% endunless %}
+                {% assign idx = 1 %}
+            {% endunless %}
+            <div class="blocks">
+                <h1 class="archive-post-title">{{ currentDate }}</h1>
+                {% assign myDate = currentDate %}
+        {% endif %}
 
-        <div class="blocks">
-        <h1 class="archive-post-title">{{ currentDate }}</h1>
-        {% assign myDate = currentDate %}
-    {% endif %}
-
-    {% if currentMonth != myMonth %}
-        {% unless forloop.first %}
-            {% if idx != 2 %}
+        {% if currentMonth != myMonth %}
+            {% unless forloop.first %}
                 </div>
-            {% endif %}
-        </div>
-        {% assign idx = 1 %}
-        {% endunless %}
+                {% assign idx = 1 %}
+            {% endunless %}
 
-        <div class="blocks-month">
-        <h2 class="archive-post-title">{{ currentMonthRead }} {{ currentDate }}</h2>
-        {% assign myMonth = currentMonth %}
-    {% endif %}
+            <div class="blocks-month">
+                <h2 class="archive-post-title">{{ currentMonthRead }} {{ currentDate }}</h2>
+                {% assign myMonth = currentMonth %}
+        {% endif %}
 
-    {% if idx == 1 %}
-    <div class="cards-articles card-deck">
-    {% endif %}
+        {% if idx == 1 %}
+            <div class="cards-articles card-deck">
+        {% endif %}
 
         <div class="card">
             {% if post.feature-img %}
@@ -111,6 +108,7 @@
     {% endif %}
 
     {% if forloop.last %}
+        </div>
     {% endif %}
 {% endfor %}
 

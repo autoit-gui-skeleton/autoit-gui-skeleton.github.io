@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoIt coloration syntaxique
+title: AutoIt coloration syntaxique dans Jetbrains
 tags: [AutoIt]
 feature-img: "assets/img/documentation/computer.jpeg"
 thumbnail: "assets/img/documentation/computer.jpeg"

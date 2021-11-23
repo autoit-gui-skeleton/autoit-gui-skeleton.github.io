@@ -1,0 +1,42 @@
+I"4
+<blockquote>
+  <p>Procédure pour ajouter des actions AutoIt (Compile, Run, Syntax Check…) dans Jetbrains.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="ajouter-une-action-autoit-dans-lide-jetbrains">Ajouter une action AutoIt dans l’IDE Jetbrains</h1>
+
+<ol>
+  <li>
+    <p>Ouvrir <code class="language-plaintext highlighter-rouge">File &gt; Settings &gt; Tools &gt; External Tools</code> ;
+<img src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-external-tools-jetbrains.png" alt="AutoIt Actions Jetbrains" class="img-full img-fancybox" /><br /><br /></p>
+  </li>
+  <li>Ajouter l’action <code class="language-plaintext highlighter-rouge">Run</code> de la manière suivante :
+    <ul>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">AutoIt</code> dans Group ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">Run</code> dans Name ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\AutoIt3.exe</code> dans Program ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">/ErrorStdOut "$FilePath$"</code> dans Arguments ;<br /><br /></li>
+    </ul>
+  </li>
+  <li>Ajouter l’action <code class="language-plaintext highlighter-rouge">Compile</code> de la manière suivante :
+    <ul>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">AutoIt</code> dans Group ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">Compile</code> dans Name ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe.exe</code> dans Program ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">/in "$FilePath$"</code> dans Arguments ;<br /><br /></li>
+    </ul>
+  </li>
+  <li>Ajouter l’action <code class="language-plaintext highlighter-rouge">Syntax check</code> de la manière suivante :
+    <ul>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">AutoIt</code> dans Group ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">Syntax check</code> dans Name ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\Au3Check.exe</code> dans Program ;</li>
+      <li>Ecrire <code class="language-plaintext highlighter-rouge">-q "$FilePath$"</code> dans Arguments ; <br /><br /></li>
+    </ul>
+  </li>
+  <li>Et voila ! <img src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-actions-jetbrains.png" alt="AutoIt Actions in Jetbrains" class="img-full img-fancybox" /></li>
+</ol>
+
+:ET

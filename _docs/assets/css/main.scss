@@ -10,3 +10,10 @@ code {
   background-color: transparent !important;
   word-break: break-word;
 }
+
+ol li {
+  list-style: decimal !important;
+}
+ul li {
+  list-style: square !important;
+}

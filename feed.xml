@@ -5,12 +5,189 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Mon, 22 Nov 2021 10:49:21 +0100</pubDate>
+        <pubDate>Tue, 23 Nov 2021 09:55:16 +0100</pubDate>
         
         <item>
-            <title>AutoIt syntax highlighting</title>
-            <link>/2021/11/21/autoit-syntax-highlighting.html</link>
-            <guid isPermaLink="true">/2021/11/21/autoit-syntax-highlighting.html</guid>
+            <title>Calculates the size of label required for a given text string with &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
+            <link>/2021/11/22/ags_wrapper_string_size.html</link>
+            <guid isPermaLink="true">/2021/11/22/ags_wrapper_string_size.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;StringSize takes a text string and calculates the size of label required to hold it as well as formatting the string to fit. AGS provides the &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-string-size&quot;&gt;@autoit-gui-skeleton/ags-wrapper-string-size&lt;/a&gt; from library of Melba23 &lt;a href=&quot;https://www.autoitscript.com/forum/topic/114034-stringsize-m23-new-version-16-aug-11/&quot;&gt;StringSize.au3&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;how-to-install-ags-wrapper-string-size-&quot;&gt;How to install AGS-wrapper-string-size ?&lt;/h1&gt;
+
+&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, and to install this package AGS-wrapper-json, you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-string-size --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. To use it in your AutoIt program, you need to include this library with this instruction:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/StringSize.au3'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All AGS packages hosted in this npmjs repository belong to the organization &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. Indeed in order to simplify the management of the dependencies of an AutoIt project built with AGS framework, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.&lt;/p&gt;
+
+&lt;h1 id=&quot;stringsize&quot;&gt;StringSize&lt;/h1&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;StringSize takes a text string and calculates the size of label required to hold it as well as formatting the string to fit.&lt;/p&gt;
+
+&lt;p&gt;Now AutoIt will, of course, size a label automatically to fit a text string, but it will not format the string in any way - what you use as the string is what you get in the label. If you do set any label sizes the text will be wrapped, but you can only determine the correct size of the label by trial and error.&lt;/p&gt;
+
+&lt;p&gt;StringSize will, however, reformat the string to fit in a given width and tell you the required height so that you can read it all - whatever the font type or size - and you do not have to do the formatting beforehand.&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;simple-usage&quot;&gt;Simple usage&lt;/h3&gt;
+
+&lt;p&gt;Here is a simple example to show how to use it :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Local $stringSize = _StringSize($text, $fontsize, $fontweight, $fontattribute, $fontfamily, $GUI_width - $marginLeftRight*2)
+
+If(Not @error) Then
+      $label_TEXT_reformated = $stringSize[0]
+      $label_WIDTH_calculated = $stringSize[2] ; ($stringSize[2] / $dpi)
+      $label_HEIGHT_calculated = $stringSize[3] ; ($stringSize[3] / $dpi)
+    
+      GUISetFont($fontsize, $fontweight, $fontattribute, $fontfamily)
+      GUICtrlSetData($label_ID, $label_TEXT_reformated)
+      GUICtrlSetPos($label_ID, $marginLeftRight, $top, $label_WIDTH_calculated, $label_HEIGHT_calculated)
+EndIf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;reformat-string-in-label&quot;&gt;Reformat string in label&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &amp;lt;GUIConstantsEx.au3&amp;gt;
+#include &quot;StringSize.au3&quot;
+
+$sText = &quot; I am a very long line and I am not formatted in any way so that I will not fit within the width of the GUI that surrounds me!&quot;
+
+$hGUI = GUICreate(&quot;Test&quot;, 500, 500)
+
+; A label with no width or height set
+GUICtrlCreateLabel($sText, 10, 10)
+GUICtrlSetBkColor(-1, 0xFF8080)
+
+; A label with no height set
+GUICtrlCreateLabel($sText, 10, 50, 200)
+GUICtrlSetBkColor(-1, 0xC0C0FF)
+
+; A label sized by StringSize
+$aSize = _StringSize($sText, Default, Default, Default, &quot;&quot;, 200)
+GUICtrlCreateLabel($aSize[0], 10, 90, $aSize[2], $aSize[3])
+GUICtrlSetBkColor(-1, 0x80FF80)
+
+GUISetState()
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE
+            Exit
+    EndSwitch
+WEnd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;calculate-the-largest-possible-font-size-for-a-given-label-width&quot;&gt;Calculate the largest possible font size for a given label width&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &amp;lt;GUIConstantsEx.au3&amp;gt;
+
+#include &quot;StringSize.au3&quot;
+
+; Declare arrays to hold parameters
+Global $aFont[4] = [&quot;Arial&quot;, &quot;Tahoma&quot;, &quot;Courier New&quot;, &quot;Comic Sans MS&quot;]
+Global $aWeight[4] = [200, 400, 600, 800]
+Global $aAttrib[4] = [0, 2, 4, 0]
+Global $aColour[4] = [0xFFFFD0, 0xD0FFD0, 0xD0D0FF, 0xFFD0FF]
+
+$sText = &quot;The UDF will calculate the largest possible font size which will allow this text to fit in the randomly sized label.  &quot; &amp;amp; _
+    &quot;Pressing the 'Increase' button will use the next size up so you can see how successful it was.  &quot; &amp;amp; @CRLF &amp;amp; _
+    &quot;Note that the UDF is pessimistic and will leave small borders to the right and at the bottom of the text, so you might &quot; &amp;amp; _
+    &quot;be able to go one size up in a few cases, although this risks clipping the trailing edges of italic letters or the tails of letters such as 'g'.&quot;
+
+$hGUI = GUICreate(&quot;Test&quot;, 500, 500, 100, 100)
+
+$hButton_Next = GUICtrlCreateButton(&quot;Next&quot;, 10, 10, 80, 30)
+GUICtrlSetResizing(-1, $GUI_DOCKALL)
+
+$hLabel_Size = GUICtrlCreateLabel(&quot;&quot;, 100, 10, 40, 30)
+GUICtrlSetResizing(-1, $GUI_DOCKALL)
+GUICtrlSetFont(-1, 24)
+
+$hButton_Increase = GUICtrlCreateButton(&quot;Increase&quot;, 150, 10, 80, 30)
+GUICtrlSetResizing(-1, $GUI_DOCKALL)
+
+GUISetState()
+
+While 1
+
+    ; Choose parameter values
+
+    $iX = 10 * Random(25, 50, 1)
+    $iY = 10 * Random(10, 40, 1)
+    $sFont = $aFont[Random(0, 3, 1)]
+    $iWeight = $aWeight[Random(0, 3, 1)]
+    $iAttrib = $aAttrib[Random(0, 3, 1)]
+    $iColour = $aColour[Random(0, 3, 1)]
+
+    WinMove($hGUI, &quot;&quot;, 100, 100, $iX + 26, $iY + 85)
+    $hLabel = GUICtrlCreateLabel(&quot;&quot;, 10, 50, $iX, $iY)
+    GUICtrlSetBkColor(-1, $iColour)
+
+    For $iSize = 5 To 50
+        $aSize = _StringSize($sText, $iSize, $iWeight, $iAttrib, $sFont, $iX)
+    If $aSize[3] &amp;gt; $iY Then
+            $iSize -= 1
+            ExitLoop
+        EndIf
+    Next
+
+    GUICtrlSetData($hLabel_Size, $iSize)
+    GUICtrlSetFont($hLabel, $iSize, $iWeight, $iAttrib, $sFont)
+    $aSize = _StringSize($sText, $iSize, $iWeight, $iAttrib, $sFont, $iX)
+    GUICtrlSetData($hLabel, $aSize[0])
+
+    While 1
+        Switch GUIGetMsg()
+            Case $GUI_EVENT_CLOSE
+                Exit
+            Case $hButton_Next
+                GUICtrlDelete($hLabel)
+                GUICtrlSetData($hLabel_Size, &quot;&quot;)
+                ExitLoop
+            Case $hButton_Increase
+                GUICtrlSetData($hLabel, &quot;&quot;)
+                $iSize += 1
+                GUICtrlSetData($hLabel_Size, $iSize)
+                GUICtrlSetFont($hLabel, $iSize, $iWeight, $iAttrib, $sFont)
+                $aSize = _StringSize($sText, $iSize, $iWeight, $iAttrib, $sFont, $iX)
+                GUICtrlSetData($hLabel, $aSize[0])
+        EndSwitch
+    WEnd
+
+WEnd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Mon, 22 Nov 2021 00:00:00 +0100</pubDate>
+        </item>
+        
+        <item>
+            <title>AutoIt syntax highlighting in Jetbrains</title>
+            <link>/2021/10/11/autoit-syntax-highlighting.html</link>
+            <guid isPermaLink="true">/2021/10/11/autoit-syntax-highlighting.html</guid>
             <description>&lt;blockquote&gt;
   &lt;p&gt;How to enable AutoIt syntax highlighting in Jetbrains.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -31,7 +208,54 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 </description>
-            <pubDate>Sun, 21 Nov 2021 00:00:00 +0100</pubDate>
+            <pubDate>Mon, 11 Oct 2021 00:00:00 +0200</pubDate>
+        </item>
+        
+        <item>
+            <title>Adding AutoIt actions (Run, Compile, Syntax check...) in Jetbrains</title>
+            <link>/2021/10/11/autoit-jetbrains.html</link>
+            <guid isPermaLink="true">/2021/10/11/autoit-jetbrains.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;How to add AutoIt actions (Compile, Run, Syntax Check…) in Jetbrains.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;add-autoit-action-in-ide-jetbrains&quot;&gt;Add AutoIt action in IDE Jetbrains&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;File &amp;gt; Settings &amp;gt; Tools &amp;gt; External Tools&lt;/code&gt; ;
+&lt;img src=&quot;https://autoit-gui-skeleton.github.io//assets/img/post/autoit-external-tools-jetbrains.png&quot; alt=&quot;AutoIt Actions Jetbrains&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Run&lt;/code&gt; action as follows :
+    &lt;ul&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AutoIt&lt;/code&gt; into Group ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Run&lt;/code&gt; into Name ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\Program Files (x86)\AutoIt3\AutoIt3.exe&lt;/code&gt; into Program ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/ErrorStdOut &quot;$FilePath$&quot;&lt;/code&gt; into Arguments ; &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Compile&lt;/code&gt; action as follows :
+    &lt;ul&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AutoIt&lt;/code&gt; into Group ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Compile&lt;/code&gt; into Name ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe.exe&lt;/code&gt; into Program ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/in &quot;$FilePath$&quot;&lt;/code&gt; into Arguments ; &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Syntax check&lt;/code&gt; action as follows :
+    &lt;ul&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AutoIt&lt;/code&gt; into Group ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Syntax check&lt;/code&gt; into Name ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\Program Files (x86)\AutoIt3\Au3Check.exe&lt;/code&gt; into Program ;&lt;/li&gt;
+      &lt;li&gt;Write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-q &quot;$FilePath$&quot;&lt;/code&gt; into Arguments ; &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Et voila ! &lt;img src=&quot;https://autoit-gui-skeleton.github.io//assets/img/post/autoit-actions-jetbrains.png&quot; alt=&quot;AutoIt Actions in Jetbrains&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+            <pubDate>Mon, 11 Oct 2021 00:00:00 +0200</pubDate>
         </item>
         
         <item>

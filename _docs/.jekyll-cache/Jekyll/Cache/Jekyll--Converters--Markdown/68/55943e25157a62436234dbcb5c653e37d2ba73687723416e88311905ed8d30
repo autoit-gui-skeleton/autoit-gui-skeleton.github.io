@@ -1,50 +1,161 @@
-I"D7<div class="container archive-post-list">
-
-
-
+I"�F<div class="container archive-post-list">
 
     
-    
-    
-
-    
-
-
     
         
-
-        <div class="blocks">
-        <h1 class="archive-post-title">2021</h1>
         
-    
-
-    
         
 
-        <div class="blocks-month">
-        <h2 class="archive-post-title">Novembre 2021</h2>
         
-    
 
-    
-    <div class="cards-articles card-deck">
-    
+
+        
+            
+            <div class="blocks">
+                <h1 class="archive-post-title">2021</h1>
+                
+        
+
+        
+            
+
+            <div class="blocks-month">
+                <h2 class="archive-post-title">Novembre 2021</h2>
+                
+        
+
+        
+            <div class="cards-articles card-deck">
+        
 
         <div class="card">
             
             <div class="animated-zoom-img">
-                <a href="https://autoit-gui-skeleton.github.io//fr/2021/11/21/autoit-syntax-highlighting.html">
+                <a href="https://autoit-gui-skeleton.github.io//fr/2021/11/22/ags_wrapper_string_size.html">
+                    <img class="card-img-top animation-img" src="https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg" alt="Card image cap" />
+                </a>
+            </div>
+            
+
+            <div class="card-body">
+                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/2021/11/22/ags_wrapper_string_size.html">Calculer la taille requise par une chaîne de caractères pour l'inserer dans un label avec <b>AGS-wrapper-string-size</b></a></h4>
+                <p class="card-text meta">
+                    
+                        22
+                        Novembre
+                        2021
+                    
+                </p>
+                <p class="card-text archive-post-item-excerpt">
+                    
+  Pour calculer la taille ; largeur et hauteur ; requise par une chaine de caractères, AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-string-size de la librairie StringSize.au3
+
+
+
+                </p>
+                <p class="card-text">
+                    <small class="text-muted"></small>
+                </p>
+                <a href="https://autoit-gui-skeleton.github.io//fr/2021/11/22/ags_wrapper_string_size.html" class="black-text d-flex justify-content-end">
+                    <h6>Lire <i class="fa fa-angle-double-right"></i></h6>
+                </a>
+            </div>
+        </div>
+
+    
+
+    
+
+        
+        
+        
+
+        
+
+
+        
+
+        
+            
+                </div>
+                
+            
+
+            <div class="blocks-month">
+                <h2 class="archive-post-title">Octobre 2021</h2>
+                
+        
+
+        
+            <div class="cards-articles card-deck">
+        
+
+        <div class="card">
+            
+            <div class="animated-zoom-img">
+                <a href="https://autoit-gui-skeleton.github.io//fr/2021/10/11/autoit-jetbrains.html">
+                    <img class="card-img-top animation-img" src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-compile.jpg" alt="Card image cap" />
+                </a>
+            </div>
+            
+
+            <div class="card-body">
+                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/2021/10/11/autoit-jetbrains.html">Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains</a></h4>
+                <p class="card-text meta">
+                    
+                        11
+                        Octobre
+                        2021
+                    
+                </p>
+                <p class="card-text archive-post-item-excerpt">
+                    
+  Procédure pour ajouter des actions AutoIt (Compile, Run, Syntax Check…) dans Jetbrains.
+
+
+
+                </p>
+                <p class="card-text">
+                    <small class="text-muted"></small>
+                </p>
+                <a href="https://autoit-gui-skeleton.github.io//fr/2021/10/11/autoit-jetbrains.html" class="black-text d-flex justify-content-end">
+                    <h6>Lire <i class="fa fa-angle-double-right"></i></h6>
+                </a>
+            </div>
+        </div>
+
+    
+
+    
+
+        
+        
+        
+
+        
+
+
+        
+
+        
+
+        
+
+        <div class="card">
+            
+            <div class="animated-zoom-img">
+                <a href="https://autoit-gui-skeleton.github.io//fr/2021/10/11/autoit-syntax-highlighting.html">
                     <img class="card-img-top animation-img" src="https://autoit-gui-skeleton.github.io//assets/img/documentation/computer.jpeg" alt="Card image cap" />
                 </a>
             </div>
             
 
             <div class="card-body">
-                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/2021/11/21/autoit-syntax-highlighting.html">AutoIt coloration syntaxique</a></h4>
+                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/2021/10/11/autoit-syntax-highlighting.html">AutoIt coloration syntaxique dans Jetbrains</a></h4>
                 <p class="card-text meta">
                     
-                        21
-                        Novembre
+                        11
+                        Octobre
                         2021
                     
                 </p>
@@ -58,52 +169,51 @@
                 <p class="card-text">
                     <small class="text-muted"></small>
                 </p>
-                <a href="https://autoit-gui-skeleton.github.io//fr/2021/11/21/autoit-syntax-highlighting.html" class="black-text d-flex justify-content-end">
+                <a href="https://autoit-gui-skeleton.github.io//fr/2021/10/11/autoit-syntax-highlighting.html" class="black-text d-flex justify-content-end">
                     <h6>Lire <i class="fa fa-angle-double-right"></i></h6>
                 </a>
             </div>
         </div>
 
     
-
-    
-
-    
-    
+        </div> <!-- regular close <div class="card-deck"> -->
+        
     
 
     
 
+        
+        
+        
 
-    
+        
+
+
         
             
-            </div>
+                    </div>
+                </div>
+                
             
+            <div class="blocks">
+                <h1 class="archive-post-title">2018</h1>
+                
         
 
-        <div class="blocks">
-        <h1 class="archive-post-title">2018</h1>
-        
-    
-
-    
         
             
                 </div>
+                
             
-        </div>
-        
+
+            <div class="blocks-month">
+                <h2 class="archive-post-title">Juillet 2018</h2>
+                
         
 
-        <div class="blocks-month">
-        <h2 class="archive-post-title">Juillet 2018</h2>
         
-    
-
-    
-    <div class="cards-articles card-deck">
-    
+            <div class="cards-articles card-deck">
+        
 
         <div class="card">
             
@@ -143,18 +253,18 @@
 
     
 
-    
-    
-    
+        
+        
+        
 
-    
+        
 
 
-    
+        
 
-    
+        
 
-    
+        
 
         <div class="card">
             
@@ -197,20 +307,20 @@
 
     
 
-    
-    
-    
+        
+        
+        
 
-    
+        
 
 
-    
+        
 
-    
+        
 
-    
-    <div class="cards-articles card-deck">
-    
+        
+            <div class="cards-articles card-deck">
+        
 
         <div class="card">
             
@@ -250,18 +360,18 @@
 
     
 
-    
-    
-    
+        
+        
+        
 
-    
+        
 
 
-    
+        
 
-    
+        
 
-    
+        
 
         <div class="card">
             
@@ -304,32 +414,29 @@
 
     
 
-    
-    
-    
+        
+        
+        
 
-    
+        
 
 
-    
+        
 
-    
         
             
                 </div>
+                
             
-        </div>
-        
+
+            <div class="blocks-month">
+                <h2 class="archive-post-title">Juin 2018</h2>
+                
         
 
-        <div class="blocks-month">
-        <h2 class="archive-post-title">Juin 2018</h2>
         
-    
-
-    
-    <div class="cards-articles card-deck">
-    
+            <div class="cards-articles card-deck">
+        
 
         <div class="card">
             
@@ -369,30 +476,29 @@
 
     
 
-    
-    
-    
+        
+        
+        
 
-    
+        
 
 
-    
+        
 
-    
         
             
-        </div>
-        
+                </div>
+                
+            
+
+            <div class="blocks-month">
+                <h2 class="archive-post-title">Mai 2018</h2>
+                
         
 
-        <div class="blocks-month">
-        <h2 class="archive-post-title">Mai 2018</h2>
         
-    
-
-    
-    <div class="cards-articles card-deck">
-    
+            <div class="cards-articles card-deck">
+        
 
         <div class="card">
             
@@ -430,18 +536,18 @@
 
     
 
-    
-    
-    
+        
+        
+        
 
-    
+        
 
 
-    
+        
 
-    
+        
 
-    
+        
 
         <div class="card">
             
@@ -482,6 +588,8 @@
         
     
 
+    
+        </div>
     
 
 
