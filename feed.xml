@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Tue, 23 Nov 2021 18:26:14 +0100</pubDate>
+        <pubDate>Wed, 24 Nov 2021 08:50:11 +0100</pubDate>
         
         <item>
             <title>Calculates the size of label required for a given text string with &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
