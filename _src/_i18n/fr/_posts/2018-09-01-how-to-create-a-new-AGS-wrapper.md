@@ -134,6 +134,6 @@ Here we go !
 
 <br/>
 
-> **Continue reading ?**
+> **Continue la lecture ?**
 >
 > [Dependencies manager for AutoIt]({{ site.url }}{{ site.baseurl }}/documentation/getting-started#dependencies-manager-for-autoit)

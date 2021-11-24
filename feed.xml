@@ -5,7 +5,87 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Wed, 24 Nov 2021 08:50:11 +0100</pubDate>
+        <pubDate>Wed, 24 Nov 2021 15:42:10 +0100</pubDate>
+        
+        <item>
+            <title>Simplify the use of scrollbars with &lt;b&gt;AGS-wrapper-scrollbars&lt;/b&gt;</title>
+            <link>/blog/2021/11/24/ags_wrapper_scrollbars.html</link>
+            <guid isPermaLink="true">/blog/2021/11/24/ags_wrapper_scrollbars.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;AGS provides the &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-scrollbars&quot;&gt;@autoit-gui-skeleton/ags-wrapper-scrollbars&lt;/a&gt; for the library &lt;a href=&quot;https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&quot;&gt;GUIScrollbar_Ex and GUIScrollbars_Size&lt;/a&gt; built by Melba23.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;how-to-install-ags-wrapper-scrollbars-&quot;&gt;How to install AGS-wrapper-scrollbars ?&lt;/h1&gt;
+
+&lt;p&gt;We assume that you have already install &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, for example with &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;. To install this package you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; is stored:&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-scrollbars --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt; directory. To use it in your AutoIt program, you need to include with this instruction :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3'
+#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All AGS packages hosted in this npmjs repository belong to the organization &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. Indeed in order to simplify the management of the dependencies of an AutoIt project built with AGS framework, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.&lt;/p&gt;
+
+&lt;h1 id=&quot;scrollbars&quot;&gt;Scrollbars&lt;/h1&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;GUIScrollbars_Ex.au3&lt;/strong&gt; - This gives you scrollbars sized to your GUI in one simple command - with no other includes or commands needed. The UDF is designed for those who would not normally use scrollbars because the whole process looks too complicated. It also includes a command to enable you to scroll page by page, thus making it easy to scroll to anywhere on the GUI with only simple calulations based on the values you used to create the GUIs. It have ability to have recalculated scrollbars on resizeable GUIs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GUIScrollbars_Size.au3&lt;/strong&gt; - This calculates the Page and Max numbers for the user to feed into the _GUIScrollbar_SetScrollInfoPage/Max commands. The UDF is aimed at the more experienced user and is particularly useful when you have a GUI with a dynamic scroll size (i.e. adding or subtracting controls to the scrollable area as the script runs).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Source from Melba23’s notes : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;simple-usage&quot;&gt;Simple usage&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &amp;lt;guiconstantsex.au3&amp;gt;
+#include &quot;GUIScrollbars_Ex.au3&quot;
+
+; Create GUI with red background
+$hGUI = GUICreate(&quot;Test&quot;, 500, 500)
+GUISetBkColor(0xFF0000, $hGUI)
+
+; Create a 1000x1000 green label
+GUICtrlCreateLabel(&quot;&quot;, 0, 0, 1000, 1000)
+GUICtrlSetBkColor(-1, 0x00FF00)
+GUISetState()
+
+; Generate scrollbars
+_GUIScrollbars_Generate($hGUI, 1000, 1000)
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE
+            Exit
+    EndSwitch
+WEnd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;another-examples&quot;&gt;Another examples&lt;/h3&gt;
+
+&lt;p&gt;See more &lt;a href=&quot;https://github.com/autoit-gui-skeleton/ags-wrapper-scrollbars/tree/master/Examples&quot;&gt;examples&lt;/a&gt; in git repository.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Wed, 24 Nov 2021 00:00:00 +0100</pubDate>
+        </item>
         
         <item>
             <title>Calculates the size of label required for a given text string with &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>

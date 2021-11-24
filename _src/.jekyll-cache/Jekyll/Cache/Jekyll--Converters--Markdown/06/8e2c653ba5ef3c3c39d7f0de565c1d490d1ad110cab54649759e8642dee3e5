@@ -1,4 +1,4 @@
-I"n <blockquote>
+I"q <blockquote>
   <p>Pour envoyer des requêtes HTTP, AGS fournit ce composant <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request">@autoit-gui-skeleton/ags-component-http-request</a>. Cette librairie nous permet d’envoyer des requêtes HTTP en GET ou en POST, et avec ou sans un proxy.</p>
 </blockquote>
 
@@ -131,7 +131,7 @@ ConsoleWrite(URLEncode("123abc!@#$%^&amp;*()_+ ") &amp; @crlf)
 <p><br /></p>
 
 <blockquote>
-  <p><strong>Continue reading ?</strong></p>
+  <p><strong>Continue la lecture ?</strong></p>
 
   <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
 </blockquote>

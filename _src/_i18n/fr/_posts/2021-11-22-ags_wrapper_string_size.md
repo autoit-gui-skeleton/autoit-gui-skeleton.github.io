@@ -17,13 +17,13 @@ excerpt_separator: <!--more-->
 
 # Comment installer AGS-wrapper-string-size ?
 
-On suppose que vous avez déjà installé [Node.js](https://nodejs.org/) et [Yarn](https://yarnpkg.com/lang/en/), par example avec [Chocolatey](https://chocolatey.org/), et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier `package.json` est stocké:
+On suppose que vous avez déjà installé [Node.js](https://nodejs.org/) et [Yarn](https://yarnpkg.com/lang/en/), par example avec [Chocolatey](https://chocolatey.org/), et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier `package.json` est stocké :
 
 <pre class="command-line" data-prompt="C: \>">
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-string-size --modules-folder vendor</code>
 </pre>
 
-Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire `./vendor/@autoit-gui-skeleton/`. Pour l'utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l'instruction:
+Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire `./vendor/@autoit-gui-skeleton/`. Pour l'utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l'instruction :
 
 ```autoit
 #include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/StringSize.au3'
@@ -173,7 +173,7 @@ WEnd
 
 <br/>
 
-> **Continue reading ?**
+> **Continue Continue la lecture ?**
 >
 > [Dependencies manager for AutoIt]({{ site.url }}{{ site.baseurl }}/documentation/getting-started#dependencies-manager-for-autoit)
 

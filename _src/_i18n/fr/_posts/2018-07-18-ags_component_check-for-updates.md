@@ -431,6 +431,6 @@ Si vous voulez simuler différents scénarios sur la recherche de mise à jour d
 
 <br/>
 
-> **Continue reading ?**
+> **Continue la lecture ?**
 >
 > [Dependencies manager for AutoIt]({{ site.url }}{{ site.baseurl }}/documentation/getting-started#dependencies-manager-for-autoit)

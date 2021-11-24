@@ -1,4 +1,4 @@
-I"ÚN<div class="container archive-post-list">
+I"ÖU<div class="container archive-post-list">
 
     
     
@@ -26,6 +26,57 @@
 
         
             <div class="cards-articles card-deck">
+        
+
+        <div class="card">
+            
+            <div class="animated-zoom-img">
+                <a href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html">
+                    <img class="card-img-top animation-img" src="https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg" alt="Card image cap" />
+                </a>
+            </div>
+            
+
+            <div class="card-body">
+                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html">Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b></a></h4>
+                <p class="card-text meta">
+                    
+                        24
+                        Novembre
+                        2021
+                    
+                </p>
+                <p class="card-text archive-post-item-excerpt">
+                    
+  AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars pour la librairie GUIScrollbar_Ex and GUIScrollbars_Size construite par Melba23.
+
+
+
+                </p>
+                <p class="card-text">
+                    <small class="text-muted"></small>
+                </p>
+                <a href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html" class="black-text d-flex justify-content-end">
+                    <h6>Lire <i class="fa fa-angle-double-right"></i></h6>
+                </a>
+            </div>
+        </div>
+
+    
+
+    
+
+        
+        
+        
+
+        
+
+
+        
+
+        
+
         
 
         <div class="card">
@@ -62,6 +113,9 @@
             </div>
         </div>
 
+    
+        </div> <!-- regular close <div class="card-deck"> -->
+        
     
 
     
@@ -657,5 +711,5 @@
 
 </div>
 
-</div></div></div>
+</div></div>
 :ET

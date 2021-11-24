@@ -5,7 +5,87 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//fr/</link>
         <description></description>
-        <pubDate>Wed, 24 Nov 2021 08:50:14 +0100</pubDate>
+        <pubDate>Wed, 24 Nov 2021 15:42:12 +0100</pubDate>
+        
+        <item>
+            <title>Simplifier l'utilisation de scrollbars avec &lt;b&gt;AGS-wrapper-scrollbars&lt;/b&gt;</title>
+            <link>/blog/2021/11/24/ags_wrapper_scrollbars.html</link>
+            <guid isPermaLink="true">/blog/2021/11/24/ags_wrapper_scrollbars.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;AGS fournit le &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-scrollbars&quot;&gt;@autoit-gui-skeleton/ags-wrapper-scrollbars&lt;/a&gt; pour la librairie &lt;a href=&quot;https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&quot;&gt;GUIScrollbar_Ex and GUIScrollbars_Size&lt;/a&gt; construite par Melba23.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;comment-installer-ags-wrapper-scrollbars-&quot;&gt;Comment installer AGS-wrapper-scrollbars ?&lt;/h1&gt;
+
+&lt;p&gt;On suppose que vous avez déjà installé &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; et &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, par example avec &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké :&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-scrollbars --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3'
+#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
+
+&lt;h1 id=&quot;scrollbars&quot;&gt;Scrollbars&lt;/h1&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;GUIScrollbars_Ex.au3&lt;/strong&gt; - Cette librairie permet de créer des scrollbars selon votre GUI en une seule et simple commande, sans autres inclusions. La librairie est conçu pour simplifier le processus trop complexe pour créer des scrollbars dans AutoIt. Elle comprend également une commande pour vous permettre de faire défiler l’interface page par page, facilitant ainsi le défilement n’importe où sur l’interface graphique avec uniquement des calculs simples basés sur les valeurs que vous avez utilisées pour créer les interfaces graphiques. Les scrollbars sont également récalculées dans des interfaces graphiques redimensionnables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GUIScrollbars_Size.au3&lt;/strong&gt; - Calcule les nombres Page et Max que l’utilisateur doit alimenter dans les commandes _GUIScrollbar_SetScrollInfoPage/Max. Cette librairie s’adresse aux développeurs plus expérimenté, mais s’avère particulièrement utile lorsque vous avez une interface graphique avec une taille de défilement dynamique (c’est-à-dire en ajoutant ou en soustrayant des contrôles à la zone de défilement pendant l’exécution du script).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Source de Melba23 : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;simple-usage&quot;&gt;Simple usage&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &amp;lt;guiconstantsex.au3&amp;gt;
+#include &quot;GUIScrollbars_Ex.au3&quot;
+
+; Create GUI with red background
+$hGUI = GUICreate(&quot;Test&quot;, 500, 500)
+GUISetBkColor(0xFF0000, $hGUI)
+
+; Create a 1000x1000 green label
+GUICtrlCreateLabel(&quot;&quot;, 0, 0, 1000, 1000)
+GUICtrlSetBkColor(-1, 0x00FF00)
+GUISetState()
+
+; Generate scrollbars
+_GUIScrollbars_Generate($hGUI, 1000, 1000)
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE
+            Exit
+    EndSwitch
+WEnd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;autres-examples&quot;&gt;Autres examples&lt;/h3&gt;
+
+&lt;p&gt;Voir plus d’&lt;a href=&quot;https://github.com/autoit-gui-skeleton/ags-wrapper-scrollbars/tree/master/Examples&quot;&gt;exemples&lt;/a&gt; dans le dépôt git du wrapper.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Continue la lecture ?&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Wed, 24 Nov 2021 00:00:00 +0100</pubDate>
+        </item>
         
         <item>
             <title>Calculer la taille requise par une chaîne de caractères pour l'inserer dans un label avec &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
@@ -19,13 +99,13 @@
 
 &lt;h1 id=&quot;comment-installer-ags-wrapper-string-size-&quot;&gt;Comment installer AGS-wrapper-string-size ?&lt;/h1&gt;
 
-&lt;p&gt;On suppose que vous avez déjà installé &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; et &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, par example avec &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké:&lt;/p&gt;
+&lt;p&gt;On suppose que vous avez déjà installé &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; et &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, par example avec &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké :&lt;/p&gt;
 
 &lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
 &lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-string-size --modules-folder vendor&lt;/code&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:&lt;/p&gt;
+&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/StringSize.au3'
 &lt;/code&gt;&lt;/pre&gt;
@@ -170,7 +250,7 @@ WEnd
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Continue Continue la lecture ?&lt;/strong&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -389,7 +469,7 @@ WEnd
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Continue la lecture ?&lt;/strong&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -835,7 +915,7 @@ EndFunc
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Continue la lecture ?&lt;/strong&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -980,7 +1060,7 @@ ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Continue reading ?&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Continue la lecture ?&lt;/strong&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit&quot;&gt;Dependencies manager for AutoIt&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

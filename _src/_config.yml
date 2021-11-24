@@ -34,7 +34,7 @@ theme_settings:
   gravatar: bf10596cd55afa7150cc66f793af1619 # Email MD5 hash
   header_text_feature_image: assets/img/abstract-black-background-blue-604684.jpg
   footer_text: >
-   Built with ♥ with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+   Built with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Icons
   rss: false  # Make sure you created a feed.xml with feed.xml layout
@@ -112,7 +112,7 @@ theme_settings:
   
   
 # PAGINATION
-paginate: 2
+paginate: 3
 paginate_path: "articles/page:num"
 
 # PORTFOLIO

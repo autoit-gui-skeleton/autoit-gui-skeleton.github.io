@@ -1,4 +1,4 @@
-I"�<blockquote>
+I"�<blockquote>
   <p>Pour calculer la taille ; largeur et hauteur ; requise par une chaine de caractères, AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-string-size">@autoit-gui-skeleton/ags-wrapper-string-size</a> de la librairie <a href="https://www.autoitscript.com/forum/topic/114034-stringsize-m23-new-version-16-aug-11/">StringSize.au3</a></p>
 </blockquote>
 
@@ -6,13 +6,13 @@
 
 <h1 id="comment-installer-ags-wrapper-string-size-">Comment installer AGS-wrapper-string-size ?</h1>
 
-<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké:</p>
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké :</p>
 
 <pre class="command-line" data-prompt="C: \&gt;">
 <code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-string-size --modules-folder vendor</code>
 </pre>
 
-<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:</p>
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :</p>
 
 <pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/StringSize.au3'
 </code></pre>
@@ -157,7 +157,7 @@ WEnd
 <p><br /></p>
 
 <blockquote>
-  <p><strong>Continue reading ?</strong></p>
+  <p><strong>Continue Continue la lecture ?</strong></p>
 
   <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
 </blockquote>

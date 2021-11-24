@@ -1,0 +1,73 @@
+I"�<blockquote>
+  <p>AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-scrollbars">@autoit-gui-skeleton/ags-wrapper-scrollbars</a> pour la librairie <a href="https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/">GUIScrollbar_Ex and GUIScrollbars_Size</a> construite par Melba23.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="comment-installer-ags-wrapper-scrollbars-">Comment installer AGS-wrapper-scrollbars ?</h1>
+
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké :</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-scrollbars --modules-folder vendor</code>
+</pre>
+
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3'
+#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3'
+</code></pre>
+
+<p>Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.</p>
+
+<h1 id="scrollbars">Scrollbars</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><strong>GUIScrollbars_Ex.au3</strong> - Cette librairie permet de créer des scrollbars selon votre GUI en une seule et simple commande, sans autres inclusions. La librairie est conçu pour simplifier le processus trop complexe pour créer des scrollbars dans AutoIt. Elle comprend également une commande pour vous permettre de faire défiler l’interface page par page, facilitant ainsi le défilement n’importe où sur l’interface graphique avec uniquement des calculs simples basés sur les valeurs que vous avez utilisées pour créer les interfaces graphiques. Les scrollbars sont également récalculées dans des interfaces graphiques redimensionnables.</p>
+
+<p><strong>GUIScrollbars_Size.au3</strong> - Calcule les nombres Page et Max que l’utilisateur doit alimenter dans les commandes _GUIScrollbar_SetScrollInfoPage/Max. Cette librairie s’adresse aux développeurs plus expérimenté, mais s’avère particulièrement utile lorsque vous avez une interface graphique avec une taille de défilement dynamique (c’est-à-dire en ajoutant ou en soustrayant des contrôles à la zone de défilement pendant l’exécution du script).</p>
+
+<blockquote>
+  <p>Source de Melba23 : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/</p>
+</blockquote>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="simple-usage">Simple usage</h3>
+
+<pre><code class="language-autoit">#include &lt;guiconstantsex.au3&gt;
+#include "GUIScrollbars_Ex.au3"
+
+; Create GUI with red background
+$hGUI = GUICreate("Test", 500, 500)
+GUISetBkColor(0xFF0000, $hGUI)
+
+; Create a 1000x1000 green label
+GUICtrlCreateLabel("", 0, 0, 1000, 1000)
+GUICtrlSetBkColor(-1, 0x00FF00)
+GUISetState()
+
+; Generate scrollbars
+_GUIScrollbars_Generate($hGUI, 1000, 1000)
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE
+            Exit
+    EndSwitch
+WEnd
+</code></pre>
+
+<h3 id="autres-examples">Autres examples</h3>
+
+<p>Voir plus d’<a href="https://github.com/autoit-gui-skeleton/ags-wrapper-scrollbars/tree/master/Examples">exemples</a> dans le dépôt git du wrapper.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue la lecture ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
+:ET

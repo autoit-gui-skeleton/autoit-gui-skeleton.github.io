@@ -41,19 +41,19 @@
     <!-- seo tags -->
     <!-- Begin Jekyll SEO tag v2.7.1 -->
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="Ajouter des actions pour AutoIt (Run, Compile, Syntax check…) dans Jetbrains" />
+<meta property="og:title" content="Simplifier l’utilisation de scrollbars avec AGS-wrapper-scrollbars" />
 <meta property="og:locale" content="fr" />
-<meta name="description" content="Procédure pour ajouter des actions AutoIt (Compile, Run, Syntax Check…) dans Jetbrains." />
-<meta property="og:description" content="Procédure pour ajouter des actions AutoIt (Compile, Run, Syntax Check…) dans Jetbrains." />
-<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2021/10/11/autoit-jetbrains.html" />
-<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2021/10/11/autoit-jetbrains.html" />
+<meta name="description" content="AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars pour la librairie GUIScrollbar_Ex and GUIScrollbars_Size construite par Melba23." />
+<meta property="og:description" content="AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars pour la librairie GUIScrollbar_Ex and GUIScrollbars_Size construite par Melba23." />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html" />
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-10-11T00:00:00+02:00" />
+<meta property="article:published_time" content="2021-11-24T00:00:00+01:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Ajouter des actions pour AutoIt (Run, Compile, Syntax check…) dans Jetbrains" />
+<meta property="twitter:title" content="Simplifier l’utilisation de scrollbars avec AGS-wrapper-scrollbars" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Ajouter des actions pour AutoIt (Run, Compile, Syntax check…) dans Jetbrains","dateModified":"2021-10-11T00:00:00+02:00","datePublished":"2021-10-11T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//blog/2021/10/11/autoit-jetbrains.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2021/10/11/autoit-jetbrains.html"},"description":"Procédure pour ajouter des actions AutoIt (Compile, Run, Syntax Check…) dans Jetbrains.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Simplifier l’utilisation de scrollbars avec AGS-wrapper-scrollbars","dateModified":"2021-11-24T00:00:00+01:00","datePublished":"2021-11-24T00:00:00+01:00","url":"https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html"},"description":"AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars pour la librairie GUIScrollbar_Ex and GUIScrollbars_Size construite par Melba23.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -114,7 +114,7 @@
 
             
             <li>
-                <a class="link-en" href="https://autoit-gui-skeleton.github.io///blog/2021/10/11/autoit-jetbrains.html">
+                <a class="link-en" href="https://autoit-gui-skeleton.github.io///blog/2021/11/24/ags_wrapper_scrollbars.html">
                     <span class="flag-icon flag-icon-gb" title="Translate in english" alt="Anglais"></span>
                     <!-- <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="Translate in english" alt="Anglais"></span> -->
                 </a>
@@ -128,55 +128,87 @@
       <article class="feature-image" >
     <header id="main"
             class="call-out"
-            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/post/autoit-compile.jpg')">
-        <h1 id="Ajouter+des+actions+pour+AutoIt+%28Run%2C+Compile%2C+Syntax+check...%29+dans+Jetbrains" class="title">Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains</h1>
+            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg')">
+        <h1 id="Simplifier+l%27utilisation+de+scrollbars+avec+%3Cb%3EAGS-wrapper-scrollbars%3C%2Fb%3E" class="title">Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b></h1>
 
         
             <p class="date">
         
-        October 11, 2021 </p>
+        November 24, 2021 </p>
     </header>
 
     <section class="post-content"><blockquote>
-  <p>Procédure pour ajouter des actions AutoIt (Compile, Run, Syntax Check…) dans Jetbrains.</p>
+  <p>AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-scrollbars">@autoit-gui-skeleton/ags-wrapper-scrollbars</a> pour la librairie <a href="https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/">GUIScrollbar_Ex and GUIScrollbars_Size</a> construite par Melba23.</p>
 </blockquote>
 
 <!--more-->
 
-<h1 id="ajouter-une-action-autoit-dans-lide-jetbrains">Ajouter une action AutoIt dans l’IDE Jetbrains</h1>
+<h1 id="comment-installer-ags-wrapper-scrollbars-">Comment installer AGS-wrapper-scrollbars ?</h1>
 
-<ol>
-  <li>
-    <p>Ouvrir <code class="language-plaintext highlighter-rouge">File &gt; Settings &gt; Tools &gt; External Tools</code> ;
-<img src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-external-tools-jetbrains.png" alt="AutoIt Actions Jetbrains" class="img-full img-fancybox" /><br /><br /></p>
-  </li>
-  <li>Ajouter l’action <code class="language-plaintext highlighter-rouge">Run</code> de la manière suivante :
-    <ul>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">AutoIt</code> dans Group ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">Run</code> dans Name ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\AutoIt3.exe</code> dans Program ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">/ErrorStdOut "$FilePath$"</code> dans Arguments ;<br /><br /></li>
-    </ul>
-  </li>
-  <li>Ajouter l’action <code class="language-plaintext highlighter-rouge">Compile</code> de la manière suivante :
-    <ul>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">AutoIt</code> dans Group ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">Compile</code> dans Name ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe.exe</code> dans Program ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">/in "$FilePath$"</code> dans Arguments ;<br /><br /></li>
-    </ul>
-  </li>
-  <li>Ajouter l’action <code class="language-plaintext highlighter-rouge">Syntax check</code> de la manière suivante :
-    <ul>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">AutoIt</code> dans Group ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">Syntax check</code> dans Name ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">C:\Program Files (x86)\AutoIt3\Au3Check.exe</code> dans Program ;</li>
-      <li>Ecrire <code class="language-plaintext highlighter-rouge">-q "$FilePath$"</code> dans Arguments ; <br /><br /></li>
-    </ul>
-  </li>
-  <li>Et voila ! <img src="https://autoit-gui-skeleton.github.io//assets/img/post/autoit-actions-jetbrains.png" alt="AutoIt Actions in Jetbrains" class="img-full img-fancybox" /></li>
-</ol>
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké :</p>
 
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-scrollbars --modules-folder vendor</code>
+</pre>
+
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3'
+#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3'
+</code></pre>
+
+<p>Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.</p>
+
+<h1 id="scrollbars">Scrollbars</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><strong>GUIScrollbars_Ex.au3</strong> - Cette librairie permet de créer des scrollbars selon votre GUI en une seule et simple commande, sans autres inclusions. La librairie est conçu pour simplifier le processus trop complexe pour créer des scrollbars dans AutoIt. Elle comprend également une commande pour vous permettre de faire défiler l’interface page par page, facilitant ainsi le défilement n’importe où sur l’interface graphique avec uniquement des calculs simples basés sur les valeurs que vous avez utilisées pour créer les interfaces graphiques. Les scrollbars sont également récalculées dans des interfaces graphiques redimensionnables.</p>
+
+<p><strong>GUIScrollbars_Size.au3</strong> - Calcule les nombres Page et Max que l’utilisateur doit alimenter dans les commandes _GUIScrollbar_SetScrollInfoPage/Max. Cette librairie s’adresse aux développeurs plus expérimenté, mais s’avère particulièrement utile lorsque vous avez une interface graphique avec une taille de défilement dynamique (c’est-à-dire en ajoutant ou en soustrayant des contrôles à la zone de défilement pendant l’exécution du script).</p>
+
+<blockquote>
+  <p>Source de Melba23 : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/</p>
+</blockquote>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="simple-usage">Simple usage</h3>
+
+<pre><code class="language-autoit">#include &lt;guiconstantsex.au3&gt;
+#include "GUIScrollbars_Ex.au3"
+
+; Create GUI with red background
+$hGUI = GUICreate("Test", 500, 500)
+GUISetBkColor(0xFF0000, $hGUI)
+
+; Create a 1000x1000 green label
+GUICtrlCreateLabel("", 0, 0, 1000, 1000)
+GUICtrlSetBkColor(-1, 0x00FF00)
+GUISetState()
+
+; Generate scrollbars
+_GUIScrollbars_Generate($hGUI, 1000, 1000)
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE
+            Exit
+    EndSwitch
+WEnd
+</code></pre>
+
+<h3 id="autres-examples">Autres examples</h3>
+
+<p>Voir plus d’<a href="https://github.com/autoit-gui-skeleton/ags-wrapper-scrollbars/tree/master/Examples">exemples</a> dans le dépôt git du wrapper.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue la lecture ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//fr/documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
 </section>
 
     <!-- Social media shares -->
@@ -184,7 +216,7 @@
     <ul>
         
         <li>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html&quote=Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains%20%7C%20AutoIt GUI Skeleton"
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html&quote=Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton"
                target="_blank" title="Share on Facebook">
                 <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Share on Facebook</span>
@@ -194,7 +226,7 @@
 
         
         <li>
-            <a href="https://twitter.com/intent/tweet?source=https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html&text=Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains%20%7C%20AutoIt GUI Skeleton:%20https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html"
+            <a href="https://twitter.com/intent/tweet?source=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html&text=Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton:%20https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Tweet">
                 <i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Tweet</span>
@@ -204,7 +236,7 @@
 
         
         <li>
-            <a href="https://plus.google.com/share?url=https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html"
+            <a href="https://plus.google.com/share?url=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Share on Google+">
                 <i class="fab fa-google-plus-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Share on Google+</span>
@@ -216,7 +248,7 @@
 
         
         <li>
-            <a href="http://pinterest.com/pin/create/button/?url=https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html&description="
+            <a href="http://pinterest.com/pin/create/button/?url=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html&description="
                target="_blank" title="Pin it">
                 <i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Pin it</span>
@@ -230,7 +262,7 @@
 
         
         <li>
-            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html&title=Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html"
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html&title=Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Share on LinkedIn">
                 <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Share on LinkedIn</span>
@@ -242,7 +274,7 @@
 
         
         <li>
-            <a href="mailto:?subject=Ajouter des actions pour AutoIt (Run, Compile, Syntax check...) dans Jetbrains%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//fr/blog/2021/10/11/autoit-jetbrains.html"
+            <a href="mailto:?subject=Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Email">
                 <i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Email</span>
@@ -264,8 +296,12 @@
     
 
     
-    <a class="button" href="/fr/tags#AutoIt">
-        <p><i class="fa fa-tag fa-fw"></i> AutoIt</p>
+    <a class="button" href="/fr/tags#AGS">
+        <p><i class="fa fa-tag fa-fw"></i> AGS</p>
+    </a>
+    
+    <a class="button" href="/fr/tags#Wrapper">
+        <p><i class="fa fa-tag fa-fw"></i> Wrapper</p>
     </a>
     
 </div>
@@ -277,12 +313,12 @@
 
 <div id="post-nav" class="row post-nav">
 
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div id="previous-post" class="post-nav-post">
             
             <p class="uppercase">Previous post</p>
-            <a href="/fr/blog/2018/09/01/how-to-create-a-new-AGS-wrapper.html">
-            <p>Comment créer un nouveau AGS-wrapper ?</p>
+            <a href="/fr/blog/2021/11/22/ags_wrapper_string_size.html">
+            <p>Calculer la taille requise par une chaîne de caractères pour l'inserer dans un label avec <b>AGS-wrapper-string-size</b></p>
             </a>
             
         </div>
@@ -290,11 +326,6 @@
 
     <div class="col-sm-6">
         <div id="next-post" class="post-nav-post">
-            
-            <p class="uppercase">Next post</p>
-            <a href="/fr/blog/2021/10/11/autoit-syntax-highlighting.html">
-            <p>AutoIt coloration syntaxique dans Jetbrains</p>
-            </a>
             
         </div>
     </div>

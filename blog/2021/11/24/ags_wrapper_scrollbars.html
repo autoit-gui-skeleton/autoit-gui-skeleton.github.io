@@ -41,20 +41,19 @@
     <!-- seo tags -->
     <!-- Begin Jekyll SEO tag v2.7.1 -->
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="Github Pages with Jekyll support" />
-<meta name="author" content="v20100v" />
+<meta property="og:title" content="Simplify the use of scrollbars with AGS-wrapper-scrollbars" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This website is deployed on Github pages, with Jekyll. Thanks to them for this wedding." />
-<meta property="og:description" content="This website is deployed on Github pages, with Jekyll. Thanks to them for this wedding." />
-<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html" />
-<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html" />
+<meta name="description" content="AGS provides the wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars for the library GUIScrollbar_Ex and GUIScrollbars_Size built by Melba23." />
+<meta property="og:description" content="AGS provides the wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars for the library GUIScrollbar_Ex and GUIScrollbars_Size built by Melba23." />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html" />
 <meta property="og:site_name" content="AutoIt GUI Skeleton" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-05-17T00:00:00+02:00" />
+<meta property="article:published_time" content="2021-11-24T00:00:00+01:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Github Pages with Jekyll support" />
+<meta property="twitter:title" content="Simplify the use of scrollbars with AGS-wrapper-scrollbars" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Github Pages with Jekyll support","dateModified":"2018-05-17T00:00:00+02:00","datePublished":"2018-05-17T00:00:00+02:00","url":"https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html"},"author":{"@type":"Person","name":"v20100v"},"description":"This website is deployed on Github pages, with Jekyll. Thanks to them for this wedding.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Simplify the use of scrollbars with AGS-wrapper-scrollbars","dateModified":"2021-11-24T00:00:00+01:00","datePublished":"2021-11-24T00:00:00+01:00","url":"https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html"},"description":"AGS provides the wrapper @autoit-gui-skeleton/ags-wrapper-scrollbars for the library GUIScrollbar_Ex and GUIScrollbars_Size built by Melba23.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>AutoIt GUI Skeleton</title>
@@ -115,7 +114,7 @@
 
             
             <li>
-                <a class="link-fr" href="https://autoit-gui-skeleton.github.io//fr/blog/2018/05/17/thx-github-jekyll.html">
+                <a class="link-fr" href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/24/ags_wrapper_scrollbars.html">
                     <span class="flag-icon flag-icon-fr" title="Traduire en français" alt="French"></span>
                 </a>
             </li>
@@ -128,38 +127,87 @@
       <article class="feature-image" >
     <header id="main"
             class="call-out"
-            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/background-board-bokeh-929245.jpg')">
-        <h1 id="Github+Pages+with+Jekyll+support" class="title">Github Pages with Jekyll support</h1>
+            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg')">
+        <h1 id="Simplify+the+use+of+scrollbars+with+%3Cb%3EAGS-wrapper-scrollbars%3C%2Fb%3E" class="title">Simplify the use of scrollbars with <b>AGS-wrapper-scrollbars</b></h1>
 
         
             <p class="date">
         
-        May 17, 2018  - <span class="author">v20100v</span></p>
+        November 24, 2021 </p>
     </header>
 
     <section class="post-content"><blockquote>
-  <p>This website is deployed on Github pages, with Jekyll. Thanks to them for this wedding.</p>
+  <p>AGS provides the <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-scrollbars">@autoit-gui-skeleton/ags-wrapper-scrollbars</a> for the library <a href="https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/">GUIScrollbar_Ex and GUIScrollbars_Size</a> built by Melba23.</p>
 </blockquote>
 
 <!--more-->
 
-<h1 id="what-is-github-pages">What is GitHub Pages?</h1>
+<h1 id="how-to-install-ags-wrapper-scrollbars-">How to install AGS-wrapper-scrollbars ?</h1>
 
-<p>GitHub Pages is a static site hosting service designed to host your personal, organization, or project pages directly from a GitHub repository.</p>
+<p>We assume that you have already install <a href="https://nodejs.org/">Node.js</a> and <a href="https://yarnpkg.com/lang/en/">Yarn</a>, for example with <a href="https://chocolatey.org/">Chocolatey</a>. To install this package you can use the dependencies manager for AutoIt provides in AGS. So just type in the root folder of your project where the <code class="language-plaintext highlighter-rouge">package.json</code> is stored:</p>
 
-<p>More information about <a href="https://help.github.com/articles/what-is-github-pages/">Github Pages</a>.</p>
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-scrollbars --modules-folder vendor</code>
+</pre>
 
-<h1 id="what-is-jekyll-">What is Jekyll ?</h1>
+<p>All project dependencies, as well as daughter dependencies of parent dependencies, are installed in the <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code> directory. To use it in your AutoIt program, you need to include with this instruction :</p>
 
-<p>Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories.</p>
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3'
+#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3'
+</code></pre>
 
-<p>More information about <a href="https://jekyllrb.com/">Jekyll</a>.</p>
+<p>All AGS packages hosted in this npmjs repository belong to the organization <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. Indeed in order to simplify the management of the dependencies of an AutoIt project built with AGS framework, we have diverted form its initial use the dependency manager npm, and its evolution Yarn. This allows us to manage the dependencies of an AGS project with other AutoIt libraries, and to share these AutoIt packages from the npmjs.org repository.</p>
 
-<h1 id="github-pages-with-jekyll">Github Pages with Jekyll</h1>
+<h1 id="scrollbars">Scrollbars</h1>
 
-<p>For this website we use Jekyll as a static site generator with GitHub Pages. In addition to supporting regular HTML content, GitHub Pages supports Jekyll.</p>
+<h2 id="introduction">Introduction</h2>
 
-<p>More information about <a href="https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/">Jekyll support on Github Pages</a>.</p>
+<p><strong>GUIScrollbars_Ex.au3</strong> - This gives you scrollbars sized to your GUI in one simple command - with no other includes or commands needed. The UDF is designed for those who would not normally use scrollbars because the whole process looks too complicated. It also includes a command to enable you to scroll page by page, thus making it easy to scroll to anywhere on the GUI with only simple calulations based on the values you used to create the GUIs. It have ability to have recalculated scrollbars on resizeable GUIs.</p>
+
+<p><strong>GUIScrollbars_Size.au3</strong> - This calculates the Page and Max numbers for the user to feed into the _GUIScrollbar_SetScrollInfoPage/Max commands. The UDF is aimed at the more experienced user and is particularly useful when you have a GUI with a dynamic scroll size (i.e. adding or subtracting controls to the scrollable area as the script runs).</p>
+
+<blockquote>
+  <p>Source from Melba23’s notes : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/</p>
+</blockquote>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="simple-usage">Simple usage</h3>
+
+<pre><code class="language-autoit">#include &lt;guiconstantsex.au3&gt;
+#include "GUIScrollbars_Ex.au3"
+
+; Create GUI with red background
+$hGUI = GUICreate("Test", 500, 500)
+GUISetBkColor(0xFF0000, $hGUI)
+
+; Create a 1000x1000 green label
+GUICtrlCreateLabel("", 0, 0, 1000, 1000)
+GUICtrlSetBkColor(-1, 0x00FF00)
+GUISetState()
+
+; Generate scrollbars
+_GUIScrollbars_Generate($hGUI, 1000, 1000)
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE
+            Exit
+    EndSwitch
+WEnd
+</code></pre>
+
+<h3 id="another-examples">Another examples</h3>
+
+<p>See more <a href="https://github.com/autoit-gui-skeleton/ags-wrapper-scrollbars/tree/master/Examples">examples</a> in git repository.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Continue reading ?</strong></p>
+
+  <p><a href="https://autoit-gui-skeleton.github.io//documentation/getting-started#dependencies-manager-for-autoit">Dependencies manager for AutoIt</a></p>
+</blockquote>
 </section>
 
     <!-- Social media shares -->
@@ -167,7 +215,7 @@
     <ul>
         
         <li>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html&quote=Github Pages with Jekyll support%20%7C%20AutoIt GUI Skeleton"
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html&quote=Simplify the use of scrollbars with <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton"
                target="_blank" title="Share on Facebook">
                 <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Share on Facebook</span>
@@ -177,7 +225,7 @@
 
         
         <li>
-            <a href="https://twitter.com/intent/tweet?source=https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html&text=Github Pages with Jekyll support%20%7C%20AutoIt GUI Skeleton:%20https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html"
+            <a href="https://twitter.com/intent/tweet?source=https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html&text=Simplify the use of scrollbars with <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton:%20https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Tweet">
                 <i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Tweet</span>
@@ -187,7 +235,7 @@
 
         
         <li>
-            <a href="https://plus.google.com/share?url=https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html"
+            <a href="https://plus.google.com/share?url=https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Share on Google+">
                 <i class="fab fa-google-plus-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Share on Google+</span>
@@ -199,7 +247,7 @@
 
         
         <li>
-            <a href="http://pinterest.com/pin/create/button/?url=https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html&description="
+            <a href="http://pinterest.com/pin/create/button/?url=https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html&description="
                target="_blank" title="Pin it">
                 <i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Pin it</span>
@@ -213,7 +261,7 @@
 
         
         <li>
-            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html&title=Github Pages with Jekyll support%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html"
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html&title=Simplify the use of scrollbars with <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Share on LinkedIn">
                 <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Share on LinkedIn</span>
@@ -225,7 +273,7 @@
 
         
         <li>
-            <a href="mailto:?subject=Github Pages with Jekyll support%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//blog/2018/05/17/thx-github-jekyll.html"
+            <a href="mailto:?subject=Simplify the use of scrollbars with <b>AGS-wrapper-scrollbars</b>%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//blog/2021/11/24/ags_wrapper_scrollbars.html"
                target="_blank" title="Email">
                 <i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Email</span>
@@ -251,6 +299,10 @@
         <p><i class="fa fa-tag fa-fw"></i> AGS</p>
     </a>
     
+    <a class="button" href="/tags#Wrapper">
+        <p><i class="fa fa-tag fa-fw"></i> Wrapper</p>
+    </a>
+    
 </div>
 
 
@@ -260,19 +312,19 @@
 
 <div id="post-nav" class="row post-nav">
 
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div id="previous-post" class="post-nav-post">
+            
+            <p class="uppercase">Previous post</p>
+            <a href="/blog/2021/11/22/ags_wrapper_string_size.html">
+            <p>Calculates the size of label required for a given text string with <b>AGS-wrapper-string-size</b></p>
+            </a>
             
         </div>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div id="next-post" class="post-nav-post">
-            
-            <p class="uppercase">Next post</p>
-            <a href="/blog/2018/05/22/ags-publish-github.html">
-            <p>Publication of AGS on Github</p>
-            </a>
             
         </div>
     </div>
