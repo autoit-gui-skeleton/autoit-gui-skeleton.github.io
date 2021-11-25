@@ -42,7 +42,7 @@ Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l'organis
 
 **GUIScrollbars_Size.au3** - Calcule les nombres Page et Max que l'utilisateur doit alimenter dans les commandes _GUIScrollbar_SetScrollInfoPage/Max. Cette librairie s'adresse aux développeurs plus expérimenté, mais s'avère particulièrement utile lorsque vous avez une interface graphique avec une taille de défilement dynamique (c'est-à-dire en ajoutant ou en soustrayant des contrôles à la zone de défilement pendant l'exécution du script).
 
-> Source de Melba23 : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/
+> Source de Melba23 : [https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/](https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/)
 
 ## Examples
 

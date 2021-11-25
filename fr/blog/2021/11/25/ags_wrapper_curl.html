@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://autoit-gui-skeleton.github.io///assets/css/main.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://autoit-gui-skeleton.github.io///assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://autoit-gui-skeleton.github.io///fr//feed.xml" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css" />
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css" />
+    
+
+    <!-- FancyBox style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+
+    <!-- Prism CSS syntax highlighter for AutoIt support -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/prism.css" />
+
+    <!-- Flags sprites -->
+    <link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/flag-icon-css-master/css/flag-icon.min.css" />
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Utiliser curl pour faire des requêtes HTTP avec AGS-wrapper-curl" />
+<meta property="og:locale" content="fr" />
+<meta name="description" content="AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-curl pour la librairie Curl construite par Ward." />
+<meta property="og:description" content="AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-curl pour la librairie Curl construite par Ward." />
+<link rel="canonical" href="https://autoit-gui-skeleton.github.io//blog/2021/11/25/ags_wrapper_curl.html" />
+<meta property="og:url" content="https://autoit-gui-skeleton.github.io//blog/2021/11/25/ags_wrapper_curl.html" />
+<meta property="og:site_name" content="AutoIt GUI Skeleton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-25T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Utiliser curl pour faire des requêtes HTTP avec AGS-wrapper-curl" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Utiliser curl pour faire des requêtes HTTP avec AGS-wrapper-curl","dateModified":"2021-11-25T00:00:00+01:00","datePublished":"2021-11-25T00:00:00+01:00","url":"https://autoit-gui-skeleton.github.io//blog/2021/11/25/ags_wrapper_curl.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://autoit-gui-skeleton.github.io//blog/2021/11/25/ags_wrapper_curl.html"},"description":"AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-curl pour la librairie Curl construite par Ward.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <title>AutoIt GUI Skeleton</title>
+</head>
+
+  <body>
+    <header class="site-header">
+
+    <!-- Logo and title -->
+	<div class="branding">
+		<a href="https://autoit-gui-skeleton.github.io//fr/">
+			<img class="avatar" src="https://autoit-gui-skeleton.github.io//assets/img/autoit.png" alt=""/>
+		</a>
+
+		<p class="site-title">
+			<a href="https://autoit-gui-skeleton.github.io//fr/">AutoIt Gui Skeleton</a>
+		</p>
+	</div>
+
+    <!-- This finds the current page so it can be highlighted. -->
+    
+
+    <nav class="clear">
+
+        <!-- Toggle menu -->
+        <a id="pull" class="toggle">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide toggleMenu">
+
+            
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/documentation">Documentation</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/articles">Articles</a></li>
+              <li><a href="https://autoit-gui-skeleton.github.io//fr/about">À propos</a></li>
+            
+
+            <li class="separator"> | </li>
+
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//fr/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="clear" href="https://autoit-gui-skeleton.github.io//fr/tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            <li>
+                <a class="link-en" href="https://autoit-gui-skeleton.github.io///blog/2021/11/25/ags_wrapper_curl.html">
+                    <span class="flag-icon flag-icon-gb" title="Translate in english" alt="Anglais"></span>
+                    <!-- <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="Translate in english" alt="Anglais"></span> -->
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image" >
+    <header id="main"
+            class="call-out"
+            style="background-image: url('https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg')">
+        <h1 id="Utiliser+curl+pour+faire+des+requ%C3%AAtes+HTTP+avec+%3Cb%3EAGS-wrapper-curl%3C%2Fb%3E" class="title">Utiliser curl pour faire des requêtes HTTP avec <b>AGS-wrapper-curl</b></h1>
+
+        
+            <p class="date">
+        
+        November 25, 2021 </p>
+    </header>
+
+    <section class="post-content"><blockquote>
+  <p>AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-curl">@autoit-gui-skeleton/ags-wrapper-curl</a> pour la librairie <a href="https://www.autoitscript.com/forum/topic/173067-curl-udf-autoit-binary-code-version-of-libcurl-with-ssl-support/">Curl</a> construite par Ward.</p>
+</blockquote>
+
+<!--more-->
+
+<h1 id="comment-installer-ags-wrapper-scrollbars-">Comment installer AGS-wrapper-scrollbars ?</h1>
+
+<p>On suppose que vous avez déjà installé <a href="https://nodejs.org/">Node.js</a> et <a href="https://yarnpkg.com/lang/en/">Yarn</a>, par example avec <a href="https://chocolatey.org/">Chocolatey</a>, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier <code class="language-plaintext highlighter-rouge">package.json</code> est stocké :</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">yarn add @autoit-gui-skeleton/ags-wrapper-curl --modules-folder vendor</code>
+</pre>
+
+<p>Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire <code class="language-plaintext highlighter-rouge">./vendor/@autoit-gui-skeleton/</code>. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :</p>
+
+<pre><code class="language-autoit">#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/Curl.au3'
+</code></pre>
+
+<p>Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation <a href="https://www.npmjs.com/search?q=autoit-gui-skeleton">@autoit-gui-skeleton organization</a>. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.</p>
+
+<h2 id="curl-ward-library">Curl Ward library</h2>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Cette bibliothèque fournit une implémentation de libcurl avec le support SSL. Il est construit avec une autre bibliothèque Ward <a href="https://www.autoitscript.com/forum/topic/162366-binarycall-udf-write-subroutines-in-c-call-in-autoit/">BinaryCall</a>, et il offre les fonctionnalités suivantes :</p>
+
+<ul>
+  <li>Aucune DLL supplémentaire nécessaire. Grâce à l’utilisation de la librairie BinaryCall.</li>
+  <li>Avec support SSL/TLS et zlib (sans libidn, libiconv, libssh2).</li>
+  <li>Prise en charge complète de l’interface curl easy-interface.</li>
+  <li>Prise en charge partielle de l’interface curl multi-interface.</li>
+  <li>Les données peuvent être lues ou écrites dans des variables ou des fichiers automatiques.</li>
+  <li>Taille de la librairie plus petite, en comparaison à la plupart des DLL de libcurl.</li>
+</ul>
+
+<p>Les informations de version de cette version :</p>
+
+<ul>
+  <li>Version Curl : libcurl/7.42.1</li>
+  <li>Version SSL : mbedTLS/1.3.10</li>
+  <li>Version Libz : 1.2.8</li>
+  <li>Protocoles : ftp, ftps, http, https</li>
+</ul>
+
+<p>Voici les fonctions supplémentaires qui ne sont pas incluses dans la librairie libcurl.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Curl_DataWriteCallback()
+Curl_DataReadCallback()
+Curl_FileWriteCallback()
+Curl_FileReadCallback()
+Curl_Data_Put()
+Curl_Data_Get()
+Curl_Data_Cleanup()
+</code></pre></div></div>
+
+<blockquote>
+  <p>Source Ward : <a href="https://www.autoitscript.com/forum/topic/173067-curl-udf-autoit-binary-code-version-of-libcurl-with-ssl-support/">https://www.autoitscript.com/forum/topic/173067-curl-udf-autoit-binary-code-version-of-libcurl-with-ssl-support/</a></p>
+</blockquote>
+
+<h3 id="exemples">Exemples</h3>
+
+<h4 id="récupérer-le-http-header-et-son-contenu">Récupérer le HTTP header et son contenu</h4>
+
+<pre><code class="language-autoit">#Include "../Curl.au3"
+
+; How to get html or header data?
+;   1. Set $CURLOPT_WRITEFUNCTION and $CURLOPT_HEADERFUNCTION to Curl_DataWriteCallback()
+;   2. Set $CURLOPT_WRITEDATA or $CURLOPT_HEADERDATA to any number as identify
+;   3. Use Curl_Data_Get() to read the returned data in binary format
+;   4. Use Curl_Data_Cleanup() to remove the data
+
+Local $Curl = Curl_Easy_Init()
+If Not $Curl Then Return
+
+Local $Html = $Curl ; any number as identify
+Local $Header = $Curl + 1 ; any number as identify
+
+; Curl configuration
+Curl_Easy_Setopt($Curl, $CURLOPT_URL, "https://www.google.com")
+Curl_Easy_Setopt($Curl, $CURLOPT_USERAGENT, "AutoIt/Curl")
+Curl_Easy_Setopt($Curl, $CURLOPT_FOLLOWLOCATION, 1)
+Curl_Easy_Setopt($Curl, $CURLOPT_ACCEPT_ENCODING, "gzip") ; or set "" use all built-in supported encodings
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEDATA, $Html)
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERDATA, $Header)
+Curl_Easy_Setopt($Curl, $CURLOPT_COOKIE, "tool=curl; script=autoit; fun=yes;")
+Curl_Easy_Setopt($Curl, $CURLOPT_TIMEOUT, 30)
+Curl_Easy_Setopt($Curl, $CURLOPT_SSL_VERIFYPEER, 0)
+
+; Perform curl request
+Local $Code = Curl_Easy_Perform($Curl)
+If $Code = $CURLE_OK Then
+	ConsoleWrite("Content Type: " &amp; Curl_Easy_GetInfo($Curl, $CURLINFO_CONTENT_TYPE) &amp; @LF)
+	ConsoleWrite("Download Size: " &amp; Curl_Easy_GetInfo($Curl, $CURLINFO_SIZE_DOWNLOAD) &amp; @LF)
+
+	MsgBox(0, 'Header', BinaryToString(Curl_Data_Get($Header)))
+	MsgBox(0, 'Html', BinaryToString(Curl_Data_Get($Html)))
+Else
+	ConsoleWrite(Curl_Easy_StrError($Code) &amp; @LF)
+EndIf
+
+Curl_Easy_Cleanup($Curl)
+Curl_Data_Cleanup($Header)
+Curl_Data_Cleanup($Html)
+</code></pre>
+
+<h4 id="utiliser-curl-avec-un-proxy">Utiliser curl avec un proxy</h4>
+
+<p>By default, libcurl respects the proxy environment variables named <code class="language-plaintext highlighter-rouge">http_proxy</code>, <code class="language-plaintext highlighter-rouge">ftp_proxy</code>, <code class="language-plaintext highlighter-rouge">sftp_proxy</code> etc. If set, libcurl will use the specified proxy for that URL scheme. So for a “FTP://” URL, the ftp_proxy is considered. all_proxy is used if no protocol specific proxy was set. If <code class="language-plaintext highlighter-rouge">no_proxy</code> is set, it is the exact equivalent of setting the CURLOPT_NOPROXY option. But if you want to ovveride envrionnement variables, it’s possible with the <code class="language-plaintext highlighter-rouge">$CURLOPT_PROXY</code> and <code class="language-plaintext highlighter-rouge">CURLOPT_NOPROXY</code> options.</p>
+
+<p>To set a proxy, use :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, 'https://myProxy.com:8080');
+</code></pre></div></div>
+
+<p>To disable default proxy configuration, use :</p>
+
+<pre><code class="language-autoit">Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, '');
+</code></pre>
+
+<h4 id="faire-des-requêtes-http-avec-multi-interface-pour-ne-pas-freezer-lihm">Faire des requêtes HTTP avec multi interface pour ne pas freezer l’IHM</h4>
+
+<p>L’interface multi dans libcurl offre plusieurs capacités que l’interface par défaut (esay-interface) n’offre pas. Ce sont principalement :</p>
+
+<ol>
+  <li>
+    <p>Activez une interface “pull”. L’application qui utilise libcurl décide où et quand demander à libcurl d’obtenir/envoyer des données.</p>
+  </li>
+  <li>
+    <p>Activez plusieurs transferts simultanés dans le même thread sans compliquer (freezer) la tâche de l’application.</p>
+  </li>
+  <li>
+    <p>Autorisez l’application à attendre une action sur ses propres descripteurs de fichier et les descripteurs de fichier de curl simultanément.</p>
+  </li>
+  <li>
+    <p>Activez la gestion basée sur les événements et la mise à l’échelle des transferts jusqu’à et au-delà de milliers de connexions parallèles.</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p>Plus d’informations : <a href="https://curl.se/libcurl/c/libcurl-multi.html">https://curl.se/libcurl/c/libcurl-multi.html</a></p>
+</blockquote>
+
+<pre><code class="language-autoit">
+Local $Curl = Curl_Easy_Init()
+If Not $Curl Then Return
+
+Curl_Easy_Setopt($Curl, $CURLOPT_URL, "http://www.google.com")
+Curl_Easy_Setopt($Curl, $CURLOPT_USERAGENT, "AutoIt/Curl")
+Curl_Easy_Setopt($Curl, $CURLOPT_FOLLOWLOCATION, 1)
+Curl_Easy_Setopt($Curl, $CURLOPT_ACCEPT_ENCODING, "")
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEDATA, $Curl)
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERDATA, $Curl + 1)
+
+Local $Multi = Curl_Multi_Init()
+If Not $Multi Then Return
+Curl_Multi_Add_Handle($Multi, $Curl)
+
+Local $Running, $MsgsInQueue
+Do
+	Curl_Multi_Perform($Multi, $Running)
+	Local $CURLMsg = Curl_Multi_Info_Read($Multi, $MsgsInQueue)
+	If DllStructGetData($CURLMsg, "msg") = $CURLMSG_DONE Then
+		Local $Curl = DllStructGetData($CURLMsg, "easy_handle")
+		Local $Code = DllStructGetData($CURLMsg, "data")
+		If $Code = $CURLE_OK Then
+			ConsoleWrite("Content Type: " &amp; Curl_Easy_GetInfo($Curl, $CURLINFO_CONTENT_TYPE) &amp; @LF)
+			ConsoleWrite("Download Size: " &amp; Curl_Easy_GetInfo($Curl, $CURLINFO_SIZE_DOWNLOAD) &amp; @LF)
+
+			MsgBox(0, 'Header', BinaryToString(Curl_Data_Get($Curl + 1)))
+			MsgBox(0, 'Html', BinaryToString(Curl_Data_Get($Curl)))
+		Else
+			ConsoleWrite(Curl_Easy_StrError($Code) &amp; @LF)
+		EndIf
+		Curl_Multi_Remove_Handle($Multi, $Curl)
+		Curl_Easy_Cleanup($Curl)
+		Curl_Data_Cleanup($Curl)
+		Curl_Data_Cleanup($Curl + 1)
+	EndIf
+	ConsoleWrite("non-GUI-blocking" &amp; @LF)
+	Sleep(10)
+Until $Running = 0
+Curl_Multi_Cleanup($Multi)
+ConsoleWrite(@LF)
+</code></pre>
+
+<h4 id="autres-examples">Autres examples</h4>
+
+<p>Voir plus d’<a href="https://github.com/autoit-gui-skeleton/ags-wrapper-curl/tree/master/Examples">examples</a> dans le dépôt git.</p>
+</section>
+
+    <!-- Social media shares -->
+    <div class="share-buttons">
+    <ul>
+        
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html&quote=Utiliser curl pour faire des requêtes HTTP avec <b>AGS-wrapper-curl</b>%20%7C%20AutoIt GUI Skeleton"
+               target="_blank" title="Share on Facebook">
+                <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Facebook</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=Utiliser+curl+pour+faire+des+requ%C3%AAtes+HTTP+avec+%3Cb%3EAGS-wrapper-curl%3C%2Fb%3E%20https%3A%2F%2Fautoit-gui-skeleton.github.io%2F%2Fblog%2F2021%2F11%2F25%2Fags_wrapper_curl.html"
+               target="_blank" title="Tweet">
+                <i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Tweet</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html&title=Utiliser curl pour faire des requêtes HTTP avec <b>AGS-wrapper-curl</b>%20%7C%20AutoIt GUI Skeleton&summary=&source=https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html"
+               target="_blank" title="Share on LinkedIn">
+                <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on LinkedIn</span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a href="mailto:?subject=Utiliser curl pour faire des requêtes HTTP avec <b>AGS-wrapper-curl</b>%20%7C%20AutoIt GUI Skeleton&body=:%20https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html"
+               target="_blank" title="Contact by email">
+                <i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Contact by email</span>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <!-- Tag list -->
+    
+    
+
+
+
+<div class="tag-list">
+    
+    <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/fr/tags#AGS">
+        <p><i class="fa fa-tag fa-fw"></i> AGS</p>
+    </a>
+    
+    <a class="button" href="/fr/tags#Wrapper">
+        <p><i class="fa fa-tag fa-fw"></i> Wrapper</p>
+    </a>
+    
+</div>
+
+
+</article>
+
+<!-- Post navigation -->
+
+<div id="post-nav" class="row post-nav">
+
+    <div class="col-sm-12">
+        <div id="previous-post" class="post-nav-post">
+            
+            <p class="uppercase">Previous post</p>
+            <a href="/fr/blog/2021/11/24/ags_wrapper_scrollbars.html">
+            <p>Simplifier l'utilisation de scrollbars avec <b>AGS-wrapper-scrollbars</b></p>
+            </a>
+            
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div id="next-post" class="post-nav-post">
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Disqus
+
+-->
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">Built with <a href="https://jekyllrb.com/">Jekyll</a> and fork of <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li><a href="mailto:vb20100bv@gmail.com" title="Contact by email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/autoit-gui-skeleton" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+    <!-- KaTeX 0.8.3 -->
+
+<link rel="stylesheet" type="text/css" href="https://autoit-gui-skeleton.github.io///assets/css/vendor/katex.min.css">
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/katex.min.js"></script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-119463892-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<!-- Prism CSS syntax highlighter for AutoIt support -->
+<script src="https://autoit-gui-skeleton.github.io///assets/js/vendor/prism.js"></script>
+
+<!-- FancyBox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Enable fancybox evrywhere with this class selector
+        $('.img-fancybox').each(function (index, value) {
+            $(this).wrap('<a href="' + $(this).attr('src') + '" data-fancybox data-caption="' + $(this).attr('alt') + '">');
+        });
+
+        // Enable bootstrap tooltip everywhere with data-toogle attribute
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/assets/js/main.min.js"></script>
+  </body>
+</html>

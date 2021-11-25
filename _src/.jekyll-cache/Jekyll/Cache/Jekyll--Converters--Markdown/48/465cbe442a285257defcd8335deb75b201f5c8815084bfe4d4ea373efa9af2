@@ -1,4 +1,4 @@
-I"�<blockquote>
+I"�<blockquote>
   <p>AGS fournit le <em>wrapper</em> <a href="https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-scrollbars">@autoit-gui-skeleton/ags-wrapper-scrollbars</a> pour la librairie <a href="https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/">GUIScrollbar_Ex and GUIScrollbars_Size</a> construite par Melba23.</p>
 </blockquote>
 
@@ -29,7 +29,7 @@
 <p><strong>GUIScrollbars_Size.au3</strong> - Calcule les nombres Page et Max que l’utilisateur doit alimenter dans les commandes _GUIScrollbar_SetScrollInfoPage/Max. Cette librairie s’adresse aux développeurs plus expérimenté, mais s’avère particulièrement utile lorsque vous avez une interface graphique avec une taille de défilement dynamique (c’est-à-dire en ajoutant ou en soustrayant des contrôles à la zone de défilement pendant l’exécution du script).</p>
 
 <blockquote>
-  <p>Source de Melba23 : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/</p>
+  <p>Source de Melba23 : <a href="https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/">https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/</a></p>
 </blockquote>
 
 <h2 id="examples">Examples</h2>

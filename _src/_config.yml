@@ -45,7 +45,7 @@ theme_settings:
   facebook:
   flickr:
   gitlab:
-  github: "v20100v"
+  github: "autoit-gui-skeleton"
   google_plus:
   instagram:
   keybase:
@@ -93,7 +93,7 @@ theme_settings:
   str_rss_follow: "Follow RSS feed"
   str_share_on: "Share on"
   str_add_to: "Add to"
-  str_email: "Email"
+  str_email: "Contact by email"
   str_tweet: "Tweet"
   str_pin_it: "Pin it"
   str_next_post: "Next post"

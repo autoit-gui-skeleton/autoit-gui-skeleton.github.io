@@ -5,7 +5,208 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//fr/</link>
         <description></description>
-        <pubDate>Wed, 24 Nov 2021 15:42:12 +0100</pubDate>
+        <pubDate>Thu, 25 Nov 2021 16:12:23 +0100</pubDate>
+        
+        <item>
+            <title>Utiliser curl pour faire des requêtes HTTP avec &lt;b&gt;AGS-wrapper-curl&lt;/b&gt;</title>
+            <link>/blog/2021/11/25/ags_wrapper_curl.html</link>
+            <guid isPermaLink="true">/blog/2021/11/25/ags_wrapper_curl.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;AGS fournit le &lt;em&gt;wrapper&lt;/em&gt; &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-wrapper-curl&quot;&gt;@autoit-gui-skeleton/ags-wrapper-curl&lt;/a&gt; pour la librairie &lt;a href=&quot;https://www.autoitscript.com/forum/topic/173067-curl-udf-autoit-binary-code-version-of-libcurl-with-ssl-support/&quot;&gt;Curl&lt;/a&gt; construite par Ward.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;comment-installer-ags-wrapper-scrollbars-&quot;&gt;Comment installer AGS-wrapper-scrollbars ?&lt;/h1&gt;
+
+&lt;p&gt;On suppose que vous avez déjà installé &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; et &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;Yarn&lt;/a&gt;, par example avec &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatey&lt;/a&gt;, et pour installer le package AGS-wrapper-json, vous pouvez alors utiliser le gestionnaire de dépendances pour AutoIt fournit dans AGS. Il suffit donc de taper dans le dossier racine du projet, où le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; est stocké :&lt;/p&gt;
+
+&lt;pre class=&quot;command-line&quot; data-prompt=&quot;C: \&amp;gt;&quot;&gt;
+&lt;code class=&quot; language-bash&quot;&gt;yarn add @autoit-gui-skeleton/ags-wrapper-curl --modules-folder vendor&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/Curl.au3'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
+
+&lt;h2 id=&quot;curl-ward-library&quot;&gt;Curl Ward library&lt;/h2&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Cette bibliothèque fournit une implémentation de libcurl avec le support SSL. Il est construit avec une autre bibliothèque Ward &lt;a href=&quot;https://www.autoitscript.com/forum/topic/162366-binarycall-udf-write-subroutines-in-c-call-in-autoit/&quot;&gt;BinaryCall&lt;/a&gt;, et il offre les fonctionnalités suivantes :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Aucune DLL supplémentaire nécessaire. Grâce à l’utilisation de la librairie BinaryCall.&lt;/li&gt;
+  &lt;li&gt;Avec support SSL/TLS et zlib (sans libidn, libiconv, libssh2).&lt;/li&gt;
+  &lt;li&gt;Prise en charge complète de l’interface curl easy-interface.&lt;/li&gt;
+  &lt;li&gt;Prise en charge partielle de l’interface curl multi-interface.&lt;/li&gt;
+  &lt;li&gt;Les données peuvent être lues ou écrites dans des variables ou des fichiers automatiques.&lt;/li&gt;
+  &lt;li&gt;Taille de la librairie plus petite, en comparaison à la plupart des DLL de libcurl.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Les informations de version de cette version :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Version Curl : libcurl/7.42.1&lt;/li&gt;
+  &lt;li&gt;Version SSL : mbedTLS/1.3.10&lt;/li&gt;
+  &lt;li&gt;Version Libz : 1.2.8&lt;/li&gt;
+  &lt;li&gt;Protocoles : ftp, ftps, http, https&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Voici les fonctions supplémentaires qui ne sont pas incluses dans la librairie libcurl.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Curl_DataWriteCallback()
+Curl_DataReadCallback()
+Curl_FileWriteCallback()
+Curl_FileReadCallback()
+Curl_Data_Put()
+Curl_Data_Get()
+Curl_Data_Cleanup()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Source Ward : &lt;a href=&quot;https://www.autoitscript.com/forum/topic/173067-curl-udf-autoit-binary-code-version-of-libcurl-with-ssl-support/&quot;&gt;https://www.autoitscript.com/forum/topic/173067-curl-udf-autoit-binary-code-version-of-libcurl-with-ssl-support/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;exemples&quot;&gt;Exemples&lt;/h3&gt;
+
+&lt;h4 id=&quot;récupérer-le-http-header-et-son-contenu&quot;&gt;Récupérer le HTTP header et son contenu&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#Include &quot;../Curl.au3&quot;
+
+; How to get html or header data?
+;   1. Set $CURLOPT_WRITEFUNCTION and $CURLOPT_HEADERFUNCTION to Curl_DataWriteCallback()
+;   2. Set $CURLOPT_WRITEDATA or $CURLOPT_HEADERDATA to any number as identify
+;   3. Use Curl_Data_Get() to read the returned data in binary format
+;   4. Use Curl_Data_Cleanup() to remove the data
+
+Local $Curl = Curl_Easy_Init()
+If Not $Curl Then Return
+
+Local $Html = $Curl ; any number as identify
+Local $Header = $Curl + 1 ; any number as identify
+
+; Curl configuration
+Curl_Easy_Setopt($Curl, $CURLOPT_URL, &quot;https://www.google.com&quot;)
+Curl_Easy_Setopt($Curl, $CURLOPT_USERAGENT, &quot;AutoIt/Curl&quot;)
+Curl_Easy_Setopt($Curl, $CURLOPT_FOLLOWLOCATION, 1)
+Curl_Easy_Setopt($Curl, $CURLOPT_ACCEPT_ENCODING, &quot;gzip&quot;) ; or set &quot;&quot; use all built-in supported encodings
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEDATA, $Html)
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERDATA, $Header)
+Curl_Easy_Setopt($Curl, $CURLOPT_COOKIE, &quot;tool=curl; script=autoit; fun=yes;&quot;)
+Curl_Easy_Setopt($Curl, $CURLOPT_TIMEOUT, 30)
+Curl_Easy_Setopt($Curl, $CURLOPT_SSL_VERIFYPEER, 0)
+
+; Perform curl request
+Local $Code = Curl_Easy_Perform($Curl)
+If $Code = $CURLE_OK Then
+	ConsoleWrite(&quot;Content Type: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_CONTENT_TYPE) &amp;amp; @LF)
+	ConsoleWrite(&quot;Download Size: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_SIZE_DOWNLOAD) &amp;amp; @LF)
+
+	MsgBox(0, 'Header', BinaryToString(Curl_Data_Get($Header)))
+	MsgBox(0, 'Html', BinaryToString(Curl_Data_Get($Html)))
+Else
+	ConsoleWrite(Curl_Easy_StrError($Code) &amp;amp; @LF)
+EndIf
+
+Curl_Easy_Cleanup($Curl)
+Curl_Data_Cleanup($Header)
+Curl_Data_Cleanup($Html)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;utiliser-curl-avec-un-proxy&quot;&gt;Utiliser curl avec un proxy&lt;/h4&gt;
+
+&lt;p&gt;By default, libcurl respects the proxy environment variables named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http_proxy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ftp_proxy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sftp_proxy&lt;/code&gt; etc. If set, libcurl will use the specified proxy for that URL scheme. So for a “FTP://” URL, the ftp_proxy is considered. all_proxy is used if no protocol specific proxy was set. If &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no_proxy&lt;/code&gt; is set, it is the exact equivalent of setting the CURLOPT_NOPROXY option. But if you want to ovveride envrionnement variables, it’s possible with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$CURLOPT_PROXY&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CURLOPT_NOPROXY&lt;/code&gt; options.&lt;/p&gt;
+
+&lt;p&gt;To set a proxy, use :&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, 'https://myProxy.com:8080');
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To disable default proxy configuration, use :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, '');
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;faire-des-requêtes-http-avec-multi-interface-pour-ne-pas-freezer-lihm&quot;&gt;Faire des requêtes HTTP avec multi interface pour ne pas freezer l’IHM&lt;/h4&gt;
+
+&lt;p&gt;L’interface multi dans libcurl offre plusieurs capacités que l’interface par défaut (esay-interface) n’offre pas. Ce sont principalement :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Activez une interface “pull”. L’application qui utilise libcurl décide où et quand demander à libcurl d’obtenir/envoyer des données.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Activez plusieurs transferts simultanés dans le même thread sans compliquer (freezer) la tâche de l’application.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Autorisez l’application à attendre une action sur ses propres descripteurs de fichier et les descripteurs de fichier de curl simultanément.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Activez la gestion basée sur les événements et la mise à l’échelle des transferts jusqu’à et au-delà de milliers de connexions parallèles.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Plus d’informations : &lt;a href=&quot;https://curl.se/libcurl/c/libcurl-multi.html&quot;&gt;https://curl.se/libcurl/c/libcurl-multi.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;
+Local $Curl = Curl_Easy_Init()
+If Not $Curl Then Return
+
+Curl_Easy_Setopt($Curl, $CURLOPT_URL, &quot;http://www.google.com&quot;)
+Curl_Easy_Setopt($Curl, $CURLOPT_USERAGENT, &quot;AutoIt/Curl&quot;)
+Curl_Easy_Setopt($Curl, $CURLOPT_FOLLOWLOCATION, 1)
+Curl_Easy_Setopt($Curl, $CURLOPT_ACCEPT_ENCODING, &quot;&quot;)
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_WRITEDATA, $Curl)
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERFUNCTION, Curl_DataWriteCallback())
+Curl_Easy_Setopt($Curl, $CURLOPT_HEADERDATA, $Curl + 1)
+
+Local $Multi = Curl_Multi_Init()
+If Not $Multi Then Return
+Curl_Multi_Add_Handle($Multi, $Curl)
+
+Local $Running, $MsgsInQueue
+Do
+	Curl_Multi_Perform($Multi, $Running)
+	Local $CURLMsg = Curl_Multi_Info_Read($Multi, $MsgsInQueue)
+	If DllStructGetData($CURLMsg, &quot;msg&quot;) = $CURLMSG_DONE Then
+		Local $Curl = DllStructGetData($CURLMsg, &quot;easy_handle&quot;)
+		Local $Code = DllStructGetData($CURLMsg, &quot;data&quot;)
+		If $Code = $CURLE_OK Then
+			ConsoleWrite(&quot;Content Type: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_CONTENT_TYPE) &amp;amp; @LF)
+			ConsoleWrite(&quot;Download Size: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_SIZE_DOWNLOAD) &amp;amp; @LF)
+
+			MsgBox(0, 'Header', BinaryToString(Curl_Data_Get($Curl + 1)))
+			MsgBox(0, 'Html', BinaryToString(Curl_Data_Get($Curl)))
+		Else
+			ConsoleWrite(Curl_Easy_StrError($Code) &amp;amp; @LF)
+		EndIf
+		Curl_Multi_Remove_Handle($Multi, $Curl)
+		Curl_Easy_Cleanup($Curl)
+		Curl_Data_Cleanup($Curl)
+		Curl_Data_Cleanup($Curl + 1)
+	EndIf
+	ConsoleWrite(&quot;non-GUI-blocking&quot; &amp;amp; @LF)
+	Sleep(10)
+Until $Running = 0
+Curl_Multi_Cleanup($Multi)
+ConsoleWrite(@LF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;autres-examples&quot;&gt;Autres examples&lt;/h4&gt;
+
+&lt;p&gt;Voir plus d’&lt;a href=&quot;https://github.com/autoit-gui-skeleton/ags-wrapper-curl/tree/master/Examples&quot;&gt;examples&lt;/a&gt; dans le dépôt git.&lt;/p&gt;
+</description>
+            <pubDate>Thu, 25 Nov 2021 00:00:00 +0100</pubDate>
+        </item>
         
         <item>
             <title>Simplifier l'utilisation de scrollbars avec &lt;b&gt;AGS-wrapper-scrollbars&lt;/b&gt;</title>
@@ -42,7 +243,7 @@
 &lt;p&gt;&lt;strong&gt;GUIScrollbars_Size.au3&lt;/strong&gt; - Calcule les nombres Page et Max que l’utilisateur doit alimenter dans les commandes _GUIScrollbar_SetScrollInfoPage/Max. Cette librairie s’adresse aux développeurs plus expérimenté, mais s’avère particulièrement utile lorsque vous avez une interface graphique avec une taille de défilement dynamique (c’est-à-dire en ajoutant ou en soustrayant des contrôles à la zone de défilement pendant l’exécution du script).&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Source de Melba23 : https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&lt;/p&gt;
+  &lt;p&gt;Source de Melba23 : &lt;a href=&quot;https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&quot;&gt;https://www.autoitscript.com/forum/topic/113723-scrollbars-made-easy-bugfix-version-2-may-21/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;

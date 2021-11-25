@@ -1,4 +1,4 @@
-I"…U<div class="container archive-post-list">
+I"Ö[<div class="container archive-post-list">
 
     
     
@@ -26,6 +26,57 @@
 
         
             <div class="cards-articles card-deck">
+        
+
+        <div class="card">
+            
+            <div class="animated-zoom-img">
+                <a href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html">
+                    <img class="card-img-top animation-img" src="https://autoit-gui-skeleton.github.io//assets/img/pixabay/ags-wrapper.jpg" alt="Card image cap" />
+                </a>
+            </div>
+            
+
+            <div class="card-body">
+                <h4 class="card-title mt-0"><a href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html">Utiliser curl pour faire des requÃªtes HTTP avec <b>AGS-wrapper-curl</b></a></h4>
+                <p class="card-text meta">
+                    
+                        25
+                        Novembre
+                        2021
+                    
+                </p>
+                <p class="card-text archive-post-item-excerpt">
+                    
+  AGS fournit le wrapper @autoit-gui-skeleton/ags-wrapper-curl pour la librairie Curl construite par Ward.
+
+
+
+                </p>
+                <p class="card-text">
+                    <small class="text-muted"></small>
+                </p>
+                <a href="https://autoit-gui-skeleton.github.io//fr/blog/2021/11/25/ags_wrapper_curl.html" class="black-text d-flex justify-content-end">
+                    <h6>Lire <i class="fa fa-angle-double-right"></i></h6>
+                </a>
+            </div>
+        </div>
+
+    
+
+    
+
+        
+        
+        
+
+        
+
+
+        
+
+        
+
         
 
         <div class="card">
@@ -63,6 +114,9 @@
         </div>
 
     
+        </div> <!-- regular close <div class="card-deck"> -->
+        
+    
 
     
 
@@ -77,6 +131,8 @@
 
         
 
+        
+            <div class="cards-articles card-deck">
         
 
         <div class="card">
@@ -113,9 +169,6 @@
             </div>
         </div>
 
-    
-        </div> <!-- regular close <div class="card-deck"> -->
-        
     
 
     
@@ -711,5 +764,5 @@
 
 </div>
 
-</div></div>
+</div></div></div>
 :ET
