@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//</link>
         <description></description>
-        <pubDate>Tue, 13 Sep 2022 15:12:38 +0200</pubDate>
+        <pubDate>Tue, 13 Sep 2022 15:18:28 +0200</pubDate>
         
         <item>
             <title>Use curl to make HTTP request with &lt;b&gt;AGS-wrapper-curl&lt;/b&gt;</title>
