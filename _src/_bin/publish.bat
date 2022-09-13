@@ -61,7 +61,7 @@ git add --all
 
 echo.
 echo * Create a git commit for all staged files
-git commit -m "AGS website built with Jekyll and published on Github"
+git commit -m "AGS automatic published"
 
 echo.
 echo * Push commit on Github (see origin : https://github.com/autoit-gui-skeleton/autoit-gui-skeleton.github.io.git)

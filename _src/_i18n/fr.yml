@@ -11,6 +11,7 @@ global:
   no_result_found: Aucun résultat.
   javascript_required_disqus: Merci d'activité JavaScript pour voir <a href="https://disqus.com/?ref_noscript">les commentaires, fournis par Disqus.</a>
   last_article: Dernier article
+  message_footer: L'infini c'est grand, surtout vers la fin !
 langs:
   en: Anglais
   fr: Français

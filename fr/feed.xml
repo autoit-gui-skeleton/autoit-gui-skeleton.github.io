@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://autoit-gui-skeleton.github.io//fr/</link>
         <description></description>
-        <pubDate>Thu, 25 Nov 2021 16:12:23 +0100</pubDate>
+        <pubDate>Tue, 13 Sep 2022 15:12:48 +0200</pubDate>
         
         <item>
             <title>Utiliser curl pour faire des requêtes HTTP avec &lt;b&gt;AGS-wrapper-curl&lt;/b&gt;</title>
@@ -27,7 +27,7 @@
 
 &lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/Curl.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-wrapper-string-size/Curl.au3&apos;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
@@ -108,8 +108,8 @@ If $Code = $CURLE_OK Then
 	ConsoleWrite(&quot;Content Type: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_CONTENT_TYPE) &amp;amp; @LF)
 	ConsoleWrite(&quot;Download Size: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_SIZE_DOWNLOAD) &amp;amp; @LF)
 
-	MsgBox(0, 'Header', BinaryToString(Curl_Data_Get($Header)))
-	MsgBox(0, 'Html', BinaryToString(Curl_Data_Get($Html)))
+	MsgBox(0, &apos;Header&apos;, BinaryToString(Curl_Data_Get($Header)))
+	MsgBox(0, &apos;Html&apos;, BinaryToString(Curl_Data_Get($Html)))
 Else
 	ConsoleWrite(Curl_Easy_StrError($Code) &amp;amp; @LF)
 EndIf
@@ -125,12 +125,12 @@ Curl_Data_Cleanup($Html)
 
 &lt;p&gt;To set a proxy, use :&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, 'https://myProxy.com:8080');
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, &apos;https://myProxy.com:8080&apos;);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To disable default proxy configuration, use :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, '');
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;Curl_Easy_Setopt($Curl, $CURLOPT_PROXY, &apos;&apos;);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&quot;faire-des-requêtes-http-avec-multi-interface-pour-ne-pas-freezer-lihm&quot;&gt;Faire des requêtes HTTP avec multi interface pour ne pas freezer l’IHM&lt;/h4&gt;
@@ -184,8 +184,8 @@ Do
 			ConsoleWrite(&quot;Content Type: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_CONTENT_TYPE) &amp;amp; @LF)
 			ConsoleWrite(&quot;Download Size: &quot; &amp;amp; Curl_Easy_GetInfo($Curl, $CURLINFO_SIZE_DOWNLOAD) &amp;amp; @LF)
 
-			MsgBox(0, 'Header', BinaryToString(Curl_Data_Get($Curl + 1)))
-			MsgBox(0, 'Html', BinaryToString(Curl_Data_Get($Curl)))
+			MsgBox(0, &apos;Header&apos;, BinaryToString(Curl_Data_Get($Curl + 1)))
+			MsgBox(0, &apos;Html&apos;, BinaryToString(Curl_Data_Get($Curl)))
 		Else
 			ConsoleWrite(Curl_Easy_StrError($Code) &amp;amp; @LF)
 		EndIf
@@ -209,7 +209,7 @@ ConsoleWrite(@LF)
         </item>
         
         <item>
-            <title>Simplifier l'utilisation de scrollbars avec &lt;b&gt;AGS-wrapper-scrollbars&lt;/b&gt;</title>
+            <title>Simplifier l&apos;utilisation de scrollbars avec &lt;b&gt;AGS-wrapper-scrollbars&lt;/b&gt;</title>
             <link>/blog/2021/11/24/ags_wrapper_scrollbars.html</link>
             <guid isPermaLink="true">/blog/2021/11/24/ags_wrapper_scrollbars.html</guid>
             <description>&lt;blockquote&gt;
@@ -228,8 +228,8 @@ ConsoleWrite(@LF)
 
 &lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3'
-#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Ex.au3&apos;
+#include &apos;vendor/@autoit-gui-skeleton/ags-wrapper-string-size/GUIScrollBars_Size.au3&apos;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
@@ -289,7 +289,7 @@ WEnd
         </item>
         
         <item>
-            <title>Calculer la taille requise par une chaîne de caractères pour l'inserer dans un label avec &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
+            <title>Calculer la taille requise par une chaîne de caractères pour l&apos;inserer dans un label avec &lt;b&gt;AGS-wrapper-string-size&lt;/b&gt;</title>
             <link>/blog/2021/11/22/ags_wrapper_string_size.html</link>
             <guid isPermaLink="true">/blog/2021/11/22/ags_wrapper_string_size.html</guid>
             <description>&lt;blockquote&gt;
@@ -308,7 +308,7 @@ WEnd
 
 &lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-string-size/StringSize.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-wrapper-string-size/StringSize.au3&apos;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
@@ -381,9 +381,9 @@ Global $aAttrib[4] = [0, 2, 4, 0]
 Global $aColour[4] = [0xFFFFD0, 0xD0FFD0, 0xD0D0FF, 0xFFD0FF]
 
 $sText = &quot;The UDF will calculate the largest possible font size which will allow this text to fit in the randomly sized label.  &quot; &amp;amp; _
-    &quot;Pressing the 'Increase' button will use the next size up so you can see how successful it was.  &quot; &amp;amp; @CRLF &amp;amp; _
+    &quot;Pressing the &apos;Increase&apos; button will use the next size up so you can see how successful it was.  &quot; &amp;amp; @CRLF &amp;amp; _
     &quot;Note that the UDF is pessimistic and will leave small borders to the right and at the bottom of the text, so you might &quot; &amp;amp; _
-    &quot;be able to go one size up in a few cases, although this risks clipping the trailing edges of italic letters or the tails of letters such as 'g'.&quot;
+    &quot;be able to go one size up in a few cases, although this risks clipping the trailing edges of italic letters or the tails of letters such as &apos;g&apos;.&quot;
 
 $hGUI = GUICreate(&quot;Test&quot;, 500, 500, 100, 100)
 
@@ -845,7 +845,7 @@ Func _main_GUI()
 
 	; Launch a check for updates on startup, the check is performed 
 	; only if LAUNCH_CHECK_FOR_UPDATE_ON_STARTUP is enable in
-	; the configuration file './config/parameters.ini'
+	; the configuration file &apos;./config/parameters.ini&apos;
 	_GUI_launch_CheckForUpdates($main_GUI, &quot;ON_STARTUP&quot;)
 
 	; Handle all user interactions and events
@@ -866,7 +866,7 @@ Func _GUI_Init_Menu()
 
     (...)
     
-	; Création 'About' menu
+	; Création &apos;About&apos; menu
 	Global $menu_About = GUICtrlCreateMenu(&quot;?&quot;)
 	Global $menuitem_Help = GUICtrlCreateMenuItem(&quot;Help&quot;, $menu_About)
 	Global $menuitem_CheckForUpdate = GUICtrlCreateMenuItem(&quot;Check for update&quot;, $menu_About)
@@ -880,7 +880,7 @@ EndFunc
 Func _GUI_HandleEvents_Menu_About($msg)
 	Switch $msg
 		Case $menuitem_Help
-			ConsoleWrite('Click on &quot;? &amp;gt; Help&quot;' &amp;amp; @CRLF)
+			ConsoleWrite(&apos;Click on &quot;? &amp;gt; Help&quot;&apos; &amp;amp; @CRLF)
 		
 		Case $menuitem_CheckForUpdate
 			_GUI_launch_CheckForUpdates($main_GUI, &quot;ON_MENU&quot;)
@@ -896,7 +896,7 @@ EndFunc
 &lt;p&gt;Lorsque l’utilisateur clique sur le bouton Enregistrer, il utilise le service &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/services/ParametersIni.au3&lt;/code&gt;, qui appelle la méthode&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; IniWrite&lt;/code&gt; sur le fichier de configuration &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./config/parameters.ini&lt;/code&gt; pour sauvegarder les changements.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;;====================================================================================
-; Save values choose by user in 'Setting' views, and launch with 'save' button
+; Save values choose by user in &apos;Setting&apos; views, and launch with &apos;save&apos; button
 ;
 ; @params void
 ; @return void
@@ -925,7 +925,7 @@ EndFunc
 #include-once
 
 ;====================================================================================
-; Create element for the 'Settings' view
+; Create element for the &apos;Settings&apos; view
 ;
 ; @param void
 ; @return void
@@ -990,7 +990,7 @@ EndFunc
 
 
 ;====================================================================================
-; Setter tips and cursor for elements in 'Settings' view
+; Setter tips and cursor for elements in &apos;Settings&apos; view
 ;
 ; @param void
 ; @return void
@@ -1007,7 +1007,7 @@ EndFunc
 
 
 ;====================================================================================
-; Handler for display element on 'Settings' view
+; Handler for display element on &apos;Settings&apos; view
 ;
 ; @param {int} $action, use GUIConstantsEx $GUI_SHOW or $GUI_HIDE
 ; @return void
@@ -1056,7 +1056,7 @@ EndFunc
 
 
 ;====================================================================================
-; Handler for events in 'Settings' view
+; Handler for events in &apos;Settings&apos; view
 ;
 ; @param $msg, event return with GUIGetMsg method, i.e. the control ID of the control sending the message
 ; @return @void
@@ -1064,7 +1064,7 @@ EndFunc
 Func _GUI_HandleEvents_View_Settings($msg)
 	Switch $msg
 		Case $button_save_settings
-			ConsoleWrite('Click on &quot;$button_save_settings&quot;' &amp;amp; @CRLF)
+			ConsoleWrite(&apos;Click on &quot;$button_save_settings&quot;&apos; &amp;amp; @CRLF)
 			_save_parameters_ini()
 	EndSwitch
 EndFunc
@@ -1144,7 +1144,7 @@ EndFunc
 
 &lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3&apos;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
@@ -1289,7 +1289,7 @@ ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
 
 &lt;p&gt;Toutes les dépendances du projet, ainsi que les dépendances filles des dépedances parentes sont installées dans le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/@autoit-gui-skeleton/&lt;/code&gt;. Pour l’utiliser dans son programme AutoIt, vous devez inclure cette bibliothèque avec l’instruction:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3&apos;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tous les paquets AGS hébergés dans le dépôt npmjs appartiennent à l’organisation &lt;a href=&quot;https://www.npmjs.com/search?q=autoit-gui-skeleton&quot;&gt;@autoit-gui-skeleton organization&lt;/a&gt;. En effet afin de simplifier la gestion des dépendances d’un projet AutoIt construit avec le framework AGS, nous avons détourné de son utilisation initiale le gestionnaire de dépendance npm, et son évolution Yarn. Cela nous permet de gérer les dépendances d’un projet AGS avec d’autres bibliothèques AutoIt, et de partager ces paquets AutoIt à partir du référentiel npmjs.org.&lt;/p&gt;
@@ -1329,7 +1329,7 @@ ConsoleWrite(URLEncode(&quot;123abc!@#$%^&amp;amp;*()_+ &quot;) &amp;amp; @crlf)
 
 &lt;p&gt;Pour décoder ce fichier, on utilise la fonction suivante &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json_decode_from_file&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-wrapper-json/JSON.au3&apos;
 
 ;====================================================================================
 ; Decode JSON from a given local file
@@ -1370,16 +1370,16 @@ EndFunc
 Local $jsonObject = json_decode_from_file($file)
 
 ; With dot notation
-Local $project = Json_Get($jsonObject, '.project')     ; Listing droids
-Local $name = Json_Get($jsonObject, '.author.name')    ; Luke
-Local $mail = Json_Get($jsonObject, '.author.mail')    ; luke@2080.org
-local $test = Json_Get($jsonObject, '.droids[1].name') ; BB8
+Local $project = Json_Get($jsonObject, &apos;.project&apos;)     ; Listing droids
+Local $name = Json_Get($jsonObject, &apos;.author.name&apos;)    ; Luke
+Local $mail = Json_Get($jsonObject, &apos;.author.mail&apos;)    ; luke@2080.org
+local $test = Json_Get($jsonObject, &apos;.droids[1].name&apos;) ; BB8
 
 ; With array notation
-Local $project2 = Json_Get($jsonObject, '[&quot;project&quot;]')
-Local $name2 = Json_Get($jsonObject, '[&quot;author&quot;][&quot;name&quot;]')
-Local $mail2 = Json_Get($jsonObject, '[&quot;author&quot;][&quot;mail&quot;]')
-local $test2 = Json_Get($jsonObject, '[&quot;droids&quot;][1][&quot;name&quot;]')
+Local $project2 = Json_Get($jsonObject, &apos;[&quot;project&quot;]&apos;)
+Local $name2 = Json_Get($jsonObject, &apos;[&quot;author&quot;][&quot;name&quot;]&apos;)
+Local $mail2 = Json_Get($jsonObject, &apos;[&quot;author&quot;][&quot;mail&quot;]&apos;)
+local $test2 = Json_Get($jsonObject, &apos;[&quot;droids&quot;][1][&quot;name&quot;]&apos;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Vous pouvez également utiliser des fonctions d’aide, qui son des couches d’abtractions des  fonctions de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scripting.Dictionary&lt;/code&gt; COM object.&lt;/p&gt;
@@ -1403,17 +1403,17 @@ local $test2 = Json_Get($jsonObject, '[&quot;droids&quot;][1][&quot;name&quot;]'
 Local $jsonObject = json_decode_from_file($file)
 
 ; Check if exists an item droid into the collection `droids`
-Local $droids = Json_Get($jsonObject, '.droids')
+Local $droids = Json_Get($jsonObject, &apos;.droids&apos;)
 If UBound($droids) = 0 Then
-    Return SetError(3, 0, &quot;Array attribute 'droids' is empty.&quot;)
+    Return SetError(3, 0, &quot;Array attribute &apos;droids&apos; is empty.&quot;)
 EndIf
 
 ; Iterate items collection to store values into an array 
 Local $array[UBound($droids)][3]
 For $i = 0 To UBound($droids) - 1 Step 1
-    $array[$i][0] = Json_Get($jsonObject, '.droids' &amp;amp; '[' &amp;amp; $i &amp;amp; '].name')
-    $array[$i][1] = Json_Get($jsonObject, '.droids' &amp;amp; '[' &amp;amp; $i &amp;amp; '].type')
-    $array[$i][2] = Json_Get($jsonObject, '.droids' &amp;amp; '[' &amp;amp; $i &amp;amp; '].size')
+    $array[$i][0] = Json_Get($jsonObject, &apos;.droids&apos; &amp;amp; &apos;[&apos; &amp;amp; $i &amp;amp; &apos;].name&apos;)
+    $array[$i][1] = Json_Get($jsonObject, &apos;.droids&apos; &amp;amp; &apos;[&apos; &amp;amp; $i &amp;amp; &apos;].type&apos;)
+    $array[$i][2] = Json_Get($jsonObject, &apos;.droids&apos; &amp;amp; &apos;[&apos; &amp;amp; $i &amp;amp; &apos;].size&apos;)
 Next
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1426,14 +1426,14 @@ Json_Put($Obj, &quot;.foo&quot;, &quot;foo&quot;)
 Json_Put($Obj, &quot;.bar[0]&quot;, &quot;bar&quot;)
 Json_Put($Obj, &quot;.test[1].foo.bar[2].foo.bar&quot;, &quot;Test&quot;)
 
-Local $Test = Json_Get($Obj, '[&quot;test&quot;][1][&quot;foo&quot;][&quot;bar&quot;][2][&quot;foo&quot;][&quot;bar&quot;]') ; &quot;Test&quot;
+Local $Test = Json_Get($Obj, &apos;[&quot;test&quot;][1][&quot;foo&quot;][&quot;bar&quot;][2][&quot;foo&quot;][&quot;bar&quot;]&apos;) ; &quot;Test&quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;décoder-un-fichier-json-depuis-un-serveur-distant&quot;&gt;Décoder un fichier JSON depuis un serveur distant&lt;/h2&gt;
 
 &lt;p&gt;Pour décoder un fichier JSON hébergé sur un serveur distant, ou qui se construit depuis un webservice ou encore à partir d’une API Rest, vous pouvez utiliser &lt;a href=&quot;https://www.npmjs.com/package/@autoit-gui-skeleton/ags-component-http-request&quot;&gt;@autoit-gui-skeleton/ags-component-http-request&lt;/a&gt; pour effectuer des requetes HTTP vers une URL donnée.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include 'vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3'
+&lt;pre&gt;&lt;code class=&quot;language-autoit&quot;&gt;#include &apos;vendor/@autoit-gui-skeleton/ags-component-http-request/ags-component-http-request.au3&apos;
 
 ;====================================================================================
 ; Decode JSON from a given URL
@@ -1456,9 +1456,9 @@ EndFunc
 
 Local $jsonObject = json_decode_from_url(https://api.spacexdata.com/v2/info)
 
-Local $name = Json_Get($jsonObject, '.name')        ; SpaceX
-Local $founder = Json_Get($jsonObject, '.founder')  ; Elon Musk
-Local $founded = Json_Get($jsonObject, '.founded')  ; 2002
+Local $name = Json_Get($jsonObject, &apos;.name&apos;)        ; SpaceX
+Local $founder = Json_Get($jsonObject, &apos;.founder&apos;)  ; Elon Musk
+Local $founded = Json_Get($jsonObject, &apos;.founded&apos;)  ; 2002
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;comment-encoder-un-json-&quot;&gt;Comment encoder un JSON ?&lt;/h1&gt;
@@ -1610,7 +1610,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
         </item>
         
         <item>
-            <title>AGS facilite la création d'installeur Windows (setup) d'application AutoIt</title>
+            <title>AGS facilite la création d&apos;installeur Windows (setup) d&apos;application AutoIt</title>
             <link>/blog/2018/06/04/autoit-windows-setup.html</link>
             <guid isPermaLink="true">/blog/2018/06/04/autoit-windows-setup.html</guid>
             <description>&lt;blockquote&gt;
@@ -1652,7 +1652,7 @@ yarn add @autoit-gui-skeleton/ags-wrapper-xxx --modules-folder vendor&lt;/code&g
         </item>
         
         <item>
-            <title>Publication d'AGS sur Github</title>
+            <title>Publication d&apos;AGS sur Github</title>
             <link>/blog/2018/05/22/ags-publish-github.html</link>
             <guid isPermaLink="true">/blog/2018/05/22/ags-publish-github.html</guid>
             <description>&lt;p&gt;AutoIt Gui Skeleton (AGS) est maintenant disponible sur &lt;a href=&quot;https://github.com/autoit-gui-skeleton&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;

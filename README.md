@@ -1,5 +1,5 @@
-AGS
-===
+AGS - AutoIt GUI Skeleton
+=========================
 
 [![Jekyll](https://img.shields.io/badge/AGS-1.0.0.alpha-informational.svg)](https://jekyllrb.com/)
 [![LICENSE](https://img.shields.io/badge/license-MIT-informational.svg)](https://github.com/v20100v/6i-Jekyll/blob/develop/LICENSE.md)
@@ -37,4 +37,4 @@ Bug reports, reports a typo in documentation, comments, pull-request & Github st
  
 Release under [MIT License](./LICENSE.md).
 
-Copyright (c) 2020 by 2o1oo vb20100bv@gmail.com
+Copyright (c) 2018 by 2o1oo vb20100bv@gmail.com
